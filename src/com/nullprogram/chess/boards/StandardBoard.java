@@ -1,11 +1,13 @@
 package com.nullprogram.chess.boards;
 
 import com.nullprogram.chess.Board;
+import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.pieces.Bishop;
 import com.nullprogram.chess.pieces.King;
 import com.nullprogram.chess.pieces.Knight;
+import com.nullprogram.chess.pieces.ModelKnight;
 import com.nullprogram.chess.pieces.Pawn;
 import com.nullprogram.chess.pieces.Queen;
 import com.nullprogram.chess.pieces.Rook;
@@ -71,14 +73,20 @@ public class StandardBoard extends Board {
             setPiece(x, WHITE_PAWN_ROW, new Pawn(Piece.Side.WHITE));
             setPiece(x, BLACK_PAWN_ROW, new Pawn(Piece.Side.BLACK));
         }
+        
+        Model knight = new ModelKnight();
         setPiece(Q_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
         setPiece(K_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
         setPiece(Q_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
         setPiece(K_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
-        setPiece(Q_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
-        setPiece(K_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
-        setPiece(Q_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
-        setPiece(K_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
+//        setPiece(Q_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
+//        setPiece(K_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
+//        setPiece(Q_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
+//        setPiece(K_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
+        setPiece(Q_KNIGHT, WHITE_ROW, new Piece(Piece.Side.WHITE, knight));
+        setPiece(K_KNIGHT, WHITE_ROW, new Piece(Piece.Side.WHITE, knight));
+        setPiece(Q_KNIGHT, BLACK_ROW, new Piece(Piece.Side.BLACK, knight));
+        setPiece(K_KNIGHT, BLACK_ROW, new Piece(Piece.Side.BLACK, knight));
         setPiece(Q_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
         setPiece(K_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
         setPiece(Q_BISHOP, BLACK_ROW, new Bishop(Piece.Side.BLACK));

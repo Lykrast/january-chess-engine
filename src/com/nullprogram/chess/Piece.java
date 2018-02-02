@@ -1,6 +1,5 @@
 package com.nullprogram.chess;
 
-import com.nullprogram.chess.pieces.ImageServer;
 import java.awt.Image;
 import java.io.Serializable;
 
@@ -16,9 +15,11 @@ import java.io.Serializable;
  * (default.properies) and a parse entry in the Minimax constructor,
  * right after all the other pieces.
  */
-public abstract class Piece implements Serializable {
+public class Piece implements Serializable {
 	public static final String[] PIECES = {"Pawn", "Knight", "Bishop", "Rook", "Queen", "King", 
 			"Chancellor", "Archbishop", "Camel", "Wildebeest"};
+	
+	private Model model;
 
     /** Versioning for object serialization. */
     private static final long serialVersionUID = -214124732216708977L;
@@ -34,9 +35,6 @@ public abstract class Piece implements Serializable {
 
     /** Movement counter. */
     private int moved = 0;
-
-    /** Name of this piece. */
-    private String name;
 
     /**
      * The side of the piece: white or black.
@@ -80,6 +78,10 @@ public abstract class Piece implements Serializable {
      */
     protected Piece() {
     }
+    
+    public Model getModel() {
+    	return model;
+    }
 
     /**
      * Create a new piece on the given side.
@@ -89,7 +91,20 @@ public abstract class Piece implements Serializable {
      */
     protected Piece(final Side owner, final String pieceName) {
         side = owner;
-        name = pieceName;
+        //name = pieceName;
+        model = new Model(pieceName, 1.0)
+        		{
+			@Override
+			public MoveList getMoves(Piece p, boolean checkCheck) {
+				return null;
+			}
+        		};
+    }
+    
+    public Piece(final Side owner, final Model model)
+    {
+    	side = owner;
+    	this.model = model;
     }
 
     /**
@@ -98,7 +113,10 @@ public abstract class Piece implements Serializable {
      * @param checkCheck check for check
      * @return           list of moves
      */
-    public abstract MoveList getMoves(boolean checkCheck);
+    public MoveList getMoves(boolean checkCheck)
+    {
+    	return model.getMoves(this, checkCheck);
+    }
 
     /**
      * Update the piece's current position on the board.
@@ -164,7 +182,7 @@ public abstract class Piece implements Serializable {
      * @return     image for this piece
      */
     public final Image getImage() {
-        return ImageServer.getTile(name + "-" + side);
+        return model.getImage(side);
     }
 
     /**
