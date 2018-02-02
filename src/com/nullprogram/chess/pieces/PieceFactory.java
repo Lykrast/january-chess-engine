@@ -1,5 +1,6 @@
 package com.nullprogram.chess.pieces;
 
+import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Piece;
 
 /**
@@ -19,11 +20,8 @@ public final class PieceFactory {
      * @return the new piece
      */
     public static Piece create(final String name, final Piece.Side side) {
-        if ("Queen".equals(name)) {
-            return new Queen(side);
-        } else {
-            /* Maybe throw an exception here? */
-            return null;
-        }
+    	Model model = PieceRegistry.get(name);
+    	if (model == null) return null;
+    	else return new Piece(side, model);
     }
 }

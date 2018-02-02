@@ -47,7 +47,7 @@ public class MoveTypePawn extends MoveType {
             } else if (right.equals(lDest) &&
                        (lOrigin.getX() == lDest.getX()) &&
                        (lOrigin.getY() == lDest.getY() + dir * 2) &&
-                       (board.getPiece(right) instanceof Pawn)) {
+                       (board.getPiece(right).getModel().getName().equals("Pawn"))) {
 
                 /* en passant to the right */
                 Move passant = new Move(pos, new Position(pos, 1, dir));
@@ -69,7 +69,7 @@ public class MoveTypePawn extends MoveType {
         }
         move.setNext(new Move(move.getDest(), null)); // remove the pawn
         Move upgrade = new Move(null, move.getDest());
-        upgrade.setReplacement("Queen");
+        upgrade.setReplacement("queen");
         upgrade.setReplacementSide(p.getSide());
         move.getNext().setNext(upgrade);              // add a queen
     }

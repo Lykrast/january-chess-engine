@@ -1,6 +1,7 @@
 package com.nullprogram.chess.pieces;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import com.nullprogram.chess.Model;
 
@@ -26,5 +27,10 @@ public class PieceRegistry {
 		MAP.put("bishop", new Model("Bishop", 3.0, new MoveTypeBishop()));
 		MAP.put("queen", new Model("Queen", 9.0, new MoveTypeBishop(), new MoveTypeRook()));
 		MAP.put("king", new Model("King", 1000.0, new MoveTypeKing()));
+	}
+	
+	public static Set<String> getModelID()
+	{
+		return MAP.keySet();
 	}
 }

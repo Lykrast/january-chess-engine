@@ -15,22 +15,14 @@ import java.util.logging.Logger;
 
 import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Game;
+import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.Position;
-import com.nullprogram.chess.pieces.Archbishop;
-import com.nullprogram.chess.pieces.Bishop;
-import com.nullprogram.chess.pieces.Camel;
-import com.nullprogram.chess.pieces.Chancellor;
-import com.nullprogram.chess.pieces.King;
-import com.nullprogram.chess.pieces.Knight;
 import com.nullprogram.chess.pieces.MoveUtil;
-import com.nullprogram.chess.pieces.Pawn;
-import com.nullprogram.chess.pieces.Queen;
-import com.nullprogram.chess.pieces.Rook;
-import com.nullprogram.chess.pieces.Wildebeest;
+import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**
  * Minimax Chess AI player.
@@ -62,7 +54,7 @@ public class Minimax implements Player {
     private final Executor executor = Executors.newFixedThreadPool(NTHREADS);
 
     /** Values of each piece. */
-    private Map<Class, Double> values;
+    private Map<Model, Double> values;
 
     /** Divisor for milliseconds. */
     static final double MILLI = 1000.0;
@@ -106,31 +98,20 @@ public class Minimax implements Player {
      */
     public Minimax(final Game active, final Properties props) {
         game = active;
-        values = new HashMap<Class, Double>();
+        values = new HashMap<Model, Double>();
         Properties config = props;
 
         /* Piece values */
-        //TODO Update with dynamic lists
-        values.put((new Pawn(side)).getClass(),
-                   Double.parseDouble(config.getProperty("Pawn")));
-        values.put((new Knight(side)).getClass(),
-                   Double.parseDouble(config.getProperty("Knight")));
-        values.put((new Bishop(side)).getClass(),
-                   Double.parseDouble(config.getProperty("Bishop")));
-        values.put((new Rook(side)).getClass(),
-                   Double.parseDouble(config.getProperty("Rook")));
-        values.put((new Queen(side)).getClass(),
-                   Double.parseDouble(config.getProperty("Queen")));
-        values.put((new King(side)).getClass(),
-                   Double.parseDouble(config.getProperty("King")));
-        values.put((new Chancellor(side)).getClass(),
-                   Double.parseDouble(config.getProperty("Chancellor")));
-        values.put((new Archbishop(side)).getClass(),
-                   Double.parseDouble(config.getProperty("Archbishop")));
-        values.put((new Camel(side)).getClass(),
-                Double.parseDouble(config.getProperty("Camel")));
-        values.put((new Wildebeest(side)).getClass(),
-                Double.parseDouble(config.getProperty("Wildebeest")));
+        for (String id : PieceRegistry.getModelID())
+        {
+        	Model m = PieceRegistry.get(id);
+        	double value = m.getValue();
+        	try {
+        		value = Double.parseDouble(config.getProperty(id));
+        	}
+        	catch (Exception e) {}
+        	values.put(m, value);
+        }
 
         maxDepth = (int) Double.parseDouble(config.getProperty("depth"));
         wMaterial = Double.parseDouble(config.getProperty("material"));
@@ -290,7 +271,7 @@ public class Minimax implements Player {
                 Position pos = new Position(x, y);
                 Piece p = b.getPiece(pos);
                 if (p != null) {
-                    value += values.get(p.getClass()) * p.getSide().value();
+                    value += values.get(p.getModel()) * p.getSide().value();
                 }
             }
         }
