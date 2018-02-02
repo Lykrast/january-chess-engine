@@ -23,9 +23,9 @@ public class PieceRegistry {
 		MAP.put("pawn", new ModelPawn());
 //		MAP.put("knight", new ModelKnight());
 		MAP.put("knight", new Model("Knight", 3.0, new MoveTypeKnight()));
-		MAP.put("rook", new ModelRook());
-		MAP.put("bishop", new ModelBishop());
-		MAP.put("queen", new ModelQueen());
+		MAP.put("rook", new Model("Rook", 5.0, new MoveTypeRook()));
+		MAP.put("bishop", new Model("Bishop", 3.0, new MoveTypeBishop()));
+		MAP.put("queen", new Model("Queen", 9.0, new MoveTypeBishop(), new MoveTypeRook()));
 		MAP.put("king", new ModelKing());
 	}
 }
