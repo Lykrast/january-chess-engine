@@ -3,7 +3,6 @@ package com.nullprogram.chess;
 import java.io.Serializable;
 
 import com.nullprogram.chess.boards.BoardFactory;
-import com.nullprogram.chess.pieces.ModelKing;
 import com.nullprogram.chess.pieces.PieceFactory;
 
 /**

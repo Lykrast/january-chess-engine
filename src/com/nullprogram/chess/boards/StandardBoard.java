@@ -4,11 +4,6 @@ import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
-import com.nullprogram.chess.pieces.ModelBishop;
-import com.nullprogram.chess.pieces.ModelKing;
-import com.nullprogram.chess.pieces.ModelKnight;
-import com.nullprogram.chess.pieces.ModelQueen;
-import com.nullprogram.chess.pieces.ModelRook;
 import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**
