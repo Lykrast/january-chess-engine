@@ -1,9 +1,10 @@
 package com.nullprogram.chess;
 
-import com.nullprogram.chess.boards.BoardFactory;
-import com.nullprogram.chess.pieces.King;
-import com.nullprogram.chess.pieces.PieceFactory;
 import java.io.Serializable;
+
+import com.nullprogram.chess.boards.BoardFactory;
+import com.nullprogram.chess.pieces.ModelKing;
+import com.nullprogram.chess.pieces.PieceFactory;
 
 /**
  * Board data structure.
@@ -95,8 +96,8 @@ public abstract class Board implements Serializable {
             for (int x = 0; x < getWidth(); x++) {
                 Position pos = new Position(x, y);
                 Piece p = getPiece(pos);
-                if (p instanceof King &&
-                    p.getSide() == side) {
+                if (p != null && p.getModel().getName().equals("King") && p.getSide() == side)
+                {
 
                     return pos;
                 }

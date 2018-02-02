@@ -6,8 +6,12 @@ import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.pieces.Bishop;
 import com.nullprogram.chess.pieces.King;
-import com.nullprogram.chess.pieces.Knight;
+import com.nullprogram.chess.pieces.ModelBishop;
+import com.nullprogram.chess.pieces.ModelKing;
 import com.nullprogram.chess.pieces.ModelKnight;
+import com.nullprogram.chess.pieces.ModelPawn;
+import com.nullprogram.chess.pieces.ModelQueen;
+import com.nullprogram.chess.pieces.ModelRook;
 import com.nullprogram.chess.pieces.Pawn;
 import com.nullprogram.chess.pieces.Queen;
 import com.nullprogram.chess.pieces.Rook;
@@ -69,32 +73,49 @@ public class StandardBoard extends Board {
         setWidth(WIDTH);
         setHeight(HEIGHT);
         clear();
+        Model pawn = new ModelPawn(), knight = new ModelKnight(), rook = new ModelRook(),
+        		bishop = new ModelBishop(), queen = new ModelQueen(), king = new ModelKing();
+        
         for (int x = 0; x < WIDTH; x++) {
-            setPiece(x, WHITE_PAWN_ROW, new Pawn(Piece.Side.WHITE));
-            setPiece(x, BLACK_PAWN_ROW, new Pawn(Piece.Side.BLACK));
+//            setPiece(x, WHITE_PAWN_ROW, new Pawn(Piece.Side.WHITE));
+//            setPiece(x, BLACK_PAWN_ROW, new Pawn(Piece.Side.BLACK));
+            setPiece(x, WHITE_PAWN_ROW, new Piece(Piece.Side.WHITE, pawn));
+            setPiece(x, BLACK_PAWN_ROW, new Piece(Piece.Side.BLACK, pawn));
         }
         
-        Model knight = new ModelKnight();
-        setPiece(Q_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
-        setPiece(K_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
-        setPiece(Q_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
-        setPiece(K_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
+//        setPiece(Q_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
+//        setPiece(K_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
+//        setPiece(Q_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
+//        setPiece(K_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
 //        setPiece(Q_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
 //        setPiece(K_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
 //        setPiece(Q_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
 //        setPiece(K_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
+//        setPiece(Q_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
+//        setPiece(K_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
+//        setPiece(Q_BISHOP, BLACK_ROW, new Bishop(Piece.Side.BLACK));
+//        setPiece(K_BISHOP, BLACK_ROW, new Bishop(Piece.Side.BLACK));
+//        setPiece(QUEEN, WHITE_ROW, new Queen(Piece.Side.WHITE));
+//        setPiece(QUEEN, BLACK_ROW, new Queen(Piece.Side.BLACK));
+//        setPiece(KING, WHITE_ROW, new King(Piece.Side.WHITE));
+//        setPiece(KING, BLACK_ROW, new King(Piece.Side.BLACK));
+        
+        setPiece(Q_ROOK, WHITE_ROW, new Piece(Piece.Side.WHITE, rook));
+        setPiece(K_ROOK, WHITE_ROW, new Piece(Piece.Side.WHITE, rook));
+        setPiece(Q_ROOK, BLACK_ROW, new Piece(Piece.Side.BLACK, rook));
+        setPiece(K_ROOK, BLACK_ROW, new Piece(Piece.Side.BLACK, rook));
         setPiece(Q_KNIGHT, WHITE_ROW, new Piece(Piece.Side.WHITE, knight));
         setPiece(K_KNIGHT, WHITE_ROW, new Piece(Piece.Side.WHITE, knight));
         setPiece(Q_KNIGHT, BLACK_ROW, new Piece(Piece.Side.BLACK, knight));
         setPiece(K_KNIGHT, BLACK_ROW, new Piece(Piece.Side.BLACK, knight));
-        setPiece(Q_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
-        setPiece(K_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
-        setPiece(Q_BISHOP, BLACK_ROW, new Bishop(Piece.Side.BLACK));
-        setPiece(K_BISHOP, BLACK_ROW, new Bishop(Piece.Side.BLACK));
-        setPiece(QUEEN, WHITE_ROW, new Queen(Piece.Side.WHITE));
-        setPiece(QUEEN, BLACK_ROW, new Queen(Piece.Side.BLACK));
-        setPiece(KING, WHITE_ROW, new King(Piece.Side.WHITE));
-        setPiece(KING, BLACK_ROW, new King(Piece.Side.BLACK));
+        setPiece(Q_BISHOP, WHITE_ROW, new Piece(Piece.Side.WHITE, bishop));
+        setPiece(K_BISHOP, WHITE_ROW, new Piece(Piece.Side.WHITE, bishop));
+        setPiece(Q_BISHOP, BLACK_ROW, new Piece(Piece.Side.BLACK, bishop));
+        setPiece(K_BISHOP, BLACK_ROW, new Piece(Piece.Side.BLACK, bishop));
+        setPiece(QUEEN, WHITE_ROW, new Piece(Piece.Side.WHITE, queen));
+        setPiece(QUEEN, BLACK_ROW, new Piece(Piece.Side.BLACK, queen));
+        setPiece(KING, WHITE_ROW, new Piece(Piece.Side.WHITE, king));
+        setPiece(KING, BLACK_ROW, new Piece(Piece.Side.BLACK, king));
     }
 
     @Override

@@ -21,6 +21,11 @@ public abstract class Model {
     {
     	return value;
     }
+    
+    public String getName()
+    {
+    	return name;
+    }
 
     /**
      * Get the moves for this piece.
