@@ -44,6 +44,11 @@ public class MoveList implements Iterable<Move>, Serializable {
         board = verifyBoard;
         check = checkCheck;
     }
+    
+    public boolean checksCheck()
+    {
+    	return check;
+    }
 
     /**
      * Add a move without verifying it.
