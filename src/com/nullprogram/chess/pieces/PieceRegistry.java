@@ -21,7 +21,8 @@ public class PieceRegistry {
 	public static void init()
 	{
 		MAP.put("pawn", new ModelPawn());
-		MAP.put("knight", new ModelKnight());
+//		MAP.put("knight", new ModelKnight());
+		MAP.put("knight", new Model("Knight", 3.0, new MoveTypeKnight()));
 		MAP.put("rook", new ModelRook());
 		MAP.put("bishop", new ModelBishop());
 		MAP.put("queen", new ModelQueen());
