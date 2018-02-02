@@ -4,17 +4,12 @@ import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
-import com.nullprogram.chess.pieces.Bishop;
-import com.nullprogram.chess.pieces.King;
 import com.nullprogram.chess.pieces.ModelBishop;
 import com.nullprogram.chess.pieces.ModelKing;
 import com.nullprogram.chess.pieces.ModelKnight;
-import com.nullprogram.chess.pieces.ModelPawn;
 import com.nullprogram.chess.pieces.ModelQueen;
 import com.nullprogram.chess.pieces.ModelRook;
-import com.nullprogram.chess.pieces.Pawn;
-import com.nullprogram.chess.pieces.Queen;
-import com.nullprogram.chess.pieces.Rook;
+import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**
  * The board for a standard game of chess.
@@ -73,8 +68,8 @@ public class StandardBoard extends Board {
         setWidth(WIDTH);
         setHeight(HEIGHT);
         clear();
-        Model pawn = new ModelPawn(), knight = new ModelKnight(), rook = new ModelRook(),
-        		bishop = new ModelBishop(), queen = new ModelQueen(), king = new ModelKing();
+        Model pawn = PieceRegistry.get("pawn"), knight = PieceRegistry.get("knight"), rook = PieceRegistry.get("rook"),
+        		bishop = PieceRegistry.get("bishop"), queen = PieceRegistry.get("queen"), king = PieceRegistry.get("king");
         
         for (int x = 0; x < WIDTH; x++) {
 //            setPiece(x, WHITE_PAWN_ROW, new Pawn(Piece.Side.WHITE));
