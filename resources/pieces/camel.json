@@ -1,0 +1,14 @@
+{
+  "name": "Camel",
+  "value": 2.0,
+  "moves": [
+    {
+		"type": "Leaper",
+		"near": 1,
+		"far": 3
+	},
+	{
+		"type": "Rook"
+	}
+  ]
+}

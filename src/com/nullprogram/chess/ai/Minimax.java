@@ -18,10 +18,12 @@ import com.nullprogram.chess.Game;
 import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveList;
+import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.Position;
-import com.nullprogram.chess.pieces.MoveUtil;
+import com.nullprogram.chess.pieces.MoveTypeBishop;
+import com.nullprogram.chess.pieces.MoveTypeRook;
 import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**
@@ -288,6 +290,8 @@ public class Minimax implements Player {
         return kingInsafetyValue(b, Piece.opposite(side)) -
                kingInsafetyValue(b, side);
     }
+    
+    private MoveType safetyRook = new MoveTypeRook(), safetyBishop = new MoveTypeBishop();
 
     /**
      * Helper function: determine safety of a single king.
@@ -305,8 +309,8 @@ public class Minimax implements Player {
         }
         MoveList list = new MoveList(b, false);
         /* Take advantage of the Rook and Bishop code. */
-        MoveUtil.getRookMoves(b.getPiece(king), list);
-        MoveUtil.getBishopMoves(b.getPiece(king), list);
+        safetyRook.getMoves(b.getPiece(king), list);
+        safetyBishop.getMoves(b.getPiece(king), list);
         return list.size();
     }
 

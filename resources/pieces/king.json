@@ -4,6 +4,9 @@
   "moves": [
     {
 		"type": "King"
+	},
+    {
+		"type": "Castle"
 	}
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "Archbishop",
+  "value": 6.0,
+  "moves": [
+    {
+		"type": "Bishop"
+	},
+	{
+		"type": "Knight"
+	}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Chancellor",
+  "value": 8.5,
+  "moves": [
+    {
+		"type": "Knight"
+	},
+	{
+		"type": "Rook"
+	}
+  ]
+}
