@@ -35,7 +35,6 @@ public final class Chess {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
-    	JSONLoader.loadPieces();
         try {
             String lnf = UIManager.getSystemLookAndFeelClassName();
             UIManager.setLookAndFeel(lnf);
