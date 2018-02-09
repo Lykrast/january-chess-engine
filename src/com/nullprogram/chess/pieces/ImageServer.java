@@ -1,9 +1,11 @@
 package com.nullprogram.chess.pieces;
 
 import java.awt.Image;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
 
 /**
@@ -13,6 +15,7 @@ import javax.imageio.ImageIO;
  * every time the display needs an image.
  */
 public final class ImageServer {
+	private static final String PATH = "./resources/images/";
 
     /** This class's Logger. */
     private static final Logger LOG =
@@ -42,7 +45,8 @@ public final class ImageServer {
 
         String file = name + ".png";
         try {
-            Image i = ImageIO.read(ImageServer.class.getResource(file));
+            //Image i = ImageIO.read(ImageServer.class.getResource(file));
+            Image i = ImageIO.read(new File(PATH + file));
             cache.put(name, i);
             return i;
         } catch (java.io.IOException e) {
