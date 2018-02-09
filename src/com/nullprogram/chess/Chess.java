@@ -1,6 +1,8 @@
 package com.nullprogram.chess;
 
 import com.nullprogram.chess.gui.ChessFrame;
+import com.nullprogram.chess.resources.JSONLoader;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,6 +35,7 @@ public final class Chess {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
+    	JSONLoader.loadPieces();
         try {
             String lnf = UIManager.getSystemLookAndFeelClassName();
             UIManager.setLookAndFeel(lnf);

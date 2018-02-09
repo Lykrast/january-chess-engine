@@ -7,6 +7,7 @@ import com.nullprogram.chess.Model;
 
 public class PieceRegistry {
 	private static final HashMap<String, Model> MAP = new HashMap<>();
+	
 	static
 	{
 		init();
