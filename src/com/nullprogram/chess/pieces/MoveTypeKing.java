@@ -1,5 +1,10 @@
 package com.nullprogram.chess.pieces;
 
+import java.lang.reflect.Type;
+
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.MoveType;
@@ -121,5 +126,10 @@ public class MoveTypeKing extends MoveType {
         inCheck = p.getBoard().check(p.getSide());
         return inCheck;
     }
+
+	@Override
+	public MoveType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeKing();
+	}
 
 }

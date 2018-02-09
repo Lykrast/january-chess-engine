@@ -28,12 +28,6 @@ public class PieceRegistry {
 	
 	public static void init()
 	{
-//		register("pawn", new Model("Pawn", 1.0, new MoveTypePawn()));
-//		register("knight", new Model("Knight", 3.0, new MoveTypeKnight()));
-//		register("rook", new Model("Rook", 5.0, new MoveTypeRook()));
-//		register("bishop", new Model("Bishop", 3.0, new MoveTypeBishop()));
-//		register("queen", new Model("Queen", 9.0, new MoveTypeBishop(), new MoveTypeRook()));
-//		register("king", new Model("King", 1000.0, new MoveTypeKing()));
 		JSONLoader.loadPieces();
 	}
 	

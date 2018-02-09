@@ -1,6 +1,7 @@
 package com.nullprogram.chess.resources;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -8,34 +9,23 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.MoveType;
-import com.nullprogram.chess.pieces.MoveTypeBishop;
-import com.nullprogram.chess.pieces.MoveTypeKing;
-import com.nullprogram.chess.pieces.MoveTypeKnight;
-import com.nullprogram.chess.pieces.MoveTypePawn;
-import com.nullprogram.chess.pieces.MoveTypeRook;
 
 public class MoveTypeDeserializer implements JsonDeserializer<MoveType> {
 	public static final MoveTypeDeserializer INSTANCE = new MoveTypeDeserializer();
+	private static final HashMap<String, JsonDeserializer<MoveType>> MAP = new HashMap<>();
+	
 	private MoveTypeDeserializer() {}
 
 	@Override
 	public MoveType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 		JsonObject obj = json.getAsJsonObject();
 		String name = obj.get("type").getAsString();
-		switch (name)
-		{
-		case "Pawn":
-			return new MoveTypePawn();
-		case "Rook":
-			return new MoveTypeRook();
-		case "Knight":
-			return new MoveTypeKnight();
-		case "Bishop":
-			return new MoveTypeBishop();
-		case "King":
-			return new MoveTypeKing();
-		}
-		return null;
+		return MAP.get(name).deserialize(json, typeOfT, context);
+	}
+	
+	public static void registerDeserializer(String type, JsonDeserializer<MoveType> deserializer)
+	{
+		MAP.put(type, deserializer);
 	}
 
 }

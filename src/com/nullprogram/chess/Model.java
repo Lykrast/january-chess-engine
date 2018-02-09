@@ -14,17 +14,6 @@ public class Model {
     private double value;
     private List<MoveType> moves;
     
-    public Model(String name, double value)
-    {
-    	this(name, value, new MoveType() {
-
-			@Override
-			public MoveList getMoves(Piece p, MoveList list) {
-				return list;
-			}
-    	});
-    }
-    
     public Model(String name, double value, MoveType... moves)
     {
     	this.name = name;

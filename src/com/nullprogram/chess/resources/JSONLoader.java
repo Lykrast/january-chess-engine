@@ -16,6 +16,7 @@ public class JSONLoader {
 	private JSONLoader() {}
 	
 	public static void loadPieces() {
+		MoveType.registerDeserializers();
 		Gson g = new GsonBuilder()
 				.registerTypeAdapter(Model.class, ModelDeserializer.INSTANCE)
 				.registerTypeAdapter(MoveType.class, MoveTypeDeserializer.INSTANCE)
