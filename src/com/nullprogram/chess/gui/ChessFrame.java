@@ -7,7 +7,8 @@ import com.nullprogram.chess.GameEvent;
 import com.nullprogram.chess.GameListener;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.boards.EmptyBoard;
-import com.nullprogram.chess.pieces.ImageServer;
+import com.nullprogram.chess.resources.ImageServer;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

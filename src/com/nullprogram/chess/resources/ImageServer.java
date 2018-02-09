@@ -1,4 +1,4 @@
-package com.nullprogram.chess.pieces;
+package com.nullprogram.chess.resources;
 
 import java.awt.Image;
 import java.io.File;
@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Serves cached images of requsted size.
+ * Serves cached images of requested size.
  *
  * This will cache the recent requests so it's not hitting the disk
  * every time the display needs an image.

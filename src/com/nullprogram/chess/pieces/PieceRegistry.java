@@ -19,14 +19,19 @@ public class PieceRegistry {
 		return MAP.get(id);
 	}
 	
+	public static void register(String name, Model m)
+	{
+		MAP.put(name, m);
+	}
+	
 	public static void init()
 	{
-		MAP.put("pawn", new Model("Pawn", 1.0, new MoveTypePawn()));
-		MAP.put("knight", new Model("Knight", 3.0, new MoveTypeKnight()));
-		MAP.put("rook", new Model("Rook", 5.0, new MoveTypeRook()));
-		MAP.put("bishop", new Model("Bishop", 3.0, new MoveTypeBishop()));
-		MAP.put("queen", new Model("Queen", 9.0, new MoveTypeBishop(), new MoveTypeRook()));
-		MAP.put("king", new Model("King", 1000.0, new MoveTypeKing()));
+		register("pawn", new Model("Pawn", 1.0, new MoveTypePawn()));
+		register("knight", new Model("Knight", 3.0, new MoveTypeKnight()));
+		register("rook", new Model("Rook", 5.0, new MoveTypeRook()));
+		register("bishop", new Model("Bishop", 3.0, new MoveTypeBishop()));
+		register("queen", new Model("Queen", 9.0, new MoveTypeBishop(), new MoveTypeRook()));
+		register("king", new Model("King", 1000.0, new MoveTypeKing()));
 	}
 	
 	public static Set<String> getModelID()

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nullprogram.chess.Piece.Side;
-import com.nullprogram.chess.pieces.ImageServer;
+import com.nullprogram.chess.resources.ImageServer;
 
 public class Model {
     /** Name of this piece. */
