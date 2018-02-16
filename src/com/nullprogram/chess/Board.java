@@ -2,7 +2,8 @@ package com.nullprogram.chess;
 
 import java.io.Serializable;
 
-import com.nullprogram.chess.boards.BoardFactory;
+import com.nullprogram.chess.boards.PiecePlacement;
+import com.nullprogram.chess.boards.StandardBoard;
 import com.nullprogram.chess.pieces.PieceFactory;
 
 /**
@@ -25,6 +26,26 @@ public abstract class Board implements Serializable {
 
     /** Moves taken in this game so far. */
     private final MoveList moves = new MoveList(this);
+    
+    private GameMode gameMode;
+    
+    protected Board(GameMode mode)
+    {
+    	gameMode = mode;
+    	setWidth(gameMode.getWidth());
+    	setHeight(gameMode.getHeight());
+    	clear();
+    	
+    	for (PiecePlacement p : gameMode.getPlacements())
+    	{
+    		setPiece(p.getX(), p.getY(), new Piece(p.getSide(), p.getModel()));
+    	}
+    }
+    
+    public GameMode getGameMode()
+    {
+    	return gameMode;
+    }
 
     /**
      * Create a new Piece array, effectively clearing the board.
@@ -316,7 +337,8 @@ public abstract class Board implements Serializable {
      * @return deep copy of the board.
      */
     public final Board copy() {
-        Board fresh = BoardFactory.create(this.getClass());
+        //Board fresh = BoardFactory.create(this.getClass());
+    	Board fresh = new StandardBoard(this.getGameMode());
         for (Move move : moves) {
             fresh.move(new Move(move));
         }

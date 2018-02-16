@@ -1,6 +1,7 @@
 package com.nullprogram.chess.boards;
 
 import com.nullprogram.chess.Board;
+import com.nullprogram.chess.GameMode;
 import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
@@ -60,6 +61,7 @@ public class StandardBoard extends Board {
      * The standard chess board.
      */
     public StandardBoard() {
+    	super(new GameMode(8,8));
         setWidth(WIDTH);
         setHeight(HEIGHT);
         clear();
@@ -67,29 +69,9 @@ public class StandardBoard extends Board {
         		bishop = PieceRegistry.get("bishop"), queen = PieceRegistry.get("queen"), king = PieceRegistry.get("king");
         
         for (int x = 0; x < WIDTH; x++) {
-//            setPiece(x, WHITE_PAWN_ROW, new Pawn(Piece.Side.WHITE));
-//            setPiece(x, BLACK_PAWN_ROW, new Pawn(Piece.Side.BLACK));
             setPiece(x, WHITE_PAWN_ROW, new Piece(Piece.Side.WHITE, pawn));
             setPiece(x, BLACK_PAWN_ROW, new Piece(Piece.Side.BLACK, pawn));
         }
-        
-//        setPiece(Q_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
-//        setPiece(K_ROOK, WHITE_ROW, new Rook(Piece.Side.WHITE));
-//        setPiece(Q_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
-//        setPiece(K_ROOK, BLACK_ROW, new Rook(Piece.Side.BLACK));
-//        setPiece(Q_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
-//        setPiece(K_KNIGHT, WHITE_ROW, new Knight(Piece.Side.WHITE));
-//        setPiece(Q_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
-//        setPiece(K_KNIGHT, BLACK_ROW, new Knight(Piece.Side.BLACK));
-//        setPiece(Q_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
-//        setPiece(K_BISHOP, WHITE_ROW, new Bishop(Piece.Side.WHITE));
-//        setPiece(Q_BISHOP, BLACK_ROW, new Bishop(Piece.Side.BLACK));
-//        setPiece(K_BISHOP, BLACK_ROW, new Bishop(Piece.Side.BLACK));
-//        setPiece(QUEEN, WHITE_ROW, new Queen(Piece.Side.WHITE));
-//        setPiece(QUEEN, BLACK_ROW, new Queen(Piece.Side.BLACK));
-//        setPiece(KING, WHITE_ROW, new King(Piece.Side.WHITE));
-//        setPiece(KING, BLACK_ROW, new King(Piece.Side.BLACK));
-        
         setPiece(Q_ROOK, WHITE_ROW, new Piece(Piece.Side.WHITE, rook));
         setPiece(K_ROOK, WHITE_ROW, new Piece(Piece.Side.WHITE, rook));
         setPiece(Q_ROOK, BLACK_ROW, new Piece(Piece.Side.BLACK, rook));
@@ -106,6 +88,11 @@ public class StandardBoard extends Board {
         setPiece(QUEEN, BLACK_ROW, new Piece(Piece.Side.BLACK, queen));
         setPiece(KING, WHITE_ROW, new Piece(Piece.Side.WHITE, king));
         setPiece(KING, BLACK_ROW, new Piece(Piece.Side.BLACK, king));
+    }
+    
+    public StandardBoard(GameMode mode)
+    {
+    	super(mode);
     }
 
     @Override

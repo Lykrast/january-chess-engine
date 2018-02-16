@@ -7,6 +7,8 @@ import com.nullprogram.chess.GameListener;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.boards.StandardBoard;
+import com.nullprogram.chess.pieces.PieceRegistry;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
@@ -197,7 +199,7 @@ public class OptimizeGA implements GameListener {
 //        String[] pieces = {"Pawn", "Knight", "Bishop", "Rook", "Queen",
 //                           "King", "Chancellor", "Archbishop"
 //                          };
-        for (String piece : Piece.PIECES) {
+        for (String piece : PieceRegistry.getModelID()) {
             Double v = rng.nextDouble() * PIECE_RANGE;
             if ("King".equals(piece)) {
                 /* The king has a much larger value range. */

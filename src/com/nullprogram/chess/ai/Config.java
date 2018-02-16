@@ -2,8 +2,10 @@ package com.nullprogram.chess.ai;
 
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.Set;
 
 import com.nullprogram.chess.Piece;
+import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**
  * Represents a particular configuration of an AI player.
@@ -15,14 +17,20 @@ public class Config extends HashMap<String, Double> {
 //        "depth", "Pawn", "Knight", "Bishop", "Rook", "Queen", "King",
 //        "Chancellor", "Archbishop", "material", "safety", "mobility"
 //    };
-	static final String[] PLIST = new String[Piece.PIECES.length+4];
+	static final String[] PLIST = new String[PieceRegistry.getModelID().size()+4];
 	static
 	{
 		PLIST[0] = "depth";
 		PLIST[1] = "material";
 		PLIST[2] = "safety";
 		PLIST[3] = "mobility";
-		for (int i=0;i<Piece.PIECES.length;i++) PLIST[i+4] = Piece.PIECES[i];
+		Set<String> models = PieceRegistry.getModelID();
+		int i = 4;
+		for (String s : models)
+		{
+			PLIST[i] = s;
+			i++;
+		}
 	}
 
     /** Version for object serialization. */

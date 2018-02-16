@@ -15,10 +15,7 @@ import java.io.Serializable;
  * (default.properies) and a parse entry in the Minimax constructor,
  * right after all the other pieces.
  */
-public class Piece implements Serializable {
-	public static final String[] PIECES = {"Pawn", "Knight", "Bishop", "Rook", "Queen", "King", 
-			"Chancellor", "Archbishop", "Camel", "Wildebeest"};
-	
+public class Piece implements Serializable {	
 	private Model model;
 
     /** Versioning for object serialization. */

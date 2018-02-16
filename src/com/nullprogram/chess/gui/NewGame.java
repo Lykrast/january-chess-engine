@@ -13,11 +13,16 @@ import javax.swing.JPanel;
 
 import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Game;
+import com.nullprogram.chess.GameMode;
+import com.nullprogram.chess.Model;
+import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.ai.Minimax;
 import com.nullprogram.chess.boards.BoardWildebeest;
 import com.nullprogram.chess.boards.Gothic;
+import com.nullprogram.chess.boards.PiecePlacement;
 import com.nullprogram.chess.boards.StandardBoard;
+import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**
  * Presents the "New Game" dialog to let the user set up a game.
@@ -118,7 +123,15 @@ public class NewGame extends JDialog implements ActionListener {
      */
     private Board createBoard(final String name) {
         if ("standard".equals(name)) {
-            return new StandardBoard();
+        	Model rook = PieceRegistry.get("rook");
+        	Model king = PieceRegistry.get("king");
+        	GameMode mode = new GameMode(6, 6,
+        			new PiecePlacement(2, 0, Piece.Side.WHITE, king),
+        			new PiecePlacement(2, 5, Piece.Side.BLACK, king),
+        			new PiecePlacement(4, 0, Piece.Side.WHITE, rook),
+        			new PiecePlacement(4, 5, Piece.Side.BLACK, rook));
+        	return new StandardBoard(mode);
+            //return new StandardBoard();
         } else if ("gothic".equals(name)) {
             return new Gothic();
         } else if ("wildebeest".equals(name)) {
