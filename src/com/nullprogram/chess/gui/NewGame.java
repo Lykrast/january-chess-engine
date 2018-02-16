@@ -117,23 +117,13 @@ public class NewGame extends JDialog implements ActionListener {
     }
 
     /**
-     * Create a new Board instance based on the given string.
+     * Create a new Board instance based on the given game mode.
      *
-     * @param name name of type of board
+     * @param mode game mode of board
      * @return board of named type
-     */
-    private Board createBoard(final String name) {
-        if ("standard".equals(name)) {
-        	GameMode mode = GameModeRegistry.get("fide");
-        	return new StandardBoard(mode);
-            //return new StandardBoard();
-        } else if ("gothic".equals(name)) {
-            return new Gothic();
-        } else if ("wildebeest".equals(name)) {
-            return new BoardWildebeest();
-        } else {
-            return null;
-        }
+     */    
+    private Board createBoard(final GameMode mode) {
+    	return new StandardBoard(mode);
     }
 
     /**

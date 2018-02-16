@@ -32,4 +32,9 @@ public class GameMode {
 	public PiecePlacement[] getPlacements() {
 		return placements;
 	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 }

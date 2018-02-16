@@ -1,5 +1,6 @@
 package com.nullprogram.chess.boards;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -33,8 +34,13 @@ public class GameModeRegistry {
 		JSONLoader.loadGameModes();
 	}
 	
-	public static Set<String> getModeID()
+	public static Set<String> getGameModeID()
 	{
 		return MAP.keySet();
+	}
+	
+	public static Collection<GameMode> getGameModes()
+	{
+		return MAP.values();
 	}
 }
