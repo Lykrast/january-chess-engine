@@ -9,11 +9,6 @@ import com.nullprogram.chess.resources.JSONLoader;
 public class PieceRegistry {
 	private static final HashMap<String, Model> MAP = new HashMap<>();
 	
-	static
-	{
-		init();
-	}
-	
 	private PieceRegistry() {};
 	
 	public static Model get(String id)

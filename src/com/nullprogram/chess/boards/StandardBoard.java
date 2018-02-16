@@ -61,7 +61,7 @@ public class StandardBoard extends Board {
      * The standard chess board.
      */
     public StandardBoard() {
-    	super(new GameMode(8,8));
+    	super(new GameMode("FIDE", 8,8));
         setWidth(WIDTH);
         setHeight(HEIGHT);
         clear();
