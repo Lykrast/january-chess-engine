@@ -1,12 +1,6 @@
 package com.nullprogram.chess;
 
-import com.nullprogram.chess.pieces.MoveTypeBishop;
-import com.nullprogram.chess.pieces.MoveTypeCastle;
-import com.nullprogram.chess.pieces.MoveTypeKing;
-import com.nullprogram.chess.pieces.MoveTypeKnight;
-import com.nullprogram.chess.pieces.MoveTypeLeaper;
-import com.nullprogram.chess.pieces.MoveTypePawn;
-import com.nullprogram.chess.pieces.MoveTypeRook;
+import com.nullprogram.chess.pieces.*;
 import com.nullprogram.chess.resources.IMoveTypeDeserializer;
 import com.nullprogram.chess.resources.MoveTypeDeserializer;
 
@@ -36,12 +30,24 @@ public abstract class MoveType implements IMoveTypeDeserializer {
      */
     public static void registerDeserializers()
     {
-    	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn());
-    	MoveTypeDeserializer.registerDeserializer("Rook", new MoveTypeRook(MoveMode.MOVE_CAPTURE));
+    	//Generics
     	MoveTypeDeserializer.registerDeserializer("Leaper", new MoveTypeLeaper(MoveMode.MOVE_CAPTURE, 0,0));
+    	MoveTypeDeserializer.registerDeserializer("LeaperOrthogonal", new MoveTypeLeaperOrthogonal(MoveMode.MOVE_CAPTURE, 0));
+    	MoveTypeDeserializer.registerDeserializer("LeaperDiagonal", new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, 0));
+    	
+    	//Presets
+    	MoveTypeDeserializer.registerDeserializer("Wazir", new MoveTypeWazir(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer("Ferz", new MoveTypeFerz(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer("Dabbaba", new MoveTypeDabbaba(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer("Alfil", new MoveTypeAlfil(MoveMode.MOVE_CAPTURE));
+    	
     	MoveTypeDeserializer.registerDeserializer("Knight", new MoveTypeKnight(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Bishop", new MoveTypeBishop(MoveMode.MOVE_CAPTURE));
     	MoveTypeDeserializer.registerDeserializer("King", new MoveTypeKing(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer("Rook", new MoveTypeRook(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer("Bishop", new MoveTypeBishop(MoveMode.MOVE_CAPTURE));
+    	
+    	//Very specifics
+    	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn());
     	MoveTypeDeserializer.registerDeserializer("Castle", new MoveTypeCastle());
     }
     
