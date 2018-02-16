@@ -28,8 +28,16 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 			movesList.add(MoveTypeDeserializer.INSTANCE.deserialize(elem, typeOfT, context));
 		}
 		
+		JsonElement r = obj.get("royal");
+		boolean royal = false;
+		if (r != null)
+		{
+			royal = r.getAsBoolean();
+		}
+		
 		return new Model(obj.get("name").getAsString(), 
 				obj.get("value").getAsDouble(), 
+				royal, 
 				movesList.toArray(new MoveType[movesList.size()]));
 	}
 

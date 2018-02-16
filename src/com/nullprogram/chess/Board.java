@@ -95,7 +95,7 @@ public abstract class Board implements Serializable {
             for (int x = 0; x < getWidth(); x++) {
                 Position pos = new Position(x, y);
                 Piece p = getPiece(pos);
-                if (p != null && p.getModel().getName().equals("King") && p.getSide() == side)
+                if (p != null && p.getModel().isRoyal() && p.getSide() == side)
                 {
 
                     return pos;

@@ -1,8 +1,6 @@
 package com.nullprogram.chess;
 
 import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.nullprogram.chess.Piece.Side;
 import com.nullprogram.chess.resources.ImageServer;
@@ -11,15 +9,22 @@ public class Model {
     /** Name of this piece. */
     private String name;
     
+    private boolean royal;
+    
     private double value;
-    private List<MoveType> moves;
+    private MoveType[] moves;
     
     public Model(String name, double value, MoveType... moves)
     {
+    	this(name, value, false, moves);
+    }
+    
+    public Model(String name, double value, boolean royal, MoveType... moves)
+    {
     	this.name = name;
     	this.value = value;
-    	this.moves = new ArrayList<MoveType>();
-    	for (MoveType m : moves) this.moves.add(m);
+    	this.moves = moves;
+    	this.royal = royal;
     }
     
     public double getValue()
@@ -30,6 +35,14 @@ public class Model {
     public String getName()
     {
     	return name;
+    }
+    
+    /**
+     * If the piece is considered royal and cannot be put in check.
+     */
+    public boolean isRoyal()
+    {
+    	return royal;
     }
 
     /**
