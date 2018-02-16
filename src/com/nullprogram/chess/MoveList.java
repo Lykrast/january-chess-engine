@@ -73,6 +73,34 @@ public class MoveList implements Iterable<Move>, Serializable {
     }
 
     /**
+     * Add move to list following the given MoveMode.
+     *
+     * @param move move to be added
+     * @return     true if position was added, or, for CAPTURE, if the move would have been added if it was another mode
+     */
+    public final boolean add(final Move move, MoveType.MoveMode type)
+    {
+    	switch (type)
+    	{
+    	case MOVE:
+    		return addMove(move);
+    	case CAPTURE:
+            Piece p = board.getPiece(move.getOrigin());
+            if (board.isFree(move.getDest(), p.getSide())) {
+                if (!board.isFree(move.getDest()) && !causesCheck(move)) {
+                    add(move);
+                    return true;
+                }
+                return true;
+            }
+            return false;
+    	case MOVE_CAPTURE:
+    	default:
+    		return addCapture(move);
+    	}
+    }
+
+    /**
      * Add move to list if piece can legally move there (no capture).
      *
      * @param move move to be added

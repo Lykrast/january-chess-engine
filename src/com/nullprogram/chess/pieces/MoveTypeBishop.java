@@ -1,9 +1,6 @@
 package com.nullprogram.chess.pieces;
 
-import java.lang.reflect.Type;
-
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveList;
@@ -12,6 +9,10 @@ import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 
 public class MoveTypeBishop extends MoveType {
+
+	public MoveTypeBishop(MoveMode mode) {
+		super(mode);
+	}
 
 	@Override
 	public MoveList getMoves(Piece p, MoveList list) {
@@ -23,7 +24,7 @@ public class MoveTypeBishop extends MoveType {
             x--;
             y--;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -38,7 +39,7 @@ public class MoveTypeBishop extends MoveType {
             x++;
             y++;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -51,7 +52,7 @@ public class MoveTypeBishop extends MoveType {
             x--;
             y++;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -64,7 +65,7 @@ public class MoveTypeBishop extends MoveType {
             x++;
             y--;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -75,8 +76,8 @@ public class MoveTypeBishop extends MoveType {
 	}
 
 	@Override
-	public MoveType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeBishop();
+	public MoveType create(JsonObject elem, MoveMode mode) throws JsonParseException {
+		return new MoveTypeBishop(mode);
 	}
 
 }

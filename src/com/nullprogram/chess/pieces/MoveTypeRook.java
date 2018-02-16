@@ -1,9 +1,6 @@
 package com.nullprogram.chess.pieces;
 
-import java.lang.reflect.Type;
-
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveList;
@@ -13,6 +10,10 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeRook extends MoveType {
 
+	public MoveTypeRook(MoveMode mode) {
+		super(mode);
+	}
+
 	@Override
 	public MoveList getMoves(Piece p, MoveList list) {
 		Position home = p.getPosition();
@@ -21,7 +22,7 @@ public class MoveTypeRook extends MoveType {
         while (x >= 0) {
             x--;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -33,7 +34,7 @@ public class MoveTypeRook extends MoveType {
         while (x < p.getBoard().getWidth()) {
             x++;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -45,7 +46,7 @@ public class MoveTypeRook extends MoveType {
         while (y >= 0) {
             y--;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -57,7 +58,7 @@ public class MoveTypeRook extends MoveType {
         while (y < p.getBoard().getHeight()) {
             y++;
             Position pos = new Position(x, y);
-            if (!list.addCapture(new Move(home, pos))) {
+            if (!list.add(new Move(home, pos), getMoveMode())) {
                 break;
             }
             if (!p.getBoard().isFree(pos)) {
@@ -66,10 +67,10 @@ public class MoveTypeRook extends MoveType {
         }
         return list;
 	}
-
+	
 	@Override
-	public MoveType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeRook();
+	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
+		return new MoveTypeRook(mode);
 	}
 
 }

@@ -12,7 +12,7 @@ import com.nullprogram.chess.MoveType;
 
 public class MoveTypeDeserializer implements JsonDeserializer<MoveType> {
 	public static final MoveTypeDeserializer INSTANCE = new MoveTypeDeserializer();
-	private static final HashMap<String, JsonDeserializer<MoveType>> MAP = new HashMap<>();
+	private static final HashMap<String, IMoveTypeDeserializer> MAP = new HashMap<>();
 	
 	private MoveTypeDeserializer() {}
 
@@ -20,10 +20,18 @@ public class MoveTypeDeserializer implements JsonDeserializer<MoveType> {
 	public MoveType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 		JsonObject obj = json.getAsJsonObject();
 		String name = obj.get("type").getAsString();
-		return MAP.get(name).deserialize(json, typeOfT, context);
+		
+		JsonElement modeJson = obj.get("mode");
+		MoveType.MoveMode mode = MoveType.MoveMode.MOVE_CAPTURE;
+		if (modeJson != null)
+		{
+			mode = MoveType.MoveMode.fromString(modeJson.getAsString());
+		}
+		
+		return MAP.get(name).create(obj, mode);
 	}
 	
-	public static void registerDeserializer(String type, JsonDeserializer<MoveType> deserializer)
+	public static void registerDeserializer(String type, IMoveTypeDeserializer deserializer)
 	{
 		MAP.put(type, deserializer);
 	}

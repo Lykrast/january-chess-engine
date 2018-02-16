@@ -1,9 +1,5 @@
 package com.nullprogram.chess.pieces;
 
-import java.lang.reflect.Type;
-
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.Move;
@@ -15,8 +11,9 @@ import com.nullprogram.chess.Position;
 public class MoveTypeLeaper extends MoveType {
 	private int near, far;
 	
-	public MoveTypeLeaper(int near, int far)
+	public MoveTypeLeaper(MoveMode mode, int near, int far)
 	{
+		super(mode);
 		this.near = near;
 		this.far = far;
 	}
@@ -24,21 +21,20 @@ public class MoveTypeLeaper extends MoveType {
 	@Override
 	public MoveList getMoves(Piece p, MoveList list) {
         Position pos = p.getPosition();
-        list.addCapture(new Move(pos, new Position(pos,  near,  far)));
-        list.addCapture(new Move(pos, new Position(pos,  far,  near)));
-        list.addCapture(new Move(pos, new Position(pos, -far,  near)));
-        list.addCapture(new Move(pos, new Position(pos, -far, -near)));
-        list.addCapture(new Move(pos, new Position(pos,  far, -near)));
-        list.addCapture(new Move(pos, new Position(pos,  near, -far)));
-        list.addCapture(new Move(pos, new Position(pos, -near, -far)));
-        list.addCapture(new Move(pos, new Position(pos, -near,  far)));
+        list.add(new Move(pos, new Position(pos,  near,  far)), getMoveMode());
+        list.add(new Move(pos, new Position(pos,  far,  near)), getMoveMode());
+        list.add(new Move(pos, new Position(pos, -far,  near)), getMoveMode());
+        list.add(new Move(pos, new Position(pos, -far, -near)), getMoveMode());
+        list.add(new Move(pos, new Position(pos,  far, -near)), getMoveMode());
+        list.add(new Move(pos, new Position(pos,  near, -far)), getMoveMode());
+        list.add(new Move(pos, new Position(pos, -near, -far)), getMoveMode());
+        list.add(new Move(pos, new Position(pos, -near,  far)), getMoveMode());
         return list;
 	}
-
+	
 	@Override
-	public MoveType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-		JsonObject obj = json.getAsJsonObject();
-		return new MoveTypeLeaper(obj.get("near").getAsInt(), obj.get("far").getAsInt());
+	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
+		return new MoveTypeLeaper(mode, json.get("near").getAsInt(), json.get("far").getAsInt());
 	}
 
 }
