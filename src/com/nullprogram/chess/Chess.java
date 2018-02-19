@@ -1,15 +1,15 @@
 package com.nullprogram.chess;
 
-import com.nullprogram.chess.gui.ChessFrame;
-import com.nullprogram.chess.resources.JSONLoader;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.logging.Logger;
+
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import com.nullprogram.chess.gui.ChessFrame;
 
 /**
  * Main class for the Chess game application.
@@ -21,7 +21,7 @@ public final class Chess {
         Logger.getLogger("com.nullprogram.chess.Chess");
 
     /** The program's running title, prefix only. */
-    private static final String TITLE_PREFIX = "October Chess";
+    private static final String TITLE_PREFIX = "January Chess Engine";
 
     /**
      * Hidden constructor.
