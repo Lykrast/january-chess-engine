@@ -19,7 +19,8 @@ public class MoveTypeDeserializer implements JsonDeserializer<MoveType> {
 	@Override
 	public MoveType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 		JsonObject obj = json.getAsJsonObject();
-		String name = obj.get("type").getAsString();
+		String name = JSONUtils.getMandatory(obj, "type").getAsString();
+		if (!MAP.containsKey(name)) throw new JsonParseException("Mentions unknown move type: " + name);
 		
 		JsonElement modeJson = obj.get("mode");
 		MoveType.MoveMode mode = MoveType.MoveMode.MOVE_CAPTURE;

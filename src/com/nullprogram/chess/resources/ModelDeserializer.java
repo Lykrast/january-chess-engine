@@ -21,22 +21,29 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 	public Model deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 		JsonObject obj = json.getAsJsonObject();
 		
-		JsonArray movesJson = obj.get("moves").getAsJsonArray();
+		JsonArray movesJson = JSONUtils.getMandatory(obj, "moves").getAsJsonArray();
 		List<MoveType> movesList = new ArrayList<>();
 		for (JsonElement elem : movesJson)
 		{
-			movesList.add(MoveTypeDeserializer.INSTANCE.deserialize(elem, typeOfT, context));
+			movesList.add(context.deserialize(elem, MoveType.class));
 		}
 		
-		JsonElement r = obj.get("royal");
+		JsonElement tmp = obj.get("royal");
 		boolean royal = false;
-		if (r != null)
+		if (tmp != null)
 		{
-			royal = r.getAsBoolean();
+			royal = tmp.getAsBoolean();
 		}
 		
-		return new Model(obj.get("name").getAsString(), 
-				obj.get("value").getAsDouble(), 
+		tmp = obj.get("value");
+		double value = 1.0;
+		if (tmp != null)
+		{
+			value = tmp.getAsDouble();
+		}
+		
+		return new Model(JSONUtils.getMandatory(obj, "name").getAsString(), 
+				value, 
 				royal, 
 				movesList.toArray(new MoveType[movesList.size()]));
 	}

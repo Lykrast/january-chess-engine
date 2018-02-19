@@ -22,10 +22,15 @@ public class PiecePlacementDeserializer implements JsonDeserializer<PiecePlaceme
 	public PiecePlacement deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 		JsonObject obj = json.getAsJsonObject();
 		
-		int x = obj.get("x").getAsInt();
-		int y = obj.get("y").getAsInt();
+		String piece = JSONUtils.getMandatory(obj, "piece").getAsString();
+		if (!PieceRegistry.exists(piece)) throw new JsonParseException("Mentions unknown or invalid piece: " + piece);
+		
+		Model model = PieceRegistry.get(piece);
+		
+		int x = JSONUtils.getMandatory(obj, "x").getAsInt();
+		int y = JSONUtils.getMandatory(obj, "y").getAsInt();
 		Piece.Side side = null;
-		String jSide = obj.get("side").getAsString();
+		String jSide = JSONUtils.getMandatory(obj, "side").getAsString();
 		if (jSide.equalsIgnoreCase("white"))
 		{
 			side = Side.WHITE;
@@ -34,7 +39,7 @@ public class PiecePlacementDeserializer implements JsonDeserializer<PiecePlaceme
 		{
 			side = Side.BLACK;
 		}
-		Model model = PieceRegistry.get(obj.get("piece").getAsString());
+		else throw new JsonParseException("Mentions invalid side (should be \"black\" or \"white\"): " + jSide);
 		
 		return new PiecePlacement(x, y, side, model);
 	}

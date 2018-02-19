@@ -22,7 +22,7 @@ public final class ImageServer {
 
     /** This class's Logger. */
     private static final Logger LOG =
-        Logger.getLogger("com.nullprogram.chess.pieces.ImageServer");
+        Logger.getLogger("com.nullprogram.chess.resources.ImageServer");
 
     /** The image cache. */
     private static Map<String, Image> cache =

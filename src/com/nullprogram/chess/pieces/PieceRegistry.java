@@ -30,4 +30,9 @@ public class PieceRegistry {
 	{
 		return MAP.keySet();
 	}
+	
+	public static boolean exists(String id)
+	{
+		return MAP.containsKey(id);
+	}
 }

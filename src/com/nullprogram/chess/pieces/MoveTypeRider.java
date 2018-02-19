@@ -7,6 +7,7 @@ import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.resources.JSONUtils;
 
 public class MoveTypeRider extends MoveType {
 	/**
@@ -45,7 +46,7 @@ public class MoveTypeRider extends MoveType {
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
-		return new MoveTypeRider(mode, json.get("near").getAsInt(), json.get("far").getAsInt());
+		return new MoveTypeRider(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
 }

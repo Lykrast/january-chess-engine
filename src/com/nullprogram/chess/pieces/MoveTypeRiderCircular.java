@@ -7,6 +7,7 @@ import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.resources.JSONUtils;
 
 public class MoveTypeRiderCircular extends MoveType {
 	/**
@@ -48,7 +49,7 @@ public class MoveTypeRiderCircular extends MoveType {
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
-		return new MoveTypeRiderCircular(mode, json.get("near").getAsInt(), json.get("far").getAsInt());
+		return new MoveTypeRiderCircular(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
 }

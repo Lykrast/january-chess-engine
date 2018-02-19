@@ -21,16 +21,16 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 	public GameMode deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 		JsonObject obj = json.getAsJsonObject();
 		
-		JsonArray piecesJson = obj.get("pieces").getAsJsonArray();
+		JsonArray piecesJson = JSONUtils.getMandatory(obj, "pieces").getAsJsonArray();
 		List<PiecePlacement> piecesList = new ArrayList<>();
 		for (JsonElement elem : piecesJson)
 		{
-			piecesList.add(PiecePlacementDeserializer.INSTANCE.deserialize(elem, typeOfT, context));
+			piecesList.add(context.deserialize(elem, PiecePlacement.class));
 		}
 		
-		return new GameMode(obj.get("name").getAsString(),
-				obj.get("width").getAsInt(), 
-				obj.get("height").getAsInt(), 
+		return new GameMode(JSONUtils.getMandatory(obj, "name").getAsString(),
+				JSONUtils.getMandatory(obj, "width").getAsInt(), 
+				JSONUtils.getMandatory(obj, "height").getAsInt(), 
 				piecesList.toArray(new PiecePlacement[piecesList.size()]));
 	}
 

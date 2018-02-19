@@ -7,6 +7,7 @@ import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.resources.JSONUtils;
 
 public class MoveTypeLeaperOrthogonal extends MoveType {
 	private int range;
@@ -29,7 +30,7 @@ public class MoveTypeLeaperOrthogonal extends MoveType {
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
-		return new MoveTypeLeaperOrthogonal(mode, json.get("range").getAsInt());
+		return new MoveTypeLeaperOrthogonal(mode, JSONUtils.getMandatory(json, "range").getAsInt());
 	}
 
 }
