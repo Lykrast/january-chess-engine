@@ -16,6 +16,9 @@ import javax.imageio.ImageIO;
  */
 public final class ImageServer {
 	private static final String PATH = "./resources/images/";
+	public static final String WHITE = "-WHITE", BLACK = "-BLACK";
+	
+	private static final String U_WHITE = "Unknown-WHITE", U_BLACK = "Unknown-BLACK";
 
     /** This class's Logger. */
     private static final Logger LOG =
@@ -52,12 +55,42 @@ public final class ImageServer {
         } catch (java.io.IOException e) {
             String message = "Failed to read image: " + file + ": " + e;
             LOG.severe(message);
-            System.exit(1);
+            return handleUnknown(name);
         } catch (IllegalArgumentException e) {
             String message = "Failed to find image: " + file + ": " + e;
             LOG.severe(message);
-            System.exit(1);
+            return handleUnknown(name);
         }
-        return null;
+    }
+    
+    /**
+     * Handle the error case of a image that couldn't load. Attemps to put the appropriate Unknown image in the cache, or crash if it can't.
+     */
+    private static Image handleUnknown(final String original)
+    {
+    	if (original.equals(U_WHITE) || original.equals(U_BLACK))
+    	{
+            LOG.severe("Failed to load default image icon.");
+            System.exit(1);
+    	}
+    	
+    	if (original.endsWith(WHITE))
+    	{
+            LOG.severe("Loading white Unknown icon.");
+    		Image i = getTile(U_WHITE);
+            cache.put(original, i);
+            return i;
+    	}
+    	if (original.endsWith(BLACK))
+    	{
+            LOG.severe("Loading black Unknown icon.");
+    		Image i = getTile(U_BLACK);
+            cache.put(original, i);
+            return i;
+    	}
+
+        LOG.severe("No replacement image found.");
+        System.exit(1);
+    	return null;
     }
 }
