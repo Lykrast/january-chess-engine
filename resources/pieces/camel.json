@@ -6,9 +6,6 @@
 		"type": "Leaper",
 		"near": 1,
 		"far": 3
-	},
-	{
-		"type": "Rook"
 	}
   ]
 }

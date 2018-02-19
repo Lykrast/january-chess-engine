@@ -34,6 +34,7 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer("Leaper", new MoveTypeLeaper(MoveMode.MOVE_CAPTURE, 0,0));
     	MoveTypeDeserializer.registerDeserializer("LeaperOrthogonal", new MoveTypeLeaperOrthogonal(MoveMode.MOVE_CAPTURE, 0));
     	MoveTypeDeserializer.registerDeserializer("LeaperDiagonal", new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, 0));
+    	MoveTypeDeserializer.registerDeserializer("Rider", new MoveTypeRider(MoveMode.MOVE_CAPTURE, 0,0));
     	
     	//Presets
     	MoveTypeDeserializer.registerDeserializer("Wazir", new MoveTypeWazir(MoveMode.MOVE_CAPTURE));

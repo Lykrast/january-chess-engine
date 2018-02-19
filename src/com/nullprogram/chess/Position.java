@@ -37,6 +37,17 @@ public final class Position implements Comparable<Position>, Serializable {
     public Position(final Position pos, final int deltax, final int deltay) {
         this(pos.x + deltax, pos.y + deltay);
     }
+    
+    /**
+     * Create a new position from this one, using the coordinates of the offset as changes.
+     * 
+     * @param offset change in x and y
+     * @return new position with coordinates of the original offset by those of the offset
+     */
+    public Position offset(final Position offset)
+    {
+    	return new Position(x + offset.x, y + offset.y);
+    }
 
     /**
      * Get the x coordinate of the position.
