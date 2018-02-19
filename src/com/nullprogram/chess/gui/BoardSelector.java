@@ -1,5 +1,6 @@
 package com.nullprogram.chess.gui;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.swing.BorderFactory;
@@ -38,7 +39,9 @@ public class BoardSelector extends JPanel {
         add(label);
         
         Collection<GameMode> modeList = GameModeRegistry.getGameModes();
-        modes = new JList<>(modeList.toArray(new GameMode[modeList.size()]));
+        GameMode[] modeArray = modeList.toArray(new GameMode[modeList.size()]);
+        Arrays.sort(modeArray);
+        modes = new JList<>(modeArray);
         modes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         modes.setSelectedIndex(0);
         

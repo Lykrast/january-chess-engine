@@ -35,7 +35,7 @@ public class MoveTypeRiderCircular extends MoveType {
         for (int i = 0; i < 8; i++)
         {
         	Position current = start;
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < 7; j++)
 			{
 				int mov = (i + j) % 8; //Loop over the array
 				current = current.offset(directions[mov]);

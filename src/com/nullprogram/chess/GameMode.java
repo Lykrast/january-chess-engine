@@ -2,7 +2,7 @@ package com.nullprogram.chess;
 
 import com.nullprogram.chess.boards.PiecePlacement;
 
-public class GameMode {
+public class GameMode implements Comparable<GameMode>{
     /** Name of this gamemode. */
     private String name;
     
@@ -36,5 +36,10 @@ public class GameMode {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(GameMode arg0) {
+		return name.compareTo(arg0.name);
 	}
 }
