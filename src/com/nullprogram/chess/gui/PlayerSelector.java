@@ -46,7 +46,7 @@ public class PlayerSelector extends JPanel {
     private final JRadioButton minimax = new JRadioButton("Computer");
 
     /** AI selector. */
-    private final JList ai = new JList(LABELS_AI);
+    private final JList<String> ai = new JList<>(LABELS_AI);
 
     /** Vertical padding around this panel. */
     static final int V_PADDING = 15;

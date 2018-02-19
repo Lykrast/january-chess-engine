@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.Set;
 
-import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**

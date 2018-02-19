@@ -10,18 +10,18 @@ public final class BoardFactory {
     /**
      * The Gothic chess board.
      */
-    private static Class gothic = (new Gothic()).getClass();
+    private static Class<? extends Gothic> gothic = (new Gothic()).getClass();
 
     /**
      * The standard chess board.
      */
-    private static Class standard = (new StandardBoard()).getClass();
-    private static Class wildebeest = (new BoardWildebeest()).getClass();
+    private static Class<? extends StandardBoard> standard = (new StandardBoard()).getClass();
+    private static Class<? extends BoardWildebeest> wildebeest = (new BoardWildebeest()).getClass();
 
     /**
      * An empty chess board.
      */
-    private static Class empty = (new EmptyBoard()).getClass();
+    private static Class<? extends EmptyBoard> empty = (new EmptyBoard()).getClass();
 
     /**
      * Hidden constructor.
@@ -35,7 +35,7 @@ public final class BoardFactory {
      * @param board class to be created
      * @return a fresh board
      */
-    public static Board create(final Class board) {
+    public static Board create(final Class<?> board) {
         if (board.equals(standard)) {
             return new StandardBoard();
         } else if (board.equals(gothic)) {

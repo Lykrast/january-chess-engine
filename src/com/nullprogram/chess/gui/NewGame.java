@@ -14,16 +14,9 @@ import javax.swing.JPanel;
 import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.GameMode;
-import com.nullprogram.chess.Model;
-import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.ai.Minimax;
-import com.nullprogram.chess.boards.BoardWildebeest;
-import com.nullprogram.chess.boards.GameModeRegistry;
-import com.nullprogram.chess.boards.Gothic;
-import com.nullprogram.chess.boards.PiecePlacement;
 import com.nullprogram.chess.boards.StandardBoard;
-import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**
  * Presents the "New Game" dialog to let the user set up a game.
