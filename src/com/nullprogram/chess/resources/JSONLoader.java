@@ -1,8 +1,8 @@
 package com.nullprogram.chess.resources;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
@@ -46,8 +46,7 @@ public class JSONLoader {
 			else if (f.getName().endsWith(".json"))
 			{
 				try {
-					FileReader reader = new FileReader(f);
-					try {
+					try (FileReader reader = new FileReader(f)) {
 						Model m = g.fromJson(reader, Model.class);
 						String name = f.getName().toLowerCase();
 						name = name.substring(0, name.lastIndexOf(".json"));
@@ -57,8 +56,9 @@ public class JSONLoader {
 			            String message = "Failed to parse piece: " + f + ": " + e;
 			            LOG.severe(message);
 					}
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
+				} catch (IOException e) {
+		            String message = "Failed to load piece file: " + f + ": " + e;
+		            LOG.severe(message);
 				}
 			}
 		}
@@ -85,8 +85,7 @@ public class JSONLoader {
 			if (f.getName().endsWith(".json"))
 			{
 				try {
-					FileReader reader = new FileReader(f);
-					try {
+					try (FileReader reader = new FileReader(f)) {
 						GameMode m = g.fromJson(reader, GameMode.class);
 						String name = f.getName().toLowerCase();
 						name = name.substring(0, name.lastIndexOf(".json"));
@@ -96,8 +95,9 @@ public class JSONLoader {
 			            String message = "Failed to parse gamemode: " + f + ": " + e;
 			            LOG.severe(message);
 					}
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
+				} catch (IOException e) {
+		            String message = "Failed to load gamemode file: " + f + ": " + e;
+		            LOG.severe(message);
 				}
 			}
 		}	
