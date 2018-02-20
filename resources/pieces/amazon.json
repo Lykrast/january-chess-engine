@@ -1,0 +1,15 @@
+{
+  "name": "Amazon",
+  "value": 12.0,
+  "moves": [
+    {
+		"type": "Bishop"
+	},
+	{
+		"type": "Rook"
+	},
+	{
+		"type": "Knight"
+	}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Ferz",
+  "value": 1.5,
+  "moves": [
+    {
+		"type": "Ferz"
+	}
+  ]
+}

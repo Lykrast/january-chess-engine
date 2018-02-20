@@ -1,0 +1,11 @@
+{
+  "name": "Nightrider",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "Rider",
+		"near": 1,
+		"far": 2
+	}
+  ]
+}

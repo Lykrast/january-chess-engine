@@ -1,0 +1,11 @@
+{
+  "name": "Zebra",
+  "value": 1.75,
+  "moves": [
+    {
+		"type": "Leaper",
+		"near": 2,
+		"far": 3
+	}
+  ]
+}

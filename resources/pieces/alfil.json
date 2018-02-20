@@ -1,0 +1,9 @@
+{
+  "name": "Alfil",
+  "value": 1.5,
+  "moves": [
+    {
+		"type": "Alfil"
+	}
+  ]
+}
