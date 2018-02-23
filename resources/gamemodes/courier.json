@@ -1,0 +1,118 @@
+{
+  "name": "Courier Chess",
+  "width": 12,
+  "height": 8,
+  "pieces": [
+	{
+		"x": 0,"y": 3,"side": "white","piece": "pawn_shatranj"	
+	},
+    {
+		"x": 0,"y": 4,"side": "black","piece": "pawn_shatranj"
+	},
+    {
+		"x": 1,"xlen": 5,"y": 1,"side": "white","piece": "pawn_shatranj"
+	},
+    {
+		"x": 1,"xlen": 5,"y": 6,"side": "black","piece": "pawn_shatranj"
+	},
+	{
+		"x": 6,"y": 3,"side": "white","piece": "pawn_shatranj"	
+	},
+    {
+		"x": 6,"y": 4,"side": "black","piece": "pawn_shatranj"
+	},
+    {
+		"x": 7,"xlen": 4,"y": 1,"side": "white","piece": "pawn_shatranj"
+	},
+    {
+		"x": 7,"xlen": 4,"y": 6,"side": "black","piece": "pawn_shatranj"
+	},
+    {
+		"x": 11,"y": 3,"side": "white","piece": "pawn_shatranj"
+	},
+    {
+		"x": 11,"y": 4,"side": "black","piece": "pawn_shatranj"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook"
+	},
+    {
+		"x": 11,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 11,"y": 7,"side": "black","piece": "rook"
+	},
+	
+    {
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+    {
+		"x": 1,"y": 7,"side": "black","piece": "knight"
+	},
+    {
+		"x": 10,"y": 0,"side": "white","piece": "knight"
+	},
+    {
+		"x": 10,"y": 7,"side": "black","piece": "knight"
+	},
+	
+    {
+		"x": 2,"y": 0,"side": "white","piece": "alfil"
+	},
+    {
+		"x": 2,"y": 7,"side": "black","piece": "alfil"
+	},
+    {
+		"x": 9,"y": 0,"side": "white","piece": "alfil"
+	},
+    {
+		"x": 9,"y": 7,"side": "black","piece": "alfil"
+	},
+	
+    {
+		"x": 3,"y": 0,"side": "white","piece": "bishop"
+	},
+    {
+		"x": 3,"y": 7,"side": "black","piece": "bishop"
+	},
+    {
+		"x": 8,"y": 0,"side": "white","piece": "bishop"
+	},
+    {
+		"x": 8,"y": 7,"side": "black","piece": "bishop"
+	},
+	
+    {
+		"x": 4,"y": 0,"side": "white","piece": "mann"
+	},
+    {
+		"x": 4,"y": 7,"side": "black","piece": "mann"
+	},
+	
+    {
+		"x": 5,"y": 0,"side": "white","piece": "king_nocastle"
+	},
+    {
+		"x": 5,"y": 7,"side": "black","piece": "king_nocastle"
+	},
+	
+    {
+		"x": 6,"y": 2,"side": "white","piece": "ferz"
+	},
+    {
+		"x": 6,"y": 5,"side": "black","piece": "ferz"
+	},
+	
+    {
+		"x": 7,"y": 0,"side": "white","piece": "wazir"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "wazir"
+	}
+	
+  ]
+}
