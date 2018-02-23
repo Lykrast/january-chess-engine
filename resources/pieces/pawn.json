@@ -3,7 +3,9 @@
   "value": 1.0,
   "moves": [
     {
-		"type": "Pawn"
+		"type": "Pawn",
+		"promotion": "queen",
+		"doublestep": true
 	}
   ]
 }

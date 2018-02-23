@@ -49,7 +49,7 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer("Bishop", new MoveTypeBishop(MoveMode.MOVE_CAPTURE));
     	
     	//Very specifics
-    	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn());
+    	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn("", false));
     	MoveTypeDeserializer.registerDeserializer("Castle", new MoveTypeCastle());
     }
     
