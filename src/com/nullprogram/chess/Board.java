@@ -2,7 +2,6 @@ package com.nullprogram.chess;
 
 import java.io.Serializable;
 
-import com.nullprogram.chess.boards.PiecePlacement;
 import com.nullprogram.chess.boards.StandardBoard;
 import com.nullprogram.chess.pieces.PieceFactory;
 
@@ -32,14 +31,7 @@ public abstract class Board implements Serializable {
     protected Board(GameMode mode)
     {
     	gameMode = mode;
-    	setWidth(gameMode.getWidth());
-    	setHeight(gameMode.getHeight());
-    	clear();
-    	
-    	for (PiecePlacement p : gameMode.getPlacements())
-    	{
-    		setPiece(p.getX(), p.getY(), new Piece(p.getSide(), p.getModel()));
-    	}
+    	gameMode.initialize(this);
     }
     
     public GameMode getGameMode()

@@ -17,6 +17,22 @@ public class GameMode implements Comparable<GameMode>{
 		this.placements = placements;
 	}
 	
+	public void initialize(Board b)
+	{
+    	b.setWidth(width);
+    	b.setHeight(height);
+    	b.clear();
+    	placePieces(b);
+	}
+	
+	public void placePieces(Board b)
+	{
+		for (PiecePlacement p : placements)
+    	{
+    		p.place(b);
+    	}
+	}
+	
 	public String getName() {
 		return name;
 	}

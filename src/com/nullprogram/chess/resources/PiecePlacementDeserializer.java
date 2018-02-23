@@ -29,6 +29,7 @@ public class PiecePlacementDeserializer implements JsonDeserializer<PiecePlaceme
 		
 		int x = JSONUtils.getMandatory(obj, "x").getAsInt();
 		int y = JSONUtils.getMandatory(obj, "y").getAsInt();
+		
 		Piece.Side side = null;
 		String jSide = JSONUtils.getMandatory(obj, "side").getAsString();
 		if (jSide.equalsIgnoreCase("white"))
@@ -41,7 +42,13 @@ public class PiecePlacementDeserializer implements JsonDeserializer<PiecePlaceme
 		}
 		else throw new JsonParseException("Mentions invalid side (should be \"black\" or \"white\"): " + jSide);
 		
-		return new PiecePlacement(x, y, side, model);
+		int xlen = 1, ylen = 1;
+		JsonElement len = obj.get("xlen");
+		if (len != null) xlen = len.getAsInt();
+		len = obj.get("ylen");
+		if (len != null) ylen = len.getAsInt();
+		
+		return new PiecePlacement(x, y, xlen, ylen, side, model);
 	}
 
 }

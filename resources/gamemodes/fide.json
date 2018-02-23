@@ -4,52 +4,10 @@
   "height": 8,
   "pieces": [
 	{
-		"x": 0,"y": 1,"side": "white","piece": "pawn"	
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
 	},
     {
-		"x": 0,"y": 6,"side": "black","piece": "pawn"
-	},
-    {
-		"x": 1,"y": 1,"side": "white","piece": "pawn"
-	},
-    {
-		"x": 1,"y": 6,"side": "black","piece": "pawn"
-	},
-	{
-		"x": 2,"y": 1,"side": "white","piece": "pawn"	
-	},
-    {
-		"x": 2,"y": 6,"side": "black","piece": "pawn"
-	},
-    {
-		"x": 3,"y": 1,"side": "white","piece": "pawn"
-	},
-	{
-		"x": 3,"y": 6,"side": "black","piece": "pawn"
-	},
-	{
-		"x": 4,"y": 1,"side": "white","piece": "pawn"	
-	},
-    {
-		"x": 4,"y": 6,"side": "black","piece": "pawn"
-	},
-    {
-		"x": 5,"y": 1,"side": "white","piece": "pawn"
-	},
-    {
-		"x": 5,"y": 6,"side": "black","piece": "pawn"
-	},
-	{
-		"x": 6,"y": 1,"side": "white","piece": "pawn"	
-	},
-    {
-		"x": 6,"y": 6,"side": "black","piece": "pawn"
-	},
-    {
-		"x": 7,"y": 1,"side": "white","piece": "pawn"
-	},
-	{
-		"x": 7,"y": 6,"side": "black","piece": "pawn"
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn"
 	},
 	
     {
