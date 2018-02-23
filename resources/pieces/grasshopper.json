@@ -1,0 +1,9 @@
+{
+  "name": "Grasshopper",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "Grasshopper"
+	}
+  ]
+}
