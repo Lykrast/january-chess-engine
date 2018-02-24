@@ -36,12 +36,32 @@ public class MoveTypeRiderCircular extends MoveType {
         for (int i = 0; i < 8; i++)
         {
         	Position current = start;
+        	
+        	int breakpoint = -1;
 			for (int j = 0; j < 7; j++)
 			{
 				int mov = (i + j) % 8; //Loop over the array
 				current = current.offset(directions[mov]);
 				
-				if (!list.add(new Move(start, current), getMoveMode()) || !p.getBoard().isFree(current)) break;
+				if (!list.add(new Move(start, current), getMoveMode()) || !p.getBoard().isFree(current))
+				{
+					breakpoint = j;
+					break;
+				}
+			}
+			
+			//Loop backwards if we get stopped before going full circle
+			if (breakpoint >= 0)
+			{
+				current = start;
+				int opposite = (i + 4) % 8;
+				for (int j = 7; j > breakpoint; j--)
+				{
+					int mov = (opposite + j) % 8; //Loop over the array
+					current = current.offset(directions[mov]);
+					
+					if (!list.add(new Move(start, current), getMoveMode()) || !p.getBoard().isFree(current)) break;
+				}
 			}
 		}
         

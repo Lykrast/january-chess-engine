@@ -1,0 +1,11 @@
+{
+  "name": "Rose",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "RiderCircular",
+		"near": 1,
+		"far": 2
+	}
+  ]
+}
