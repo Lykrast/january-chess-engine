@@ -1,0 +1,9 @@
+{
+  "name": "Reflecting Bishop",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "BishopReflecting"
+	}
+  ]
+}
