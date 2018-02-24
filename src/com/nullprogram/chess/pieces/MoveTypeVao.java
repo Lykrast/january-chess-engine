@@ -10,24 +10,39 @@ import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 
-public class MoveTypeGrasshopper extends MoveType {
-	//TODO make possible in rook/bishop style
-	public MoveTypeGrasshopper(MoveMode mode) {
-		super(mode);
+public class MoveTypeVao extends MoveType {
+	//TODO merge with Cannon to use less classes
+	public MoveTypeVao() {
+		super(MoveMode.MOVE_CAPTURE);
 	}
 
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
 		Position home = p.getPosition();
-        for (Position dir : Direction.ALL_POS)
+        for (Position dir : Direction.DIAGONAL_POS)
         {
         	Position pos = home.offset(dir);
+        	boolean hurdle = false;
         	while (p.getBoard().inRange(pos))
         	{
-        		if (!p.getBoard().isFree(pos))
+        		//Hurdle found, find a capture
+        		if (hurdle)
         		{
-        			list.add(new Move(home, pos.offset(dir)), getMoveMode());
-        			break;
+        			//Could capture, end the move
+        			if (list.addCaptureOnly(new Move(home, pos))) break;
+        		}
+        		//Move until we find a hurdle
+        		else
+        		{
+        			if (!list.addMove(new Move(home, pos)))
+        			{
+        				//Is there an hurdle ?
+        				if (!p.getBoard().isFree(pos))
+        				{
+        					hurdle = true;
+        				}
+        				else break;
+        			}
         		}
         		
         		pos = pos.offset(dir);
@@ -38,7 +53,7 @@ public class MoveTypeGrasshopper extends MoveType {
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeGrasshopper(mode);
+		return new MoveTypeVao();
 	}
 
 }
