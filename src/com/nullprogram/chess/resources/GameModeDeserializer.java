@@ -12,6 +12,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.GameMode;
 import com.nullprogram.chess.boards.PiecePlacement;
+import com.nullprogram.chess.pieces.PieceRegistry;
 
 public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 	public static final GameModeDeserializer INSTANCE = new GameModeDeserializer();
@@ -28,10 +29,26 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 			piecesList.add(context.deserialize(elem, PiecePlacement.class));
 		}
 		
+		JsonElement tmp = obj.get("promotions");
+		String[] promotions = null;
+		if (tmp != null)
+		{
+			JsonArray array = tmp.getAsJsonArray();
+			List<String> list = new ArrayList<>();
+			for (JsonElement elem : array)
+			{
+				String s = elem.getAsString();
+				if (!PieceRegistry.exists(s)) throw new JsonParseException("Mentions unknown or invalid piece: " + s);
+				list.add(s);
+			}
+			promotions = list.toArray(new String[list.size()]);
+		}
+		
 		return new GameMode(JSONUtils.getMandatory(obj, "name").getAsString(),
 				JSONUtils.getMandatory(obj, "width").getAsInt(), 
 				JSONUtils.getMandatory(obj, "height").getAsInt(), 
-				piecesList.toArray(new PiecePlacement[piecesList.size()]));
+				piecesList.toArray(new PiecePlacement[piecesList.size()]),
+				promotions);
 	}
 
 }

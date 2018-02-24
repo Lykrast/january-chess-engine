@@ -1,9 +1,5 @@
 package com.nullprogram.chess.pieces;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -13,12 +9,13 @@ import com.nullprogram.chess.MoveListWrapper;
 import com.nullprogram.chess.MoveModifier;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
+import com.nullprogram.chess.resources.JSONUtils;
 
-public class MoveModifierPromotion extends MoveModifier {
-	private String[] promoted;
+public class MoveModifierPromotionSingle extends MoveModifier {
+	private String promoted;
 	private int rows;
 
-	public MoveModifierPromotion(MoveType[] moves, int rows, String... promoted) {
+	public MoveModifierPromotionSingle(MoveType[] moves, String promoted, int rows) {
 		super(moves);
 		this.promoted = promoted;
 		this.rows = rows;
@@ -26,31 +23,17 @@ public class MoveModifierPromotion extends MoveModifier {
 
 	@Override
 	protected MoveListWrapper createWrapper(Piece p, IMoveList list) {
-		return new MoveListWrapperPromotion(p, list, promoted, rows);
+		return new MoveListWrapperPromotionSingle(p, list, promoted, rows);
 	}
 
 	@Override
 	protected MoveModifier create(JsonObject json, MoveMode mode, MoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
-		JsonElement tmp = json.get("rows");
+		JsonElement jRows = json.get("rows");
 		int rows = 1;
-		if (tmp != null)
+		if (jRows != null)
 		{
-			rows = tmp.getAsInt();
+			rows = jRows.getAsInt();
 		}
-		
-		tmp = json.get("promoted");
-		String[] promoted = null;
-		if (tmp != null)
-		{
-			JsonArray array = tmp.getAsJsonArray();
-			List<String> list = new ArrayList<>();
-			for (JsonElement elem : array)
-			{
-				list.add(elem.getAsString());
-			}
-			promoted = list.toArray(new String[list.size()]);
-		}
-		
-		return new MoveModifierPromotion(moves, rows, promoted);
+		return new MoveModifierPromotionSingle(moves, JSONUtils.getMandatory(json, "promoted").getAsString(), rows);
 	}
 }

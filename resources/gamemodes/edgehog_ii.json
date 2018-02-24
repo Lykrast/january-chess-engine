@@ -2,6 +2,7 @@
   "name": "Edgehog Chess II",
   "width": 8,
   "height": 8,
+  "promotions": ["edgehog", "nightrider", "bishop_reflecting", "locust"],
   "pieces": [
 	{
 		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	

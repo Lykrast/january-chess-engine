@@ -2,6 +2,8 @@ package com.nullprogram.chess;
 
 import java.io.Serializable;
 
+import com.nullprogram.chess.pieces.PieceRegistry;
+
 /**
  * Represents a single moves on a chess board.
  *
@@ -62,6 +64,32 @@ public final class Move implements Serializable {
         if (move.getNext() != null) {
             next = new Move(move.getNext());
         }
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if (this == o) return true;
+    	if (o == null || !(o instanceof Move)) return false;
+    	Move move = (Move)o;
+    	
+    	//Start and destination
+    	if (!equalsCheckNull(destination, move.destination) || !equalsCheckNull(origin, move.origin)) return false;
+    	
+    	//Replacement
+    	if (replacement != null) {
+    		if (!replacement.equals(move.replacement) || replacementSide != move.replacementSide) return false;
+    	}
+    	else if (move.replacement != null) return false;
+    	
+    	//Captured piece
+    	if (!equalsCheckNull(captured, move.captured)) return false;
+    	
+    	//Deep equality
+    	return equalsCheckNull(next, move.next);
+    }
+    
+    private boolean equalsCheckNull(Object a, Object b) {
+    	return a == null ? b == null : a.equals(b);
     }
 
     /**
@@ -166,7 +194,27 @@ public final class Move implements Serializable {
 
     @Override
     public String toString() {
-        return "" + origin + destination;
+    	String s;
+    	
+    	//Normal move
+    	if (origin != null && destination != null)
+    	{
+    		s = "" + origin + destination;
+    	}
+    	//Capture without move
+    	else if (origin != null && destination == null)
+    	{
+    		s = "x" + origin;
+    	}
+    	//New piece
+    	else
+    	{
+    		s = destination + " " + PieceRegistry.get(replacement).getName();
+    	}
+    	
+    	if (next != null) s += " - " + next.toString();
+    	
+        return s;
     }
 
     /**

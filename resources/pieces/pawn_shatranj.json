@@ -3,7 +3,7 @@
   "value": 1.0,
   "moves": [
     {
-		"type": "ModPromotion",
+		"type": "ModPromotionSingle",
 		"promoted": "ferz",
 		"rows": 1,
 		"moves": [

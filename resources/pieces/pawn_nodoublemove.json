@@ -4,7 +4,6 @@
   "moves": [
     {
 		"type": "ModPromotion",
-		"promoted": "queen",
 		"rows": 1,
 		"moves": [
 			{

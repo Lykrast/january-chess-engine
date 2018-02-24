@@ -196,6 +196,22 @@ public class MoveList implements Iterable<Move>, Serializable, IMoveList {
     }
 
     /**
+     * Get all moves containing the destination.
+     *
+     * @param dest destination position
+     * @return all moves containing given destination
+     */
+    public final List<Move> getAllMovesByDest(final Position dest) {
+    	List<Move> list = new ArrayList<>();
+        for (Move move : this) {
+            if (dest.equals(move.getDest())) {
+            	list.add(move);
+            }
+        }
+        return list;
+    }
+
+    /**
      * Stack behavior: pop off the last element on return it.
      *
      * @return move popped off the stack

@@ -2,6 +2,7 @@
   "name": "Capablanca Chess",
   "width": 10,
   "height": 8,
+  "promotions": ["rook", "knight", "bishop", "queen", "archbishop", "chancellor"],
   "pieces": [
 	{
 		"x": 0,"xlen": 10,"y": 1,"side": "white","piece": "pawn"	

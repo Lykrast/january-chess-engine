@@ -1,18 +1,10 @@
 package com.nullprogram.chess.gui;
 
-import com.nullprogram.chess.Board;
-import com.nullprogram.chess.GameEvent;
-import com.nullprogram.chess.GameListener;
-import com.nullprogram.chess.Move;
-import com.nullprogram.chess.MoveList;
-import com.nullprogram.chess.Piece;
-import com.nullprogram.chess.Player;
-import com.nullprogram.chess.Position;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Shape;
@@ -23,9 +15,22 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Logger;
+
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+
+import com.nullprogram.chess.Board;
+import com.nullprogram.chess.GameEvent;
+import com.nullprogram.chess.GameListener;
+import com.nullprogram.chess.Move;
+import com.nullprogram.chess.MoveList;
+import com.nullprogram.chess.Piece;
+import com.nullprogram.chess.Player;
+import com.nullprogram.chess.Position;
 
 /**
  * Displays a board and exposes local players.
@@ -308,11 +313,31 @@ public class BoardPanel extends JComponent
             } else if (moves != null && moves.containsDest(pos)) {
                 /* Move selected piece */
                 mode = Mode.WAIT;
-                Move move = moves.getMoveByDest(pos);
-                selected = null;
-                moves = null;
-                selectedMove = move;
-                latch.countDown();
+                //Move move = moves.getMoveByDest(pos);
+                
+                //Allowing multiple choices
+                Move[] candidates = cutDuplicates(moves.getAllMovesByDest(pos)).toArray(new Move[0]);
+                Move move = null;
+                if (candidates.length == 1) move = candidates[0];
+                else
+                {
+                	move = (Move)JOptionPane.showInputDialog(this, 
+                    		"Choose which move to perform.", 
+                    		"Conflicting moves",
+                    		JOptionPane.INFORMATION_MESSAGE,
+                    		null, 
+                    		candidates, 
+                    		candidates[0]);
+                }
+                
+                if (move != null)
+                {
+                    selected = null;
+                    moves = null;
+                    selectedMove = move;
+                    latch.countDown();
+                }
+                else mode = Mode.PLAYER;
             } else {
                 /* Select this position */
                 Piece p = board.getPiece(pos);
@@ -322,6 +347,20 @@ public class BoardPanel extends JComponent
                 }
             }
         }
+    }
+    
+    /**
+     * Makes a new list that contains all unique moves in the given list.
+     */
+    private static List<Move> cutDuplicates(List<Move> list)
+    {
+    	List<Move> current = new ArrayList<>();
+    	
+    	for (Move move : list) {
+    		if (!current.contains(move)) current.add(move);
+		}
+    	
+    	return current;
     }
 
     /**

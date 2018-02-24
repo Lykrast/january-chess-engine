@@ -1,7 +1,8 @@
 {
-  "name": "Los Alamos Chess",
+  "name": "Los Alamos chess",
   "width": 6,
   "height": 6,
+  "promotions": ["rook", "knight", "queen"],
   "pieces": [
 	{
 		"x": 0,"xlen": 6,"y": 1,"side": "white","piece": "pawn_nodoublemove"	

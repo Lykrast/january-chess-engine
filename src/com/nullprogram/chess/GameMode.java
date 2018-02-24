@@ -8,13 +8,16 @@ public class GameMode implements Comparable<GameMode>{
     
 	private int width, height;
 	private PiecePlacement[] placements;
+	/** The list of pieces a generic Pawn can promote to in this gamemode */
+	private String[] promotions;
 	
-	public GameMode(String name, int width, int height, PiecePlacement... placements)
+	public GameMode(String name, int width, int height, PiecePlacement[] placements, String[] promotions)
 	{
 		this.name = name;
 		this.width = width;
 		this.height = height;
 		this.placements = placements;
+		this.promotions = promotions;
 	}
 	
 	public void initialize(Board b)
@@ -47,6 +50,10 @@ public class GameMode implements Comparable<GameMode>{
 	
 	public PiecePlacement[] getPlacements() {
 		return placements;
+	}
+	
+	public String[] getPromotions() {
+		return promotions;
 	}
 	
 	@Override

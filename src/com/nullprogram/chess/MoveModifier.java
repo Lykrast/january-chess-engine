@@ -17,8 +17,8 @@ import com.nullprogram.chess.resources.JSONUtils;
 public abstract class MoveModifier extends MoveType {
     private MoveType[] moves;
 
-	public MoveModifier(MoveMode mode, MoveType[] moves) {
-		super(mode);
+	public MoveModifier(MoveType[] moves) {
+		super(MoveMode.MOVE_CAPTURE);
 		this.moves = moves;
 	}
 	

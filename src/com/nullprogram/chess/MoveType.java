@@ -38,7 +38,8 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer("RiderCircular", new MoveTypeRiderCircular(MoveMode.MOVE_CAPTURE, 0,0));
     	
     	//Modifiers
-    	MoveTypeDeserializer.registerDeserializer("ModPromotion", new MoveModifierPromotion(MoveMode.MOVE_CAPTURE, null, "", 0));
+    	MoveTypeDeserializer.registerDeserializer("ModPromotionSingle", new MoveModifierPromotionSingle(null, "", 0));
+    	MoveTypeDeserializer.registerDeserializer("ModPromotion", new MoveModifierPromotion(null, 0));
     	
     	//Presets
     	MoveTypeDeserializer.registerDeserializer("Wazir", new MoveTypeWazir(MoveMode.MOVE_CAPTURE));
