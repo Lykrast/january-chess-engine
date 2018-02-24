@@ -24,13 +24,18 @@ public class MoveTypeLocust extends MoveType {
         	Position pos = home.offset(dir);
         	while (p.getBoard().inRange(pos))
         	{
-        		if (!p.getBoard().isFree(pos, Piece.opposite(p.getSide())))
+        		if (!p.getBoard().isFree(pos))
         		{
-        			//Jump over enemy hurdle and capture it
-        			Move move = new Move(home, pos.offset(dir));
-        			move.setNext(new Move(pos, null));
-        			list.addMove(move);
-        			break;
+        			//Is enemy?
+        			if (p.getBoard().isFree(pos, p.getSide()))
+        			{
+            			//Jump over enemy hurdle and capture it
+            			Move move = new Move(home, pos.offset(dir));
+            			move.setNext(new Move(pos, null));
+            			list.addMove(move);
+            			break;
+        			}
+        			else break;
         		}
         		
         		pos = pos.offset(dir);
