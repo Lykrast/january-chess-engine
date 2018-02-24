@@ -1,0 +1,54 @@
+{
+  "name": "Los Alamos Chess",
+  "width": 6,
+  "height": 6,
+  "pieces": [
+	{
+		"x": 0,"xlen": 6,"y": 1,"side": "white","piece": "pawn_nodoublemove"	
+	},
+    {
+		"x": 0,"xlen": 6,"y": 4,"side": "black","piece": "pawn_nodoublemove"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"	
+	},
+    {
+		"x": 5,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 5,"side": "black","piece": "rook"
+	},
+    {
+		"x": 5,"y": 5,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 4,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 5,"side": "black","piece": "knight"
+	},
+	{
+		"x": 4,"y": 5,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 2,"y": 5,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "king_nocastle"
+	},
+	{
+		"x": 3,"y": 5,"side": "black","piece": "king_nocastle"
+	}
+	
+  ]
+}

@@ -152,7 +152,6 @@ public class Game implements Runnable {
                     setStatus("White has been stalemated!");
                     winner = Piece.Side.BLACK;
                 }
-                setStatus("Stalemate!");
                 winner = null;
                 callGameListeners(GameEvent.GAME_END);
                 return;
