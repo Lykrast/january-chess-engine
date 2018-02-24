@@ -1,0 +1,9 @@
+{
+  "name": "Edgehog",
+  "value": 6.0,
+  "moves": [
+    {
+		"type": "Edgehog"
+	}
+  ]
+}

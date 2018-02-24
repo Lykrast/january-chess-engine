@@ -10,10 +10,10 @@ import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 
-public class MoveTypeGrasshopper extends MoveType {
+public class MoveTypeLocust extends MoveType {
 	//TODO make possible in rook/bishop style
-	public MoveTypeGrasshopper(MoveMode mode) {
-		super(mode);
+	public MoveTypeLocust() {
+		super(MoveMode.CAPTURE);
 	}
 
 	@Override
@@ -24,10 +24,12 @@ public class MoveTypeGrasshopper extends MoveType {
         	Position pos = home.offset(dir);
         	while (p.getBoard().inRange(pos))
         	{
-        		if (!p.getBoard().isFree(pos))
+        		if (!p.getBoard().isFree(pos, Piece.opposite(p.getSide())))
         		{
-        			//Jump over hurdle
-        			list.add(new Move(home, pos.offset(dir)), getMoveMode());
+        			//Jump over enemy hurdle and capture it
+        			Move move = new Move(home, pos.offset(dir));
+        			move.setNext(new Move(pos, null));
+        			list.addMove(move);
         			break;
         		}
         		
@@ -39,7 +41,7 @@ public class MoveTypeGrasshopper extends MoveType {
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeGrasshopper(mode);
+		return new MoveTypeLocust();
 	}
 
 }
