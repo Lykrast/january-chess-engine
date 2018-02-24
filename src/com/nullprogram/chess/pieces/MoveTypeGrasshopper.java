@@ -3,6 +3,7 @@ package com.nullprogram.chess.pieces;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.nullprogram.chess.Direction;
 import com.nullprogram.chess.IMoveList;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveType;
@@ -10,17 +11,6 @@ import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 
 public class MoveTypeGrasshopper extends MoveType {
-	private static final Position[] DIRECTIONS = {
-			new Position(1, 0),
-			new Position(1, 1),
-			new Position(0, 1),
-			new Position(-1, 1),
-			new Position(-1, 0),
-			new Position(-1, -1),
-			new Position(0, -1),
-			new Position(1, -1)
-	};
-
 	public MoveTypeGrasshopper(MoveMode mode) {
 		super(mode);
 	}
@@ -28,7 +18,7 @@ public class MoveTypeGrasshopper extends MoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
 		Position home = p.getPosition();
-        for (Position dir : DIRECTIONS) 
+        for (Position dir : Direction.ALL_POS)
         {
         	Position pos = home.offset(dir);
         	while (p.getBoard().inRange(pos))
