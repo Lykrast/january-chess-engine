@@ -20,7 +20,7 @@ public class MoveTypeKing extends MoveType {
         for (int y = -1; y <= 1; y++) {
             for (int x = -1; x <= 1; x++) {
                 if (x != 0 || y != 0) {
-                    list.add(new Move(pos, new Position(pos, x, y)), getMoveMode());
+                    list.add(new Move(pos, pos.offset(x, y)), getMoveMode());
                 }
             }
         }

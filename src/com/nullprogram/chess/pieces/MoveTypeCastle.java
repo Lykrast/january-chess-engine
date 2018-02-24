@@ -65,9 +65,9 @@ public class MoveTypeCastle extends MoveType {
 
         if (emptyRow(p.getPosition(), dir, max, p) && !inCheck(p)) {
             /* generate the move */
-            Position kpos = new Position(pos, dir * dist, 0);
+            Position kpos = pos.offset(dir * dist, 0);
             Move kingDest = new Move(pos, kpos);
-            Position rpos = new Position(pos, dir * dist - dir, 0);
+            Position rpos = pos.offset(dir * dist - dir, 0);
             Move rookDest = new Move(rookPos, rpos);
             kingDest.setNext(rookDest);
             return kingDest;

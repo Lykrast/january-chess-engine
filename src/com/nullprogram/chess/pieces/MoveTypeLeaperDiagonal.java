@@ -22,10 +22,10 @@ public class MoveTypeLeaperDiagonal extends MoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
         Position pos = p.getPosition();
-        list.add(new Move(pos, new Position(pos,  range,  range)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  range,  -range)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  -range,  range)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  -range,  -range)), getMoveMode());
+        list.add(new Move(pos, pos.offset(range,  range)), getMoveMode());
+        list.add(new Move(pos, pos.offset(range,  -range)), getMoveMode());
+        list.add(new Move(pos, pos.offset(-range,  range)), getMoveMode());
+        list.add(new Move(pos, pos.offset(-range,  -range)), getMoveMode());
         return list;
 	}
 	

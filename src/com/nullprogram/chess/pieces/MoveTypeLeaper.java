@@ -23,14 +23,14 @@ public class MoveTypeLeaper extends MoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
         Position pos = p.getPosition();
-        list.add(new Move(pos, new Position(pos,  near,  far)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  far,  near)), getMoveMode());
-        list.add(new Move(pos, new Position(pos, -far,  near)), getMoveMode());
-        list.add(new Move(pos, new Position(pos, -far, -near)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  far, -near)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  near, -far)), getMoveMode());
-        list.add(new Move(pos, new Position(pos, -near, -far)), getMoveMode());
-        list.add(new Move(pos, new Position(pos, -near,  far)), getMoveMode());
+        list.add(new Move(pos, pos.offset(near,  far)), getMoveMode());
+        list.add(new Move(pos, pos.offset(far,  near)), getMoveMode());
+        list.add(new Move(pos, pos.offset(-far,  near)), getMoveMode());
+        list.add(new Move(pos, pos.offset(-far, -near)), getMoveMode());
+        list.add(new Move(pos, pos.offset(far, -near)), getMoveMode());
+        list.add(new Move(pos, pos.offset(near, -far)), getMoveMode());
+        list.add(new Move(pos, pos.offset(-near, -far)), getMoveMode());
+        list.add(new Move(pos, pos.offset(-near,  far)), getMoveMode());
         return list;
 	}
 	

@@ -22,10 +22,10 @@ public class MoveTypeLeaperOrthogonal extends MoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
         Position pos = p.getPosition();
-        list.add(new Move(pos, new Position(pos,  0,  range)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  0,  -range)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  range,  0)), getMoveMode());
-        list.add(new Move(pos, new Position(pos,  -range,  0)), getMoveMode());
+        list.add(new Move(pos, pos.offset(0,  range)), getMoveMode());
+        list.add(new Move(pos, pos.offset(0,  -range)), getMoveMode());
+        list.add(new Move(pos, pos.offset(range,  0)), getMoveMode());
+        list.add(new Move(pos, pos.offset(-range,  0)), getMoveMode());
         return list;
 	}
 	
