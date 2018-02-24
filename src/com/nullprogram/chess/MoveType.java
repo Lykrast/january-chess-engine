@@ -23,7 +23,7 @@ public abstract class MoveType implements IMoveTypeDeserializer {
      * @param list  list to be appended to
      * @return      the modified list
      */
-    public abstract MoveList getMoves(final Piece p, final MoveList list);
+    public abstract IMoveList getMoves(final Piece p, final IMoveList list);
     
     /**
      * Registers all deserializers for Json loading.
@@ -36,6 +36,9 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer("LeaperDiagonal", new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, 0));
     	MoveTypeDeserializer.registerDeserializer("Rider", new MoveTypeRider(MoveMode.MOVE_CAPTURE, 0,0));
     	MoveTypeDeserializer.registerDeserializer("RiderCircular", new MoveTypeRiderCircular(MoveMode.MOVE_CAPTURE, 0,0));
+    	
+    	//Modifiers
+    	MoveTypeDeserializer.registerDeserializer("ModPromotion", new MoveModifierPromotion(MoveMode.MOVE_CAPTURE, null, "", 0));
     	
     	//Presets
     	MoveTypeDeserializer.registerDeserializer("Wazir", new MoveTypeWazir(MoveMode.MOVE_CAPTURE));
@@ -50,7 +53,7 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer("Grasshopper", new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE));
     	
     	//Very specifics
-    	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn("", false));
+    	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn(false));
     	MoveTypeDeserializer.registerDeserializer("Castle", new MoveTypeCastle());
     }
     

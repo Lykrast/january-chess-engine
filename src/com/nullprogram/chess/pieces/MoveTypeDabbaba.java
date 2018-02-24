@@ -1,5 +1,6 @@
 package com.nullprogram.chess.pieces;
 
+import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.MoveType;
@@ -12,7 +13,7 @@ public class MoveTypeDabbaba extends MoveTypeLeaperOrthogonal {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
+	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
 		return new MoveTypeDabbaba(mode);
 	}
 

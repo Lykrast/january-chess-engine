@@ -3,9 +3,15 @@
   "value": 1.0,
   "moves": [
     {
-		"type": "Pawn",
-		"promotion": "ferz",
-		"doublestep": false
+		"type": "ModPromotion",
+		"promoted": "ferz",
+		"rows": 1,
+		"moves": [
+			{
+				"type": "Pawn",
+				"doublestep": false
+			}
+		]
 	}
   ]
 }

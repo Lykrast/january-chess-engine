@@ -1,9 +1,10 @@
 package com.nullprogram.chess.pieces;
 
+import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.nullprogram.chess.IMoveList;
 import com.nullprogram.chess.Move;
-import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
@@ -19,7 +20,7 @@ public class MoveTypeLeaperOrthogonal extends MoveType {
 	}
 
 	@Override
-	public MoveList getMoves(Piece p, MoveList list) {
+	public IMoveList getMoves(Piece p, IMoveList list) {
         Position pos = p.getPosition();
         list.add(new Move(pos, new Position(pos,  0,  range)), getMoveMode());
         list.add(new Move(pos, new Position(pos,  0,  -range)), getMoveMode());
@@ -29,7 +30,7 @@ public class MoveTypeLeaperOrthogonal extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
+	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
 		return new MoveTypeLeaperOrthogonal(mode, JSONUtils.getMandatory(json, "range").getAsInt());
 	}
 

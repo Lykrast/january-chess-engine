@@ -17,7 +17,7 @@ public class StandardBoard extends Board {
      * The standard chess board.
      */
     public StandardBoard() {
-    	super(GameModeRegistry.get("fide"));
+    	super(GameModeRegistry.get("empty"));
     }
     
     public StandardBoard(GameMode mode)

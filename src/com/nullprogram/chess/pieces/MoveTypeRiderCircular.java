@@ -1,9 +1,10 @@
 package com.nullprogram.chess.pieces;
 
+import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.nullprogram.chess.IMoveList;
 import com.nullprogram.chess.Move;
-import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
@@ -29,7 +30,7 @@ public class MoveTypeRiderCircular extends MoveType {
 	}
 
 	@Override
-	public MoveList getMoves(Piece p, MoveList list) {
+	public IMoveList getMoves(Piece p, IMoveList list) {
         Position start = p.getPosition();
         
         for (int i = 0; i < 8; i++)
@@ -48,7 +49,7 @@ public class MoveTypeRiderCircular extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode) throws JsonParseException {
+	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
 		return new MoveTypeRiderCircular(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 

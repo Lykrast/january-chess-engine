@@ -145,6 +145,13 @@ public class Game implements Runnable {
                 return;
             } else if (board.stalemate(opp)) {
                 done = true;
+                if (opp == Piece.Side.BLACK) {
+                    setStatus("Black has been stalemated!");
+                    winner = Piece.Side.WHITE;
+                } else {
+                    setStatus("White has been stalemated!");
+                    winner = Piece.Side.BLACK;
+                }
                 setStatus("Stalemate!");
                 winner = null;
                 callGameListeners(GameEvent.GAME_END);

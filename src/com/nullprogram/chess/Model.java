@@ -53,9 +53,9 @@ public class Model {
      */
     public MoveList getMoves(final Piece p, boolean checkCheck)
     {
-        MoveList list = new MoveList(p.getBoard(), checkCheck);
+        IMoveList list = new MoveList(p.getBoard(), checkCheck);
         for (MoveType m : moves) list = m.getMoves(p, list);
-        return list;
+        return (MoveList)list;
     }
 
     /**

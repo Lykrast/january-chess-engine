@@ -3,9 +3,15 @@
   "value": 1.0,
   "moves": [
     {
-		"type": "Pawn",
-		"promotion": "queen",
-		"doublestep": true
+		"type": "ModPromotion",
+		"promoted": "queen",
+		"rows": 1,
+		"moves": [
+			{
+				"type": "Pawn",
+				"doublestep": true
+			}
+		]
 	}
   ]
 }

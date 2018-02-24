@@ -11,7 +11,7 @@ import java.util.List;
  *
  * Before a move is added it can be checked for some basic validity.
  */
-public class MoveList implements Iterable<Move>, Serializable {
+public class MoveList implements Iterable<Move>, Serializable, IMoveList {
 
     /** Versioning for object serialization. */
     private static final long serialVersionUID = -25601206293390593L;
@@ -45,17 +45,20 @@ public class MoveList implements Iterable<Move>, Serializable {
         check = checkCheck;
     }
     
-    public boolean checksCheck()
+    /* (non-Javadoc)
+	 * @see com.nullprogram.chess.IMoveList#checksCheck()
+	 */
+    @Override
+	public boolean checksCheck()
     {
     	return check;
     }
 
-    /**
-     * Add a move without verifying it.
-     * @param move move to be added
-     * @return true
-     */
-    public final boolean add(final Move move) {
+    /* (non-Javadoc)
+	 * @see com.nullprogram.chess.IMoveList#add(com.nullprogram.chess.Move)
+	 */
+    @Override
+	public final boolean add(final Move move) {
         moves.add(move);
         return true;
     }
@@ -72,13 +75,11 @@ public class MoveList implements Iterable<Move>, Serializable {
         return true;
     }
 
-    /**
-     * Add move to list following the given MoveMode.
-     *
-     * @param move move to be added
-     * @return     true if position was added, or, for CAPTURE, if the move would have been added if it was another mode
-     */
-    public final boolean add(final Move move, MoveType.MoveMode type)
+    /* (non-Javadoc)
+	 * @see com.nullprogram.chess.IMoveList#add(com.nullprogram.chess.Move, com.nullprogram.chess.MoveType.MoveMode)
+	 */
+    @Override
+	public final boolean add(final Move move, MoveType.MoveMode type)
     {
     	switch (type)
     	{
@@ -100,13 +101,11 @@ public class MoveList implements Iterable<Move>, Serializable {
     	}
     }
 
-    /**
-     * Add move to list if piece can legally move there (no capture).
-     *
-     * @param move move to be added
-     * @return     true if position was added
-     */
-    public final boolean addMove(final Move move) {
+    /* (non-Javadoc)
+	 * @see com.nullprogram.chess.IMoveList#addMove(com.nullprogram.chess.Move)
+	 */
+    @Override
+	public final boolean addMove(final Move move) {
         if (board.isFree(move.getDest())) {
             if (!causesCheck(move)) {
                 add(move);
@@ -117,13 +116,11 @@ public class MoveList implements Iterable<Move>, Serializable {
         return false;
     }
 
-    /**
-     * Add move to list if piece can move <i>or</i> capture at destination.
-     *
-     * @param move position to be added
-     * @return     true if position was added
-     */
-    public final boolean addCapture(final Move move) {
+    /* (non-Javadoc)
+	 * @see com.nullprogram.chess.IMoveList#addCapture(com.nullprogram.chess.Move)
+	 */
+    @Override
+	public final boolean addCapture(final Move move) {
         Piece p = board.getPiece(move.getOrigin());
         if (board.isFree(move.getDest(), p.getSide())) {
             if (!causesCheck(move)) {
@@ -135,13 +132,11 @@ public class MoveList implements Iterable<Move>, Serializable {
         return false;
     }
 
-    /**
-     * Add move to list only if the piece will perform a capture.
-     *
-     * @param move position to be added
-     * @return     true if position was added
-     */
-    public final boolean addCaptureOnly(final Move move) {
+    /* (non-Javadoc)
+	 * @see com.nullprogram.chess.IMoveList#addCaptureOnly(com.nullprogram.chess.Move)
+	 */
+    @Override
+	public final boolean addCaptureOnly(final Move move) {
         Piece p = board.getPiece(move.getOrigin());
         if (board.isFree(move.getDest(), p.getSide()) &&
             !board.isFree(move.getDest()) &&

@@ -83,6 +83,16 @@ public final class Move implements Serializable {
     }
 
     /**
+     * Get the last movement action of this move. Returns itself if this is already the last one.
+     *
+     * @return the last movement action of this move
+     */
+    public Move getLast() {
+    	if (next == null) return this;
+    	else return next.getLast();
+    }
+
+    /**
      * Get the origin position.
      *
      * @return origin position

@@ -29,7 +29,7 @@ public class MoveTypeDeserializer implements JsonDeserializer<MoveType> {
 			mode = MoveType.MoveMode.fromString(modeJson.getAsString());
 		}
 		
-		return MAP.get(name).create(obj, mode);
+		return MAP.get(name).create(obj, mode, context);
 	}
 	
 	public static void registerDeserializer(String type, IMoveTypeDeserializer deserializer)
