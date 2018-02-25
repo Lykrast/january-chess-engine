@@ -1,0 +1,19 @@
+{
+  "name": "Coordinator",
+  "value": 6.0,
+  "moves": [
+    {
+		"type": "ModCoordinator",
+		"moves": [
+			{
+				"type": "Rook",
+				"mode": "move"
+			},
+			{
+				"type": "Bishop",
+				"mode": "move"
+			}
+		]
+	}
+  ]
+}
