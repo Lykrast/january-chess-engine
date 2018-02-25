@@ -10,9 +10,9 @@ import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 
-public class MoveTypeAdvancer extends MoveType {
+public class MoveTypeWithdrawer extends MoveType {
 	//TODO make possible in rook/bishop style
-	public MoveTypeAdvancer() {
+	public MoveTypeWithdrawer() {
 		super(MoveMode.MOVE_CAPTURE);
 	}
 
@@ -20,21 +20,25 @@ public class MoveTypeAdvancer extends MoveType {
 	public IMoveList getMoves(Piece p, IMoveList list) {
         Position start = p.getPosition();
         
-        for (Position dir : Direction.ALL_POS)
+        for (Direction dir : Direction.ALL)
         {
-        	Position pos = start.offset(dir);
+        	Move withdrawal = null;
+        	Position withdrew = start.offset(dir.opposite().getPosition());
+        	//Check if there's an enemy piece to withdraw
+        	if (!p.getBoard().isFree(withdrew) && p.getBoard().isFree(withdrew, p.getSide()))
+        	{
+        		withdrawal = new Move(withdrew, null);
+        	}
+        	
+        	Position dirpos = dir.getPosition();
+        	Position pos = start.offset(dirpos);
         	Move move = new Move(start, pos);
+        	move.setNext(withdrawal);
         	while (list.addMove(move) && p.getBoard().isFree(pos))
         	{
-        		pos = pos.offset(dir);
-        		//Check for capture
-        		if (!p.getBoard().isFree(pos) && p.getBoard().isFree(pos, p.getSide()))
-        		{
-        			move.setNext(new Move(pos, null));
-        			break;
-        		}
-        		
+        		pos = pos.offset(dirpos);
         		move = new Move(start, pos);
+            	move.setNext(withdrawal);
         	}
         }
         
@@ -43,12 +47,12 @@ public class MoveTypeAdvancer extends MoveType {
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeAdvancer();
+		return new MoveTypeWithdrawer();
 	}
 
 	@Override
 	public String getTypeName() {
-		return "Advancer";
+		return "Withdrawer";
 	}
 
 }

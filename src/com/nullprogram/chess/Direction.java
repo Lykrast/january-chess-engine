@@ -32,5 +32,9 @@ public enum Direction {
 	public Position getPosition() {
 		return pos;
 	}
+	
+	public Direction opposite() {
+		return ALL[(ordinal() + 4) % 8];
+	}
 
 }

@@ -63,6 +63,7 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeEdgehog(MoveMode.MOVE_CAPTURE));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeAdvancer());
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeWithdrawer());
     }
     
     public static enum MoveMode {

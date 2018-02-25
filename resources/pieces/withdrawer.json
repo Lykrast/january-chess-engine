@@ -1,0 +1,9 @@
+{
+  "name": "Withdrawer",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "Withdrawer"
+	}
+  ]
+}

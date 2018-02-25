@@ -9,7 +9,6 @@ import com.nullprogram.chess.IMoveList;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
-import com.nullprogram.chess.Piece.Side;
 import com.nullprogram.chess.Position;
 
 public class MoveTypePawn extends MoveType {
@@ -84,11 +83,7 @@ public class MoveTypePawn extends MoveType {
      * @return direction for this pawn
      */
     private int direction(Piece p) {
-        if (p.getSide() == Side.WHITE) {
-            return 1;
-        } else {
-            return -1;
-        }
+        return p.getSide().value();
     }
     
     /**
