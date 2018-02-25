@@ -17,4 +17,9 @@ public class MoveTypeAlfil extends MoveTypeLeaperDiagonal {
 		return new MoveTypeAlfil(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Alfil";
+	}
+
 }

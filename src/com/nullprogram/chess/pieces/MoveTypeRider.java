@@ -50,4 +50,9 @@ public class MoveTypeRider extends MoveType {
 		return new MoveTypeRider(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Rider";
+	}
+
 }

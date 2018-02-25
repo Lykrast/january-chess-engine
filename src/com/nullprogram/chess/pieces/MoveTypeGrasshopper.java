@@ -42,4 +42,9 @@ public class MoveTypeGrasshopper extends MoveType {
 		return new MoveTypeGrasshopper(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Grasshopper";
+	}
+
 }

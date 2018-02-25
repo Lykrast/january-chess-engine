@@ -37,4 +37,9 @@ public class MoveTypeRook extends MoveType {
 		return new MoveTypeRook(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Rook";
+	}
+
 }

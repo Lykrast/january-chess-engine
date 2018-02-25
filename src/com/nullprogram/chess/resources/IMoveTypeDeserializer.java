@@ -15,5 +15,11 @@ public interface IMoveTypeDeserializer {
 	 * @return a MoveType created with the given MoveMode
 	 */
 	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException;
+	
+	/**
+	 * Gives the string that this deserializer is looking for in the type property. Should be in pascal case.
+	 * @return name that this deserializer is looking for
+	 */
+	public String getTypeName();
 
 }

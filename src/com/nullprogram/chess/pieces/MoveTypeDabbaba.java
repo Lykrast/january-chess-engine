@@ -17,4 +17,9 @@ public class MoveTypeDabbaba extends MoveTypeLeaperOrthogonal {
 		return new MoveTypeDabbaba(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Dabbaba";
+	}
+
 }

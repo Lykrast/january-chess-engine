@@ -71,4 +71,9 @@ public class MoveTypeEdgehog extends MoveType {
 		return new MoveTypeEdgehog(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Edgehog";
+	}
+
 }

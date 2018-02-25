@@ -34,4 +34,9 @@ public class MoveTypeLeaperOrthogonal extends MoveType {
 		return new MoveTypeLeaperOrthogonal(mode, JSONUtils.getMandatory(json, "range").getAsInt());
 	}
 
+	@Override
+	public String getTypeName() {
+		return "LeaperOrthogonal";
+	}
+
 }

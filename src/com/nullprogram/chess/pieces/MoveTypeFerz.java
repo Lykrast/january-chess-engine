@@ -17,4 +17,9 @@ public class MoveTypeFerz extends MoveTypeLeaperDiagonal {
 		return new MoveTypeFerz(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Ferz";
+	}
+
 }

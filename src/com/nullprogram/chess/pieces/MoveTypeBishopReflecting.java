@@ -46,4 +46,9 @@ public class MoveTypeBishopReflecting extends MoveType {
 		return new MoveTypeBishopReflecting(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "BishopReflecting";
+	}
+
 }

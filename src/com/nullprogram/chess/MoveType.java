@@ -31,40 +31,38 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     public static void registerDeserializers()
     {
     	//Generics
-    	MoveTypeDeserializer.registerDeserializer("Leaper", new MoveTypeLeaper(MoveMode.MOVE_CAPTURE, 0,0));
-    	MoveTypeDeserializer.registerDeserializer("LeaperLame", new MoveTypeLeaperLame(MoveMode.MOVE_CAPTURE, 0,0));
-    	MoveTypeDeserializer.registerDeserializer("LeaperOrthogonal", new MoveTypeLeaperOrthogonal(MoveMode.MOVE_CAPTURE, 0));
-    	MoveTypeDeserializer.registerDeserializer("LeaperDiagonal", new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, 0));
-    	MoveTypeDeserializer.registerDeserializer("Rider", new MoveTypeRider(MoveMode.MOVE_CAPTURE, 0,0));
-    	MoveTypeDeserializer.registerDeserializer("RiderCircular", new MoveTypeRiderCircular(MoveMode.MOVE_CAPTURE, 0,0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaper(MoveMode.MOVE_CAPTURE, 0,0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperLame(MoveMode.MOVE_CAPTURE, 0,0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperOrthogonal(MoveMode.MOVE_CAPTURE, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRider(MoveMode.MOVE_CAPTURE, 0,0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderCircular(MoveMode.MOVE_CAPTURE, 0,0));
     	
     	//Modifiers
-    	MoveTypeDeserializer.registerDeserializer("ModPromotionSingle", new MoveModifierPromotionSingle(null, "", 0));
-    	MoveTypeDeserializer.registerDeserializer("ModPromotion", new MoveModifierPromotion(null, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveModifierPromotionSingle(null, "", 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveModifierPromotion(null, 0));
     	
     	//Presets
-    	MoveTypeDeserializer.registerDeserializer("Wazir", new MoveTypeWazir(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Ferz", new MoveTypeFerz(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Dabbaba", new MoveTypeDabbaba(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Alfil", new MoveTypeAlfil(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeWazir(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeFerz(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeDabbaba(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeAlfil(MoveMode.MOVE_CAPTURE));
     	
-    	MoveTypeDeserializer.registerDeserializer("Knight", new MoveTypeKnight(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("King", new MoveTypeKing(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Rook", new MoveTypeRook(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Bishop", new MoveTypeBishop(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeKnight(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeKing(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRook(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishop(MoveMode.MOVE_CAPTURE));
     	
-    	//Particular
-    	MoveTypeDeserializer.registerDeserializer("Cannon", new MoveTypeCannon());
-    	MoveTypeDeserializer.registerDeserializer("Vao", new MoveTypeVao());
-    	MoveTypeDeserializer.registerDeserializer("Grasshopper", new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Locust", new MoveTypeLocust());
-    	MoveTypeDeserializer.registerDeserializer("Edgehog", new MoveTypeEdgehog(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("BishopReflecting", new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer("Advancer", new MoveTypeAdvancer());
-    	
-    	//Very specifics
-    	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn(1));
-    	MoveTypeDeserializer.registerDeserializer("Castle", new MoveTypeCastle());
+    	//Specialized
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypePawn(1));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeCastle());
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeCannon());
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeVao());
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLocust());
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeEdgehog(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeAdvancer());
     }
     
     public static enum MoveMode {

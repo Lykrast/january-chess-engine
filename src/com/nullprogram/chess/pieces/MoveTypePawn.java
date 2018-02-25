@@ -129,4 +129,9 @@ public class MoveTypePawn extends MoveType {
 		return new MoveTypePawn(step);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Pawn";
+	}
+
 }

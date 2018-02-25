@@ -53,4 +53,9 @@ public class MoveModifierPromotion extends MoveModifier {
 		
 		return new MoveModifierPromotion(moves, rows, promoted);
 	}
+
+	@Override
+	public String getTypeName() {
+		return "ModPromotion";
+	}
 }

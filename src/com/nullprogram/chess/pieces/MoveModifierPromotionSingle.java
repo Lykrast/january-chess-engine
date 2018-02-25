@@ -36,4 +36,9 @@ public class MoveModifierPromotionSingle extends MoveModifier {
 		}
 		return new MoveModifierPromotionSingle(moves, JSONUtils.getMandatory(json, "promoted").getAsString(), rows);
 	}
+
+	@Override
+	public String getTypeName() {
+		return "ModPromotionSingle";
+	}
 }

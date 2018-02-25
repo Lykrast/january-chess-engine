@@ -46,4 +46,9 @@ public class MoveTypeAdvancer extends MoveType {
 		return new MoveTypeAdvancer();
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Advancer";
+	}
+
 }

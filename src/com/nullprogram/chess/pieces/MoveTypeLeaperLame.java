@@ -22,17 +22,25 @@ public class MoveTypeLeaperLame extends MoveType {
 
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
-        Position pos = p.getPosition();
-        horizontalSlide(p, list, pos, pos, -1, 0);
-        horizontalSlide(p, list, pos, pos, 1, 0);
-        horizontalSlide(p, list, pos, pos, 0, -1);
-        horizontalSlide(p, list, pos, pos, 0, 1);
+        horizontalSlide(p, list, -1, 0);
+        horizontalSlide(p, list, 1, 0);
+        horizontalSlide(p, list, 0, -1);
+        horizontalSlide(p, list, 0, 1);
         return list;
 	}
 	
-	private void horizontalSlide(Piece p, IMoveList list, Position start, Position current, int xdir, int ydir)
+	/**
+	 * Does the horizontal slide part of the move, followed by diagonal slides if necessary.
+	 * 
+	 * @param p Piece that is moving
+	 * @param list IMoveList to add moves once we get there
+	 * @param xdir direction of the x movement, must be -1 or 1 if ydir is 0, or 0 if ydir is non 0
+	 * @param ydir direction of the y movement, must be -1 or 1 if xdir is 0, or 0 if xdir is non 0
+	 */
+	private void horizontalSlide(Piece p, IMoveList list, int xdir, int ydir)
 	{
 		//Slide until we get in the diagonal part
+		Position current = p.getPosition();
 		int dist = far;
 		while (dist > near)
 		{
@@ -42,22 +50,34 @@ public class MoveTypeLeaperLame extends MoveType {
 			if (!p.getBoard().isFree(current)) return;
 		}
 		//Orthogonal move, no need to diagonal
-		if (near == 0) list.add(new Move(start, current.offset(xdir, ydir)), getMoveMode());
+		if (near == 0)
+		{
+			list.add(new Move(p.getPosition(), current.offset(xdir, ydir)), getMoveMode());
+		}
 		//Vertical slide
 		else if (xdir == 0)
 		{
-			diagonalSlide(p, list, start, current, -1, ydir);
-			diagonalSlide(p, list, start, current, 1, ydir);
+			diagonalSlide(p, list, current, -1, ydir);
+			diagonalSlide(p, list, current, 1, ydir);
 		}
 		//Horizontal slide
 		else
 		{
-			diagonalSlide(p, list, start, current, xdir, -1);
-			diagonalSlide(p, list, start, current, xdir, 1);
+			diagonalSlide(p, list, current, xdir, -1);
+			diagonalSlide(p, list, current, xdir, 1);
 		}
 	}
 	
-	private void diagonalSlide(Piece p, IMoveList list, Position start, Position current, int xdir, int ydir)
+	/**
+	 * Does the diagonal slide part of the move.
+	 * 
+	 * @param p Piece that is moving
+	 * @param list IMoveList to add moves once we get there
+	 * @param current current Position of the move
+	 * @param xdir direction of the x movement, must be -1 or 1
+	 * @param ydir direction of the y movement, must be -1 or 1
+	 */
+	private void diagonalSlide(Piece p, IMoveList list, Position current, int xdir, int ydir)
 	{
 		//Slide until we get the final move
 		int dist = near;
@@ -67,12 +87,17 @@ public class MoveTypeLeaperLame extends MoveType {
 			//Slide is blocked
 			if (!p.getBoard().isFree(current)) return;
 		}
-		list.add(new Move(start, current.offset(xdir, ydir)), getMoveMode());
+		list.add(new Move(p.getPosition(), current.offset(xdir, ydir)), getMoveMode());
 	}
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
 		return new MoveTypeLeaperLame(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
+	}
+
+	@Override
+	public String getTypeName() {
+		return "LeaperLame";
 	}
 
 }

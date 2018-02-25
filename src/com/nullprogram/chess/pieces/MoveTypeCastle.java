@@ -126,4 +126,9 @@ public class MoveTypeCastle extends MoveType {
 		return new MoveTypeCastle();
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Castle";
+	}
+
 }

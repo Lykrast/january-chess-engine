@@ -49,4 +49,9 @@ public class MoveTypeLocust extends MoveType {
 		return new MoveTypeLocust();
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Locust";
+	}
+
 }

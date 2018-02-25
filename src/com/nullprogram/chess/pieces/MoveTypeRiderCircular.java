@@ -73,4 +73,9 @@ public class MoveTypeRiderCircular extends MoveType {
 		return new MoveTypeRiderCircular(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
+	@Override
+	public String getTypeName() {
+		return "RiderCircular";
+	}
+
 }

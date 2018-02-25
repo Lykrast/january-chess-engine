@@ -39,4 +39,9 @@ public class MoveTypeLeaper extends MoveType {
 		return new MoveTypeLeaper(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Leaper";
+	}
+
 }

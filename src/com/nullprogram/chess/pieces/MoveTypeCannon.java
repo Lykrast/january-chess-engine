@@ -56,4 +56,9 @@ public class MoveTypeCannon extends MoveType {
 		return new MoveTypeCannon();
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Cannon";
+	}
+
 }

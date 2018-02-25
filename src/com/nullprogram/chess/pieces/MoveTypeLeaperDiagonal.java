@@ -34,4 +34,9 @@ public class MoveTypeLeaperDiagonal extends MoveType {
 		return new MoveTypeLeaperDiagonal(mode, JSONUtils.getMandatory(json, "range").getAsInt());
 	}
 
+	@Override
+	public String getTypeName() {
+		return "LeaperDiagonal";
+	}
+
 }

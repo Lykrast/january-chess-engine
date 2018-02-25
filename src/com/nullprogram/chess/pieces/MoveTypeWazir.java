@@ -17,4 +17,9 @@ public class MoveTypeWazir extends MoveTypeLeaperOrthogonal {
 		return new MoveTypeWazir(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Wazir";
+	}
+
 }

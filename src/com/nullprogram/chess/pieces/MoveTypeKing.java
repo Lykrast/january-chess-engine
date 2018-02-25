@@ -32,4 +32,9 @@ public class MoveTypeKing extends MoveType {
 		return new MoveTypeKing(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "King";
+	}
+
 }

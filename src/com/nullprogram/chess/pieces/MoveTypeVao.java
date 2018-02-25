@@ -56,4 +56,9 @@ public class MoveTypeVao extends MoveType {
 		return new MoveTypeVao();
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Vao";
+	}
+
 }

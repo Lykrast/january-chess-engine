@@ -17,4 +17,9 @@ public class MoveTypeKnight extends MoveTypeLeaper {
 		return new MoveTypeKnight(mode);
 	}
 
+	@Override
+	public String getTypeName() {
+		return "Knight";
+	}
+
 }
