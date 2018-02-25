@@ -1,6 +1,6 @@
 {
   "name": "Cannon",
-  "value": 4.0,
+  "value": 3.0,
   "moves": [
     {
 		"type": "Cannon"

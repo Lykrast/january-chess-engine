@@ -1,0 +1,11 @@
+{
+  "name": "Horse",
+  "value": 2.5,
+  "moves": [
+    {
+		"type": "LeaperLame",
+		"near": 1,
+		"far": 2
+	}
+  ]
+}
