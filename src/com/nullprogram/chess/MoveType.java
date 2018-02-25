@@ -52,12 +52,14 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer("Rook", new MoveTypeRook(MoveMode.MOVE_CAPTURE));
     	MoveTypeDeserializer.registerDeserializer("Bishop", new MoveTypeBishop(MoveMode.MOVE_CAPTURE));
     	
+    	//Particular
     	MoveTypeDeserializer.registerDeserializer("Cannon", new MoveTypeCannon());
     	MoveTypeDeserializer.registerDeserializer("Vao", new MoveTypeVao());
     	MoveTypeDeserializer.registerDeserializer("Grasshopper", new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE));
     	MoveTypeDeserializer.registerDeserializer("Locust", new MoveTypeLocust());
     	MoveTypeDeserializer.registerDeserializer("Edgehog", new MoveTypeEdgehog(MoveMode.MOVE_CAPTURE));
     	MoveTypeDeserializer.registerDeserializer("BishopReflecting", new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer("Advancer", new MoveTypeAdvancer());
     	
     	//Very specifics
     	MoveTypeDeserializer.registerDeserializer("Pawn", new MoveTypePawn(1));

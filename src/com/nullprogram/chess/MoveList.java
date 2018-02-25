@@ -180,6 +180,22 @@ public class MoveList implements Iterable<Move>, Serializable, IMoveList {
         return false;
     }
 
+
+    /**
+     * Return true if this list contains a move that will capture the given position.
+     *
+     * @param pos destination position
+     * @return    true if destination is present in list
+     */
+    public final boolean capturesPos(final Position pos) {
+        for (Move move : this) {
+            if (move.captures(pos)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Get the move containing the destination.
      *

@@ -1,0 +1,9 @@
+{
+  "name": "Advancer",
+  "value": 8.0,
+  "moves": [
+    {
+		"type": "Advancer"
+	}
+  ]
+}

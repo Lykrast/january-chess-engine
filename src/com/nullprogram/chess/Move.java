@@ -191,6 +191,27 @@ public final class Move implements Serializable {
     public Piece.Side getReplacementSide() {
         return replacementSide;
     }
+    
+    /**
+     * Check if that moves captures the given position at some point.
+     * 
+     * @param pos position to check
+     * @return true if the move captures the position somewhere in the sequence
+     */
+    public boolean captures(Position pos) {
+    	//New piece
+    	if (origin == null) return false;
+    	
+    	//Capture without movement
+    	if (destination == null) {
+    		if (pos.equals(origin)) return true;
+    	}
+    	//Replacement
+    	else if (pos.equals(destination)) return true;
+    	
+    	//Recursive check
+    	return next == null ? false : next.captures(pos);
+    }
 
     @Override
     public String toString() {

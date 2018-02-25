@@ -72,7 +72,7 @@ public class StandardBoard extends Board {
                 Piece p = getPiece(new Position(x, y));
                 if ((p != null) &&
                     (p.getSide() == attacker) &&
-                    p.getMoves(false).containsDest(kingPos)) {
+                    p.getMoves(false).capturesPos(kingPos)) {
 
                     return true;
                 }
