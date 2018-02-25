@@ -95,6 +95,7 @@ public class BoardPanel extends JComponent
 
     /** Last move highlight color. */
     static final Color LAST = new Color(0x00, 0x7F, 0xFF);
+    static final Color LAST_CAPTURE = new Color(0xFF, 0x00, 0x00);
 
     /** Minimum size of a tile, in pixels. */
     static final int MIN_SIZE = 25;
@@ -242,6 +243,20 @@ public class BoardPanel extends JComponent
             g.setColor(LAST);
             highlight(g, last.getOrigin());
             highlight(g, last.getDest());
+            
+            //Highlight unusual captures
+            g.setColor(LAST_CAPTURE);
+            Move current = last;
+            while (current.getNext() != null)
+            {
+            	current = current.getNext();
+            	Position p = current.getCaptureDest();
+            	if (current.getCaptured() != null
+            			&& p != null
+            			&& !last.getOrigin().equals(p)
+            			&& !last.getDest().equals(p))
+            		highlight(g, current.getCaptureDest());
+            }
         }
 
         /* Draw selected square */

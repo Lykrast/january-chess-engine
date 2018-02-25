@@ -137,6 +137,17 @@ public final class Move implements Serializable {
     public Position getDest() {
         return destination;
     }
+    
+    /**
+     * Get the position where a capture could have happened.
+     * 
+     * @return position where a piece could have been captured
+     */
+    public Position getCaptureDest() {
+    	if (origin == null) return null;
+    	if (destination == null) return origin;
+    	return destination;
+    }
 
     /**
      * Set the piece that was captured by this move.
