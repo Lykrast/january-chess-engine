@@ -8,7 +8,7 @@
 		"moves": [
 			{
 				"type": "Pawn",
-				"initialstep": 1
+				"initialstep": 5
 			}
 		]
 	}

@@ -1,0 +1,12 @@
+{
+  "name": "Great Alfil",
+  "value": 4.0,
+  "moves": [
+    {
+		"type": "King"
+	},
+	{
+		"type": "Alfil"
+	}
+  ]
+}

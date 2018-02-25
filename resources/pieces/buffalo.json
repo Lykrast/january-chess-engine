@@ -1,0 +1,19 @@
+{
+  "name": "Buffalo",
+  "value": 8.0,
+  "moves": [
+	{
+		"type": "Knight"
+	},
+    {
+		"type": "Leaper",
+		"near": 1,
+		"far": 3
+	},
+    {
+		"type": "Leaper",
+		"near": 2,
+		"far": 3
+	}
+  ]
+}

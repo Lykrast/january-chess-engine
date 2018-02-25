@@ -14,11 +14,11 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypePawn extends MoveType {
 	//TODO: cleanup and make more generic
-	private boolean doubleStep;
+	private int initialStep;
 
-	public MoveTypePawn(boolean doubleStep) {
+	public MoveTypePawn(int initialStep) {
 		super(MoveMode.MOVE_CAPTURE);
-		this.doubleStep = doubleStep;
+		this.initialStep = initialStep;
 	}
 
 	@Override
@@ -28,40 +28,49 @@ public class MoveTypePawn extends MoveType {
         int dir = direction(p);
         Position dest = pos.offset(0, 1 * dir);
         Move first = new Move(pos, dest);
-        if (list.addMove(first) && doubleStep && !p.moved()) {
-            list.addMove(new Move(pos, pos.offset(0, 2 * dir)));
+        if (list.addMove(first) && initialStep > 0 && !p.moved()) {
+        	//initial steps
+        	for (int i=0; i<initialStep; i++)
+        	{
+                if (!list.addMove(new Move(pos, pos.offset(0, (i+2) * dir)))) break;
+        	}
         }
         Move captureLeft = new Move(pos, pos.offset(-1, 1 * dir));
         list.addCaptureOnly(captureLeft);
         Move captureRight = new Move(pos, pos.offset(1, 1 * dir));
         list.addCaptureOnly(captureRight);
 
-        if (doubleStep)
+        if (initialStep > 0)
         {
             /* check for en passant */
             Move last = board.last();
             if (last != null) {
-                Position left = pos.offset(-1, 0);
-                Position right = pos.offset(1, 0);
                 Position lOrigin = last.getOrigin();
                 Position lDest = last.getDest();
-                if (left.equals(lDest) &&
-                    (lOrigin.getX() == lDest.getX()) &&
-                    (lOrigin.getY() == lDest.getY() + dir * 2) &&
-                    (board.getPiece(left).getModel().getName().equals("Pawn"))) {
-
-                    /* en passant to the left */
-                    Move passant = new Move(pos, pos.offset(-1, dir));
-                    passant.setNext(new Move(left, null));
-                    list.addMove(passant);
-                } else if (right.equals(lDest) &&
-                           (lOrigin.getX() == lDest.getX()) &&
-                           (lOrigin.getY() == lDest.getY() + dir * 2) &&
-                           (board.getPiece(right).getModel().getName().equals("Pawn"))) {
-
-                    /* en passant to the right */
-                    Move passant = new Move(pos, pos.offset(1, dir));
-                    passant.setNext(new Move(right, null));
+                
+                //Conditions on last move:
+                // Must be made in the same file as it started
+                // Must be exactly 1 file away
+                // Must have slipped through the attacking range
+                // Must not have been initially capturable
+                // Must be within the range of the initial step specified here
+                // Must have been made by a Pawn
+                //TODO: not hardcode that name
+                if (lOrigin.getX() == lDest.getX()
+                		&& Math.abs(lDest.getX() - pos.getX()) == 1
+                		&& passedThrough(dir, pos, lDest)
+                		&& (lOrigin.getY() - pos.getY()) != dir
+                		&& inInitialRange(dir, lOrigin, lDest)
+                		&& board.getPiece(lDest).getModel().getName().equals("Pawn"))
+                {
+                	Position target;
+                	//To the left
+                	if (lDest.getX() < pos.getX()) target = pos.offset(-1, dir);
+                	//To the right
+                	else target = pos.offset(1, dir);
+                	
+                    Move passant = new Move(pos, target);
+                    passant.setNext(new Move(lDest, null));
                     list.addMove(passant);
                 }
             }
@@ -81,14 +90,41 @@ public class MoveTypePawn extends MoveType {
             return -1;
         }
     }
+    
+    /**
+     * Determine if the enemy's position is out of reach forever.
+     * 
+     * @param dir direction of movement
+     * @param self position of the pawn moving
+     * @param enemy position to check
+     * @return true if the enemy passed through capture and cannot be reached by going forward
+     */
+    private boolean passedThrough(int dir, Position self, Position enemy) {
+    	if (dir > 0) return self.getY() >= enemy.getY();
+    	else return self.getY() <= enemy.getY();
+    }
+    
+    /**
+     * Determine if the move's y movement matches an initial step.
+     * 
+     * @param dir direction of movement
+     * @param start start position of the move
+     * @param end end position of the move
+     * @return true if the move's y movement matches an initial step
+     */
+    private boolean inInitialRange(int dir, Position start, Position end) {
+		int yS = start.getY(), yE = end.getY();
+    	if (dir > 0) return yS >= yE + dir * 2 && yS <= yE + dir * (initialStep + 1);
+    	else return yS <= yE + dir * 2 && yS >= yE + dir * (initialStep + 1);
+    }
 
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		JsonElement jStep = json.get("doublestep");
-		boolean step = false;
+		JsonElement jStep = json.get("initialstep");
+		int step = 1;
 		if (jStep != null)
 		{
-			step = jStep.getAsBoolean();
+			step = jStep.getAsInt();
 		}
 		return new MoveTypePawn(step);
 	}

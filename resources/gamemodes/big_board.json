@@ -1,0 +1,122 @@
+{
+  "name": "Chess on a Really Big Board",
+  "width": 16,
+  "height": 16,
+  "promotions": ["rook", "knight", "kirin", "great_alfil", "bishop", "rose", "archbishop", "queen", "chancellor", "buffalo"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 16,"y": 1,"side": "white","piece": "pawn_bigboard"	
+	},
+    {
+		"x": 0,"xlen": 16,"y": 14,"side": "black","piece": "pawn_bigboard"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 15,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 15,"side": "black","piece": "rook"
+	},
+    {
+		"x": 15,"y": 15,"side": "black","piece": "rook"
+	},
+	
+    {
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+    {
+		"x": 14,"y": 0,"side": "white","piece": "knight"
+	},
+    {
+		"x": 1,"y": 15,"side": "black","piece": "knight"
+	},
+    {
+		"x": 14,"y": 15,"side": "black","piece": "knight"
+	},
+	
+    {
+		"x": 2,"y": 0,"side": "white","piece": "kirin"
+	},
+    {
+		"x": 13,"y": 0,"side": "white","piece": "kirin"
+	},
+    {
+		"x": 2,"y": 15,"side": "black","piece": "kirin"
+	},
+    {
+		"x": 13,"y": 15,"side": "black","piece": "kirin"
+	},
+	
+    {
+		"x": 3,"y": 0,"side": "white","piece": "great_alfil"
+	},
+    {
+		"x": 12,"y": 0,"side": "white","piece": "great_alfil"
+	},
+    {
+		"x": 3,"y": 15,"side": "black","piece": "great_alfil"
+	},
+    {
+		"x": 12,"y": 15,"side": "black","piece": "great_alfil"
+	},
+	
+    {
+		"x": 4,"y": 0,"side": "white","piece": "bishop"
+	},
+    {
+		"x": 11,"y": 0,"side": "white","piece": "bishop"
+	},
+    {
+		"x": 4,"y": 15,"side": "black","piece": "bishop"
+	},
+    {
+		"x": 11,"y": 15,"side": "black","piece": "bishop"
+	},
+	
+    {
+		"x": 5,"y": 0,"side": "white","piece": "rose"
+	},
+    {
+		"x": 5,"y": 15,"side": "black","piece": "rose"
+	},
+	
+    {
+		"x": 10,"y": 0,"side": "white","piece": "buffalo"
+	},
+    {
+		"x": 10,"y": 15,"side": "black","piece": "buffalo"
+	},
+	
+    {
+		"x": 6,"y": 0,"side": "white","piece": "archbishop"
+	},
+    {
+		"x": 6,"y": 15,"side": "black","piece": "archbishop"
+	},
+	
+    {
+		"x": 9,"y": 0,"side": "white","piece": "chancellor"
+	},
+    {
+		"x": 9,"y": 15,"side": "black","piece": "chancellor"
+	},
+	
+    {
+		"x": 7,"y": 0,"side": "white","piece": "queen"
+	},
+    {
+		"x": 7,"y": 15,"side": "black","piece": "queen"
+	},
+	
+    {
+		"x": 8,"y": 0,"side": "white","piece": "king"
+	},
+    {
+		"x": 8,"y": 15,"side": "black","piece": "king"
+	}
+	
+  ]
+}
