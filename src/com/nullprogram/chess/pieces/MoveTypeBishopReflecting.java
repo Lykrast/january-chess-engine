@@ -12,8 +12,8 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeBishopReflecting extends MoveType {
 
-	public MoveTypeBishopReflecting(MoveMode mode) {
-		super(mode);
+	public MoveTypeBishopReflecting(MoveMode mode, DirectionMode directionMode) {
+		super(mode, directionMode);
 	}
 
 	@Override
@@ -23,6 +23,7 @@ public class MoveTypeBishopReflecting extends MoveType {
         
         for (Position dir : Direction.DIAGONAL_POS)
         {
+        	if (!dir.match(getDirectionMode(), p)) continue;
         	//Using ints instead of positions because of the bounces
         	int x = dir.getX(), y = dir.getY();
         	Position pos = start.offset(x, y);
@@ -42,8 +43,8 @@ public class MoveTypeBishopReflecting extends MoveType {
 	}
 
 	@Override
-	public MoveType create(JsonObject elem, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeBishopReflecting(mode);
+	public MoveType create(JsonObject elem, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeBishopReflecting(mode, directionMode);
 	}
 
 	@Override

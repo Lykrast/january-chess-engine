@@ -7,14 +7,14 @@ import com.nullprogram.chess.MoveType;
 
 public class MoveTypeDabbaba extends MoveTypeLeaperOrthogonal {
 	
-	public MoveTypeDabbaba(MoveMode mode)
+	public MoveTypeDabbaba(MoveMode mode, DirectionMode directionMode)
 	{
-		super(mode, 2);
+		super(mode, directionMode, 2);
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeDabbaba(mode);
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeDabbaba(mode, directionMode);
 	}
 
 	@Override

@@ -12,8 +12,8 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeGrasshopper extends MoveType {
 	//TODO make possible in rook/bishop style
-	public MoveTypeGrasshopper(MoveMode mode) {
-		super(mode);
+	public MoveTypeGrasshopper(MoveMode mode, DirectionMode directionMode) {
+		super(mode, directionMode);
 	}
 
 	@Override
@@ -21,6 +21,7 @@ public class MoveTypeGrasshopper extends MoveType {
 		Position home = p.getPosition();
         for (Position dir : Direction.ALL_POS)
         {
+        	if (!dir.match(getDirectionMode(), p)) continue;
         	Position pos = home.offset(dir);
         	while (p.getBoard().inRange(pos))
         	{
@@ -38,8 +39,8 @@ public class MoveTypeGrasshopper extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeGrasshopper(mode);
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeGrasshopper(mode, directionMode);
 	}
 
 	@Override

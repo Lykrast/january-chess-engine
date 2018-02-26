@@ -12,8 +12,8 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeAdvancer extends MoveType {
 	//TODO make possible in rook/bishop style
-	public MoveTypeAdvancer() {
-		super(MoveMode.MOVE_CAPTURE);
+	public MoveTypeAdvancer(DirectionMode directionMode) {
+		super(MoveMode.MOVE_CAPTURE, directionMode);
 	}
 
 	@Override
@@ -22,6 +22,7 @@ public class MoveTypeAdvancer extends MoveType {
         
         for (Position dir : Direction.ALL_POS)
         {
+        	if (!dir.match(getDirectionMode(), p)) continue;
         	Position pos = start.offset(dir);
         	Move move = new Move(start, pos);
         	while (list.addMove(move) && p.getBoard().isFree(pos))
@@ -42,8 +43,8 @@ public class MoveTypeAdvancer extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeAdvancer();
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeAdvancer(directionMode);
 	}
 
 	@Override

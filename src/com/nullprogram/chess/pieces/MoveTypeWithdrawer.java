@@ -12,8 +12,8 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeWithdrawer extends MoveType {
 	//TODO make possible in rook/bishop style
-	public MoveTypeWithdrawer() {
-		super(MoveMode.MOVE_CAPTURE);
+	public MoveTypeWithdrawer(DirectionMode directionMode) {
+		super(MoveMode.MOVE_CAPTURE, directionMode);
 	}
 
 	@Override
@@ -22,6 +22,7 @@ public class MoveTypeWithdrawer extends MoveType {
         
         for (Direction dir : Direction.ALL)
         {
+        	if (!dir.match(getDirectionMode(), p)) continue;
         	Move withdrawal = null;
         	Position withdrew = start.offset(dir.opposite().getPosition());
         	//Check if there's an enemy piece to withdraw
@@ -46,8 +47,8 @@ public class MoveTypeWithdrawer extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeWithdrawer();
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeWithdrawer(directionMode);
 	}
 
 	@Override

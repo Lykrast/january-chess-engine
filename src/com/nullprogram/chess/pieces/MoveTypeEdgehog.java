@@ -13,8 +13,8 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeEdgehog extends MoveType {
 	//TODO make more generic
-	public MoveTypeEdgehog(MoveMode mode) {
-		super(mode);
+	public MoveTypeEdgehog(MoveMode mode, DirectionMode directionMode) {
+		super(mode, directionMode);
 	}
 
 	@Override
@@ -27,6 +27,7 @@ public class MoveTypeEdgehog extends MoveType {
         	//On edge, move as normal
             for (Position dir : Direction.ALL_POS)
             {
+            	if (!dir.match(getDirectionMode(), p)) continue;
             	Position pos = start.offset(dir);
             	while (list.add(new Move(start, pos), getMoveMode()) && p.getBoard().isFree(pos))
             	{
@@ -39,6 +40,7 @@ public class MoveTypeEdgehog extends MoveType {
         	//Not on edge, must end on an edge
             for (Position dir : Direction.ALL_POS)
             {
+            	if (!dir.match(getDirectionMode(), p)) continue;
             	Position pos = start.offset(dir);
             	//Handling if right next to the edge
         		if (onEdge(pos, b))
@@ -67,8 +69,8 @@ public class MoveTypeEdgehog extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeEdgehog(mode);
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeEdgehog(mode, directionMode);
 	}
 
 	@Override

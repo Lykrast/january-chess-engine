@@ -19,6 +19,7 @@
 		"moves": [
 			{
 				"type": "Rook",
+				"direction": "FORWARD",
 				"mode": "capture"
 			}
 		]

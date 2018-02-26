@@ -16,7 +16,7 @@ public class MoveTypePawn extends MoveType {
 	private int initialStep;
 
 	public MoveTypePawn(int initialStep) {
-		super(MoveMode.MOVE_CAPTURE);
+		super(MoveMode.MOVE_CAPTURE, DirectionMode.FORWARD);
 		this.initialStep = initialStep;
 	}
 
@@ -114,7 +114,7 @@ public class MoveTypePawn extends MoveType {
     }
 
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
 		JsonElement jStep = json.get("initialstep");
 		int step = 1;
 		if (jStep != null)

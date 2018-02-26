@@ -1,5 +1,8 @@
 package com.nullprogram.chess;
 
+import com.nullprogram.chess.MoveType.DirectionMode;
+import com.nullprogram.chess.Piece.Side;
+
 public enum Direction {
 	UP(new Position(0,1)),
 	UP_RIGHT(new Position(1,1)),
@@ -36,5 +39,48 @@ public enum Direction {
 	public Direction opposite() {
 		return ALL[(ordinal() + 4) % 8];
 	}
+
+    /**
+     * Check if this Direction goes in the specified direction (if used as an offset).
+     * 
+     * @param mode DirectionMode to check against
+     * @param piece Piece to check for, for the forward and back directions
+     * @return true if this goes according to the mode, false otherwise
+     */
+    public boolean match(DirectionMode mode,  Piece piece) {
+    	return match(mode, piece.getSide());
+    }
+    
+    /**
+     * Check if this Direction goes in the specified direction (if used as an offset).
+     * 
+     * @param mode DirectionMode to check against
+     * @param side Side to check for, for the forward and back directions
+     * @return true if this goes according to the mode, false otherwise
+     */
+    public boolean match(DirectionMode mode,  Side side) {
+    	switch(this)
+    	{
+    	case UP:
+    		if (side == Side.WHITE) return mode.forward();
+    		else return mode.back();
+    	case DOWN:
+    		if (side == Side.WHITE) return mode.back();
+    		else return mode.forward();
+		case LEFT:
+			return mode.left();
+		case RIGHT:
+			return mode.right();
+		case DOWN_LEFT:
+			return DOWN.match(mode, side) || mode.left();
+		case DOWN_RIGHT:
+			return DOWN.match(mode, side) || mode.right();
+		case UP_LEFT:
+			return UP.match(mode, side) || mode.left();
+		case UP_RIGHT:
+			return UP.match(mode, side) || mode.right();
+    	}
+    	return false;
+    }
 
 }

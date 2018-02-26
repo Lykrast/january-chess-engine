@@ -12,8 +12,8 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeRook extends MoveType {
 
-	public MoveTypeRook(MoveMode mode) {
-		super(mode);
+	public MoveTypeRook(MoveMode mode, DirectionMode directionMode) {
+		super(mode, directionMode);
 	}
 
 	@Override
@@ -22,6 +22,7 @@ public class MoveTypeRook extends MoveType {
         
         for (Position dir : Direction.ORTHOGONAL_POS)
         {
+        	if (!dir.match(getDirectionMode(), p)) continue;
         	Position pos = start.offset(dir);
         	while (list.add(new Move(start, pos), getMoveMode()) && p.getBoard().isFree(pos))
         	{
@@ -33,8 +34,8 @@ public class MoveTypeRook extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeRook(mode);
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeRook(mode, directionMode);
 	}
 
 	@Override

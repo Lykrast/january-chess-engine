@@ -7,14 +7,14 @@ import com.nullprogram.chess.MoveType;
 
 public class MoveTypeWazir extends MoveTypeLeaperOrthogonal {
 	
-	public MoveTypeWazir(MoveMode mode)
+	public MoveTypeWazir(MoveMode mode, DirectionMode directionMode)
 	{
-		super(mode, 1);
+		super(mode, directionMode, 1);
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeWazir(mode);
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeWazir(mode, directionMode);
 	}
 
 	@Override

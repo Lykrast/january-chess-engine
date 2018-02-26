@@ -19,6 +19,7 @@ import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.MoveType;
+import com.nullprogram.chess.MoveType.DirectionMode;
 import com.nullprogram.chess.MoveType.MoveMode;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
@@ -292,7 +293,8 @@ public class Minimax implements Player {
                kingInsafetyValue(b, side);
     }
     
-    private MoveType safetyRook = new MoveTypeRook(MoveMode.MOVE_CAPTURE), safetyBishop = new MoveTypeBishop(MoveMode.MOVE_CAPTURE);
+    private MoveType safetyRook = new MoveTypeRook(MoveMode.MOVE_CAPTURE, DirectionMode.ALL), 
+    		safetyBishop = new MoveTypeBishop(MoveMode.MOVE_CAPTURE, DirectionMode.ALL);
 
     /**
      * Helper function: determine safety of a single king.

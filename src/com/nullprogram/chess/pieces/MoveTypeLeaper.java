@@ -13,9 +13,9 @@ import com.nullprogram.chess.resources.JSONUtils;
 public class MoveTypeLeaper extends MoveType {
 	private int near, far;
 	
-	public MoveTypeLeaper(MoveMode mode, int near, int far)
+	public MoveTypeLeaper(MoveMode mode, DirectionMode directionMode, int near, int far)
 	{
-		super(mode);
+		super(mode, directionMode);
 		this.near = near;
 		this.far = far;
 	}
@@ -23,20 +23,35 @@ public class MoveTypeLeaper extends MoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
         Position pos = p.getPosition();
-        list.add(new Move(pos, pos.offset(near,  far)), getMoveMode());
-        list.add(new Move(pos, pos.offset(far,  near)), getMoveMode());
-        list.add(new Move(pos, pos.offset(-far,  near)), getMoveMode());
-        list.add(new Move(pos, pos.offset(-far, -near)), getMoveMode());
-        list.add(new Move(pos, pos.offset(far, -near)), getMoveMode());
-        list.add(new Move(pos, pos.offset(near, -far)), getMoveMode());
-        list.add(new Move(pos, pos.offset(-near, -far)), getMoveMode());
-        list.add(new Move(pos, pos.offset(-near,  far)), getMoveMode());
+        int forward = p.getSide().value();
+        DirectionMode dir = getDirectionMode();
+        
+        if (dir.forward() || dir.right())
+        {
+        	list.add(new Move(pos, pos.offset(near, forward * far)), getMoveMode());
+            list.add(new Move(pos, pos.offset(far, forward * near)), getMoveMode());
+        }
+        if (dir.forward() || dir.left())
+        {
+            list.add(new Move(pos, pos.offset(-far, forward * near)), getMoveMode());
+            list.add(new Move(pos, pos.offset(-near, forward * far)), getMoveMode());
+        }
+        if (dir.back() || dir.right())
+        {
+            list.add(new Move(pos, pos.offset(far, -forward * near)), getMoveMode());
+            list.add(new Move(pos, pos.offset(near, -forward * far)), getMoveMode());
+        }
+        if (dir.back() || dir.left())
+        {
+            list.add(new Move(pos, pos.offset(-far, -forward * near)), getMoveMode());
+            list.add(new Move(pos, pos.offset(-near, -forward * far)), getMoveMode());
+        }
         return list;
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeLeaper(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeLeaper(mode, directionMode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
 	@Override

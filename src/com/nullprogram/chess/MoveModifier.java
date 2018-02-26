@@ -18,7 +18,7 @@ public abstract class MoveModifier extends MoveType {
     private MoveType[] moves;
 
 	public MoveModifier(MoveType[] moves) {
-		super(MoveMode.MOVE_CAPTURE);
+		super(MoveMode.MOVE_CAPTURE, DirectionMode.ALL);
 		this.moves = moves;
 	}
 	
@@ -38,7 +38,7 @@ public abstract class MoveModifier extends MoveType {
 	}
 
 	@Override
-	public final MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
+	public final MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
 		JsonArray movesJson = JSONUtils.getMandatory(json, "moves").getAsJsonArray();
 		List<MoveType> movesList = new ArrayList<>();
 		for (JsonElement elem : movesJson)

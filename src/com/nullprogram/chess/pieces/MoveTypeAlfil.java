@@ -7,14 +7,14 @@ import com.nullprogram.chess.MoveType;
 
 public class MoveTypeAlfil extends MoveTypeLeaperDiagonal {
 	
-	public MoveTypeAlfil(MoveMode mode)
+	public MoveTypeAlfil(MoveMode mode, DirectionMode directionMode)
 	{
-		super(mode, 2);
+		super(mode, directionMode, 2);
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeAlfil(mode);
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeAlfil(mode, directionMode);
 	}
 
 	@Override

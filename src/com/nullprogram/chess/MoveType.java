@@ -1,19 +1,57 @@
 package com.nullprogram.chess;
 
-import com.nullprogram.chess.pieces.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.nullprogram.chess.pieces.MoveModifierCaptureNonRoyal;
+import com.nullprogram.chess.pieces.MoveModifierCaptureRoyal;
+import com.nullprogram.chess.pieces.MoveModifierCoordinator;
+import com.nullprogram.chess.pieces.MoveModifierPromotion;
+import com.nullprogram.chess.pieces.MoveModifierPromotionSingle;
+import com.nullprogram.chess.pieces.MoveModifierRestriction;
+import com.nullprogram.chess.pieces.MoveTypeAdvancer;
+import com.nullprogram.chess.pieces.MoveTypeAlfil;
+import com.nullprogram.chess.pieces.MoveTypeBishop;
+import com.nullprogram.chess.pieces.MoveTypeBishopReflecting;
+import com.nullprogram.chess.pieces.MoveTypeCannon;
+import com.nullprogram.chess.pieces.MoveTypeCastle;
+import com.nullprogram.chess.pieces.MoveTypeDabbaba;
+import com.nullprogram.chess.pieces.MoveTypeEdgehog;
+import com.nullprogram.chess.pieces.MoveTypeFerz;
+import com.nullprogram.chess.pieces.MoveTypeGrasshopper;
+import com.nullprogram.chess.pieces.MoveTypeKing;
+import com.nullprogram.chess.pieces.MoveTypeKnight;
+import com.nullprogram.chess.pieces.MoveTypeLeaper;
+import com.nullprogram.chess.pieces.MoveTypeLeaperDiagonal;
+import com.nullprogram.chess.pieces.MoveTypeLeaperLame;
+import com.nullprogram.chess.pieces.MoveTypeLeaperOrthogonal;
+import com.nullprogram.chess.pieces.MoveTypeLocust;
+import com.nullprogram.chess.pieces.MoveTypePawn;
+import com.nullprogram.chess.pieces.MoveTypeRider;
+import com.nullprogram.chess.pieces.MoveTypeRiderCircular;
+import com.nullprogram.chess.pieces.MoveTypeRook;
+import com.nullprogram.chess.pieces.MoveTypeVao;
+import com.nullprogram.chess.pieces.MoveTypeWazir;
+import com.nullprogram.chess.pieces.MoveTypeWithdrawer;
 import com.nullprogram.chess.resources.IMoveTypeDeserializer;
 import com.nullprogram.chess.resources.MoveTypeDeserializer;
 
 public abstract class MoveType implements IMoveTypeDeserializer {
-	private MoveMode mode;
+	private MoveMode moveMode;
+	private DirectionMode directionMode;
 	
-	protected MoveType(MoveMode mode)
+	protected MoveType(MoveMode moveMode, DirectionMode directionMode)
 	{
-		this.mode = mode;
+		this.moveMode = moveMode;
+		this.directionMode = directionMode;
 	}
 	
 	protected MoveMode getMoveMode() {
-		return mode;
+		return moveMode;
+	}
+	
+	protected DirectionMode getDirectionMode() {
+		return directionMode;
 	}
 
     /**
@@ -31,11 +69,11 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     public static void registerDeserializers()
     {
     	//Generics
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaper(MoveMode.MOVE_CAPTURE, 0,0));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperLame(MoveMode.MOVE_CAPTURE, 0,0));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperOrthogonal(MoveMode.MOVE_CAPTURE, 0));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, 0));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRider(MoveMode.MOVE_CAPTURE, 0,0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaper(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0,0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperLame(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0,0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperOrthogonal(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRider(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0,0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderCircular(MoveMode.MOVE_CAPTURE, 0,0));
     	
     	//Modifiers
@@ -47,29 +85,33 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierCoordinator(null));
     	
     	//Presets
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeWazir(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeFerz(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeDabbaba(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeAlfil(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeWazir(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeFerz(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeDabbaba(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeAlfil(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
     	
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeKnight(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeKing(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRook(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishop(MoveMode.MOVE_CAPTURE));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeKnight(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeKing(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRook(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishop(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
     	
     	//Specialized
     	MoveTypeDeserializer.registerDeserializer(new MoveTypePawn(1));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeCastle());
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeCannon());
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeVao());
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLocust());
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeEdgehog(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeAdvancer());
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeWithdrawer());
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeCannon(DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeVao(DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLocust(DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeEdgehog(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeAdvancer(DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeWithdrawer(DirectionMode.ALL));
     }
     
+    /**
+     * Tell if the move can capture and move without capturing or not.
+     * @author Lykrast
+     */
     public static enum MoveMode {
     	MOVE_CAPTURE,
     	MOVE,
@@ -101,6 +143,87 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     		
     		return null;
     	}
+    }
+    
+    /**
+     * A simple object to tell what direction the move can go towards.
+     * @author Lykrast
+     */
+    public static class DirectionMode {
+    	private boolean forward, back, left, right;
+    	private static final String STR_ALL = "ALL", 
+    			STR_HORIZONTAL = "HORIZONTAL",
+    			STR_VERTICAL = "VERTICAL",
+    			STR_FORWARD = "FORWARD", 
+    	    	STR_BACK = "BACK", 
+    	    	STR_LEFT = "LEFT", 
+    	    	STR_RIGHT = "RIGHT";
+    	//A few constants to save up a lil bit of memory when common ones are used
+    	//Probably not worth it
+    	public static final DirectionMode ALL = new DirectionMode(true, true, true, true),
+    			HORIZONTAL = new DirectionMode(false, false, true, true), 
+    			VERTICAL = new DirectionMode(true, true, false, false), 
+    			FORWARD = new DirectionMode(true, false, false, false), 
+    			BACK = new DirectionMode(true, false, false, false), 
+    			LEFT = new DirectionMode(true, false, false, false),
+    			RIGHT = new DirectionMode(true, false, false, false);
+    	private static final String ERROR = "Invalid direction : %s - must be " + 
+				STR_ALL+", "+STR_HORIZONTAL+", "+STR_VERTICAL+", "+STR_FORWARD+", "+STR_BACK+", "+STR_LEFT+" or "+STR_RIGHT;
+
+		public DirectionMode(boolean forward, boolean back, boolean left, boolean right) {
+			this.forward = forward;
+			this.back = back;
+			this.left = left;
+			this.right = right;
+		}
+		
+		public boolean forward() { return forward; }
+		public boolean back() { return back; }
+		public boolean left() { return left; }
+		public boolean right() { return right; }
+		
+		public static DirectionMode fromJson(JsonElement json) throws JsonParseException
+		{
+			if (json == null) return ALL;
+			
+			//Single direction
+			if (json.isJsonPrimitive())
+			{
+				String sJson = json.getAsString();
+				if (sJson.equals(STR_ALL)) return ALL;
+				else if (sJson.equals(STR_HORIZONTAL)) return HORIZONTAL;
+				else if (sJson.equals(STR_VERTICAL)) return VERTICAL;
+				else if (sJson.equals(STR_FORWARD)) return FORWARD;
+				else if (sJson.equals(STR_BACK)) return BACK;
+				else if (sJson.equals(STR_LEFT)) return LEFT;
+				else if (sJson.equals(STR_RIGHT)) return RIGHT;
+				else throw new JsonParseException(String.format(ERROR, sJson));
+			}
+			
+			//Multiple directions
+			JsonArray array = json.getAsJsonArray();
+			DirectionMode mode = new DirectionMode(false, false, false, false);
+			for (JsonElement e : array)
+			{
+				String sJson = e.getAsString();
+				if (sJson.equals(STR_ALL)) return ALL;
+				else if (sJson.equals(STR_HORIZONTAL)) {
+					mode.left = true;
+					mode.right = true;
+				}
+				else if (sJson.equals(STR_VERTICAL)) {
+					mode.forward = true;
+					mode.back = true;
+				}
+				else if (sJson.equals(STR_FORWARD)) mode.forward = true;
+				else if (sJson.equals(STR_BACK)) mode.back = true;
+				else if (sJson.equals(STR_LEFT)) mode.left = true;
+				else if (sJson.equals(STR_RIGHT)) mode.right = true;
+				else throw new JsonParseException(String.format(ERROR, sJson));
+			}
+			
+			return mode;
+		}
     }
 
 }

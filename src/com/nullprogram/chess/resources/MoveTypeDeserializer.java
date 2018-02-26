@@ -9,6 +9,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.MoveType;
+import com.nullprogram.chess.MoveType.DirectionMode;
 
 public class MoveTypeDeserializer implements JsonDeserializer<MoveType> {
 	public static final MoveTypeDeserializer INSTANCE = new MoveTypeDeserializer();
@@ -29,7 +30,7 @@ public class MoveTypeDeserializer implements JsonDeserializer<MoveType> {
 			mode = MoveType.MoveMode.fromString(modeJson.getAsString());
 		}
 		
-		return MAP.get(name).create(obj, mode, context);
+		return MAP.get(name).create(obj, mode, DirectionMode.fromJson(obj.get("direction")), context);
 	}
 	
 	public static void registerDeserializer(IMoveTypeDeserializer deserializer)

@@ -16,8 +16,8 @@ public class MoveTypeRider extends MoveType {
 	 */
 	private final Position[] directions;
 
-	public MoveTypeRider(MoveMode mode, int near, int far) {
-		super(mode);
+	public MoveTypeRider(MoveMode mode, DirectionMode directionMode, int near, int far) {
+		super(mode, directionMode);
 		directions = new Position[8];
 		directions[0] = new Position(near, far);
 		directions[1] = new Position(far, near);
@@ -35,6 +35,7 @@ public class MoveTypeRider extends MoveType {
         
         for (Position dir : directions)
         {
+        	if (!dir.match(getDirectionMode(), p)) continue;
         	Position pos = start.offset(dir);
         	while (list.add(new Move(start, pos), getMoveMode()) && p.getBoard().isFree(pos))
         	{
@@ -46,8 +47,8 @@ public class MoveTypeRider extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeRider(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeRider(mode, directionMode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
 	@Override

@@ -12,8 +12,8 @@ import com.nullprogram.chess.Position;
 
 public class MoveTypeVao extends MoveType {
 	//TODO merge with Cannon to use less classes
-	public MoveTypeVao() {
-		super(MoveMode.MOVE_CAPTURE);
+	public MoveTypeVao(DirectionMode directionMode) {
+		super(MoveMode.MOVE_CAPTURE, directionMode);
 	}
 
 	@Override
@@ -21,6 +21,7 @@ public class MoveTypeVao extends MoveType {
 		Position home = p.getPosition();
         for (Position dir : Direction.DIAGONAL_POS)
         {
+        	if (!dir.match(getDirectionMode(), p)) continue;
         	Position pos = home.offset(dir);
         	boolean hurdle = false;
         	while (p.getBoard().inRange(pos))
@@ -56,8 +57,8 @@ public class MoveTypeVao extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeVao();
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeVao(directionMode);
 	}
 
 	@Override

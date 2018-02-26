@@ -2,6 +2,8 @@ package com.nullprogram.chess;
 
 import java.io.Serializable;
 
+import com.nullprogram.chess.MoveType.DirectionMode;
+
 /**
  * Represents a position on a Chess board.
  */
@@ -100,6 +102,35 @@ public final class Position implements Comparable<Position>, Serializable {
             return false;
         }
         return equals((Position) o);
+    }
+
+    /**
+     * Check if this Position goes in the specified direction (if used as an offset).
+     * 
+     * @param mode DirectionMode to check against
+     * @param piece Piece to check for, for the forward and back directions
+     * @return true if this goes according to the mode, false otherwise
+     */
+    public boolean match(DirectionMode mode,  Piece piece) {
+    	return match(mode, piece.getSide());
+    }
+    
+    /**
+     * Check if this Position goes in the specified direction (if used as an offset).
+     * 
+     * @param mode DirectionMode to check against
+     * @param side Side to check for, for the forward and back directions
+     * @return true if this goes according to the mode, false otherwise
+     */
+    public boolean match(DirectionMode mode,  Piece.Side side) {
+    	if (mode.left() && x < 0) return true;
+    	if (mode.right() && x > 0) return true;
+    	
+    	int adjusted = y * side.value();
+    	if (mode.forward() && adjusted > 0) return true;
+    	if (mode.back() && adjusted < 0) return true;
+    	
+    	return false;
     }
 
     /**

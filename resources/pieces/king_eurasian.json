@@ -17,10 +17,12 @@
 		"moves": [
 			{
 				"type": "Bishop",
+				"direction": "FORWARD",
 				"mode": "capture"
 			},
 			{
 				"type": "Rook",
+				"direction": "FORWARD",
 				"mode": "capture"
 			}
 		]

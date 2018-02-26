@@ -17,7 +17,8 @@ public class MoveTypeRiderCircular extends MoveType {
 	private final Position[] directions;
 
 	public MoveTypeRiderCircular(MoveMode mode, int near, int far) {
-		super(mode);
+		//TODO: find an elegant way of implementing directionality
+		super(mode, DirectionMode.ALL);
 		directions = new Position[8];
 		directions[0] = new Position(near, far);
 		directions[1] = new Position(far, near);
@@ -69,7 +70,7 @@ public class MoveTypeRiderCircular extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
 		return new MoveTypeRiderCircular(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 

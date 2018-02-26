@@ -13,19 +13,22 @@ import com.nullprogram.chess.resources.JSONUtils;
 public class MoveTypeLeaperLame extends MoveType {
 	private int near, far;
 	
-	public MoveTypeLeaperLame(MoveMode mode, int near, int far)
+	public MoveTypeLeaperLame(MoveMode mode, DirectionMode directionMode, int near, int far)
 	{
-		super(mode);
+		super(mode, directionMode);
 		this.near = near;
 		this.far = far;
 	}
 
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
-        horizontalSlide(p, list, -1, 0);
-        horizontalSlide(p, list, 1, 0);
-        horizontalSlide(p, list, 0, -1);
-        horizontalSlide(p, list, 0, 1);
+        int forward = p.getSide().value();
+        DirectionMode dir = getDirectionMode();
+        
+        if (dir.left()) horizontalSlide(p, list, -1, 0);
+        if (dir.right()) horizontalSlide(p, list, 1, 0);
+        if (dir.back()) horizontalSlide(p, list, 0, -forward);
+        if (dir.forward()) horizontalSlide(p, list, 0, forward);
         return list;
 	}
 	
@@ -91,8 +94,8 @@ public class MoveTypeLeaperLame extends MoveType {
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeLeaperLame(mode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeLeaperLame(mode, directionMode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
 	@Override

@@ -7,14 +7,14 @@ import com.nullprogram.chess.MoveType;
 
 public class MoveTypeFerz extends MoveTypeLeaperDiagonal {
 	
-	public MoveTypeFerz(MoveMode mode)
+	public MoveTypeFerz(MoveMode mode, DirectionMode directionMode)
 	{
-		super(mode, 1);
+		super(mode, directionMode, 1);
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeFerz(mode);
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeFerz(mode, directionMode);
 	}
 
 	@Override

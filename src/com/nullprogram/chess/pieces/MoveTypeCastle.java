@@ -13,7 +13,7 @@ import com.nullprogram.chess.Position;
 public class MoveTypeCastle extends MoveType {
 
     public MoveTypeCastle() {
-		super(MoveType.MoveMode.MOVE);
+		super(MoveType.MoveMode.MOVE, DirectionMode.HORIZONTAL);
 	}
 
 	/** List of enemy moves (cached). */
@@ -122,7 +122,7 @@ public class MoveTypeCastle extends MoveType {
     }
 
 	@Override
-	public MoveType create(JsonObject elem, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
+	public MoveType create(JsonObject elem, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
 		return new MoveTypeCastle();
 	}
 

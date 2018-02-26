@@ -13,25 +13,28 @@ import com.nullprogram.chess.resources.JSONUtils;
 public class MoveTypeLeaperDiagonal extends MoveType {
 	private int range;
 	
-	public MoveTypeLeaperDiagonal(MoveMode mode, int range)
+	public MoveTypeLeaperDiagonal(MoveMode mode, DirectionMode directionMode, int range)
 	{
-		super(mode);
+		super(mode, directionMode);
 		this.range = range;
 	}
 
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
         Position pos = p.getPosition();
-        list.add(new Move(pos, pos.offset(range,  range)), getMoveMode());
-        list.add(new Move(pos, pos.offset(range,  -range)), getMoveMode());
-        list.add(new Move(pos, pos.offset(-range,  range)), getMoveMode());
-        list.add(new Move(pos, pos.offset(-range,  -range)), getMoveMode());
+        int forward = p.getSide().value();
+        DirectionMode dir = getDirectionMode();
+        
+        if (dir.forward() || dir.right()) list.add(new Move(pos, pos.offset(range, forward * range)), getMoveMode());
+        if (dir.back() || dir.right()) list.add(new Move(pos, pos.offset(range, -forward * range)), getMoveMode());
+        if (dir.forward() || dir.left()) list.add(new Move(pos, pos.offset(-range, forward * range)), getMoveMode());
+        if (dir.back() || dir.left()) list.add(new Move(pos, pos.offset(-range, -forward * range)), getMoveMode());
         return list;
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeLeaperDiagonal(mode, JSONUtils.getMandatory(json, "range").getAsInt());
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeLeaperDiagonal(mode, directionMode, JSONUtils.getMandatory(json, "range").getAsInt());
 	}
 
 	@Override
