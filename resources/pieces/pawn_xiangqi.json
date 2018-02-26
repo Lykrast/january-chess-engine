@@ -1,0 +1,17 @@
+{
+  "name": "Xiangqi Pawn",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "pawn_xiangqi_promoted",
+		"rows": 5,
+		"moves": [
+			{
+				"type": "Wazir",
+				"direction": "FORWARD"
+			}
+		]
+	}
+  ]
+}

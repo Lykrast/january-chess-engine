@@ -1,0 +1,10 @@
+{
+  "name": "Xiangqi Pawn",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "Wazir",
+		"direction": ["FORWARD", "HORIZONTAL"]
+	}
+  ]
+}

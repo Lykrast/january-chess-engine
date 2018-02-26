@@ -1,37 +1,37 @@
 {
-  "name": "Xiangqi (WIP)",
+  "name": "Xiangqi",
   "width": 9,
   "height": 10,
   "pieces": [
 	{
-		"x": 0,"y": 3,"side": "white","piece": "pawn"	
+		"x": 0,"y": 3,"side": "white","piece": "pawn_xiangqi"	
 	},
 	{
-		"x": 2,"y": 3,"side": "white","piece": "pawn"	
+		"x": 2,"y": 3,"side": "white","piece": "pawn_xiangqi"	
 	},
 	{
-		"x": 4,"y": 3,"side": "white","piece": "pawn"	
+		"x": 4,"y": 3,"side": "white","piece": "pawn_xiangqi"	
 	},
 	{
-		"x": 6,"y": 3,"side": "white","piece": "pawn"	
+		"x": 6,"y": 3,"side": "white","piece": "pawn_xiangqi"	
 	},
 	{
-		"x": 8,"y": 3,"side": "white","piece": "pawn"	
+		"x": 8,"y": 3,"side": "white","piece": "pawn_xiangqi"	
 	},
     {
-		"x": 0,"y": 6,"side": "black","piece": "pawn"
+		"x": 0,"y": 6,"side": "black","piece": "pawn_xiangqi"
 	},
     {
-		"x": 2,"y": 6,"side": "black","piece": "pawn"
+		"x": 2,"y": 6,"side": "black","piece": "pawn_xiangqi"
 	},
     {
-		"x": 4,"y": 6,"side": "black","piece": "pawn"
+		"x": 4,"y": 6,"side": "black","piece": "pawn_xiangqi"
 	},
     {
-		"x": 6,"y": 6,"side": "black","piece": "pawn"
+		"x": 6,"y": 6,"side": "black","piece": "pawn_xiangqi"
 	},
     {
-		"x": 8,"y": 6,"side": "black","piece": "pawn"
+		"x": 8,"y": 6,"side": "black","piece": "pawn_xiangqi"
 	},
 	
     {
