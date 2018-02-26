@@ -1,0 +1,88 @@
+{
+  "name": "Wildebeest Chess",
+  "width": 11,
+  "height": 10,
+  "promotions": ["queen", "gnu"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 11,"y": 1,"side": "white","piece": "pawn_triplemove"	
+	},
+    {
+		"x": 0,"xlen": 11,"y": 8,"side": "black","piece": "pawn_triplemove"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 10,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 9,"side": "black","piece": "rook"
+	},
+    {
+		"x": 10,"y": 9,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 9,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 9,"side": "black","piece": "knight"
+	},
+	{
+		"x": 9,"y": 9,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 3,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 7,"y": 9,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 8,"y": 9,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 6,"y": 9,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 5,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 5,"y": 9,"side": "black","piece": "king"
+	},
+	
+	{
+		"x": 6,"y": 0,"side": "white","piece": "gnu"
+	},
+	{
+		"x": 4,"y": 9,"side": "black","piece": "gnu"
+	},
+	
+	{
+		"x": 7,"y": 0,"side": "white","piece": "camel"
+	},
+	{
+		"x": 8,"y": 0,"side": "white","piece": "camel"
+	},
+	{
+		"x": 2,"y": 9,"side": "black","piece": "camel"
+	},
+	{
+		"x": 3,"y": 9,"side": "black","piece": "camel"
+	}
+	
+  ]
+}

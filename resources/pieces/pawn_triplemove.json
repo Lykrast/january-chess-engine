@@ -1,0 +1,16 @@
+{
+  "name": "Pawn",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"rows": 1,
+		"moves": [
+			{
+				"type": "Pawn",
+				"initialstep": 2
+			}
+		]
+	}
+  ]
+}
