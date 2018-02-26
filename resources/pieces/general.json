@@ -1,0 +1,27 @@
+{
+  "name": "General",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "ModRestriction",
+		"xmin": 3,
+		"xmax": 5,
+		"ymax": 3,
+		"moves": [
+			{
+				"type": "Wazir"
+			}
+		]
+	},
+    {
+		"type": "ModCaptureRoyal",
+		"moves": [
+			{
+				"type": "Rook",
+				"mode": "capture"
+			}
+		]
+	}
+  ]
+}

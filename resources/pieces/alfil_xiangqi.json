@@ -1,0 +1,17 @@
+{
+  "name": "Alfil",
+  "value": 1.5,
+  "moves": [
+    {
+		"type": "ModRestriction",
+		"ymax": 4,
+		"moves": [
+			{
+				"type": "LeaperLame",
+				"near": 2,
+				"far": 2
+			}
+		]
+	}
+  ]
+}

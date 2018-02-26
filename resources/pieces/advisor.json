@@ -1,0 +1,17 @@
+{
+  "name": "Advisor",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModRestriction",
+		"xmin": 3,
+		"xmax": 5,
+		"ymax": 3,
+		"moves": [
+			{
+				"type": "Ferz"
+			}
+		]
+	}
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "name": "Xiangqi (WIP)",
+  "width": 9,
+  "height": 10,
+  "pieces": [
+	{
+		"x": 0,"y": 3,"side": "white","piece": "pawn"	
+	},
+	{
+		"x": 2,"y": 3,"side": "white","piece": "pawn"	
+	},
+	{
+		"x": 4,"y": 3,"side": "white","piece": "pawn"	
+	},
+	{
+		"x": 6,"y": 3,"side": "white","piece": "pawn"	
+	},
+	{
+		"x": 8,"y": 3,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"y": 6,"side": "black","piece": "pawn"
+	},
+    {
+		"x": 2,"y": 6,"side": "black","piece": "pawn"
+	},
+    {
+		"x": 4,"y": 6,"side": "black","piece": "pawn"
+	},
+    {
+		"x": 6,"y": 6,"side": "black","piece": "pawn"
+	},
+    {
+		"x": 8,"y": 6,"side": "black","piece": "pawn"
+	},
+	
+    {
+		"x": 1,"y": 2,"side": "white","piece": "cannon"
+	},
+    {
+		"x": 7,"y": 2,"side": "white","piece": "cannon"
+	},
+    {
+		"x": 1,"y": 7,"side": "black","piece": "cannon"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "cannon"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 8,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 9,"side": "black","piece": "rook"
+	},
+    {
+		"x": 8,"y": 9,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "horse"
+	},
+	{
+		"x": 7,"y": 0,"side": "white","piece": "horse"
+	},
+	{
+		"x": 1,"y": 9,"side": "black","piece": "horse"
+	},
+	{
+		"x": 7,"y": 9,"side": "black","piece": "horse"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "alfil_xiangqi"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "alfil_xiangqi"
+	},
+	{
+		"x": 2,"y": 9,"side": "black","piece": "alfil_xiangqi"
+	},
+	{
+		"x": 6,"y": 9,"side": "black","piece": "alfil_xiangqi"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "advisor"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "advisor"
+	},
+	{
+		"x": 3,"y": 9,"side": "black","piece": "advisor"
+	},
+	{
+		"x": 5,"y": 9,"side": "black","piece": "advisor"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "general"
+	},
+	{
+		"x": 4,"y": 9,"side": "black","piece": "general"
+	}
+	
+  ]
+}
