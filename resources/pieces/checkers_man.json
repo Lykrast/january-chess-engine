@@ -1,0 +1,17 @@
+{
+  "name": "Checkers Man",
+  "value": 1.5,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "checkers_king",
+		"rows": 1,
+		"moves": [
+			{
+				"type": "Checkers",
+				"direction": FORWARD
+			}
+		]
+	}
+  ]
+}

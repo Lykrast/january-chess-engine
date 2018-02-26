@@ -332,7 +332,7 @@ public abstract class Board implements Serializable {
         //Board fresh = BoardFactory.create(this.getClass());
     	Board fresh = new StandardBoard(this.getGameMode());
         for (Move move : moves) {
-            fresh.move(new Move(move));
+            fresh.move(move.copy());
         }
         return fresh;
     }

@@ -56,6 +56,7 @@ public final class Move implements Serializable {
      *
      * @param move move to copy
      */
+    @Deprecated
     public Move(final Move move) {
         this(move.getOrigin(), move.getDest());
         captured = move.getCaptured();
@@ -64,6 +65,16 @@ public final class Move implements Serializable {
         if (move.getNext() != null) {
             next = new Move(move.getNext());
         }
+    }
+
+
+    /**
+     * Create a copy of this Move.
+     * 
+     * @return a copy of this Move and all of its following moves in the sequence
+     */
+    public Move copy() {
+    	return new Move(this);
     }
     
     @Override

@@ -3,36 +3,7 @@ package com.nullprogram.chess;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.pieces.MoveModifierCaptureNonRoyal;
-import com.nullprogram.chess.pieces.MoveModifierCaptureRoyal;
-import com.nullprogram.chess.pieces.MoveModifierCoordinator;
-import com.nullprogram.chess.pieces.MoveModifierPromotion;
-import com.nullprogram.chess.pieces.MoveModifierPromotionSingle;
-import com.nullprogram.chess.pieces.MoveModifierRestriction;
-import com.nullprogram.chess.pieces.MoveTypeAdvancer;
-import com.nullprogram.chess.pieces.MoveTypeAlfil;
-import com.nullprogram.chess.pieces.MoveTypeBishop;
-import com.nullprogram.chess.pieces.MoveTypeBishopReflecting;
-import com.nullprogram.chess.pieces.MoveTypeCannon;
-import com.nullprogram.chess.pieces.MoveTypeCastle;
-import com.nullprogram.chess.pieces.MoveTypeDabbaba;
-import com.nullprogram.chess.pieces.MoveTypeEdgehog;
-import com.nullprogram.chess.pieces.MoveTypeFerz;
-import com.nullprogram.chess.pieces.MoveTypeGrasshopper;
-import com.nullprogram.chess.pieces.MoveTypeKing;
-import com.nullprogram.chess.pieces.MoveTypeKnight;
-import com.nullprogram.chess.pieces.MoveTypeLeaper;
-import com.nullprogram.chess.pieces.MoveTypeLeaperDiagonal;
-import com.nullprogram.chess.pieces.MoveTypeLeaperLame;
-import com.nullprogram.chess.pieces.MoveTypeLeaperOrthogonal;
-import com.nullprogram.chess.pieces.MoveTypeLocust;
-import com.nullprogram.chess.pieces.MoveTypePawn;
-import com.nullprogram.chess.pieces.MoveTypeRider;
-import com.nullprogram.chess.pieces.MoveTypeRiderCircular;
-import com.nullprogram.chess.pieces.MoveTypeRook;
-import com.nullprogram.chess.pieces.MoveTypeVao;
-import com.nullprogram.chess.pieces.MoveTypeWazir;
-import com.nullprogram.chess.pieces.MoveTypeWithdrawer;
+import com.nullprogram.chess.pieces.*;
 import com.nullprogram.chess.resources.IMoveTypeDeserializer;
 import com.nullprogram.chess.resources.MoveTypeDeserializer;
 
@@ -106,6 +77,7 @@ public abstract class MoveType implements IMoveTypeDeserializer {
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeAdvancer(DirectionMode.ALL));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeWithdrawer(DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeCheckers(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, true));
     }
     
     /**

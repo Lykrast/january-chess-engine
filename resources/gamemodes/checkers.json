@@ -1,0 +1,81 @@
+{
+  "name": "Checkers (WIP)",
+  "width": 8,
+  "height": 8,
+  "pieces": [
+    {
+		"x": 0,"y": 0,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 2,"y": 0,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 4,"y": 0,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 6,"y": 0,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 1,"y": 7,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 3,"y": 7,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 5,"y": 7,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "checkers_man"
+	},
+	
+    {
+		"x": 1,"y": 1,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 3,"y": 1,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 5,"y": 1,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 7,"y": 1,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 0,"y": 6,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 2,"y": 6,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 4,"y": 6,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 6,"y": 6,"side": "black","piece": "checkers_man"
+	},
+	
+    {
+		"x": 0,"y": 2,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 2,"y": 2,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 4,"y": 2,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 6,"y": 2,"side": "white","piece": "checkers_man"
+	},
+    {
+		"x": 1,"y": 5,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 3,"y": 5,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 5,"y": 5,"side": "black","piece": "checkers_man"
+	},
+    {
+		"x": 7,"y": 5,"side": "black","piece": "checkers_man"
+	}
+  ]
+}
