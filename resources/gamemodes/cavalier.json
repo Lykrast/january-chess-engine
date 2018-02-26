@@ -1,0 +1,68 @@
+{
+  "name": "Cavalier Chess",
+  "width": 8,
+  "height": 8,
+  "promotions": ["chancellor", "nightrider", "archbishop", "queen"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "cavalier"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "cavalier"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "chancellor"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "chancellor"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "chancellor"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "chancellor"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "nightrider"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "nightrider"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "nightrider"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "nightrider"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "archbishop"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "archbishop"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "archbishop"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "archbishop"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "eques_rex"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "eques_rex"
+	}
+	
+  ]
+}

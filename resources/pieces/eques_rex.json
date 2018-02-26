@@ -1,0 +1,13 @@
+{
+  "name": "Eques Rex",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "King"
+	},
+    {
+		"type": "Knight"
+	}
+  ]
+}

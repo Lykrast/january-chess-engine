@@ -1,0 +1,17 @@
+{
+  "name": "Cavalier",
+  "value": 2.5,
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"rows": 1,
+		"moves": [
+			{
+				"type": "LeaperLame",
+				"near": 1,
+				"far": 2
+			}
+		]
+	}
+  ]
+}
