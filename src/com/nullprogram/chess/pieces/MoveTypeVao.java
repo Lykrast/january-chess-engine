@@ -28,8 +28,12 @@ public class MoveTypeVao extends MoveType {
         		//Hurdle found, find a capture
         		if (hurdle)
         		{
-        			//Could capture, end the move
-        			if (list.addCaptureOnly(new Move(home, pos))) break;
+        			//Found another piece, end the mvoe
+        			if (!p.getBoard().isFree(pos))
+        			{
+        				list.addCaptureOnly(new Move(home, pos));
+        				break;
+        			}
         		}
         		//Move until we find a hurdle
         		else

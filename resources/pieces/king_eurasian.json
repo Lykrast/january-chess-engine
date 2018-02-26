@@ -1,0 +1,29 @@
+{
+  "name": "King",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "ModRestriction",
+		"ymax": 4,
+		"moves": [
+			{
+				"type": "King"
+			}
+		]
+	},
+    {
+		"type": "ModCaptureRoyal",
+		"moves": [
+			{
+				"type": "Bishop",
+				"mode": "capture"
+			},
+			{
+				"type": "Rook",
+				"mode": "capture"
+			}
+		]
+	}
+  ]
+}

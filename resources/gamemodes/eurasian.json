@@ -1,0 +1,94 @@
+{
+  "name": "Eurasian Chess",
+  "width": 10,
+  "height": 10,
+  "promotions": ["rook", "knight", "bishop", "queen", "cannon", "vao"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 10,"y": 2,"side": "white","piece": "pawn_eurasian"	
+	},
+    {
+		"x": 0,"xlen": 10,"y": 7,"side": "black","piece": "pawn_eurasian"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 9,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 9,"side": "black","piece": "rook"
+	},
+    {
+		"x": 9,"y": 9,"side": "black","piece": "rook"
+	},
+	
+    {
+		"x": 2,"y": 0,"side": "white","piece": "cannon"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "cannon"
+	},
+    {
+		"x": 2,"y": 9,"side": "black","piece": "cannon"
+	},
+    {
+		"x": 7,"y": 9,"side": "black","piece": "cannon"
+	},
+	
+	{
+		"x": 1,"y": 1,"side": "white","piece": "knight"
+	},
+	{
+		"x": 8,"y": 1,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 8,"side": "black","piece": "knight"
+	},
+	{
+		"x": 8,"y": 8,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 1,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 7,"y": 1,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 2,"y": 8,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 7,"y": 8,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 3,"y": 1,"side": "white","piece": "vao"
+	},
+	{
+		"x": 6,"y": 1,"side": "white","piece": "vao"
+	},
+	{
+		"x": 3,"y": 8,"side": "black","piece": "vao"
+	},
+	{
+		"x": 6,"y": 8,"side": "black","piece": "vao"
+	},
+	
+	{
+		"x": 4,"y": 1,"side": "white","piece": "queen"
+	},
+	{
+		"x": 4,"y": 8,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 5,"y": 1,"side": "white","piece": "king_eurasian"
+	},
+	{
+		"x": 5,"y": 8,"side": "black","piece": "king_eurasian"
+	}
+	
+  ]
+}
