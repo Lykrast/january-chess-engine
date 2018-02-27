@@ -1,0 +1,13 @@
+{
+  "name": "Unicorn",
+  "value": 6.0,
+  "moves": [
+    {
+		"type": "RiderBent",
+		"firstnear": 1,
+		"firstfar": 2,
+		"secondnear": 1,
+		"secondfar": 1
+	}
+  ]
+}

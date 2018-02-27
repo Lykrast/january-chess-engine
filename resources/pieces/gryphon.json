@@ -1,0 +1,13 @@
+{
+  "name": "Gryphon",
+  "value": 7.25,
+  "moves": [
+    {
+		"type": "RiderBent",
+		"firstnear": 1,
+		"firstfar": 1,
+		"secondnear": 0,
+		"secondfar": 1
+	}
+  ]
+}

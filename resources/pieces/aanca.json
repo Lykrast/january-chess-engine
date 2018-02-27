@@ -1,0 +1,13 @@
+{
+  "name": "Aanca",
+  "value": 5.7,
+  "moves": [
+    {
+		"type": "RiderBent",
+		"firstnear": 0,
+		"firstfar": 1,
+		"secondnear": 1,
+		"secondfar": 1
+	}
+  ]
+}
