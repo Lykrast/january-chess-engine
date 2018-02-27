@@ -1,0 +1,13 @@
+{
+  "name": "Gold General",
+  "value": 2.25,
+  "moves": [
+    {
+		"type": "Wazir"
+	},
+    {
+		"type": "Ferz",
+		"direction": "FORWARD"
+	}
+  ]
+}

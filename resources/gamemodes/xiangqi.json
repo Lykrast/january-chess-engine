@@ -61,16 +61,16 @@
 	},
 	
 	{
-		"x": 1,"y": 0,"side": "white","piece": "horse"
+		"x": 1,"y": 0,"side": "white","piece": "horse_xiangqi"
 	},
 	{
-		"x": 7,"y": 0,"side": "white","piece": "horse"
+		"x": 7,"y": 0,"side": "white","piece": "horse_xiangqi"
 	},
 	{
-		"x": 1,"y": 9,"side": "black","piece": "horse"
+		"x": 1,"y": 9,"side": "black","piece": "horse_xiangqi"
 	},
 	{
-		"x": 7,"y": 9,"side": "black","piece": "horse"
+		"x": 7,"y": 9,"side": "black","piece": "horse_xiangqi"
 	},
 	
 	{

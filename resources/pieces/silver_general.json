@@ -1,0 +1,28 @@
+{
+  "name": "Silver General",
+  "value": 1.875,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "gold_general",
+		"rows": 3,
+		"moves": [
+			{
+				"type": "Ferz",
+				"direction": "FORWARD"
+			},
+			{
+				"type": "Wazir",
+				"direction": "FORWARD"
+			}
+		]
+	},
+    {
+		"type": "Ferz"
+	},
+    {
+		"type": "Wazir",
+		"direction": "FORWARD"
+	}
+  ]
+}

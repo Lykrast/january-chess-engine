@@ -1,0 +1,16 @@
+{
+  "name": "Rook",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "rook_crowned",
+		"rows": 3,
+		"moves": [
+			{
+				"type": "Rook"
+			}
+		]
+	}
+  ]
+}

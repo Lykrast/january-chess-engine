@@ -1,0 +1,12 @@
+{
+  "name": "Crowned Bishop",
+  "value": 4.5,
+  "moves": [
+    {
+		"type": "Bishop"
+	},
+    {
+		"type": "Wazir"
+	}
+  ]
+}

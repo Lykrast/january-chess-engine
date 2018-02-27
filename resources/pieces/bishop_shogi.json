@@ -1,0 +1,16 @@
+{
+  "name": "Bishop",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "bishop_crowned",
+		"rows": 3,
+		"moves": [
+			{
+				"type": "Bishop"
+			}
+		]
+	}
+  ]
+}

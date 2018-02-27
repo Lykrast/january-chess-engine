@@ -1,0 +1,87 @@
+{
+  "name": "Shogi (no drops)",
+  "width": 9,
+  "height": 9,
+  "pieces": [
+	{
+		"x": 0,"xlen": 9,"y": 2,"side": "white","piece": "pawn_shogi"	
+	},
+    {
+		"x": 0,"xlen": 9,"y": 6,"side": "black","piece": "pawn_shogi"
+	},
+	
+    {
+		"x": 1,"y": 1,"side": "white","piece": "bishop_shogi"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "bishop_shogi"
+	},
+	
+    {
+		"x": 7,"y": 1,"side": "white","piece": "rook_shogi"
+	},
+    {
+		"x": 1,"y": 7,"side": "black","piece": "rook_shogi"
+	},
+	
+	{
+		"x": 0,"y": 0,"side": "white","piece": "lance"
+	},
+	{
+		"x": 8,"y": 0,"side": "white","piece": "lance"
+	},
+	{
+		"x": 0,"y": 8,"side": "black","piece": "lance"
+	},
+	{
+		"x": 8,"y": 8,"side": "black","piece": "lance"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "horse_shogi"
+	},
+	{
+		"x": 7,"y": 0,"side": "white","piece": "horse_shogi"
+	},
+	{
+		"x": 1,"y": 8,"side": "black","piece": "horse_shogi"
+	},
+	{
+		"x": 7,"y": 8,"side": "black","piece": "horse_shogi"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "silver_general"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "silver_general"
+	},
+	{
+		"x": 2,"y": 8,"side": "black","piece": "silver_general"
+	},
+	{
+		"x": 6,"y": 8,"side": "black","piece": "silver_general"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "gold_general"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "gold_general"
+	},
+	{
+		"x": 3,"y": 8,"side": "black","piece": "gold_general"
+	},
+	{
+		"x": 5,"y": 8,"side": "black","piece": "gold_general"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 8,"side": "black","piece": "king"
+	}
+	
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Shogi Pawn",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "gold_general",
+		"rows": 3,
+		"moves": [
+			{
+				"type": "Wazir",
+				"direction": "FORWARD"
+			}
+		]
+	}
+  ]
+}

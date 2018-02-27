@@ -1,0 +1,12 @@
+{
+  "name": "Crowned Rook",
+  "value": 6.5,
+  "moves": [
+    {
+		"type": "Rook"
+	},
+    {
+		"type": "Ferz"
+	}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Lance",
+  "value": 1.25,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "gold_general",
+		"rows": 3,
+		"moves": [
+			{
+				"type": "Rook",
+				"direction": "FORWARD"
+			}
+		]
+	},
+    {
+		"type": "ModRestriction",
+		"ymax": 7,
+		"moves": [
+			{
+				"type": "Rook",
+				"direction": "FORWARD"
+			}
+		]
+	}
+  ]
+}
