@@ -1,13 +1,52 @@
 package com.nullprogram.chess;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.pieces.*;
+import com.nullprogram.chess.pieces.MoveModifierCaptureNonRoyal;
+import com.nullprogram.chess.pieces.MoveModifierCaptureRoyal;
+import com.nullprogram.chess.pieces.MoveModifierCoordinator;
+import com.nullprogram.chess.pieces.MoveModifierPromotion;
+import com.nullprogram.chess.pieces.MoveModifierPromotionSingle;
+import com.nullprogram.chess.pieces.MoveModifierRestriction;
+import com.nullprogram.chess.pieces.MoveTypeAdvancer;
+import com.nullprogram.chess.pieces.MoveTypeAlfil;
+import com.nullprogram.chess.pieces.MoveTypeBishop;
+import com.nullprogram.chess.pieces.MoveTypeBishopReflecting;
+import com.nullprogram.chess.pieces.MoveTypeCannon;
+import com.nullprogram.chess.pieces.MoveTypeCastle;
+import com.nullprogram.chess.pieces.MoveTypeCheckers;
+import com.nullprogram.chess.pieces.MoveTypeDabbaba;
+import com.nullprogram.chess.pieces.MoveTypeEdgehog;
+import com.nullprogram.chess.pieces.MoveTypeFerz;
+import com.nullprogram.chess.pieces.MoveTypeGrasshopper;
+import com.nullprogram.chess.pieces.MoveTypeKing;
+import com.nullprogram.chess.pieces.MoveTypeKnight;
+import com.nullprogram.chess.pieces.MoveTypeLeaper;
+import com.nullprogram.chess.pieces.MoveTypeLeaperDiagonal;
+import com.nullprogram.chess.pieces.MoveTypeLeaperLame;
+import com.nullprogram.chess.pieces.MoveTypeLeaperNarrow;
+import com.nullprogram.chess.pieces.MoveTypeLeaperOrthogonal;
+import com.nullprogram.chess.pieces.MoveTypeLeaperWide;
+import com.nullprogram.chess.pieces.MoveTypeLocust;
+import com.nullprogram.chess.pieces.MoveTypePawn;
+import com.nullprogram.chess.pieces.MoveTypeRider;
+import com.nullprogram.chess.pieces.MoveTypeRiderBent;
+import com.nullprogram.chess.pieces.MoveTypeRiderCircular;
+import com.nullprogram.chess.pieces.MoveTypeRook;
+import com.nullprogram.chess.pieces.MoveTypeVao;
+import com.nullprogram.chess.pieces.MoveTypeWazir;
+import com.nullprogram.chess.pieces.MoveTypeWithdrawer;
 import com.nullprogram.chess.resources.IMoveTypeDeserializer;
 import com.nullprogram.chess.resources.MoveTypeDeserializer;
 
-public abstract class MoveType implements IMoveTypeDeserializer {
+/**
+ * A concrete MoveType with a direction and a capture mode.
+ * @author Lykrast
+ */
+public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
 	private MoveMode moveMode;
 	private DirectionMode directionMode;
 	
@@ -24,15 +63,38 @@ public abstract class MoveType implements IMoveTypeDeserializer {
 	protected DirectionMode getDirectionMode() {
 		return directionMode;
 	}
+	
 
-    /**
-     * Determine moves for given situation.
-     *
-     * @param p     the piece being tested
-     * @param list  list to be appended to
-     * @return      the modified list
-     */
-    public abstract IMoveList getMoves(final Piece p, final IMoveList list);
+	/**
+	 * Creates a MoveType according to the given JsonElement following the (already deserialized) MoveMode and DirectionMode.
+	 * @param json Json to deserialize
+	 * @param moveMode MoveMode to follow
+	 * @param directionMode DirectionMode to follow
+	 * @param context TODO
+	 * @return a MoveType created with the given MoveMode
+	 */
+	protected abstract MoveType create(JsonObject json, MoveMode moveMode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException;
+	
+	@Override
+	public IMoveType create(JsonObject json, JsonDeserializationContext context) throws JsonParseException
+	{
+		JsonObject obj = json.getAsJsonObject();
+		
+		JsonElement modeJson = obj.get("mode");
+		MoveType.MoveMode mode = MoveType.MoveMode.MOVE_CAPTURE;
+		if (modeJson != null)
+		{
+			mode = MoveType.MoveMode.fromString(modeJson.getAsString());
+		}
+		
+		return create(obj, mode, DirectionMode.fromJson(obj.get("direction")), context);
+	}
+
+    /* (non-Javadoc)
+	 * @see com.nullprogram.chess.IMoveType#getMoves(com.nullprogram.chess.Piece, com.nullprogram.chess.IMoveList)
+	 */
+    @Override
+	public abstract IMoveList getMoves(final Piece p, final IMoveList list);
     
     /**
      * Registers all deserializers for Json loading.

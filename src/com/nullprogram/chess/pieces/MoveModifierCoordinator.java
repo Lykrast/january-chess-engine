@@ -4,14 +4,14 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.IMoveList;
+import com.nullprogram.chess.IMoveType;
 import com.nullprogram.chess.MoveListWrapper;
 import com.nullprogram.chess.MoveModifier;
-import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 
 public class MoveModifierCoordinator extends MoveModifier {
 
-	public MoveModifierCoordinator(MoveType[] moves) {
+	public MoveModifierCoordinator(IMoveType[] moves) {
 		super(moves);
 	}
 
@@ -21,7 +21,7 @@ public class MoveModifierCoordinator extends MoveModifier {
 	}
 
 	@Override
-	protected MoveModifier create(JsonObject json, MoveMode mode, MoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
+	protected MoveModifier create(JsonObject json, IMoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
 		return new MoveModifierCoordinator(moves);
 	}
 

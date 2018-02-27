@@ -5,9 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.IMoveList;
+import com.nullprogram.chess.IMoveType;
 import com.nullprogram.chess.MoveListWrapper;
 import com.nullprogram.chess.MoveModifier;
-import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.resources.JSONUtils;
 
@@ -15,7 +15,7 @@ public class MoveModifierPromotionSingle extends MoveModifier {
 	private String promoted;
 	private int rows;
 
-	public MoveModifierPromotionSingle(MoveType[] moves, String promoted, int rows) {
+	public MoveModifierPromotionSingle(IMoveType[] moves, String promoted, int rows) {
 		super(moves);
 		this.promoted = promoted;
 		this.rows = rows;
@@ -27,7 +27,7 @@ public class MoveModifierPromotionSingle extends MoveModifier {
 	}
 
 	@Override
-	protected MoveModifier create(JsonObject json, MoveMode mode, MoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
+	protected MoveModifier create(JsonObject json, IMoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
 		JsonElement jRows = json.get("rows");
 		int rows = 1;
 		if (jRows != null)

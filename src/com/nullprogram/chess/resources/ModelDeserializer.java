@@ -10,8 +10,8 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.nullprogram.chess.IMoveType;
 import com.nullprogram.chess.Model;
-import com.nullprogram.chess.MoveType;
 
 public class ModelDeserializer implements JsonDeserializer<Model> {
 	public static final ModelDeserializer INSTANCE = new ModelDeserializer();
@@ -22,10 +22,10 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 		JsonObject obj = json.getAsJsonObject();
 		
 		JsonArray movesJson = JSONUtils.getMandatory(obj, "moves").getAsJsonArray();
-		List<MoveType> movesList = new ArrayList<>();
+		List<IMoveType> movesList = new ArrayList<>();
 		for (JsonElement elem : movesJson)
 		{
-			movesList.add(context.deserialize(elem, MoveType.class));
+			movesList.add(context.deserialize(elem, IMoveType.class));
 		}
 		
 		JsonElement tmp = obj.get("royal");
@@ -45,7 +45,7 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 		return new Model(JSONUtils.getMandatory(obj, "name").getAsString(), 
 				value, 
 				royal, 
-				movesList.toArray(new MoveType[movesList.size()]));
+				movesList.toArray(new IMoveType[movesList.size()]));
 	}
 
 }

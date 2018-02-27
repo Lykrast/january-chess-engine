@@ -5,16 +5,16 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.IMoveList;
+import com.nullprogram.chess.IMoveType;
 import com.nullprogram.chess.MoveListWrapper;
 import com.nullprogram.chess.MoveModifier;
-import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.Piece;
 
 public class MoveModifierRestriction extends MoveModifier {
 	public static final int SYM_NONE = 0, SYM_HORIZONTAL = 1, SYM_VERTICAL = 2, SYM_CENTRAL = 3;
 	private int symmetry, xmin, xmax, ymin, ymax;
 
-	public MoveModifierRestriction(MoveType[] moves, int symmetry, int xmin, int xmax, int ymin, int ymax) {
+	public MoveModifierRestriction(IMoveType[] moves, int symmetry, int xmin, int xmax, int ymin, int ymax) {
 		super(moves);
 		this.symmetry = symmetry;
 		this.xmin = xmin;
@@ -59,7 +59,7 @@ public class MoveModifierRestriction extends MoveModifier {
 	}
 
 	@Override
-	protected MoveModifier create(JsonObject json, MoveMode mode, MoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
+	protected MoveModifier create(JsonObject json, IMoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
 		int sym = SYM_VERTICAL;
 		JsonElement jSym = json.get("symmetry");
 		if (jSym != null)

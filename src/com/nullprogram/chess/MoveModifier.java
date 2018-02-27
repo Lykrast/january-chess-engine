@@ -8,17 +8,17 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.nullprogram.chess.resources.IMoveTypeDeserializer;
 import com.nullprogram.chess.resources.JSONUtils;
 
 /**
  * A MoveType that contains more MoveTypes but applies changes to the moves they attempt.
  * @author Lykrast
  */
-public abstract class MoveModifier extends MoveType {
-    private MoveType[] moves;
+public abstract class MoveModifier implements IMoveTypeDeserializer, IMoveType {
+    private IMoveType[] moves;
 
-	public MoveModifier(MoveType[] moves) {
-		super(MoveMode.MOVE_CAPTURE, DirectionMode.ALL);
+	public MoveModifier(IMoveType[] moves) {
 		this.moves = moves;
 	}
 	
@@ -33,24 +33,23 @@ public abstract class MoveModifier extends MoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
 		IMoveList wrapper = createWrapper(p, list);
-        for (MoveType m : moves) wrapper = m.getMoves(p, wrapper);
+        for (IMoveType m : moves) wrapper = m.getMoves(p, wrapper);
 		return list;
 	}
 
-	@Override
-	public final MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
+	public final IMoveType create(JsonObject json, JsonDeserializationContext context) throws JsonParseException {
 		JsonArray movesJson = JSONUtils.getMandatory(json, "moves").getAsJsonArray();
-		List<MoveType> movesList = new ArrayList<>();
+		List<IMoveType> movesList = new ArrayList<>();
 		for (JsonElement elem : movesJson)
 		{
-			movesList.add(context.deserialize(elem, MoveType.class));
+			movesList.add(context.deserialize(elem, IMoveType.class));
 		}
-		return create(json, mode, movesList.toArray(new MoveType[movesList.size()]), context);
+		return create(json, movesList.toArray(new IMoveType[movesList.size()]), context);
 	}
 	
 	/**
-	 * Creates a MoveType according to the given JsonElement following the (already deserialized) MoveMode and moves.
+	 * Creates a MoveType according to the given JsonElement following the (already deserialized) moves.
 	 */
-	protected abstract MoveModifier create(JsonObject json, MoveMode mode, MoveType[] moves, JsonDeserializationContext context) throws JsonParseException;
+	protected abstract MoveModifier create(JsonObject json, IMoveType[] moves, JsonDeserializationContext context) throws JsonParseException;
 
 }

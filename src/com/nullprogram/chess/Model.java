@@ -12,14 +12,14 @@ public class Model {
     private boolean royal;
     
     private double value;
-    private MoveType[] moves;
+    private IMoveType[] moves;
     
-    public Model(String name, double value, MoveType... moves)
+    public Model(String name, double value, IMoveType... moves)
     {
     	this(name, value, false, moves);
     }
     
-    public Model(String name, double value, boolean royal, MoveType... moves)
+    public Model(String name, double value, boolean royal, IMoveType... moves)
     {
     	this.name = name;
     	this.value = value;
@@ -54,7 +54,7 @@ public class Model {
     public MoveList getMoves(final Piece p, boolean checkCheck)
     {
         IMoveList list = new MoveList(p.getBoard(), checkCheck);
-        for (MoveType m : moves) list = m.getMoves(p, list);
+        for (IMoveType m : moves) list = m.getMoves(p, list);
         return (MoveList)list;
     }
 

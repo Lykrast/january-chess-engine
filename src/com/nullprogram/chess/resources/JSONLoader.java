@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.GameMode;
+import com.nullprogram.chess.IMoveType;
 import com.nullprogram.chess.Model;
 import com.nullprogram.chess.MoveType;
 import com.nullprogram.chess.boards.GameModeRegistry;
@@ -29,7 +30,7 @@ public class JSONLoader {
 		MoveType.registerDeserializers();
 		Gson g = new GsonBuilder()
 				.registerTypeAdapter(Model.class, ModelDeserializer.INSTANCE)
-				.registerTypeAdapter(MoveType.class, MoveTypeDeserializer.INSTANCE)
+				.registerTypeAdapter(IMoveType.class, MoveTypeDeserializer.INSTANCE)
 				.create();
 		
 		File folder = new File(PATH_PIECES);
