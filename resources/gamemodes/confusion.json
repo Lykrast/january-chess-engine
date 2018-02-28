@@ -1,0 +1,68 @@
+{
+  "name": "Confusion Chess 1b",
+  "width": 8,
+  "height": 8,
+  "promotions": ["rhinorider", "gryphon", "bishop_crooked", "rhinorider_double"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rhinorider"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rhinorider"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rhinorider"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "rhinorider"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "gryphon"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "gryphon"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "gryphon"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "gryphon"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop_crooked"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop_crooked"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop_crooked"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "bishop_crooked"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "rhinorider_double"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "rhinorider_double"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+	
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Double Rhinorider",
+  "value": 7.5,
+  "moves": [
+    {
+		"type": "RiderBent",
+		"ridemode": "ALTERNATE",
+		"firstnear": 0,
+		"firstfar": 1,
+		"secondnear": 1,
+		"secondfar": 1
+	},
+    {
+		"type": "RiderBent",
+		"ridemode": "ALTERNATE",
+		"firstnear": 1,
+		"firstfar": 1,
+		"secondnear": 0,
+		"secondfar": 1
+	}
+  ]
+}

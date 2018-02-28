@@ -1,6 +1,7 @@
 package com.nullprogram.chess.pieces;
 
 import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.IMoveList;
@@ -11,13 +12,17 @@ import com.nullprogram.chess.Position;
 import com.nullprogram.chess.resources.JSONUtils;
 
 public class MoveTypeRiderBent extends MoveType {
+	public static final int RIDE_CONTINUE = 0, RIDE_ALTERNATE = 1;
+	
 	/**
 	 * An array of all 8 directions the rider can move.
 	 */
 	private final Position[][] directions;
+	private int rideMode;
 
-	public MoveTypeRiderBent(MoveMode mode, DirectionMode directionMode, int firstnear, int firstfar, int secondnear, int secondfar) {
+	public MoveTypeRiderBent(MoveMode mode, DirectionMode directionMode, int rideMode, int firstnear, int firstfar, int secondnear, int secondfar) {
 		super(mode, directionMode);
+		this.rideMode = rideMode;
 		directions = new Position[8][2];
 		//There is probably a better way to fill this
 		directions[0][0] = new Position(firstnear, firstfar);
@@ -47,9 +52,11 @@ public class MoveTypeRiderBent extends MoveType {
         {
         	if (!dir[0].match(getDirectionMode(), p)) continue;
         	Position pos = start.offset(dir[0]);
+        	int next = 1;
         	while (list.add(new Move(start, pos), getMoveMode()) && p.getBoard().isFree(pos))
         	{
-        		pos = pos.offset(dir[1]);
+        		pos = pos.offset(dir[next]);
+        		if (rideMode == RIDE_ALTERNATE) next = next == 0 ? 1 : 0;
         	}
         }
         
@@ -58,7 +65,17 @@ public class MoveTypeRiderBent extends MoveType {
 	
 	@Override
 	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeRiderBent(mode, directionMode, 
+		int ride = RIDE_CONTINUE;
+		JsonElement jRide = json.get("ridemode");
+		if (jRide != null)
+		{
+			String sRide = jRide.getAsString();
+			if (sRide.equalsIgnoreCase("continue")) ride = RIDE_CONTINUE;
+			else if (sRide.equalsIgnoreCase("alternate")) ride = RIDE_ALTERNATE;
+			else throw new JsonParseException("Invalid riding mode value : " + sRide + " - must be continue or alternate");
+		}
+		
+		return new MoveTypeRiderBent(mode, directionMode, ride, 
 				JSONUtils.getMandatory(json, "firstnear").getAsInt(), 
 				JSONUtils.getMandatory(json, "firstfar").getAsInt(), 
 				JSONUtils.getMandatory(json, "secondnear").getAsInt(), 

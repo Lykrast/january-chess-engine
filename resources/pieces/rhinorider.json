@@ -1,0 +1,14 @@
+{
+  "name": "Rhinorider",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "RiderBent",
+		"ridemode": "ALTERNATE",
+		"firstnear": 0,
+		"firstfar": 1,
+		"secondnear": 1,
+		"secondfar": 1
+	}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Crooked Bishop",
+  "value": 5.5,
+  "moves": [
+    {
+		"type": "RiderCrooked",
+		"near": 1,
+		"far": 1
+	}
+  ]
+}
