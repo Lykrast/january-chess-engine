@@ -3,21 +3,18 @@ package com.nullprogram.chess.pieces;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.IMoveList;
-import com.nullprogram.chess.Move;
 import com.nullprogram.chess.MoveType;
-import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.resources.JSONUtils;
 
-public class MoveTypeRider extends MoveType {
+public class MoveTypeRider extends MoveTypeRiderAbstract {
 	/**
 	 * An array of all 8 directions the rider can move.
 	 */
 	private final Position[] directions;
 
-	public MoveTypeRider(MoveMode mode, DirectionMode directionMode, int near, int far) {
-		super(mode, directionMode);
+	public MoveTypeRider(MoveMode mode, DirectionMode directionMode, int max, int near, int far) {
+		super(mode, directionMode, max);
 		directions = new Position[8];
 		directions[0] = new Position(near, far);
 		directions[1] = new Position(far, near);
@@ -30,25 +27,13 @@ public class MoveTypeRider extends MoveType {
 	}
 
 	@Override
-	public IMoveList getMoves(Piece p, IMoveList list) {
-        Position start = p.getPosition();
-        
-        for (Position dir : directions)
-        {
-        	if (!dir.match(getDirectionMode(), p)) continue;
-        	Position pos = start.offset(dir);
-        	while (list.add(new Move(start, pos), getMoveMode()) && p.getBoard().isFree(pos))
-        	{
-        		pos = pos.offset(dir);
-        	}
-        }
-        
-        return list;
+	protected Position[] getDirections() {
+		return directions;
 	}
 	
 	@Override
-	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeRider(mode, directionMode, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
+	public MoveType create(JsonObject json, MoveMode mode, DirectionMode directionMode, int max, JsonDeserializationContext context) throws JsonParseException {
+		return new MoveTypeRider(mode, directionMode, max, JSONUtils.getMandatory(json, "near").getAsInt(), JSONUtils.getMandatory(json, "far").getAsInt());
 	}
 
 	@Override

@@ -293,8 +293,8 @@ public class Minimax implements Player {
                kingInsafetyValue(b, side);
     }
     
-    private MoveType safetyRook = new MoveTypeRook(MoveMode.MOVE_CAPTURE, DirectionMode.ALL), 
-    		safetyBishop = new MoveTypeBishop(MoveMode.MOVE_CAPTURE, DirectionMode.ALL);
+    private MoveType safetyRook = new MoveTypeRook(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, -1), 
+    		safetyBishop = new MoveTypeBishop(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, -1);
 
     /**
      * Helper function: determine safety of a single king.

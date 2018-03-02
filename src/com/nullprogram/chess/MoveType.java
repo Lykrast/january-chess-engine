@@ -75,7 +75,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperLame(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperOrthogonal(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperDiagonal(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRider(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRider(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0, 0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderCircular(MoveMode.MOVE_CAPTURE, 0,0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderBent(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0, 0, 0, 0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderCrooked(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0));
@@ -96,8 +96,8 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeKnight(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeKing(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRook(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
-    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishop(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRook(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishop(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0));
     	
     	//Specialized
     	MoveTypeDeserializer.registerDeserializer(new MoveTypePawn(1));
