@@ -38,6 +38,9 @@ public final class Move implements Serializable {
 
     /** Score for this move. */
     private double score;
+    
+    /** Marks this move as "special", currently this only changes the color it is displayed for clarity */
+    private boolean special = false;
 
     /**
      * Create a new move to move a piece from one position to another.
@@ -62,6 +65,7 @@ public final class Move implements Serializable {
         captured = move.getCaptured();
         replacement = move.getReplacement();
         replacementSide = move.getReplacementSide();
+        special = move.special;
         if (move.getNext() != null) {
             next = new Move(move.getNext());
         }
@@ -258,6 +262,22 @@ public final class Move implements Serializable {
     	if (next != null) s += " - " + next.toString();
     	
         return s;
+    }
+    
+    /**
+     * Marks this move as "special" or not. This is currently only used to change the color the move is displayed for clarity.
+     * @param value true to make it special, false to make it no longer special
+     */
+    public void setSpecial(boolean value) {
+    	special = value;
+    }
+    
+    /**
+     * Whether or not this move is marked as "special". This is currently only used to change the color the move is displayed for clarity.
+     * @return whether this move is marked as "special" or not
+     */
+    public boolean isSpecial() {
+    	return special;
     }
 
     /**

@@ -32,6 +32,7 @@ public class MoveListWrapperPromotionSingle extends MoveListWrapper {
             return move;
         }
         
+        move.setSpecial(true);
         //Add at the end of the current move
         Move innermost = move.getLast();
         

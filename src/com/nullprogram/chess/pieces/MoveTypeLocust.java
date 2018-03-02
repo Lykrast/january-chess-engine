@@ -32,6 +32,7 @@ public class MoveTypeLocust extends MoveType {
         			{
             			//Jump over enemy hurdle and capture it
             			Move move = new Move(home, pos.offset(dir));
+            			move.setSpecial(true);
             			move.setNext(new Move(pos, null));
             			list.addMove(move);
             			break;

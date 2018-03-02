@@ -92,9 +92,11 @@ public class BoardPanel extends JComponent
 
     /** Border color for a highlighted movement tile. */
     static final Color MOVEMENT = new Color(0x7F, 0x00, 0x00);
+    static final Color MOVEMENT_SPECIAL = new Color(0x7F, 0x00, 0x7f);
 
     /** Last move highlight color. */
     static final Color LAST = new Color(0x00, 0x7F, 0xFF);
+    static final Color LAST_SPECIAL = new Color(0x7F, 0x5F, 0xBF);
     static final Color LAST_CAPTURE = new Color(0xFF, 0x00, 0x00);
 
     /** Minimum size of a tile, in pixels. */
@@ -240,7 +242,8 @@ public class BoardPanel extends JComponent
         /* Draw last move */
         Move last = board.last();
         if (last != null) {
-            g.setColor(LAST);
+        	if (last.isSpecial()) g.setColor(LAST_SPECIAL);
+        	else g.setColor(LAST);
             highlight(g, last.getOrigin());
             highlight(g, last.getDest());
             
@@ -266,8 +269,9 @@ public class BoardPanel extends JComponent
 
             /* Draw piece moves */
             if (moves != null) {
-                g.setColor(MOVEMENT);
                 for (Move move : moves) {
+                	if (move.isSpecial()) g.setColor(MOVEMENT_SPECIAL);
+                	else g.setColor(MOVEMENT);
                     highlight(g, move.getDest());
                 }
             }

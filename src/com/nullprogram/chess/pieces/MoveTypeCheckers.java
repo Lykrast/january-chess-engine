@@ -64,6 +64,7 @@ public class MoveTypeCheckers extends MoveType {
 				{
 					added = true;
 					Move start = new Move(p.getPosition(), next);
+					start.setSpecial(true);
 					Move newSequence = appendSequence(sequence, new Move(capture, null));
 					start.setNext(newSequence);
 					

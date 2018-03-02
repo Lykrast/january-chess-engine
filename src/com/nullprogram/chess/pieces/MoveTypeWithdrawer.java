@@ -34,12 +34,20 @@ public class MoveTypeWithdrawer extends MoveType {
         	Position dirpos = dir.getPosition();
         	Position pos = start.offset(dirpos);
         	Move move = new Move(start, pos);
-        	move.setNext(withdrawal);
+        	if (withdrawal != null)
+        	{
+        		move.setSpecial(true);
+            	move.setNext(withdrawal);
+        	}
         	while (list.addMove(move) && p.getBoard().isFree(pos))
         	{
         		pos = pos.offset(dirpos);
         		move = new Move(start, pos);
-            	move.setNext(withdrawal);
+            	if (withdrawal != null)
+            	{
+            		move.setSpecial(true);
+                	move.setNext(withdrawal);
+            	}
         	}
         }
         

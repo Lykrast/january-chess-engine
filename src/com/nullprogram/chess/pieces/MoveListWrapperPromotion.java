@@ -44,6 +44,7 @@ public class MoveListWrapperPromotion extends MoveListWrapper {
 	private Move promote(Move move, String target)
 	{
 		Move copy = move.copy();
+		copy.setSpecial(true);
         //Add at the end of the current move
         Move innermost = copy.getLast();
         

@@ -25,16 +25,17 @@ public class MoveTypeAdvancer extends MoveType {
         	if (!dir.match(getDirectionMode(), p)) continue;
         	Position pos = start.offset(dir);
         	Move move = new Move(start, pos);
-        	while (list.addMove(move) && p.getBoard().isFree(pos))
+        	while (p.getBoard().isFree(pos))
         	{
         		pos = pos.offset(dir);
         		//Check for capture
         		if (!p.getBoard().isFree(pos) && p.getBoard().isFree(pos, p.getSide()))
         		{
         			move.setNext(new Move(pos, null));
-        			break;
+        			move.setSpecial(true);
         		}
         		
+        		if (!list.addMove(move) || move.getNext() != null) break;
         		move = new Move(start, pos);
         	}
         }
