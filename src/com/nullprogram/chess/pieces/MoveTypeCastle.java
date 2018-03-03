@@ -30,12 +30,10 @@ public class MoveTypeCastle extends MoveType {
         if (list.checksCheck() && !p.moved()) {
             Move left = castle(-1, p);
             if (left != null) {
-                left.setSpecial(true);
                 list.add(left);
             }
             Move right = castle(1, p);
             if (right != null) {
-                right.setSpecial(true);
                 list.add(right);
             }
         }

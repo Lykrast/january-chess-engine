@@ -9,7 +9,6 @@ import com.nullprogram.chess.Position;
 public class MoveListWrapperCoordinator extends MoveListWrapper {
 	//A new one wrapper is created per move calculation, so we only need to find the royal piece once
 	private Position royal;
-	private boolean added;
 
 	public MoveListWrapperCoordinator(Piece piece, IMoveList list) {
 		super(piece, list);
@@ -25,10 +24,8 @@ public class MoveListWrapperCoordinator extends MoveListWrapper {
         Move innermost = move.getLast();
 
         //Coordinate
-        added = false;
         innermost = coordinate(innermost, move.getDest().getX(), royal.getY());
         innermost = coordinate(innermost, royal.getX(), move.getDest().getY());
-        if (added) move.setSpecial(true);
         
         return move;
 	}
@@ -41,8 +38,6 @@ public class MoveListWrapperCoordinator extends MoveListWrapper {
 		Position target = new Position(x, y);
 		if (!piece.getBoard().isFree(target) && piece.getBoard().isFree(target, piece.getSide()))
 		{
-			//There's probably a better way to do that
-			added = true;
 			Move coordination = new Move(target, null);
 			move.setNext(coordination);
 			return coordination;

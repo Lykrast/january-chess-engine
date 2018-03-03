@@ -32,7 +32,6 @@ public class MoveTypeAdvancer extends MoveType {
         		if (!p.getBoard().isFree(pos) && p.getBoard().isFree(pos, p.getSide()))
         		{
         			move.setNext(new Move(pos, null));
-        			move.setSpecial(true);
         		}
         		
         		if (!list.addMove(move) || move.getNext() != null) break;

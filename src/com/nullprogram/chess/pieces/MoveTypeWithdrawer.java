@@ -36,18 +36,14 @@ public class MoveTypeWithdrawer extends MoveType {
         	Move move = new Move(start, pos);
         	if (withdrawal != null)
         	{
-        		move.setSpecial(true);
+        		//move.setSpecial(true);
             	move.setNext(withdrawal);
         	}
         	while (list.addMove(move) && p.getBoard().isFree(pos))
         	{
         		pos = pos.offset(dirpos);
         		move = new Move(start, pos);
-            	if (withdrawal != null)
-            	{
-            		move.setSpecial(true);
-                	move.setNext(withdrawal);
-            	}
+            	if (withdrawal != null) move.setNext(withdrawal);
         	}
         }
         

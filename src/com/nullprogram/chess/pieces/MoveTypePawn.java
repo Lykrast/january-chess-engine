@@ -69,7 +69,6 @@ public class MoveTypePawn extends MoveType {
                 	else target = pos.offset(1, dir);
                 	
                     Move passant = new Move(pos, target);
-                    passant.setSpecial(true);
                     passant.setNext(new Move(lDest, null));
                     list.addMove(passant);
                 }

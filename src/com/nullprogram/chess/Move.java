@@ -265,19 +265,22 @@ public final class Move implements Serializable {
     }
     
     /**
-     * Marks this move as "special" or not. This is currently only used to change the color the move is displayed for clarity.
+     * Force mark this move as "special" or don't. This is currently only used to change the color the move is displayed for clarity.
      * @param value true to make it special, false to make it no longer special
      */
+    @Deprecated
     public void setSpecial(boolean value) {
     	special = value;
     }
     
     /**
      * Whether or not this move is marked as "special". This is currently only used to change the color the move is displayed for clarity.
+     * <br>
+     * A move that has other moves in its sequence is always considered "special".
      * @return whether this move is marked as "special" or not
      */
     public boolean isSpecial() {
-    	return special;
+    	return special || next != null;
     }
 
     /**
