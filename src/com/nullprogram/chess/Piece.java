@@ -40,24 +40,26 @@ public class Piece implements Serializable {
         /**
          * The lighter colored side of the board.
          */
-        WHITE (1),
+        WHITE (1, "White"),
         /**
          * The darker colored side of the board.
          */
-        BLACK (-1);
+        BLACK (-1, "Black");
 
         /**
          * Multiplier value of this side.
          */
         private int value;
+        private String name;
 
         /**
          * Create a new side with given value.
          *
          * @param val value of this side
          */
-        private Side(final int val) {
+        private Side(final int val, final String name) {
             value = val;
+            this.name = name;
         }
 
         /**
@@ -67,6 +69,24 @@ public class Piece implements Serializable {
          */
         public int value() {
             return value;
+        }
+        
+        @Override
+        public String toString() {
+        	return name;
+        }
+        
+        /**
+         * Return the opposing side.
+         *
+         * @return  the opposing side
+         */
+        public Side opposite() {
+            if (this == BLACK) {
+                return WHITE;
+            } else {
+                return BLACK;
+            }
         }
     }
 
@@ -203,19 +223,5 @@ public class Piece implements Serializable {
      */
     public final void decMoved() {
         moved--;
-    }
-
-    /**
-     * Return the opposing side.
-     *
-     * @param s the side to be opposed
-     * @return  the opposing side
-     */
-    public static Side opposite(final Side s) {
-        if (s == Side.BLACK) {
-            return Side.WHITE;
-        } else {
-            return Side.BLACK;
-        }
     }
 }

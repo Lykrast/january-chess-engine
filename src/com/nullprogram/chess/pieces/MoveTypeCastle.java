@@ -106,7 +106,7 @@ public class MoveTypeCastle extends MoveType {
         if (enemy != null) {
             return enemy;
         }
-        enemy = p.getBoard().allMoves(Piece.opposite(p.getSide()), false);
+        enemy = p.getBoard().allMoves(p.getSide().opposite(), false);
         return enemy;
     }
 

@@ -184,7 +184,7 @@ public class Minimax implements Player {
                         beta = -bestMove.getScore();
                     }
                     double v = search(callboard, maxDepth - 1,
-                                      Piece.opposite(side),
+                                      side.opposite(),
                                       Double.NEGATIVE_INFINITY, beta);
                     move.setScore(-v);
                     return move;
@@ -232,7 +232,7 @@ public class Minimax implements Player {
             double v = valuate(b);
             return (s != side) ? -v : v;
         }
-        Piece.Side opps = Piece.opposite(s);  // opposite side
+        Piece.Side opps = s.opposite();  // opposite side
         double best = alpha;
         MoveList list = b.allMoves(s, true);
         for (Move move : list) {
@@ -289,7 +289,7 @@ public class Minimax implements Player {
      * @return  king insafety score
      */
     private double kingInsafetyValue(final Board b) {
-        return kingInsafetyValue(b, Piece.opposite(side)) -
+        return kingInsafetyValue(b, side.opposite()) -
                kingInsafetyValue(b, side);
     }
     
@@ -325,6 +325,6 @@ public class Minimax implements Player {
      */
     private double mobilityValue(final Board b) {
         return b.allMoves(side, false).size() -
-               b.allMoves(Piece.opposite(side), false).size();
+               b.allMoves(side.opposite(), false).size();
     }
 }

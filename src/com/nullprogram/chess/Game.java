@@ -104,21 +104,19 @@ public class Game implements Runnable {
         callGameListeners(GameEvent.TURN);
         new Thread(this).start();
     }
+    
+    private Player getPlayer(Piece.Side side) {
+    	if (side == Piece.Side.BLACK) return black;
+    	else return white;
+    }
 
     @Override
     public final void run() {
         while (!done) {
             /* Determine who's turn it is. */
-            Player player;
-            if (turn == Piece.Side.WHITE) {
-                turn = Piece.Side.BLACK;
-                setStatus("Black's turn.");
-                player = black;
-            } else {
-                turn = Piece.Side.WHITE;
-                setStatus("White's turn.");
-                player = white;
-            }
+            turn = turn.opposite();
+            setStatus(turn + "'s turn.");
+            Player player = getPlayer(turn);
 
             /* Fetch the move from the player. */
             Move move = player.takeTurn(getBoard(), turn);
@@ -131,27 +129,16 @@ public class Game implements Runnable {
             }
 
             /* Check for the end of the game. */
-            Piece.Side opp = Piece.opposite(turn);
+            Piece.Side opp = turn.opposite();
             if (board.checkmate(opp)) {
                 done = true;
-                if (opp == Piece.Side.BLACK) {
-                    setStatus("White wins!");
-                    winner = Piece.Side.WHITE;
-                } else {
-                    setStatus("Black wins!");
-                    winner = Piece.Side.BLACK;
-                }
+                setStatus(turn + " wins!");
+                winner = turn;
                 callGameListeners(GameEvent.GAME_END);
                 return;
             } else if (board.stalemate(opp)) {
                 done = true;
-                if (opp == Piece.Side.BLACK) {
-                    setStatus("Black has been stalemated!");
-                    winner = Piece.Side.WHITE;
-                } else {
-                    setStatus("White has been stalemated!");
-                    winner = Piece.Side.BLACK;
-                }
+                setStatus(opp + " has been stalemated!");
                 winner = null;
                 callGameListeners(GameEvent.GAME_END);
                 return;
