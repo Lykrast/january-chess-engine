@@ -169,9 +169,9 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     			HORIZONTAL = new DirectionMode(false, false, true, true), 
     			VERTICAL = new DirectionMode(true, true, false, false), 
     			FORWARD = new DirectionMode(true, false, false, false), 
-    			BACK = new DirectionMode(true, false, false, false), 
-    			LEFT = new DirectionMode(true, false, false, false),
-    			RIGHT = new DirectionMode(true, false, false, false);
+    			BACK = new DirectionMode(false, true, false, false), 
+    			LEFT = new DirectionMode(false, false, true, false),
+    			RIGHT = new DirectionMode(false, false, false, true);
     	private static final String ERROR = "Invalid direction : %s - must be " + 
 				STR_ALL+", "+STR_HORIZONTAL+", "+STR_VERTICAL+", "+STR_FORWARD+", "+STR_BACK+", "+STR_LEFT+" or "+STR_RIGHT;
 
@@ -186,6 +186,18 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
 		public boolean back() { return back; }
 		public boolean left() { return left; }
 		public boolean right() { return right; }
+		
+		@Override
+		public String toString() {
+			String str = "DirectionMode[";
+			if (forward) str += STR_FORWARD + "/";
+			if (back) str += STR_BACK + "/";
+			if (left) str += STR_LEFT + "/";
+			if (right) str += STR_RIGHT + "/";
+			str = str.substring(0, str.lastIndexOf("/")) + "]";
+			
+			return str;
+		}
 		
 		public static DirectionMode fromJson(JsonElement json) throws JsonParseException
 		{

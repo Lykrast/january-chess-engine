@@ -1,0 +1,25 @@
+{
+  "name": "Oyster",
+  "value": 4.0,
+  "moves": [
+    {
+		"type": "Wazir"
+	},
+	{
+		"type": "Dabbaba",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "LeaperNarrow",
+		"direction": "FORWARD",
+		"near": 1,
+		"far": 2
+	},
+    {
+		"type": "LeaperWide",
+		"direction": "BACK",
+		"near": 1,
+		"far": 2
+	}
+  ]
+}

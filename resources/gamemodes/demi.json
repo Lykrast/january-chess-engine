@@ -1,0 +1,68 @@
+{
+  "name": "DemiChess",
+  "width": 8,
+  "height": 8,
+  "promotions": ["snail", "crab", "lobster", "oyster"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "snail"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "snail"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "snail"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "snail"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "crab"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "crab"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "crab"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "crab"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "lobster"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "lobster"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "lobster"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "lobster"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "oyster"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "oyster"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+	
+  ]
+}

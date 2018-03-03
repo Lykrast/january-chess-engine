@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
+import com.nullprogram.chess.Piece;
+
 /**
  * Serves cached images of requested size.
  *
@@ -32,6 +34,13 @@ public final class ImageServer {
      * Hidden constructor.
      */
     private ImageServer() {
+    }
+    
+    public static Image getPieceTile(final String name, Piece.Side side) {
+    	String secondary;
+    	if (side == Piece.Side.WHITE) secondary = WHITE;
+    	else secondary = BLACK;
+    	return getTile(name + secondary);
     }
 
     /**

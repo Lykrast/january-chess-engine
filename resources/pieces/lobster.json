@@ -1,0 +1,14 @@
+{
+  "name": "Lobster",
+  "value": 1.5,
+  "moves": [
+    {
+		"type": "Alfil",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "Ferz",
+		"direction": "BACK"
+	}
+  ]
+}

@@ -66,7 +66,7 @@ public class Model {
      * @return     image for this piece
      */
     public final Image getImage(Side s) {
-        return ImageServer.getTile(name + "-" + s);
+        return ImageServer.getPieceTile(name, s);
     }
 
 }
