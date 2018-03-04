@@ -75,6 +75,9 @@ public class Minimax implements Player {
     /** Mobility score weight (configured). */
     private double wMobility;
 
+    /** Random score weight (configured). */
+    private double wRandom;
+
     /**
      * Create the default Minimax.
      *
@@ -121,6 +124,7 @@ public class Minimax implements Player {
         wMaterial = Double.parseDouble(config.getProperty("material"));
         wSafety = Double.parseDouble(config.getProperty("safety"));
         wMobility = Double.parseDouble(config.getProperty("mobility"));
+        wRandom = Double.parseDouble(config.getProperty("random"));
     }
 
     /**
@@ -257,9 +261,11 @@ public class Minimax implements Player {
         double material = materialValue(b);
         double kingSafety = kingInsafetyValue(b);
         double mobility = mobilityValue(b);
+        double random = randomValue();
         return material * wMaterial +
                kingSafety * wSafety +
-               mobility * wMobility;
+               mobility * wMobility +
+               random * wRandom;
     }
 
     /**
@@ -326,5 +332,14 @@ public class Minimax implements Player {
     private double mobilityValue(final Board b) {
         return b.allMoves(side, false).size() -
                b.allMoves(side.opposite(), false).size();
+    }
+
+    /**
+     * Random score. This is used to break monotony.
+     *
+     * @return  score evaluated
+     */
+    private double randomValue() {
+        return Math.random();
     }
 }
