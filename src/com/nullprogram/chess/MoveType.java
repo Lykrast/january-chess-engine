@@ -88,6 +88,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierCaptureNonRoyal(null));
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierCoordinator(null));
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierCapricorn(null));
+    	MoveTypeDeserializer.registerDeserializer(new MoveModifierSwap(null));
     	
     	//Conditions
     	MoveTypeDeserializer.registerDeserializer(new MoveConditionVirgin(null, null));

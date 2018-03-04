@@ -198,6 +198,20 @@ public abstract class Board implements Serializable {
         moves.add(move);
         execMove(move);
     }
+    
+    /**
+     * Swaps the pieces on 2 board positions.
+     * @param a first position to swap
+     * @param b second position to swap
+     */
+    private void swap(Position a, Position b) {
+    	Piece pieceA = getPiece(a);
+    	Piece pieceB = getPiece(b);
+    	setPiece(a, pieceB);
+    	if (pieceB != null) pieceB.setPosition(a);
+    	setPiece(b, pieceA);
+    	if (pieceA != null) pieceA.setPosition(b);
+    }
 
     /**
      * Actually execute the move.
@@ -211,10 +225,17 @@ public abstract class Board implements Serializable {
         Position a = move.getOrigin();
         Position b = move.getDest();
         if (a != null && b != null) {
-            move.setCaptured(getPiece(b));
-            setPiece(b, getPiece(a));
-            setPiece(a, null);
-            getPiece(b).setPosition(b);
+        	if (move.isSwap())
+        	{
+        		swap(a, b);
+        	}
+        	else
+        	{
+                move.setCaptured(getPiece(b));
+                setPiece(b, getPiece(a));
+                setPiece(a, null);
+                getPiece(b).setPosition(b);
+        	}
             getPiece(b).incMoved();
         } else if (a != null && b == null) {
             move.setCaptured(getPiece(a));
@@ -246,9 +267,16 @@ public abstract class Board implements Serializable {
         Position a = move.getOrigin();
         Position b = move.getDest();
         if (a != null && b != null) {
-            setPiece(a, getPiece(b));
-            setPiece(b, move.getCaptured());
-            getPiece(a).setPosition(a);
+        	if (move.isSwap())
+        	{
+        		swap(a, b);
+        	}
+        	else
+        	{
+                setPiece(a, getPiece(b));
+                setPiece(b, move.getCaptured());
+                getPiece(a).setPosition(a);
+        	}
             getPiece(a).decMoved();
         } else if (a != null && b == null) {
             setPiece(a, move.getCaptured());

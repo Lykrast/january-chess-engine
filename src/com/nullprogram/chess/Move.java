@@ -42,6 +42,9 @@ public final class Move implements Serializable {
     /** Marks this move as "special", currently this only changes the color it is displayed for clarity */
     private boolean special = false;
 
+    /** Marks this move as a swap, meaning pieces swap places instead of being captured */
+    private boolean swap = false;
+
     /**
      * Create a new move to move a piece from one position to another.
      *
@@ -66,6 +69,7 @@ public final class Move implements Serializable {
         replacement = move.getReplacement();
         replacementSide = move.getReplacementSide();
         special = move.special;
+        swap = move.swap;
         if (move.getNext() != null) {
             next = new Move(move.getNext());
         }
@@ -86,6 +90,9 @@ public final class Move implements Serializable {
     	if (this == o) return true;
     	if (o == null || !(o instanceof Move)) return false;
     	Move move = (Move)o;
+    	
+    	//Simple flags
+    	if (special != move.special || swap != move.swap) return false;
     	
     	//Start and destination
     	if (!equalsCheckNull(destination, move.destination) || !equalsCheckNull(origin, move.origin)) return false;
@@ -233,7 +240,12 @@ public final class Move implements Serializable {
     		if (pos.equals(origin)) return true;
     	}
     	//Replacement
-    	else if (pos.equals(destination)) return true;
+    	else if (pos.equals(destination))
+    	{
+    		//Swapping means whatever we're looking for is now at the origin
+    		if (swap) return next == null ? false : next.captures(origin);
+    		else return true;
+    	}
     	
     	//Recursive check
     	return next == null ? false : next.captures(pos);
@@ -246,7 +258,8 @@ public final class Move implements Serializable {
     	//Normal move
     	if (origin != null && destination != null)
     	{
-    		s = "" + origin + destination;
+    		if (swap) s = origin + "<->" + destination;
+    		else s = "" + origin + destination;
     	}
     	//Capture without move
     	else if (origin != null && destination == null)
@@ -268,7 +281,6 @@ public final class Move implements Serializable {
      * Force mark this move as "special" or don't. This is currently only used to change the color the move is displayed for clarity.
      * @param value true to make it special, false to make it no longer special
      */
-    @Deprecated
     public void setSpecial(boolean value) {
     	special = value;
     }
@@ -276,11 +288,27 @@ public final class Move implements Serializable {
     /**
      * Whether or not this move is marked as "special". This is currently only used to change the color the move is displayed for clarity.
      * <br>
-     * A move that has other moves in its sequence is always considered "special".
+     * A move that has other moves in its sequence, or that is a swap is always considered "special".
      * @return whether this move is marked as "special" or not
      */
     public boolean isSpecial() {
-    	return special || next != null;
+    	return special || swap || next != null;
+    }
+    
+    /**
+     * Set this move as a swap or not. A swap means that instead of capturing what it lands on, it swaps positions with it.
+     * @param value true to make it a swap, false to make it not a swap
+     */
+    public void setSwap(boolean value) {
+    	swap = value;
+    }
+    
+    /**
+     * Whether or not this move is a swap. A swap means that instead of capturing what it lands on, it swaps positions with it.
+     * @return whether this move is a swap or not
+     */
+    public boolean isSwap() {
+    	return swap;
     }
 
     /**
