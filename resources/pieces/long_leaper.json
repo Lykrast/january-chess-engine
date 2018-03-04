@@ -1,0 +1,9 @@
+{
+  "name": "Long Leaper",
+  "value": 10.0,
+  "moves": [
+    {
+		"type": "LongLeaper"
+	}
+  ]
+}

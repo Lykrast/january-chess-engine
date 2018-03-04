@@ -114,6 +114,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeAdvancer(DirectionMode.ALL));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeWithdrawer(DirectionMode.ALL));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeCheckers(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, true));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLongLeaper(DirectionMode.ALL));
     }
     
     /**
