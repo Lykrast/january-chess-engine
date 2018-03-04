@@ -1,0 +1,17 @@
+{
+  "name": "Ximaera",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "ModSwap",
+		"moves": [
+			{
+				"type": "Rook"
+			},
+			{
+				"type": "Bishop"
+			}
+		]
+	}
+  ]
+}
