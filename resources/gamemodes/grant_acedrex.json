@@ -1,0 +1,94 @@
+{
+  "name": "Grant Acedrex",
+  "width": 12,
+  "height": 12,
+  "promotions": ["rook", "lion", "unicorn", "zebra", "bishop", "gryphon"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 12,"y": 3,"side": "white","piece": "pawn_nodoublemove"	
+	},
+    {
+		"x": 0,"xlen": 12,"y": 8,"side": "black","piece": "pawn_nodoublemove"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 11,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 11,"side": "black","piece": "rook"
+	},
+    {
+		"x": 11,"y": 11,"side": "black","piece": "rook"
+	},
+	
+    {
+		"x": 1,"y": 0,"side": "white","piece": "lion"
+	},
+    {
+		"x": 10,"y": 0,"side": "white","piece": "lion"
+	},
+    {
+		"x": 1,"y": 11,"side": "black","piece": "lion"
+	},
+    {
+		"x": 10,"y": 11,"side": "black","piece": "lion"
+	},
+	
+    {
+		"x": 2,"y": 0,"side": "white","piece": "unicorn"
+	},
+    {
+		"x": 9,"y": 0,"side": "white","piece": "unicorn"
+	},
+    {
+		"x": 2,"y": 11,"side": "black","piece": "unicorn"
+	},
+    {
+		"x": 9,"y": 11,"side": "black","piece": "unicorn"
+	},
+	
+    {
+		"x": 3,"y": 0,"side": "white","piece": "zebra"
+	},
+    {
+		"x": 8,"y": 0,"side": "white","piece": "zebra"
+	},
+    {
+		"x": 3,"y": 11,"side": "black","piece": "zebra"
+	},
+    {
+		"x": 8,"y": 11,"side": "black","piece": "zebra"
+	},
+	
+    {
+		"x": 4,"y": 0,"side": "white","piece": "bishop"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "bishop"
+	},
+    {
+		"x": 4,"y": 11,"side": "black","piece": "bishop"
+	},
+    {
+		"x": 7,"y": 11,"side": "black","piece": "bishop"
+	},
+	
+    {
+		"x": 5,"y": 0,"side": "white","piece": "gryphon"
+	},
+    {
+		"x": 5,"y": 11,"side": "black","piece": "gryphon"
+	},
+	
+    {
+		"x": 6,"y": 0,"side": "white","piece": "king_acedrex"
+	},
+    {
+		"x": 6,"y": 11,"side": "black","piece": "king_acedrex"
+	}
+	
+  ]
+}

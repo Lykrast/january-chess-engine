@@ -1,0 +1,15 @@
+{
+  "name": "Lion",
+  "value": 3.5,
+  "moves": [
+    {
+		"type": "LeaperOrthogonal",
+		"range": 3
+	},
+    {
+		"type": "Leaper",
+		"near": 1,
+		"far": 3
+	}
+  ]
+}
