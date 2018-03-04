@@ -1,0 +1,19 @@
+{
+  "name": "Capricorn",
+  "value": 12.0,
+  "moves": [
+    {
+		"type": "ModCapricorn",
+		"moves": [
+			{
+				"type": "Rook",
+				"mode": "move"
+			},
+			{
+				"type": "Bishop",
+				"mode": "move"
+			}
+		]
+	}
+  ]
+}
