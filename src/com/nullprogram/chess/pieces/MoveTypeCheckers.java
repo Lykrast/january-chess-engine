@@ -56,7 +56,7 @@ public class MoveTypeCheckers extends MoveType {
 			//Check if not already in the sequence
 			if (sequence != null && sequence.captures(capture)) continue;
 			//Check if enemy
-			if (!p.getBoard().isFree(capture) && p.getBoard().isFree(capture, p.getSide()))
+			if (p.getBoard().isEnemy(capture, p.getSide()))
 			{
 				Position next = capture.offset(dir);
 				//Check if can jump

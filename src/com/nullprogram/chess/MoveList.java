@@ -138,8 +138,7 @@ public class MoveList implements Iterable<Move>, Serializable, IMoveList {
     @Override
 	public final boolean addCaptureOnly(final Move move) {
         Piece p = board.getPiece(move.getOrigin());
-        if (board.isFree(move.getDest(), p.getSide()) &&
-            !board.isFree(move.getDest()) &&
+        if (board.isEnemy(move.getDest(), p.getSide()) &&
             !causesCheck(move)) {
 
             add(move);

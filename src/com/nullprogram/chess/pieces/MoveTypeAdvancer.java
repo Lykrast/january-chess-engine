@@ -29,7 +29,7 @@ public class MoveTypeAdvancer extends MoveType {
         	{
         		pos = pos.offset(dir);
         		//Check for capture
-        		if (!p.getBoard().isFree(pos) && p.getBoard().isFree(pos, p.getSide()))
+        		if (p.getBoard().isEnemy(pos, p.getSide()))
         		{
         			move.setNext(new Move(pos, null));
         		}

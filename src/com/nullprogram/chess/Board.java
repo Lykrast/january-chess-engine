@@ -324,6 +324,21 @@ public abstract class Board implements Serializable {
     }
 
     /**
+     * Return true if position is in range and contains an enemy piece.
+     *
+     * @param pos  position to be tested
+     * @param side side of the piece wanting to move
+     * @return     validity of position
+     */
+    public final Boolean isEnemy(final Position pos, final Piece.Side side) {
+    	if (!inRange(pos)) return false;
+        Piece p = getPiece(pos);
+        if (p == null) return false;
+        return p.getSide() != side;
+    }
+
+
+    /**
      * Copy this board.
      *
      * @return deep copy of the board.

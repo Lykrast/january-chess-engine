@@ -36,7 +36,7 @@ public class MoveListWrapperCoordinator extends MoveListWrapper {
 	private Move coordinate(Move move, int x, int y)
 	{
 		Position target = new Position(x, y);
-		if (!piece.getBoard().isFree(target) && piece.getBoard().isFree(target, piece.getSide()))
+		if (piece.getBoard().isEnemy(target, piece.getSide()))
 		{
 			Move coordination = new Move(target, null);
 			move.setNext(coordination);

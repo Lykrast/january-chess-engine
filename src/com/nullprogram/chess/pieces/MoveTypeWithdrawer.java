@@ -26,7 +26,7 @@ public class MoveTypeWithdrawer extends MoveType {
         	Move withdrawal = null;
         	Position withdrew = start.offset(dir.opposite().getPosition());
         	//Check if there's an enemy piece to withdraw
-        	if (!p.getBoard().isFree(withdrew) && p.getBoard().isFree(withdrew, p.getSide()))
+        	if (p.getBoard().isEnemy(withdrew, p.getSide()))
         	{
         		withdrawal = new Move(withdrew, null);
         	}
@@ -34,16 +34,12 @@ public class MoveTypeWithdrawer extends MoveType {
         	Position dirpos = dir.getPosition();
         	Position pos = start.offset(dirpos);
         	Move move = new Move(start, pos);
-        	if (withdrawal != null)
-        	{
-        		//move.setSpecial(true);
-            	move.setNext(withdrawal);
-        	}
+        	move.setNext(withdrawal);
         	while (list.addMove(move) && p.getBoard().isFree(pos))
         	{
         		pos = pos.offset(dirpos);
         		move = new Move(start, pos);
-            	if (withdrawal != null) move.setNext(withdrawal);
+            	move.setNext(withdrawal);
         	}
         }
         
