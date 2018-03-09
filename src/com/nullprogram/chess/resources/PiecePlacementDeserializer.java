@@ -7,11 +7,11 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.Model;
-import com.nullprogram.chess.Piece;
-import com.nullprogram.chess.Piece.Side;
 import com.nullprogram.chess.boards.PiecePlacement;
+import com.nullprogram.chess.pieces.Model;
+import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceRegistry;
+import com.nullprogram.chess.pieces.Piece.Side;
 
 public class PiecePlacementDeserializer implements JsonDeserializer<PiecePlacement> {
 	public static final PiecePlacementDeserializer INSTANCE = new PiecePlacementDeserializer();

@@ -1,5 +1,7 @@
 package com.nullprogram.chess;
 
+import com.nullprogram.chess.pieces.Piece;
+
 /**
  * A Player is a class that can take a turn.
  *

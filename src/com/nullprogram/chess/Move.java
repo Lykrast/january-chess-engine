@@ -2,6 +2,7 @@ package com.nullprogram.chess;
 
 import java.io.Serializable;
 
+import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceRegistry;
 
 /**

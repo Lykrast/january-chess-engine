@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
-import com.nullprogram.chess.GameMode;
 import com.nullprogram.chess.pieces.PieceRegistry;
 import com.nullprogram.chess.resources.JSONLoader;
 

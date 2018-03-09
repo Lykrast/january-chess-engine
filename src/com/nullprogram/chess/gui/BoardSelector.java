@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import com.nullprogram.chess.GameMode;
+import com.nullprogram.chess.boards.GameMode;
 import com.nullprogram.chess.boards.GameModeRegistry;
 
 /**

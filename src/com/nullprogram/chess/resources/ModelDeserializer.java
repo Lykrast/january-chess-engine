@@ -10,8 +10,8 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.IMoveType;
-import com.nullprogram.chess.Model;
+import com.nullprogram.chess.pieces.Model;
+import com.nullprogram.chess.pieces.movement.IMoveType;
 
 public class ModelDeserializer implements JsonDeserializer<Model> {
 	public static final ModelDeserializer INSTANCE = new ModelDeserializer();

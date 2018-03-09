@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
-import com.nullprogram.chess.Piece;
+import com.nullprogram.chess.pieces.Piece;
 
 /**
  * Serves cached images of requested size.

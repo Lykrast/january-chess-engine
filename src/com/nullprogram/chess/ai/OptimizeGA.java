@@ -4,9 +4,9 @@ import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.GameEvent;
 import com.nullprogram.chess.GameListener;
-import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.boards.StandardBoard;
+import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceRegistry;
 
 import java.util.Arrays;

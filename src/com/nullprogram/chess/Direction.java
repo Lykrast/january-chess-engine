@@ -1,7 +1,8 @@
 package com.nullprogram.chess;
 
-import com.nullprogram.chess.MoveType.DirectionMode;
-import com.nullprogram.chess.Piece.Side;
+import com.nullprogram.chess.pieces.Piece;
+import com.nullprogram.chess.pieces.Piece.Side;
+import com.nullprogram.chess.pieces.movement.MoveType.DirectionMode;
 
 public enum Direction {
 	UP(new Position(0,1)),

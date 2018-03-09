@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.logging.Logger;
 
+import com.nullprogram.chess.pieces.Piece;
+
 /**
  * Drives a game of chess, given players and a board.
  *

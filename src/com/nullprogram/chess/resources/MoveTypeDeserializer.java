@@ -8,7 +8,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.IMoveType;
+import com.nullprogram.chess.pieces.movement.IMoveType;
 
 public class MoveTypeDeserializer implements JsonDeserializer<IMoveType> {
 	public static final MoveTypeDeserializer INSTANCE = new MoveTypeDeserializer();

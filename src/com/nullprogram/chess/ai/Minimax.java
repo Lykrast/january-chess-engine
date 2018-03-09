@@ -16,18 +16,18 @@ import java.util.logging.Logger;
 
 import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Game;
-import com.nullprogram.chess.Model;
 import com.nullprogram.chess.Move;
-import com.nullprogram.chess.MoveList;
-import com.nullprogram.chess.MoveType;
-import com.nullprogram.chess.MoveType.DirectionMode;
-import com.nullprogram.chess.MoveType.MoveMode;
-import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.Position;
-import com.nullprogram.chess.pieces.MoveTypeBishop;
-import com.nullprogram.chess.pieces.MoveTypeRook;
+import com.nullprogram.chess.pieces.Model;
+import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceRegistry;
+import com.nullprogram.chess.pieces.movement.MoveList;
+import com.nullprogram.chess.pieces.movement.MoveType;
+import com.nullprogram.chess.pieces.movement.MoveType.DirectionMode;
+import com.nullprogram.chess.pieces.movement.MoveType.MoveMode;
+import com.nullprogram.chess.pieces.movement.generic.MoveTypeBishop;
+import com.nullprogram.chess.pieces.movement.generic.MoveTypeRook;
 
 /**
  * Minimax Chess AI player.

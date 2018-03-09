@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nullprogram.chess.boards.GameMode;
 import com.nullprogram.chess.boards.StandardBoard;
+import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceFactory;
+import com.nullprogram.chess.pieces.movement.MoveList;
 
 /**
  * Board data structure.

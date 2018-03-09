@@ -8,13 +8,13 @@ import java.util.logging.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.GameMode;
-import com.nullprogram.chess.IMoveType;
-import com.nullprogram.chess.Model;
-import com.nullprogram.chess.MoveType;
+import com.nullprogram.chess.boards.GameMode;
 import com.nullprogram.chess.boards.GameModeRegistry;
 import com.nullprogram.chess.boards.PiecePlacement;
+import com.nullprogram.chess.pieces.Model;
 import com.nullprogram.chess.pieces.PieceRegistry;
+import com.nullprogram.chess.pieces.movement.IMoveType;
+import com.nullprogram.chess.pieces.movement.MoveType;
 
 public class JSONLoader {
 	private static final String PATH_PIECES = "./resources/pieces";

@@ -1,8 +1,5 @@
 package com.nullprogram.chess.pieces;
 
-import com.nullprogram.chess.Model;
-import com.nullprogram.chess.Piece;
-
 /**
  * Creates pieces based on their name strings.
  */

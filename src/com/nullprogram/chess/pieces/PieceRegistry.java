@@ -3,7 +3,6 @@ package com.nullprogram.chess.pieces;
 import java.util.HashMap;
 import java.util.Set;
 
-import com.nullprogram.chess.Model;
 import com.nullprogram.chess.resources.JSONLoader;
 
 public class PieceRegistry {

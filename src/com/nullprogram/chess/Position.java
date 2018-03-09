@@ -2,7 +2,8 @@ package com.nullprogram.chess;
 
 import java.io.Serializable;
 
-import com.nullprogram.chess.MoveType.DirectionMode;
+import com.nullprogram.chess.pieces.Piece;
+import com.nullprogram.chess.pieces.movement.MoveType.DirectionMode;
 
 /**
  * Represents a position on a Chess board.

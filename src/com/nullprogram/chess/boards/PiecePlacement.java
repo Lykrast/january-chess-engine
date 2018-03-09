@@ -1,9 +1,9 @@
 package com.nullprogram.chess.boards;
 
 import com.nullprogram.chess.Board;
-import com.nullprogram.chess.Model;
-import com.nullprogram.chess.Piece;
-import com.nullprogram.chess.Piece.Side;
+import com.nullprogram.chess.pieces.Model;
+import com.nullprogram.chess.pieces.Piece;
+import com.nullprogram.chess.pieces.Piece.Side;
 
 public class PiecePlacement {
 	private int x, y, xlen, ylen;

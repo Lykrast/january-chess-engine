@@ -3,6 +3,8 @@ package com.nullprogram.chess;
 import com.nullprogram.chess.ai.Minimax;
 import com.nullprogram.chess.boards.StandardBoard;
 import com.nullprogram.chess.gui.BoardPanel;
+import com.nullprogram.chess.pieces.Piece;
+
 import java.util.logging.Logger;
 import javax.swing.JApplet;
 import javax.swing.JOptionPane;

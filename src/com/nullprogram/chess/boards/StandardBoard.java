@@ -3,10 +3,9 @@ package com.nullprogram.chess.boards;
 import java.util.List;
 
 import com.nullprogram.chess.Board;
-import com.nullprogram.chess.GameMode;
-import com.nullprogram.chess.MoveList;
-import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.pieces.Piece;
+import com.nullprogram.chess.pieces.movement.MoveList;
 
 /**
  * The board for a standard game of chess.

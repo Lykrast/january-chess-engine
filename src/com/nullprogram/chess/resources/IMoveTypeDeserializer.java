@@ -3,7 +3,7 @@ package com.nullprogram.chess.resources;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.nullprogram.chess.IMoveType;
+import com.nullprogram.chess.pieces.movement.IMoveType;
 
 public interface IMoveTypeDeserializer {
 	/**
