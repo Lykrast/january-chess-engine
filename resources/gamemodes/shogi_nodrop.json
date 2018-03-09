@@ -77,10 +77,10 @@
 	},
 	
 	{
-		"x": 4,"y": 0,"side": "white","piece": "king"
+		"x": 4,"y": 0,"side": "white","piece": "king_nocastle"
 	},
 	{
-		"x": 4,"y": 8,"side": "black","piece": "king"
+		"x": 4,"y": 8,"side": "black","piece": "king_nocastle"
 	}
 	
   ]
