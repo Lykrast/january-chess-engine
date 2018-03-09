@@ -116,7 +116,7 @@ public abstract class Board implements Serializable {
             }
         }
         return null;
-    }
+    }         
 
     /**
      * Set the width of the board.

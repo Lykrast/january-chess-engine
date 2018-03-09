@@ -295,8 +295,9 @@ public class Minimax implements Player {
      * @return  king insafety score
      */
     private double kingInsafetyValue(final Board b) {
-        return kingInsafetyValue(b, side.opposite()) -
-               kingInsafetyValue(b, side);
+    	double insafetySelf = b.getGameMode().hasRoyal(side) ? kingInsafetyValue(b, side) : 0;
+    	double insafetyOpponent = b.getGameMode().hasRoyal(side.opposite()) ? kingInsafetyValue(b, side.opposite()) : 0;
+        return insafetyOpponent - insafetySelf;
     }
     
     private MoveType safetyRook = new MoveTypeRook(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, -1), 

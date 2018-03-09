@@ -8,8 +8,12 @@ public class GameMode implements Comparable<GameMode>{
     
 	private int width, height;
 	private PiecePlacement[] placements;
+	
 	/** The list of pieces a generic Pawn can promote to in this gamemode */
 	private String[] promotions;
+
+	/** Says whether each side started with a royal piece, used by AI */
+	private boolean hasRoyalWhite, hasRoyalBlack;
 	
 	public GameMode(String name, int width, int height, PiecePlacement[] placements, String[] promotions)
 	{
@@ -18,6 +22,17 @@ public class GameMode implements Comparable<GameMode>{
 		this.height = height;
 		this.placements = placements;
 		this.promotions = promotions;
+		
+		hasRoyalWhite = false;
+		hasRoyalBlack = false;
+		for (PiecePlacement p : placements)
+		{
+			if (p.getModel().isRoyal())
+			{
+				if (p.getSide() == Piece.Side.WHITE) hasRoyalWhite = true;
+				else hasRoyalBlack = true;
+			}
+		}
 	}
 	
 	public void initialize(Board b)
@@ -54,6 +69,16 @@ public class GameMode implements Comparable<GameMode>{
 	
 	public String[] getPromotions() {
 		return promotions;
+	}
+	
+	/**
+	 * Says whether or not the given side started with a royal piece on the board.
+	 * Used for AI evaluation.
+	 * @param side side to check
+	 * @return true if, on the starting position, the given side has a royal piece
+	 */
+	public boolean hasRoyal(Piece.Side side) {
+		return side == Piece.Side.WHITE ? hasRoyalWhite : hasRoyalBlack;
 	}
 	
 	@Override
