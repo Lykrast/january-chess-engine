@@ -31,6 +31,7 @@ import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.MoveList;
+import com.nullprogram.chess.pieces.movement.MoveListCapture;
 
 /**
  * Displays a board and exposes local players.
@@ -54,10 +55,12 @@ public class BoardPanel extends JComponent
 
     /** Padding between the highlight and tile border. */
     static final int HIGHLIGHT_PADDING = 15;
+    static final int ATTACK_PADDING = 30;
 
     /** Thickness of highlighting. */
     static final Stroke HIGHLIGHT_STROKE = new BasicStroke(12);
-
+    static final Stroke HIGHLIGHT_STROKE_ATTACK = new BasicStroke(6);
+    
     /** Shape for drawing the highlights. */
     private static final Shape HIGHLIGHT =
         new RoundRectangle2D.Double(HIGHLIGHT_PADDING, HIGHLIGHT_PADDING,
@@ -65,6 +68,19 @@ public class BoardPanel extends JComponent
                                     TILE_SIZE - HIGHLIGHT_PADDING * 2,
                                     HIGHLIGHT_PADDING * 4,
                                     HIGHLIGHT_PADDING * 4);
+    
+    private static final Shape HIGHLIGHT_WHITE =
+            new RoundRectangle2D.Double(ATTACK_PADDING, ATTACK_PADDING,
+                                        TILE_SIZE - ATTACK_PADDING * 2,
+                                        TILE_SIZE - ATTACK_PADDING * 2,
+                                        HIGHLIGHT_PADDING * 4,
+                                        HIGHLIGHT_PADDING * 4);
+    private static final Shape HIGHLIGHT_BLACK =
+            new RoundRectangle2D.Double(ATTACK_PADDING + HIGHLIGHT_PADDING, ATTACK_PADDING + HIGHLIGHT_PADDING,
+                                        TILE_SIZE - (ATTACK_PADDING + HIGHLIGHT_PADDING) * 2,
+                                        TILE_SIZE - (ATTACK_PADDING + HIGHLIGHT_PADDING) * 2,
+                                        HIGHLIGHT_PADDING * 4,
+                                        HIGHLIGHT_PADDING * 4);
 
     /** Version for object serialization. */
     private static final long serialVersionUID = 1L;
@@ -98,6 +114,9 @@ public class BoardPanel extends JComponent
     static final Color LAST = new Color(0x00, 0x7F, 0xFF);
     static final Color LAST_SPECIAL = new Color(0x7F, 0x5F, 0xBF);
     static final Color LAST_CAPTURE = new Color(0xFF, 0x00, 0x00);
+    
+    static final Color ATTACKED_WHITE = new Color(0xFF, 0xFF, 0xFF);
+    static final Color ATTACKED_BLACK = new Color(0x1C, 0x1C, 0x1C);
 
     /** Minimum size of a tile, in pixels. */
     static final int MIN_SIZE = 25;
@@ -116,6 +135,9 @@ public class BoardPanel extends JComponent
 
     /** The move selected by the player. */
     private Move selectedMove;
+
+    /** Whether to show attacks or not */
+    boolean showAttacks = false;
 
     /** The interaction modes. */
     private enum Mode {
@@ -239,6 +261,32 @@ public class BoardPanel extends JComponent
             }
         }
 
+        if (showAttacks)
+        {
+            for (int y = 0; y < h; y++) {
+                for (int x = 0; x < w; x++) {
+                    Piece p = board.getPiece(new Position(x, y));
+                    if (p != null) {
+                    	Shape shape;
+                    	if (p.getSide() == Piece.Side.WHITE)
+                    	{
+                    		g.setColor(ATTACKED_WHITE);
+                    		shape = HIGHLIGHT_WHITE;
+                    	}
+                    	else
+                    	{
+                    		g.setColor(ATTACKED_BLACK);
+                    		shape = HIGHLIGHT_BLACK;
+                    	}
+                    	MoveListCapture tmpMoves = p.getCapturingMoves();
+                    	for (Move move : tmpMoves) {
+                    		highlightAttack(g, move.getDest(), shape);
+                    	}
+                    }
+                }
+            }
+        }
+
         /* Draw last move */
         Move last = board.last();
         if (last != null) {
@@ -294,6 +342,18 @@ public class BoardPanel extends JComponent
         AffineTransform at = new AffineTransform();
         at.translate(x * TILE_SIZE, y * TILE_SIZE);
         g.draw(at.createTransformedShape(HIGHLIGHT));
+    }
+    
+    private void highlightAttack(final Graphics2D g, final Position pos, final Shape shape) {
+        int x = pos.getX();
+        int y = pos.getY();
+        if (flipped) {
+            y = board.getHeight() - 1 - y;
+        }
+        g.setStroke(HIGHLIGHT_STROKE_ATTACK);
+        AffineTransform at = new AffineTransform();
+        at.translate(x * TILE_SIZE, y * TILE_SIZE);
+        g.draw(at.createTransformedShape(shape));
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.io.Serializable;
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.movement.MoveList;
+import com.nullprogram.chess.pieces.movement.MoveListCapture;
 
 /**
  * The abstract base class for implementing chess pieces. Implementing
@@ -137,6 +138,16 @@ public class Piece implements Serializable {
     public MoveList getMoves(boolean checkCheck)
     {
     	return model.getMoves(this, checkCheck);
+    }
+
+    /**
+     * Get all moves for this piece that could capture something.
+     *
+     * @return list of moves
+     */
+    public MoveListCapture getCapturingMoves()
+    {
+    	return model.getCapturingMoves(this);
     }
 
     /**

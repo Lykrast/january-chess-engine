@@ -6,6 +6,7 @@ import com.nullprogram.chess.pieces.Piece.Side;
 import com.nullprogram.chess.pieces.movement.IMoveList;
 import com.nullprogram.chess.pieces.movement.IMoveType;
 import com.nullprogram.chess.pieces.movement.MoveList;
+import com.nullprogram.chess.pieces.movement.MoveListCapture;
 import com.nullprogram.chess.resources.ImageServer;
 
 public class Model {
@@ -59,6 +60,18 @@ public class Model {
         IMoveList list = new MoveList(p.getBoard(), checkCheck);
         for (IMoveType m : moves) list = m.getMoves(p, list);
         return (MoveList)list;
+    }
+
+    /**
+     * Get all moves for this piece that could capture something.
+     *
+     * @return list of moves
+     */
+    public MoveListCapture getCapturingMoves(final Piece p)
+    {
+        IMoveList list = new MoveListCapture(p.getBoard());
+        for (IMoveType m : moves) list = m.getMoves(p, list);
+        return (MoveListCapture)list;
     }
 
     /**

@@ -1,5 +1,20 @@
 package com.nullprogram.chess.gui;
 
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
+
 import com.nullprogram.chess.Chess;
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.GameEvent;
@@ -8,19 +23,6 @@ import com.nullprogram.chess.Player;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.boards.EmptyBoard;
 import com.nullprogram.chess.resources.ImageServer;
-
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JSeparator;
 
 /**
  * The JFrame that contains all GUI elements.
@@ -98,6 +100,12 @@ public class ChessFrame extends JFrame
     public final Player getPlayer() {
         return display;
     }
+    
+    private void setShowAttacks(boolean value) {
+    	display.showAttacks = value;
+    	display.invalidate();
+    	display.repaint();
+    }
 
     /**
      * Used for manaing menu events.
@@ -123,6 +131,8 @@ public class ChessFrame extends JFrame
         public final void actionPerformed(final ActionEvent e) {
             if ("New Game".equals(e.getActionCommand())) {
                 frame.newGame();
+            } else if ("Show attacked squares".equals(e.getActionCommand())) {
+                frame.setShowAttacks(((JCheckBoxMenuItem)e.getSource()).getState());
             } else if ("Exit".equals(e.getActionCommand())) {
                 System.exit(0);
             }
@@ -140,6 +150,11 @@ public class ChessFrame extends JFrame
             newGame.addActionListener(this);
             newGame.setMnemonic('N');
             game.add(newGame);
+            game.add(new JSeparator());
+            JCheckBoxMenuItem toggleHint = new JCheckBoxMenuItem("Show attacked squares");
+            toggleHint.addActionListener(this);
+            toggleHint.setMnemonic('S');
+            game.add(toggleHint);
             game.add(new JSeparator());
             JMenuItem exitGame = new JMenuItem("Exit");
             exitGame.addActionListener(this);
