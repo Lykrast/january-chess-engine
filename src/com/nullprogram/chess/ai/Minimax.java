@@ -3,6 +3,7 @@ package com.nullprogram.chess.ai;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Callable;
@@ -304,23 +305,36 @@ public class Minimax implements Player {
     		safetyBishop = new MoveTypeBishop(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, -1);
 
     /**
-     * Helper function: determine safety of a single king.
+     * Helper function: determine safety of all kings of a given side.
      *
      * @param b board to be evaluated
      * @param s side of king to be checked
      * @return king insafety score
      */
     private double kingInsafetyValue(final Board b, final Piece.Side s) {
-        /* Trace lines away from the king and count the spaces. */
-        Position king = b.findKing(s);
-        if (king == null) {
+    	
+    	List<Position> list = b.findRoyal(s);
+        if (list.isEmpty()) {
             /* Weird, but may happen during evaluation. */
             return Double.POSITIVE_INFINITY;
         }
+        double value = 0.0;
+        for (Position p : list) value += kingInsafetyValue(b, p);
+        return value;
+    }
+
+    /**
+     * Helper function: determine safety of a single king.
+     *
+     * @param b board to be evaluated
+     * @param p position of the king to evaluate
+     * @return king insafety score
+     */
+    private double kingInsafetyValue(final Board b, final Position p) {
         MoveList list = new MoveList(b, false);
         /* Take advantage of the Rook and Bishop code. */
-        safetyRook.getMoves(b.getPiece(king), list);
-        safetyBishop.getMoves(b.getPiece(king), list);
+        safetyRook.getMoves(b.getPiece(p), list);
+        safetyBishop.getMoves(b.getPiece(p), list);
         return list.size();
     }
 

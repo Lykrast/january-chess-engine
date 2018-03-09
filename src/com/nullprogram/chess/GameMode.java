@@ -14,14 +14,18 @@ public class GameMode implements Comparable<GameMode>{
 
 	/** Says whether each side started with a royal piece, used by AI */
 	private boolean hasRoyalWhite, hasRoyalBlack;
+
+	/** If false, any royal piece can be checkmated to win, if true then all of them must be (so some can be captured) */
+	private boolean checkMultiple;
 	
-	public GameMode(String name, int width, int height, PiecePlacement[] placements, String[] promotions)
+	public GameMode(String name, int width, int height, PiecePlacement[] placements, String[] promotions, boolean checkMultiple)
 	{
 		this.name = name;
 		this.width = width;
 		this.height = height;
 		this.placements = placements;
 		this.promotions = promotions;
+		this.checkMultiple = checkMultiple;
 		
 		hasRoyalWhite = false;
 		hasRoyalBlack = false;
@@ -79,6 +83,20 @@ public class GameMode implements Comparable<GameMode>{
 	 */
 	public boolean hasRoyal(Piece.Side side) {
 		return side == Piece.Side.WHITE ? hasRoyalWhite : hasRoyalBlack;
+	}
+	
+	/**
+	 * Gives the policy for handling check (and checkmate) on multiple royal pieces.
+	 * <br>
+	 * False means that checkmating any royal piece wins, so all of them need to be clear of check at the same time.
+	 * <br>
+	 * True means that all royal pieces must be checkmated, which means that a royal piece can be put into capture
+	 * as long as others are protected.
+	 * 
+	 * @return whether all royal pieces must be checkmated or just one
+	 */
+	public boolean checkMultiple() {
+		return checkMultiple;
 	}
 	
 	@Override

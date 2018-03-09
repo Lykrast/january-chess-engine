@@ -1,6 +1,8 @@
 package com.nullprogram.chess;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.nullprogram.chess.boards.StandardBoard;
 import com.nullprogram.chess.pieces.PieceFactory;
@@ -103,6 +105,7 @@ public abstract class Board implements Serializable {
      * @param side whose king
      * @return     the king's board position
      */
+    @Deprecated
     public final Position findKing(final Piece.Side side) {
         for (int y = 0; y < getHeight(); y++) {
             for (int x = 0; x < getWidth(); x++) {
@@ -116,7 +119,25 @@ public abstract class Board implements Serializable {
             }
         }
         return null;
-    }         
+    }
+    
+    /**
+     * Find all royal pieces belonging to the given side.
+     * 
+     * @param side whose side to check
+     * @return a list of all positions that contain a royal piece for the given side
+     */
+    public final List<Position> findRoyal(final Piece.Side side) {
+    	List<Position> list = new ArrayList<>();
+        for (int y = 0; y < getHeight(); y++) {
+            for (int x = 0; x < getWidth(); x++) {
+                Position pos = new Position(x, y);
+                Piece p = getPiece(pos);
+                if (p != null && p.getModel().isRoyal() && p.getSide() == side) list.add(pos);
+            }
+        }
+        return list;
+    }
 
     /**
      * Set the width of the board.

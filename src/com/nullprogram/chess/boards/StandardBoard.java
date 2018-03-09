@@ -1,7 +1,10 @@
 package com.nullprogram.chess.boards;
 
+import java.util.List;
+
 import com.nullprogram.chess.Board;
 import com.nullprogram.chess.GameMode;
+import com.nullprogram.chess.MoveList;
 import com.nullprogram.chess.Piece;
 import com.nullprogram.chess.Position;
 
@@ -62,19 +65,36 @@ public class StandardBoard extends Board {
         } else {
             attacker = Piece.Side.WHITE;
         }
-        Position kingPos = findKing(side);
-        if (kingPos == null) {
+        List<Position> kings = findRoyal(side);
+        if (kings.isEmpty()) {
             /* no king on board, but can happen in AI evaluation */
             return false;
         }
+        boolean checkMultiple = getGameMode().checkMultiple();
         for (int y = 0; y < getHeight(); y++) {
             for (int x = 0; x < getWidth(); x++) {
                 Piece p = getPiece(new Position(x, y));
-                if ((p != null) &&
-                    (p.getSide() == attacker) &&
-                    p.getMoves(false).capturesPos(kingPos)) {
-
-                    return true;
+                if ((p != null) && (p.getSide() == attacker)) {
+                	MoveList moves = p.getMoves(false);
+                	
+                	//All kings must be checkmated
+                	if (checkMultiple)
+                	{
+                		boolean check = true;
+                		for (Position k : kings)
+                			if (!moves.capturesPos(k))
+                			{
+                				check = false;
+                				break;
+                			}
+                		//See if we went through the entire loop without breaking
+                		if (check) return true;
+                	}
+                	//Only one king must be checkmated
+                	else
+                	{
+                		for (Position k : kings) if (moves.capturesPos(k)) return true;
+                	}
                 }
             }
         }

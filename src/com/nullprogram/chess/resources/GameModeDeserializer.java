@@ -44,11 +44,21 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 			promotions = list.toArray(new String[list.size()]);
 		}
 		
+		tmp = obj.get("checkpolicy");
+		boolean checkMultiple = true;
+		if (tmp != null)
+		{
+			String str = tmp.getAsString();
+			if (str.equalsIgnoreCase("ANY")) checkMultiple = false;
+			else if (str.equalsIgnoreCase("ALL")) checkMultiple = true;
+			else throw new JsonParseException("Invalid check policy : " + str + " - must be ANY or ALL");
+		}
+		
 		return new GameMode(JSONUtils.getMandatory(obj, "name").getAsString(),
 				JSONUtils.getMandatory(obj, "width").getAsInt(), 
 				JSONUtils.getMandatory(obj, "height").getAsInt(), 
 				piecesList.toArray(new PiecePlacement[piecesList.size()]),
-				promotions);
+				promotions, checkMultiple);
 	}
 
 }
