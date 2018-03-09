@@ -6,7 +6,7 @@
 		"type": "ModRestriction",
 		"xmin": 3,
 		"xmax": 5,
-		"ymax": 3,
+		"ymax": 2,
 		"moves": [
 			{
 				"type": "Ferz"

@@ -8,13 +8,15 @@ import com.nullprogram.chess.pieces.movement.MoveListWrapper;
 
 public class MoveListWrapperRestriction extends MoveListWrapper {
 	private int xmin, xmax, ymin, ymax;
+	private boolean invert;
 	
-	public MoveListWrapperRestriction(Piece piece, IMoveList list, int xmin, int xmax, int ymin, int ymax) {
+	public MoveListWrapperRestriction(Piece piece, IMoveList list, int xmin, int xmax, int ymin, int ymax, boolean invert) {
 		super(piece, list);
 		this.xmin = xmin;
 		this.xmax = xmax;
 		this.ymin = ymin;
 		this.ymax = ymax;
+		this.invert = invert;
 	}
 
 	@Override
@@ -25,9 +27,9 @@ public class MoveListWrapperRestriction extends MoveListWrapper {
         		|| (xmax != -1 && dest.getX() > xmax)
         		|| (ymin != -1 && dest.getY() < ymin)
         		|| (ymax != -1 && dest.getY() > ymax))
-        	return null;
+        	return invert ? move : null;
 		
-		return move;
+		return invert ? null : move;
 	}
 
 }
