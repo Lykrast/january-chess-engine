@@ -1,11 +1,11 @@
-package com.nullprogram.chess;
+package com.nullprogram.chess.boards;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nullprogram.chess.boards.GameMode;
-import com.nullprogram.chess.boards.StandardBoard;
+import com.nullprogram.chess.Move;
+import com.nullprogram.chess.Position;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceFactory;
 import com.nullprogram.chess.pieces.movement.MoveList;

@@ -1,11 +1,11 @@
 package com.nullprogram.chess.gui;
 
-import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Chess;
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.GameEvent;
 import com.nullprogram.chess.GameListener;
 import com.nullprogram.chess.Player;
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.boards.EmptyBoard;
 import com.nullprogram.chess.resources.ImageServer;
 

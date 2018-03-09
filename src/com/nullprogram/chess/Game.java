@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.logging.Logger;
 
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
 
 /**

@@ -1,5 +1,6 @@
 package com.nullprogram.chess;
 
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
 
 /**

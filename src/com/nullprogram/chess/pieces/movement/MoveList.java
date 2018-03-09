@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
 
 /**

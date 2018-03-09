@@ -11,10 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.ai.Minimax;
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.boards.GameMode;
 import com.nullprogram.chess.boards.StandardBoard;
 

@@ -14,11 +14,11 @@ import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
-import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Model;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceRegistry;

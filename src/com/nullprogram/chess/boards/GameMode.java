@@ -1,6 +1,5 @@
 package com.nullprogram.chess.boards;
 
-import com.nullprogram.chess.Board;
 import com.nullprogram.chess.pieces.Piece;
 
 public class GameMode implements Comparable<GameMode>{

@@ -3,8 +3,8 @@ package com.nullprogram.chess.pieces;
 import java.awt.Image;
 import java.io.Serializable;
 
-import com.nullprogram.chess.Board;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.movement.MoveList;
 
 /**

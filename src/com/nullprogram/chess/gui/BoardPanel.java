@@ -23,12 +23,12 @@ import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import com.nullprogram.chess.Board;
 import com.nullprogram.chess.GameEvent;
 import com.nullprogram.chess.GameListener;
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.MoveList;
 
