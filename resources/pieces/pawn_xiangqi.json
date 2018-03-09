@@ -3,15 +3,18 @@
   "value": 1.0,
   "moves": [
     {
-		"type": "ModPromotionSingle",
-		"promoted": "pawn_xiangqi_promoted",
-		"rows": 5,
-		"moves": [
+		"type": "CondRestriction",
+		"ymin": 5,
+		"true": [
 			{
 				"type": "Wazir",
-				"direction": "FORWARD"
+				"direction": "HORIZONTAL"
 			}
 		]
+	},
+	{
+		"type": "Wazir",
+		"direction": "FORWARD"
 	}
   ]
 }
