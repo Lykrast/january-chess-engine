@@ -28,12 +28,18 @@ public class StandardBoard extends Board {
 
     @Override
     public final Boolean checkmate(final Piece.Side side) {
-        return check(side) && (moveCount(side) == 0);
+    	//Can't checkmate if you didn't start with a king
+    	if (!getGameMode().hasRoyal(side)) return false;
+    	
+    	//Loosing all your kings in some way is a checkmate
+        return findRoyal(side).isEmpty() || ((moveCount(side) == 0) && check(side));
     }
 
     @Override
     public final Boolean stalemate(final Piece.Side side) {
-        return (!check(side)) && (moveCount(side) == 0);
+    	if (!getGameMode().hasRoyal(side)) return moveCount(side) == 0;
+    	
+        return (moveCount(side) == 0) && (!check(side));
     }
 
     /**

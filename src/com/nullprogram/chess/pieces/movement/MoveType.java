@@ -48,16 +48,8 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
 	@Override
 	public IMoveType create(JsonObject json, JsonDeserializationContext context) throws JsonParseException
 	{
-		JsonObject obj = json.getAsJsonObject();
-		
-		JsonElement modeJson = obj.get("mode");
-		MoveType.MoveMode mode = MoveType.MoveMode.MOVE_CAPTURE;
-		if (modeJson != null)
-		{
-			mode = MoveType.MoveMode.fromString(modeJson.getAsString());
-		}
-		
-		return create(obj, mode, DirectionMode.fromJson(obj.get("direction")), context);
+		JsonObject obj = json.getAsJsonObject();		
+		return create(obj, MoveMode.fromJson(obj.get("mode")), DirectionMode.fromJson(obj.get("direction")), context);
 	}
 
     /* (non-Javadoc)
@@ -128,36 +120,55 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
      * @author Lykrast
      */
     public static enum MoveMode {
-    	MOVE_CAPTURE,
-    	MOVE,
-    	CAPTURE;
+    	MOVE_CAPTURE("MOVE_CAPTURE", true, true, false),
+    	MOVE("MOVE", true, false, false),
+    	CAPTURE("CAPTURE", false, true, false),
+    	MOVE_CAPTURE_FRIENDLY("MOVE_CAPTURE_FRIENDLY", true, false, true),
+    	MOVE_CAPTURE_BOTH("MOVE_CAPTURE_BOTH", true, true, true),
+    	CAPTURE_FRIENDLY("CAPTURE_FRIENDLY", false, false, true),
+    	CAPTURE_BOTH("CAPTURE_BOTH", false, true, true);
     	
-    	/**
-    	 * Return a MoveMode corresponding to the given string.
-    	 * <br>
-    	 * This is not case sensitive, and accepted values are "move", "capture" and "move_capture".
-    	 * @param s string to convert
-    	 * @return MoveMode corresponding to the string, or null
-    	 */
-    	public static MoveMode fromString(String s)
-    	{
-    		if (s.equalsIgnoreCase("move"))
-    		{
-    			return MOVE;
-    		}
-    		
-    		if (s.equalsIgnoreCase("capture"))
-    		{
-    			return CAPTURE;
-    		}
-    		
-    		if (s.equalsIgnoreCase("move_capture"))
-    		{
-    			return MOVE_CAPTURE;
-    		}
-    		
-    		return null;
-    	}
+    	private static final MoveMode[] ALL = MoveMode.values();
+    	private static final String ERROR = "Invalid move mode : %s - must be " + 
+    			MOVE_CAPTURE.name+", "+MOVE.name+", "+CAPTURE.name+", "+MOVE_CAPTURE_FRIENDLY.name+", "+MOVE_CAPTURE_BOTH.name+
+    			", "+CAPTURE_FRIENDLY.name+" or "+CAPTURE_BOTH.name;
+    	
+    	private boolean move, captureEnemy, captureFriendly;
+    	private String name;
+    	
+		private MoveMode(String name, boolean move, boolean captureEnemy, boolean captureFriendly) {
+			this.move = move;
+			this.captureEnemy = captureEnemy;
+			this.captureFriendly = captureFriendly;
+			this.name = name;
+		}
+		
+		/**
+		 * Does this MoveMode allows moving without capturing.
+		 */
+		public boolean move() { return move; }
+		/**
+		 * Does this MoveMode allows capturing an enemy piece by replacement.
+		 */
+		public boolean captureEnemy() { return captureEnemy; }
+		/**
+		 * Does this MoveMode allows capturing a friendly piece by replacement.
+		 */
+		public boolean captureFriendly() { return captureFriendly; }
+
+		public static MoveMode fromJson(JsonElement json) throws JsonParseException
+		{
+			if (json != null)
+			{
+				String s = json.getAsString();
+				for (MoveMode m : ALL) {
+					if (m.name.equalsIgnoreCase(s)) return m;
+				}
+				
+				throw new JsonParseException(String.format(ERROR, s));
+			}
+			else return MOVE_CAPTURE;
+		}
     }
     
     /**
@@ -185,7 +196,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	private static final String ERROR = "Invalid direction : %s - must be " + 
 				STR_ALL+", "+STR_HORIZONTAL+", "+STR_VERTICAL+", "+STR_FORWARD+", "+STR_BACK+", "+STR_LEFT+" or "+STR_RIGHT;
 
-		public DirectionMode(boolean forward, boolean back, boolean left, boolean right) {
+		private DirectionMode(boolean forward, boolean back, boolean left, boolean right) {
 			this.forward = forward;
 			this.back = back;
 			this.left = left;

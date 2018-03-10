@@ -86,23 +86,38 @@ public class MoveList implements Iterable<Move>, Serializable, IMoveList {
     @Override
 	public final boolean add(final Move move, MoveType.MoveMode type)
     {
-    	switch (type)
+    	Position dest = move.getDest();
+    	if (!board.inRange(dest)) return false;
+    	
+    	if (board.isEmpty(dest))
     	{
-    	case MOVE:
-    		return addMove(move);
-    	case CAPTURE:
+    		if (type.move() && !causesCheck(move)) add(move);
+    		//Allows sliding moves to behave "normally" even when they're only supposed to capture
+    		return true;
+    	}
+    	else
+    	{
             Piece p = board.getPiece(move.getOrigin());
-            if (board.isFree(move.getDest(), p.getSide())) {
-                if (!board.isFree(move.getDest()) && !causesCheck(move)) {
-                    add(move);
-                    return true;
-                }
-                return true;
-            }
-            return false;
-    	case MOVE_CAPTURE:
-    	default:
-    		return addCapture(move);
+            //Enemy
+    		if (board.getPiece(dest).getSide() != p.getSide())
+    		{
+    			if (type.captureEnemy())
+    			{
+    				if (!causesCheck(move)) add(move);
+    				return true;
+    			}
+    			else return false;
+    		}
+    		//Friendly
+    		else
+    		{
+    			if (type.captureFriendly())
+    			{
+    				if (!causesCheck(move)) add(move);
+    				return true;
+    			}
+    			else return false;
+    		}
     	}
     }
 
@@ -163,8 +178,25 @@ public class MoveList implements Iterable<Move>, Serializable, IMoveList {
             return false;
         }
         Piece p = board.getPiece(move.getOrigin());
+        boolean ret = false;
+        
         board.move(move);
-        boolean ret = board.check(p.getSide());
+        
+        //Check if we captured our king
+        Piece captured = board.last().getCaptured();
+        if (captured != null)
+        {
+        	if (captured.getSide() == p.getSide() && captured.getModel().isRoyal())
+        	{
+        		//Any captured king is a no
+        		if (!board.getGameMode().checkMultiple()) ret = true;
+    			//Accept if we have other kings left
+        		else ret = board.findRoyal(p.getSide()).isEmpty();
+        	}
+        }
+        //If we didn't capture our king or captured a "valid" one
+        if (!ret) ret = board.check(p.getSide());
+        
         board.undo();
         return ret;
     }
