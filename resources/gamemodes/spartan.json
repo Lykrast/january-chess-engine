@@ -1,0 +1,66 @@
+{
+  "name": "Spartan Chess",
+  "width": 8,
+  "height": 8,
+  "checkpolicy": "ALL",
+  "promotionswhite": ["rook", "knight", "bishop", "queen"],
+  "promotionsblack": ["lieutenant", "rook_crowned", "archbishop", "woody_rook"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook"
+	},
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop"
+	},	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "berolina_pawn_nopassant"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "lieutenant"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "lieutenant"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "rook_crowned"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "king_nocastle"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "king_nocastle"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "woody_rook"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "woody_rook"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "archbishop"
+	}
+	
+  ]
+}

@@ -9,8 +9,10 @@ public class GameMode implements Comparable<GameMode>{
 	private int width, height;
 	private PiecePlacement[] placements;
 	
-	/** The list of pieces a generic Pawn can promote to in this gamemode */
-	private String[] promotions;
+	/** The list of pieces a generic white Pawn can promote to in this gamemode */
+	private String[] promotionsW;
+	/** The list of pieces a generic black Pawn can promote to in this gamemode */
+	private String[] promotionsB;
 
 	/** Says whether each side started with a royal piece, used by AI */
 	private boolean hasRoyalWhite, hasRoyalBlack;
@@ -18,13 +20,14 @@ public class GameMode implements Comparable<GameMode>{
 	/** If false, any royal piece can be checkmated to win, if true then all of them must be (so some can be captured) */
 	private boolean checkMultiple;
 	
-	public GameMode(String name, int width, int height, PiecePlacement[] placements, String[] promotions, boolean checkMultiple)
+	public GameMode(String name, int width, int height, PiecePlacement[] placements, String[] promotionsW, String[] promotionsB, boolean checkMultiple)
 	{
 		this.name = name;
 		this.width = width;
 		this.height = height;
 		this.placements = placements;
-		this.promotions = promotions;
+		this.promotionsW = promotionsW;
+		this.promotionsB = promotionsB;
 		this.checkMultiple = checkMultiple;
 		
 		hasRoyalWhite = false;
@@ -71,8 +74,8 @@ public class GameMode implements Comparable<GameMode>{
 		return placements;
 	}
 	
-	public String[] getPromotions() {
-		return promotions;
+	public String[] getPromotions(Piece.Side side) {
+		return side == Piece.Side.WHITE ? promotionsW : promotionsB;
 	}
 	
 	/**

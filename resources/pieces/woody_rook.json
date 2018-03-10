@@ -1,0 +1,12 @@
+{
+  "name": "Woody Rook",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "Wazir"
+	},
+	{
+		"type": "Dabbaba"
+	}
+  ]
+}

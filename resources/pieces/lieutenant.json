@@ -1,0 +1,17 @@
+{
+  "name": "Lieutenant",
+  "value": 3.5,
+  "moves": [
+    {
+		"type": "Ferz"
+	},
+	{
+		"type": "Alfil"
+	},
+	{
+		"type": "Wazir",
+		"direction": "HORIZONTAL",
+		"mode": "MOVE"
+	}
+  ]
+}

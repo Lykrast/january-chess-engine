@@ -28,23 +28,18 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 		{
 			piecesList.add(context.deserialize(elem, PiecePlacement.class));
 		}
-		
-		JsonElement tmp = obj.get("promotions");
-		String[] promotions = null;
-		if (tmp != null)
+
+		String[] promotionsW = parsePromotions(obj, "promotionswhite");
+		String[] promotionsB = parsePromotions(obj, "promotionsblack");
+		//If one of them was not found, use the shared one as default
+		if (promotionsW == null || promotionsB == null)
 		{
-			JsonArray array = tmp.getAsJsonArray();
-			List<String> list = new ArrayList<>();
-			for (JsonElement elem : array)
-			{
-				String s = elem.getAsString();
-				if (!PieceRegistry.exists(s)) throw new JsonParseException("Mentions unknown or invalid piece: " + s);
-				list.add(s);
-			}
-			promotions = list.toArray(new String[list.size()]);
+			String[] promotions = parsePromotions(obj, "promotions");
+			if (promotionsW == null) promotionsW = promotions;
+			if (promotionsB == null) promotionsB = promotions;
 		}
 		
-		tmp = obj.get("checkpolicy");
+		JsonElement tmp = obj.get("checkpolicy");
 		boolean checkMultiple = true;
 		if (tmp != null)
 		{
@@ -58,7 +53,23 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 				JSONUtils.getMandatory(obj, "width").getAsInt(), 
 				JSONUtils.getMandatory(obj, "height").getAsInt(), 
 				piecesList.toArray(new PiecePlacement[piecesList.size()]),
-				promotions, checkMultiple);
+				promotionsW, promotionsB, checkMultiple);
+	}
+	
+	private static String[] parsePromotions(JsonObject json, String name)
+	{
+		JsonElement tmp = json.get(name);
+		if (tmp == null) return null;
+		
+		JsonArray array = tmp.getAsJsonArray();
+		List<String> list = new ArrayList<>();
+		for (JsonElement elem : array)
+		{
+			String s = elem.getAsString();
+			if (!PieceRegistry.exists(s)) throw new JsonParseException("Mentions unknown or invalid piece: " + s);
+			list.add(s);
+		}
+		return list.toArray(new String[list.size()]);
 	}
 
 }

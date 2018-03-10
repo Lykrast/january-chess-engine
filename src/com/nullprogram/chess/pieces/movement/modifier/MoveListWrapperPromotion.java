@@ -14,7 +14,7 @@ public class MoveListWrapperPromotion extends MoveListWrapper {
 	public MoveListWrapperPromotion(Piece piece, IMoveList list, String[] promoted, int rows) {
 		super(piece, list);
 		if (promoted != null) this.promoted = promoted;
-		else this.promoted = piece.getBoard().getGameMode().getPromotions(); //Use the gamemode's list
+		else this.promoted = piece.getBoard().getGameMode().getPromotions(piece.getSide()); //Use the gamemode's list
 		if (piece.getSide() == Side.BLACK)
 		{
 			start = 0;

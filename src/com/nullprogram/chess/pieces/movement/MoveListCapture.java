@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.nullprogram.chess.Move;
+import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
 
@@ -58,17 +59,28 @@ public class MoveListCapture implements Iterable<Move>, Serializable, IMoveList 
     @Override
 	public final boolean add(final Move move, MoveType.MoveMode type)
     {
-    	switch (type)
+    	Position dest = move.getDest();
+    	if (!board.inRange(dest)) return false;
+    	
+    	//Add the move to the list if it could capture something
+    	if (type.captureEnemy()) add(move);
+    	//Simulate the return from a normal MoveList
+    	if (board.isEmpty(dest)) return true;
+    	else
     	{
-    	case MOVE:
-    		return addMove(move);
-    	case CAPTURE:
             Piece p = board.getPiece(move.getOrigin());
-            add(move);
-            return board.isFree(move.getDest(), p.getSide());
-    	case MOVE_CAPTURE:
-    	default:
-    		return addCapture(move);
+            //Enemy
+    		if (board.getPiece(dest).getSide() != p.getSide())
+    		{
+    			if (type.captureEnemy()) return true;
+    			else return false;
+    		}
+    		//Friendly
+    		else
+    		{
+    			if (type.captureFriendly()) return true;
+    			else return false;
+    		}
     	}
     }
 
