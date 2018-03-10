@@ -1,0 +1,40 @@
+{
+  "name": "Dunsany's Chess",
+  "width": 8,
+  "height": 8,
+  "promotions": ["rook", "knight", "bishop", "queen"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook"
+	},
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop"
+	},	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	
+    {
+		"x": 0,"xlen": 8,"y": 4, "ylen": 4,"side": "black","piece": "pawn_nodoublemove"
+	}
+	
+  ]
+}
