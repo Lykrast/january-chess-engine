@@ -2,29 +2,20 @@ package com.nullprogram.chess.pieces.movement.modifier;
 
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.pieces.Piece;
-import com.nullprogram.chess.pieces.Piece.Side;
 import com.nullprogram.chess.pieces.movement.IMoveList;
 import com.nullprogram.chess.pieces.movement.MoveListWrapper;
 import com.nullprogram.chess.pieces.movement.MoveType.MoveMode;
+import com.nullprogram.chess.util.AreaSided;
 
 public class MoveListWrapperPromotion extends MoveListWrapper {
 	private String[] promoted;
-	private int start, end;
+	private AreaSided area;
 
-	public MoveListWrapperPromotion(Piece piece, IMoveList list, String[] promoted, int rows) {
+	public MoveListWrapperPromotion(Piece piece, IMoveList list, String[] promoted, AreaSided area) {
 		super(piece, list);
 		if (promoted != null) this.promoted = promoted;
 		else this.promoted = piece.getBoard().getGameMode().getPromotions(piece.getSide()); //Use the gamemode's list
-		if (piece.getSide() == Side.BLACK)
-		{
-			start = 0;
-			end = rows - 1;
-		}
-		else
-		{
-			end = piece.getBoard().getHeight() - 1;
-			start = end - rows + 1;
-		}
+		this.area = area;
 	}
 
 	@Override
@@ -37,8 +28,7 @@ public class MoveListWrapperPromotion extends MoveListWrapper {
 	{
 		//If we can't promote, don't bother to check
 		if (promoted == null) return false;
-		int y = move.getDest().getY();
-        return y >= start && y <= end;
+        return area.inside(move.getDest(), piece.getBoard(), piece.getSide());
 	}
 	
 	private Move promote(Move move, String target)

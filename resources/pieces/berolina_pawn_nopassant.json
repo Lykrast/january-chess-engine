@@ -4,7 +4,7 @@
   "moves": [
     {
 		"type": "ModPromotion",
-		"rows": 1,
+		"ymax": 0,
 		"moves": [
 			{
 				"type": "Ferz",

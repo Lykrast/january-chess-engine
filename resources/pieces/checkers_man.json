@@ -5,7 +5,7 @@
     {
 		"type": "ModPromotionSingle",
 		"promoted": "checkers_king",
-		"rows": 1,
+		"ymax": 0,
 		"moves": [
 			{
 				"type": "Checkers",

@@ -4,7 +4,7 @@
   "moves": [
     {
 		"type": "ModPromotion",
-		"rows": 3,
+		"ymax": 2,
 		"moves": [
 			{
 				"type": "Pawn",

@@ -5,7 +5,7 @@
     {
 		"type": "ModPromotionSingle",
 		"promoted": "rook_crowned",
-		"rows": 3,
+		"ymax": 2,
 		"moves": [
 			{
 				"type": "Rook"

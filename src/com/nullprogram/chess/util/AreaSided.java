@@ -10,10 +10,16 @@ import com.nullprogram.chess.pieces.Piece.Side;
 public class AreaSided {
 	private Area area;
 	private Symmetry symmetry;
+	private boolean reverse;
 	
 	public AreaSided(Area area, Symmetry symmetry) {
+		this(area, symmetry, false);
+	}
+	
+	public AreaSided(Area area, Symmetry symmetry, boolean reverse) {
 		this.area = area;
 		this.symmetry = symmetry;
+		this.reverse = reverse;
 	}
 	
 	/**
@@ -25,7 +31,7 @@ public class AreaSided {
 	 */
 	public boolean inside(Position pos, Board b, Side side)
 	{
-		if (side == Side.BLACK) return area.inside(symmetry.transpose(b, pos));
+		if ((!reverse && side == Side.BLACK) || (reverse && side == Side.WHITE)) return area.inside(symmetry.transpose(b, pos));
 		else return area.inside(pos);
 	}
 
@@ -50,5 +56,19 @@ public class AreaSided {
 	public static AreaSided fromJson(JsonObject json) throws JsonParseException
 	{
 		return new AreaSided(Area.fromJson(json), Symmetry.fromJson(json));
+	}
+	
+	/**
+	 * Attempts to find all required fields to define this SidedArea in the given JsonObject, and optionally reverse the symmetry.
+	 * <br>
+	 * For more details, see {@link Area#fromJson(JsonObject) Area.fromJson} and {@link Symmetry#fromJson(JsonObject) Symmetry.fromJson}.
+	 * @param json JsonObject to search fields in
+	 * @param reverse if true, White has the transposed area instead of Black
+	 * @return an AreaSided made using the found fields
+	 * @throws JsonParseException 
+	 */
+	public static AreaSided fromJson(JsonObject json, boolean reverse) throws JsonParseException
+	{
+		return new AreaSided(Area.fromJson(json), Symmetry.fromJson(json), reverse);
 	}
 }

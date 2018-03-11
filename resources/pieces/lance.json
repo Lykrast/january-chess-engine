@@ -5,7 +5,7 @@
     {
 		"type": "ModPromotionSingle",
 		"promoted": "gold_general",
-		"rows": 3,
+		"ymax": 2,
 		"moves": [
 			{
 				"type": "Rook",

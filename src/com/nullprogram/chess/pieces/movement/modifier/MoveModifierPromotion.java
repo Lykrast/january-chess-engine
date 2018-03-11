@@ -13,32 +13,26 @@ import com.nullprogram.chess.pieces.movement.IMoveList;
 import com.nullprogram.chess.pieces.movement.IMoveType;
 import com.nullprogram.chess.pieces.movement.MoveListWrapper;
 import com.nullprogram.chess.pieces.movement.MoveModifier;
+import com.nullprogram.chess.util.AreaSided;
 
 public class MoveModifierPromotion extends MoveModifier {
 	private String[] promoted;
-	private int rows;
+	private AreaSided area;
 
-	public MoveModifierPromotion(IMoveType[] moves, int rows, String... promoted) {
+	public MoveModifierPromotion(IMoveType[] moves, AreaSided area, String... promoted) {
 		super(moves);
 		this.promoted = promoted;
-		this.rows = rows;
+		this.area = area;
 	}
 
 	@Override
 	protected MoveListWrapper createWrapper(Piece p, IMoveList list) {
-		return new MoveListWrapperPromotion(p, list, promoted, rows);
+		return new MoveListWrapperPromotion(p, list, promoted, area);
 	}
 
 	@Override
 	protected MoveModifier create(JsonObject json, IMoveType[] moves, JsonDeserializationContext context) throws JsonParseException {
-		JsonElement tmp = json.get("rows");
-		int rows = 1;
-		if (tmp != null)
-		{
-			rows = tmp.getAsInt();
-		}
-		
-		tmp = json.get("promoted");
+		JsonElement tmp = json.get("promoted");
 		String[] promoted = null;
 		if (tmp != null)
 		{
@@ -51,7 +45,7 @@ public class MoveModifierPromotion extends MoveModifier {
 			promoted = list.toArray(new String[list.size()]);
 		}
 		
-		return new MoveModifierPromotion(moves, rows, promoted);
+		return new MoveModifierPromotion(moves, AreaSided.fromJson(json, true), promoted);
 	}
 
 	@Override
