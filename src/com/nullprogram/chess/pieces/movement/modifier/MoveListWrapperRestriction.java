@@ -5,31 +5,23 @@ import com.nullprogram.chess.Position;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.IMoveList;
 import com.nullprogram.chess.pieces.movement.MoveListWrapper;
+import com.nullprogram.chess.util.AreaSided;
 
 public class MoveListWrapperRestriction extends MoveListWrapper {
-	private int xmin, xmax, ymin, ymax;
+	private AreaSided area;
 	private boolean invert;
 	
-	public MoveListWrapperRestriction(Piece piece, IMoveList list, int xmin, int xmax, int ymin, int ymax, boolean invert) {
+	public MoveListWrapperRestriction(Piece piece, IMoveList list, AreaSided area, boolean invert) {
 		super(piece, list);
-		this.xmin = xmin;
-		this.xmax = xmax;
-		this.ymin = ymin;
-		this.ymax = ymax;
+		this.area = area;
 		this.invert = invert;
 	}
 
 	@Override
 	protected Move modify(Move move) {
 		Position dest = move.getDest();
-		//-1 means unbounded in that direction
-        if ((xmin != -1 && dest.getX() < xmin)
-        		|| (xmax != -1 && dest.getX() > xmax)
-        		|| (ymin != -1 && dest.getY() < ymin)
-        		|| (ymax != -1 && dest.getY() > ymax))
-        	return invert ? move : null;
-		
-		return invert ? null : move;
+		if (area.inside(dest, piece.getBoard(), piece.getSide())) return invert ? null : move;
+		else return invert ? move : null;
 	}
 
 }

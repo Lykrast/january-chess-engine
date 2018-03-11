@@ -78,7 +78,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	//Modifiers
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierPromotionSingle(null, "", 0));
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierPromotion(null, 0));
-    	MoveTypeDeserializer.registerDeserializer(new MoveModifierRestriction(null, 0, 0, 0, 0, 0, false));
+    	MoveTypeDeserializer.registerDeserializer(new MoveModifierRestriction(null, null, false));
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierCaptureRoyal(null));
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierCaptureNonRoyal(null));
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierCoordinator(null));
@@ -87,7 +87,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	
     	//Conditions
     	MoveTypeDeserializer.registerDeserializer(new MoveConditionVirgin(null, null));
-    	MoveTypeDeserializer.registerDeserializer(new MoveConditionRestriction(null, null, 0, 0, 0, 0, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveConditionRestriction(null, null, null));
     	
     	//Presets
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeWazir(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
