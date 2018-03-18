@@ -1,0 +1,21 @@
+{
+  "name": "King",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "King"
+	},
+    {
+		"type": "Castle"
+	},
+	{
+		"type": "CondVirgin",
+		"true": [
+			{
+				"type": "Dabbaba"
+			}
+		]
+	}
+  ]
+}
