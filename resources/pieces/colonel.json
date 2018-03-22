@@ -1,0 +1,22 @@
+{
+  "name": "Colonel",
+  "value": 9.0,
+  "moves": [
+    {
+		"type": "Knight",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "Rook",
+		"direction": [ "FORWARD", "HORIZONTAL" ]
+	},
+    {
+		"type": "King",
+		"direction": "BACK"
+	},
+    {
+		"type": "Ferz",
+		"direction": "FORWARD"
+	}
+  ]
+}

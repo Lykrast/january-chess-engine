@@ -1,0 +1,16 @@
+{
+  "name": "Half-Duck",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "Ferz"
+	},
+    {
+		"type": "Dabbaba"
+	},
+    {
+		"type": "LeaperOrthogonal",
+		"range": 3
+	}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Charging Rook",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "Rook",
+		"direction": [ "FORWARD", "HORIZONTAL" ]
+	},
+    {
+		"type": "King",
+		"direction": "BACK"
+	}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Waffle",
+  "value": 2.75,
+  "moves": [
+    {
+		"type": "Wazir"
+	},
+    {
+		"type": "Alfil"
+	}
+  ]
+}

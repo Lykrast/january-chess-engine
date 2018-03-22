@@ -1,0 +1,12 @@
+{
+  "name": "Bede",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "Bishop"
+	},
+    {
+		"type": "Dabbaba"
+	}
+  ]
+}

@@ -9,11 +9,15 @@ import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.IMoveList;
 import com.nullprogram.chess.pieces.movement.MoveList;
 import com.nullprogram.chess.pieces.movement.MoveType;
+import com.nullprogram.chess.resources.JSONUtils;
 
 public class MoveTypeCastle extends MoveType {
+	private int ldist, rdist;
 
-    public MoveTypeCastle() {
+    public MoveTypeCastle(int ldist, int rdist) {
 		super(MoveType.MoveMode.MOVE, DirectionMode.HORIZONTAL);
+		this.ldist = ldist;
+		this.rdist = rdist;
 	}
 
 	/** List of enemy moves (cached). */
@@ -28,11 +32,11 @@ public class MoveTypeCastle extends MoveType {
         enemy = null;
         inCheck = null;
         if (list.checksCheck() && !p.moved()) {
-            Move left = castle(-1, p);
+            Move left = castle(-1, p, ldist);
             if (left != null) {
                 list.add(left);
             }
-            Move right = castle(1, p);
+            Move right = castle(1, p, rdist);
             if (right != null) {
                 list.add(right);
             }
@@ -46,8 +50,8 @@ public class MoveTypeCastle extends MoveType {
      * @param dir direction to check
      * @return the move, or null
      */
-    private Move castle(final int dir, Piece p) {
-        int dist = p.getBoard().getWidth() / 2 - 2;
+    private Move castle(final int dir, Piece p, int dist) {
+        if (dist == -1) dist = p.getBoard().getWidth() / 2 - 2;
         Position pos = p.getPosition();
 
         int max;
@@ -123,7 +127,7 @@ public class MoveTypeCastle extends MoveType {
 
 	@Override
 	public MoveType create(JsonObject elem, MoveMode mode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
-		return new MoveTypeCastle();
+		return new MoveTypeCastle(JSONUtils.getDefaultInt(elem, "leftdistance", -1), JSONUtils.getDefaultInt(elem, "rightdistance", -1));
 	}
 
 	@Override

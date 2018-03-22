@@ -3,6 +3,7 @@ package com.nullprogram.chess.boards;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.Piece.Side;
@@ -29,6 +30,10 @@ public class GameModeOption extends GameMode {
 			listWhite.addAll(Arrays.asList(o.getPromotions(Side.WHITE)));
 			listBlack.addAll(Arrays.asList(o.getPromotions(Side.BLACK)));
 		}
+		
+		//Remove duplicates
+		listWhite = listWhite.stream().distinct().collect(Collectors.toList());
+		listBlack = listBlack.stream().distinct().collect(Collectors.toList());
 		
 		promotionsSelectedW = listWhite.toArray(new String[listWhite.size()]);
 		promotionsSelectedB = listBlack.toArray(new String[listBlack.size()]);

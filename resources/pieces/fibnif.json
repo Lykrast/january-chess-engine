@@ -1,0 +1,14 @@
+{
+  "name": "Fibnif",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "LeaperNarrow",
+		"near": 1,
+		"far": 2
+	},
+    {
+		"type": "Ferz"
+	}
+  ]
+}

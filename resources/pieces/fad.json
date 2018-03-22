@@ -1,0 +1,15 @@
+{
+  "name": "Fad",
+  "value": 3.25,
+  "moves": [
+    {
+		"type": "Ferz"
+	},
+    {
+		"type": "Alfil"
+	},
+    {
+		"type": "Dabbaba"
+	}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Short Rook",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "Rook",
+		"max": 4
+	}
+  ]
+}

@@ -37,6 +37,7 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 		if (promotionsW == null || promotionsB == null)
 		{
 			String[] promotions = parsePromotions(obj, "promotions");
+			if (promotions == null) promotions = new String[0];
 			if (promotionsW == null) promotionsW = promotions;
 			if (promotionsB == null) promotionsB = promotions;
 		}

@@ -1,0 +1,18 @@
+{
+  "name": "Charging Knight",
+  "value": 3.375,
+  "moves": [
+    {
+		"type": "Knight",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "King",
+		"direction": "BACK"
+	},
+    {
+		"type": "Wazir",
+		"direction": "HORIZONTAL"
+	}
+  ]
+}
