@@ -11,6 +11,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.boards.GameMode;
+import com.nullprogram.chess.boards.GameModeOption;
+import com.nullprogram.chess.boards.GameOptionGroup;
 import com.nullprogram.chess.boards.PiecePlacement;
 import com.nullprogram.chess.pieces.PieceRegistry;
 
@@ -49,11 +51,34 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 			else throw new JsonParseException("Invalid check policy : " + str + " - must be ANY or ALL");
 		}
 		
-		return new GameMode(JSONUtils.getMandatory(obj, "name").getAsString(),
-				JSONUtils.getMandatory(obj, "width").getAsInt(), 
-				JSONUtils.getMandatory(obj, "height").getAsInt(), 
-				piecesList.toArray(new PiecePlacement[piecesList.size()]),
-				promotionsW, promotionsB, checkMultiple);
+		tmp = obj.get("options");
+		
+		//No options
+		if (tmp == null)
+		{
+			return new GameMode(JSONUtils.getMandatory(obj, "name").getAsString(),
+					JSONUtils.getMandatory(obj, "width").getAsInt(), 
+					JSONUtils.getMandatory(obj, "height").getAsInt(), 
+					piecesList.toArray(new PiecePlacement[piecesList.size()]),
+					promotionsW, promotionsB, checkMultiple);
+		}
+		//Options
+		else
+		{
+			JsonArray array = tmp.getAsJsonArray();
+			List<GameOptionGroup> list = new ArrayList<>();
+			for (JsonElement elem : array)
+			{
+				list.add(context.deserialize(elem, GameOptionGroup.class));
+			}
+
+			return new GameModeOption(JSONUtils.getMandatory(obj, "name").getAsString(),
+					JSONUtils.getMandatory(obj, "width").getAsInt(), 
+					JSONUtils.getMandatory(obj, "height").getAsInt(), 
+					piecesList.toArray(new PiecePlacement[piecesList.size()]),
+					promotionsW, promotionsB, checkMultiple, 
+					list.toArray(new GameOptionGroup[list.size()]));
+		}
 	}
 	
 	private static String[] parsePromotions(JsonObject json, String name)

@@ -10,6 +10,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.boards.GameMode;
 import com.nullprogram.chess.boards.GameModeRegistry;
+import com.nullprogram.chess.boards.GameOption;
+import com.nullprogram.chess.boards.GameOptionGroup;
 import com.nullprogram.chess.boards.PiecePlacement;
 import com.nullprogram.chess.pieces.Model;
 import com.nullprogram.chess.pieces.PieceRegistry;
@@ -70,6 +72,8 @@ public class JSONLoader {
 		Gson g = new GsonBuilder()
 				.registerTypeAdapter(GameMode.class, GameModeDeserializer.INSTANCE)
 				.registerTypeAdapter(PiecePlacement.class, PiecePlacementDeserializer.INSTANCE)
+				.registerTypeAdapter(GameOption.class, GameOptionDeserializer.INSTANCE)
+				.registerTypeAdapter(GameOptionGroup.class, GameOptionGroupDeserializer.INSTANCE)
 				.create();
 		
 		File folder = new File(PATH_GAMEMODES);

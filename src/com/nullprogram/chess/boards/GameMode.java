@@ -6,13 +6,13 @@ public class GameMode implements Comparable<GameMode>{
     /** Name of this gamemode. */
     private String name;
     
-	private int width, height;
-	private PiecePlacement[] placements;
+    protected int width, height;
+	protected PiecePlacement[] placements;
 	
 	/** The list of pieces a generic white Pawn can promote to in this gamemode */
-	private String[] promotionsW;
+	protected String[] promotionsW;
 	/** The list of pieces a generic black Pawn can promote to in this gamemode */
-	private String[] promotionsB;
+	protected String[] promotionsB;
 
 	/** Says whether each side started with a royal piece, used by AI */
 	private boolean hasRoyalWhite, hasRoyalBlack;

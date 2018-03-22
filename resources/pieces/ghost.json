@@ -1,0 +1,10 @@
+{
+  "name": "Ghost",
+  "value": 0.2,
+  "moves": [
+    {
+		"type": "Teleport",
+		"mode": "MOVE"
+	}
+  ]
+}

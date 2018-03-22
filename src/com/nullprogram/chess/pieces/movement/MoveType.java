@@ -74,6 +74,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderCircular(MoveMode.MOVE_CAPTURE, 0,0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderBent(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0, 0, 0, 0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderCrooked(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeTeleport(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
     	
     	//Modifiers
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierPromotionSingle(null, "", null));

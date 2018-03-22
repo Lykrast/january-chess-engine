@@ -1,5 +1,5 @@
 {
-  "name": "FIDE Chess",
+  "name": "The Black Ghost",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],
@@ -62,6 +62,29 @@
 	},
 	{
 		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+  ],
+  "options": [
+	{
+		"name": "Ghost's Position",
+		"values": [
+			{
+				"name": "C6",
+				"pieces": [ { "x": 2,"y": 5,"side": "black","piece": "ghost" } ]
+			},
+			{
+				"name": "D6",
+				"pieces": [ { "x": 3,"y": 5,"side": "black","piece": "ghost" } ]
+			},
+			{
+				"name": "E6",
+				"pieces": [ { "x": 4,"y": 5,"side": "black","piece": "ghost" } ]
+			},
+			{
+				"name": "F6",
+				"pieces": [ { "x": 5,"y": 5,"side": "black","piece": "ghost" } ]
+			}
+		]
 	}
   ]
 }
