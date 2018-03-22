@@ -1,5 +1,7 @@
 package com.nullprogram.chess.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Window;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -21,6 +23,7 @@ import com.nullprogram.chess.boards.GameModeRegistry;
  * Creates a panel for selecting a player type.
  */
 public class BoardSelector extends JPanel implements ListSelectionListener {
+	private Window parent;
 
     /** Version for object serialization. */
     private static final long serialVersionUID = 1L;
@@ -37,14 +40,15 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
     /**
      * Creates a player selector panel.
      */
-    public BoardSelector() {
-        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+    public BoardSelector(Window parent) {
+    	this.parent = parent;
+        setLayout(new BorderLayout());
         
         JPanel insidePanel = new JPanel();
         insidePanel.setLayout(new BoxLayout(insidePanel, BoxLayout.Y_AXIS));
         
         JLabel label = new JLabel("Game type:");
-        insidePanel.add(label);
+        insidePanel.add(label, BorderLayout.CENTER);
         
         Collection<GameMode> modeList = GameModeRegistry.getGameModes();
         GameMode[] modeArray = modeList.toArray(new GameMode[modeList.size()]);
@@ -59,7 +63,7 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
         
         add(insidePanel);
 
-        setBorder(BorderFactory.createEmptyBorder(H_PADDING, V_PADDING,
+        insidePanel.setBorder(BorderFactory.createEmptyBorder(H_PADDING, V_PADDING,
                   H_PADDING, V_PADDING));
     }
 
@@ -87,13 +91,17 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
 		{
 			if (optionSelector != null) remove(optionSelector);
 			optionSelector = new GameOptionSelector((GameModeOption) modes.getSelectedValue());
-			add(optionSelector);
+			optionSelector.setBorder(BorderFactory.createEmptyBorder(H_PADDING, V_PADDING,
+	                  H_PADDING, V_PADDING));
+			add(optionSelector, BorderLayout.EAST);
 			revalidate();
+			parent.pack();
 		}
 		else if (optionSelector != null)
 		{
 			remove(optionSelector);
 			revalidate();
+			parent.pack();
 		}
 	}
 }

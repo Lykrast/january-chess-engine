@@ -63,7 +63,7 @@ public class NewGame extends JDialog implements ActionListener {
         blackPanel = new PlayerSelector("Black:", false);
         add(whitePanel, BorderLayout.LINE_START);
         add(blackPanel, BorderLayout.CENTER);
-        boardPanel = new BoardSelector();
+        boardPanel = new BoardSelector(this);
         add(boardPanel, BorderLayout.LINE_END);
 
         JButton ok = new JButton("OK");

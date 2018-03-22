@@ -27,6 +27,7 @@ public class GameOptionSelector extends JPanel {
 			add(new JLabel(group.toString()));
 			
 			JComboBox<GameOption> box = new JComboBox<>(group.getOptions());
+			box.setMaximumSize(box.getPreferredSize());
 			options.add(box);
 			add(box);
 		}
