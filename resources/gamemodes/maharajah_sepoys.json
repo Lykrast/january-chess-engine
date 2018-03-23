@@ -1,0 +1,38 @@
+{
+  "name": "Maharajah and the Sepoys",
+  "width": 8,
+  "height": 8,
+  "pieces": [
+	{
+		"x": 4,"y": 0,"side": "white","piece": "amazon_royal"	
+	},
+	
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "rook"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "knight"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "queen"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+  ]
+}

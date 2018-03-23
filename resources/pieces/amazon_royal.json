@@ -1,0 +1,16 @@
+{
+  "name": "Amazon",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "Bishop"
+	},
+	{
+		"type": "Rook"
+	},
+	{
+		"type": "Knight"
+	}
+  ]
+}
