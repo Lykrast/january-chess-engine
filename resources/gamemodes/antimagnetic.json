@@ -1,0 +1,67 @@
+{
+  "name": "Anti-magnetic (castle unaffected)",
+  "width": 8,
+  "height": 8,
+  "promotions": ["rook_antimagnetic", "knight_antimagnetic", "bishop_antimagnetic", "queen_antimagnetic"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn_antimagnetic"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn_antimagnetic"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook_antimagnetic"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook_antimagnetic"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook_antimagnetic"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "rook_antimagnetic"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight_antimagnetic"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight_antimagnetic"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight_antimagnetic"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "knight_antimagnetic"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop_antimagnetic"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop_antimagnetic"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop_antimagnetic"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "bishop_antimagnetic"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen_antimagnetic"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "queen_antimagnetic"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+  ]
+}

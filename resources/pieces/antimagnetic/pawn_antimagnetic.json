@@ -1,0 +1,24 @@
+{
+  "name": "Pawn",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModMagnetic",
+		"friendly": "ATTRACT",
+		"enemy": "REPEL",
+		"affectroyal": false,
+		"moves": [
+			{
+				"type": "ModPromotion",
+				"ymax": 0,
+				"moves": [
+					{
+						"type": "Pawn",
+						"initialstep": 1
+					}
+				]
+			}
+		]
+	}
+  ]
+}
