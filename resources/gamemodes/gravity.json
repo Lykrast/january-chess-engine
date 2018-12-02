@@ -1,0 +1,67 @@
+{
+  "name": "Gravity Chess (castle unaffected)",
+  "width": 8,
+  "height": 8,
+  "promotions": ["rook_gravity", "knight_gravity", "bishop_gravity", "queen_gravity"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn_gravity"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn_gravity"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook_gravity"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook_gravity"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook_gravity"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "rook_gravity"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight_gravity"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight_gravity"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight_gravity"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "knight_gravity"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop_gravity"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop_gravity"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop_gravity"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "bishop_gravity"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen_gravity"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "queen_gravity"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+  ]
+}

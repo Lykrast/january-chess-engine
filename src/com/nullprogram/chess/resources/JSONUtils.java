@@ -39,5 +39,17 @@ public class JSONUtils {
 		JsonElement elem = json.get(name);
 		return elem == null ? defaultValue : elem.getAsInt();
 	}
+	
+	/**
+	 * Attempts to get a boolean from a Json Object, returning a default value if it isn't found.
+	 * @param json JsonObject to get the int from
+	 * @param name name of the int to get
+	 * @param defaultValue value to return if the field isn't found
+	 * @return the value of the named field if it's found, the provided default value otherwise
+	 */
+	public static boolean getDefaultBoolean(JsonObject json, String name, boolean defaultValue) {
+		JsonElement elem = json.get(name);
+		return elem == null ? defaultValue : elem.getAsBoolean();
+	}
 
 }

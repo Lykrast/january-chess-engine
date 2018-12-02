@@ -84,5 +84,10 @@ public class Model {
     public final Image getImage(Side s) {
         return ImageServer.getPieceTile(name, s);
     }
+    
+    @Override
+    public String toString() {
+    	return name;
+    }
 
 }

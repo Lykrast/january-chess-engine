@@ -239,4 +239,9 @@ public class Piece implements Serializable {
     public final void decMoved() {
         moved--;
     }
+    
+    @Override
+    public String toString() {
+    	return side + " " + model + " (" + pos + ")";
+    }
 }
