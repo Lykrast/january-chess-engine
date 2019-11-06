@@ -1,0 +1,14 @@
+{
+  "name": "Cylinder Waffle",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "LeaperOrthogonalCylinder",
+		"range": 1
+	},
+    {
+		"type": "LeaperDiagonalCylinder",
+		"range": 2
+	}
+  ]
+}

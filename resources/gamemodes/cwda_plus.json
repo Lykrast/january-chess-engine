@@ -1,0 +1,397 @@
+{
+  "name": "Chess with More Different Armies",
+  "width": 8,
+  "height": 8,
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn"
+	},
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+  ],
+  "options": [
+	{
+		"name": "White Team",
+		"values": [
+			{
+				"name": "The Fabulous FIDEs",
+				"promotions": ["rook", "knight", "bishop", "queen"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "rook"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "rook"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "knight"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "knight"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "bishop"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "bishop"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "queen"
+					}
+				]
+			},
+			{
+				"name": "The Colorbound Clobberers",
+				"promotions": ["bede", "waffle", "fad", "archbishop"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "bede"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "bede"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "waffle"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "waffle"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "fad"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "fad"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "archbishop"
+					},
+					{
+						"x": 4,"y": 0,"side": "white","piece": "king_colorboundcastle"
+					}
+				]
+			},
+			{
+				"name": "The Nutty Knights",
+				"promotions": ["rook_charging", "fibnif", "knight_charging", "colonel"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "rook_charging"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "rook_charging"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "fibnif"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "fibnif"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "knight_charging"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "knight_charging"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "colonel"
+					}
+				]
+			},
+			{
+				"name": "The Remarkable Rookies",
+				"promotions": ["rook_short", "woody_rook", "half_duck", "chancellor"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "rook_short"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "rook_short"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "woody_rook"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "woody_rook"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "half_duck"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "half_duck"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "chancellor"
+					}
+				]
+			},
+			{
+				"name": "The Amazon Army",
+				"promotions": ["rook_short", "knight", "bishop", "amazon"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "rook_short"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "rook_short"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "knight"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "knight"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "bishop"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "bishop"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "amazon"
+					}
+				]
+			},
+			{
+				"name": "The Cylindrical Cinders",
+				"promotions": ["waffle_cylinder", "knight_cylinder", "bishop_cylinder", "chancellor_cylinder"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "waffle_cylinder"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "waffle_cylinder"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "knight_cylinder"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "knight_cylinder"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "bishop_cylinder"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "bishop_cylinder"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "chancellor_cylinder"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Black Team",
+		"values": [
+			{
+				"name": "The Fabulous FIDEs",
+				"promotions": ["rook", "knight", "bishop", "queen"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "rook"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "rook"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "knight"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "knight"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "bishop"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "bishop"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "queen"
+					}
+				]
+			},
+			{
+				"name": "The Colorbound Clobberers",
+				"promotions": ["bede", "waffle", "fad", "archbishop"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "bede"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "bede"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "waffle"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "waffle"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "fad"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "fad"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "archbishop"
+					},
+					{
+						"x": 4,"y": 7,"side": "black","piece": "king_colorboundcastle"
+					}
+				]
+			},
+			{
+				"name": "The Nutty Knights",
+				"promotions": ["rook_charging", "fibnif", "knight_charging", "colonel"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "rook_charging"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "rook_charging"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "fibnif"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "fibnif"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "knight_charging"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "knight_charging"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "colonel"
+					}
+				]
+			},
+			{
+				"name": "The Remarkable Rookies",
+				"promotions": ["rook_short", "woody_rook", "half_duck", "chancellor"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "rook_short"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "rook_short"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "woody_rook"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "woody_rook"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "half_duck"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "half_duck"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "chancellor"
+					}
+				]
+			},
+			{
+				"name": "The Amazon Army",
+				"promotions": ["rook_short", "knight", "bishop", "amazon"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "rook_short"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "rook_short"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "knight"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "knight"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "bishop"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "bishop"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "amazon"
+					}
+				]
+			},
+			{
+				"name": "The Cylindrical Cinders",
+				"promotions": ["waffle_cylinder", "knight_cylinder", "bishop_cylinder", "chancellor_cylinder"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "waffle_cylinder"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "waffle_cylinder"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "knight_cylinder"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "knight_cylinder"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "bishop_cylinder"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "bishop_cylinder"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "chancellor_cylinder"
+					}
+				]
+			}
+		]
+	}
+  ]
+}

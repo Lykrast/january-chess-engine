@@ -1,0 +1,14 @@
+{
+  "name": "Cylinder Chancellor",
+  "value": 8.75,
+  "moves": [
+    {
+		"type": "LeaperCylinder",
+		"near": 1,
+		"far": 2
+	},
+	{
+		"type": "RookCylinder"
+	}
+  ]
+}
