@@ -1,0 +1,11 @@
+{
+  "name": "Cylinder Knight",
+  "value": 3.25,
+  "moves": [
+    {
+		"type": "LeaperCylinder",
+		"near": 1,
+		"far": 2
+	}
+  ]
+}

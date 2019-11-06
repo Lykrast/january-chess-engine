@@ -1,0 +1,9 @@
+{
+  "name": "Cylinder Bishop",
+  "value": 4.0,
+  "moves": [
+    {
+		"type": "BishopCylinder"
+	}
+  ]
+}

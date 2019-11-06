@@ -1,0 +1,9 @@
+{
+  "name": "Cylinder Rook",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "RookCylinder"
+	}
+  ]
+}

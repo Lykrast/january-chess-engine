@@ -1,0 +1,12 @@
+{
+  "name": "Cylinder Queen",
+  "value": 11.0,
+  "moves": [
+    {
+		"type": "BishopCylinder"
+	},
+	{
+		"type": "RookCylinder"
+	}
+  ]
+}

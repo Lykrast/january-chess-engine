@@ -76,6 +76,14 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeRiderCrooked(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeTeleport(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
     	
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperCylinder(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0, null));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperNarrowCylinder(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0, null));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperWideCylinder(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, 0, null));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperOrthogonalCylinder(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, null));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeLeaperDiagonalCylinder(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, null));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeRookCylinder(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, null));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypeBishopCylinder(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0, null));
+    	
     	//Modifiers
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierPromotionSingle(null, "", null));
     	MoveTypeDeserializer.registerDeserializer(new MoveModifierPromotion(null, null));
@@ -115,6 +123,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeWithdrawer(DirectionMode.ALL));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeCheckers(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, true));
     	MoveTypeDeserializer.registerDeserializer(new MoveTypeLongLeaper(DirectionMode.ALL));
+    	MoveTypeDeserializer.registerDeserializer(new MoveTypePawnCylinder(1, null));
     }
     
     /**
