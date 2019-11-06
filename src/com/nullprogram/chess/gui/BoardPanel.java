@@ -217,7 +217,8 @@ public class BoardPanel extends JComponent
      *
      * @param graphics the drawing surface
      */
-    public final void paintComponent(final Graphics graphics) {
+    @Override
+	public final void paintComponent(final Graphics graphics) {
         Graphics2D g = (Graphics2D) graphics;
         int h = board.getHeight();
         int w = board.getWidth();

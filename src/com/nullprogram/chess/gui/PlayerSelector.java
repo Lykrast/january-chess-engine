@@ -82,12 +82,14 @@ public class PlayerSelector extends JPanel {
 
         /* Set up list enable/disable. */
         human.addActionListener(new ActionListener() {
-            public final void actionPerformed(final ActionEvent e) {
+            @Override
+			public final void actionPerformed(final ActionEvent e) {
                 ai.setEnabled(!human.isSelected());
             }
         });
         minimax.addActionListener(new ActionListener() {
-            public final void actionPerformed(final ActionEvent e) {
+            @Override
+			public final void actionPerformed(final ActionEvent e) {
                 ai.setEnabled(minimax.isSelected());
             }
         });

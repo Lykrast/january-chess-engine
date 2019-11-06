@@ -38,6 +38,7 @@ public abstract class MoveModifier implements IMoveTypeDeserializer, IMoveType {
 		return list;
 	}
 
+	@Override
 	public final IMoveType create(JsonObject json, JsonDeserializationContext context) throws JsonParseException {
 		JsonArray movesJson = JSONUtils.getMandatory(json, "moves").getAsJsonArray();
 		List<IMoveType> movesList = new ArrayList<>();

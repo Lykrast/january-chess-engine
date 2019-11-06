@@ -43,6 +43,7 @@ public abstract class MoveCondition implements IMoveTypeDeserializer, IMoveType 
 		return list;
 	}
 
+	@Override
 	public final IMoveType create(JsonObject json, JsonDeserializationContext context) throws JsonParseException {
 		List<IMoveType> movesTrue = new ArrayList<>();
 		List<IMoveType> movesFalse = new ArrayList<>();

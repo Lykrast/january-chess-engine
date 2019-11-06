@@ -182,7 +182,8 @@ public class Minimax implements Player {
         for (final Move move : moves) {
             final Board callboard = board.copy();
             service.submit(new Callable<Move>() {
-                public Move call() {
+                @Override
+				public Move call() {
                     callboard.move(move);
                     double beta = Double.POSITIVE_INFINITY;
                     if (bestMove != null) {
