@@ -1,0 +1,14 @@
+{
+  "name": "Faalcon",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "Ferz"
+	},
+    {
+		"type": "Rider",
+		"near": 2,
+		"far": 2
+	}
+  ]
+}

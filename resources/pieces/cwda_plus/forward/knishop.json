@@ -1,0 +1,14 @@
+{
+  "name": "Knishop",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "Knight",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "Bishop",
+		"direction": "BACK"
+	}
+  ]
+}

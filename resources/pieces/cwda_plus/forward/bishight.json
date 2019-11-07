@@ -1,0 +1,14 @@
+{
+  "name": "Bishight",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "Bishop",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "Knight",
+		"direction": "BACK"
+	}
+  ]
+}

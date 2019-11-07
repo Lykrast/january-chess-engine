@@ -1,0 +1,21 @@
+{
+  "name": "Darter",
+  "value": 3.25,
+  "moves": [
+    {
+		"type": "Wazir"
+	},
+    {
+		"type": "LeaperNarrow",
+		"direction": "FORWARD",
+		"near": 1,
+		"far": 2
+	},
+    {
+		"type": "Rider",
+		"direction": "BACK",
+		"near": 2,
+		"far": 2
+	}
+  ]
+}

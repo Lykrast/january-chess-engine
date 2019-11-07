@@ -1,0 +1,22 @@
+{
+  "name": "Forequeen",
+  "value": 9.0,
+  "moves": [
+    {
+		"type": "Rook",
+		"direction": [ "FORWARD", "HORIZONTAL" ]
+	},
+    {
+		"type": "Bishop",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "King",
+		"direction": "BACK"
+	},
+    {
+		"type": "Knight",
+		"direction": "BACK"
+	}
+  ]
+}

@@ -202,6 +202,66 @@
 						"x": 3,"y": 0,"side": "white","piece": "chancellor_cylinder"
 					}
 				]
+			},
+			{
+				"name": "The Avian Airforce",
+				"promotions": ["wader", "darter", "faalcon", "flying_kingfisher"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "wader"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "wader"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "darter"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "darter"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "faalcon"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "faalcon"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "flying_kingfisher"
+					}
+				]
+			},
+			{
+				"name": "The Forward FIDEs",
+				"promotions": ["rook_charging", "knishop", "bishight", "forequeen"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "rook_charging"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "rook_charging"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "knishop"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "knishop"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "bishight"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "bishight"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "forequeen"
+					}
+				]
 			}
 		]
 	},
@@ -388,6 +448,66 @@
 					
 					{
 						"x": 3,"y": 7,"side": "black","piece": "chancellor_cylinder"
+					}
+				]
+			},
+			{
+				"name": "The Avian Airforce",
+				"promotions": ["wader", "darter", "faalcon", "flying_kingfisher"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "wader"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "wader"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "darter"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "darter"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "faalcon"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "faalcon"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "flying_kingfisher"
+					}
+				]
+			},
+			{
+				"name": "The Forward FIDEs",
+				"promotions": ["rook_charging", "knishop", "bishight", "forequeen"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "rook_charging"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "rook_charging"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "knishop"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "knishop"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "bishight"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "bishight"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "forequeen"
 					}
 				]
 			}

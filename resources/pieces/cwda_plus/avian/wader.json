@@ -1,0 +1,14 @@
+{
+  "name": "Wader",
+  "value": 4.0,
+  "moves": [
+    {
+		"type": "Wazir"
+	},
+    {
+		"type": "Rider",
+		"near": 0,
+		"far": 2
+	}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Flying Kingfisher",
+  "value": 9.0,
+  "moves": [
+    {
+		"type": "King"
+	},
+    {
+		"type": "Rider",
+		"near": 0,
+		"far": 2
+	},
+    {
+		"type": "Rider",
+		"near": 2,
+		"far": 2
+	}
+  ]
+}
