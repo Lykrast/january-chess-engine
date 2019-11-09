@@ -82,6 +82,7 @@ public class ChessFrame extends JFrame
         }
         game = newGame;
         Board board = game.getBoard();
+        display.resetSelection();
         display.setBoard(board);
         display.invalidate();
         setSize(getPreferredSize());

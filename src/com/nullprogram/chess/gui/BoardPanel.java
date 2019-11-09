@@ -464,6 +464,14 @@ public class BoardPanel extends JComponent
         }
         return new Position(x, y);
     }
+    
+    /**
+     * Resets the selection.
+     */
+    public void resetSelection() {
+        selected = null;
+        moves = null;
+    }
 
     @Override
     public final Move takeTurn(final Board turnBoard,
