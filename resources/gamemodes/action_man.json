@@ -1,0 +1,47 @@
+{
+  "name": "Action Man's Chess",
+  "width": 5,
+  "height": 6,
+  "pieces": [
+	{
+		"x": 0,"xlen": 5,"y": 1,"side": "white","piece": "spearman"	
+	},
+    {
+		"x": 0,"xlen": 5,"y": 4,"side": "black","piece": "spearman"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"	
+	},
+    {
+		"x": 3,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 5,"side": "black","piece": "rook"
+	},
+    {
+		"x": 3,"y": 5,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 4,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 1,"y": 5,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 4,"y": 5,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 2,"y": 5,"side": "black","piece": "queen"
+	}
+	
+  ]
+}
