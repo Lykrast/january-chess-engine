@@ -98,10 +98,10 @@ public class BoardPanel extends JComponent
     private MoveList moves = null;
 
     /** The color for the dark tiles on the board. */
-    static final Color DARK = new Color(0xD1, 0x8B, 0x47);
+    private Color colorDark = new Color(0xD1, 0x8B, 0x47);
 
     /** The color for the light tiles on the board. */
-    static final Color LIGHT = new Color(0xFF, 0xCE, 0x9E);
+    private Color colorLight = new Color(0xFF, 0xCE, 0x9E);
 
     /** Border color for a selected tile. */
     static final Color SELECTED = new Color(0x00, 0xFF, 0xFF);
@@ -211,6 +211,13 @@ public class BoardPanel extends JComponent
                  getHeight() / (TILE_SIZE * board.getHeight()));
         return at;
     }
+    
+    public void applyTheme(ColorTheme theme) {
+    	colorDark = theme.getDarkTileColor();
+    	colorLight = theme.getLightTileColor();
+    	invalidate();
+    	repaint();
+    }
 
     /**
      * Standard painting method.
@@ -237,9 +244,9 @@ public class BoardPanel extends JComponent
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
                 if ((x + y) % 2 == 0) {
-                    g.setColor(LIGHT);
+                    g.setColor(colorLight);
                 } else {
-                    g.setColor(DARK);
+                    g.setColor(colorDark);
                 }
                 at.setToTranslation(x * TILE_SIZE, y * TILE_SIZE);
                 g.fill(at.createTransformedShape(TILE));

@@ -8,6 +8,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -53,13 +54,13 @@ public class ChessFrame extends JFrame
         setIconImage(ImageServer.getTile("King-WHITE"));
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        MenuHandler handler = new MenuHandler(this);
-        handler.setUpMenu();
-
         display = new BoardPanel(new EmptyBoard());
         progress = new StatusBar(null);
         add(display);
         add(progress);
+
+        MenuHandler handler = new MenuHandler(this);
+        handler.setUpMenu();
         pack();
 
         addComponentListener(this);
@@ -112,10 +113,6 @@ public class ChessFrame extends JFrame
      * Used for manaing menu events.
      */
     private class MenuHandler implements ActionListener {
-
-        /** The "Game" menu. */
-        private JMenu game;
-
         /** The parent chess frame, for callbacks. */
         private final ChessFrame frame;
 
@@ -145,7 +142,7 @@ public class ChessFrame extends JFrame
         public final void setUpMenu() {
             JMenuBar menuBar = new JMenuBar();
 
-            game = new JMenu("Game");
+            JMenu game = new JMenu("Game");
             game.setMnemonic('G');
             JMenuItem newGame = new JMenuItem("New Game");
             newGame.addActionListener(this);
@@ -162,7 +159,24 @@ public class ChessFrame extends JFrame
             exitGame.setMnemonic('x');
             game.add(exitGame);
             menuBar.add(game);
-
+            
+            //Themes
+            JMenu themes = new JMenu("Theme");
+            ButtonGroup group = new ButtonGroup();
+            ActionListener themeListener = e -> display.applyTheme(((ColorThemeRadioMenuItem)e.getSource()).getTheme());
+            boolean applied = false;
+            for (ColorTheme ct : ColorTheme.getThemes()) {
+            	ColorThemeRadioMenuItem button = new ColorThemeRadioMenuItem(ct);
+            	button.addActionListener(themeListener);
+            	group.add(button);
+            	themes.add(button);
+            	if (!applied) {
+            		applied = true;
+            		button.doClick();
+            	}
+            }
+            menuBar.add(themes);
+            
             setJMenuBar(menuBar);
         }
     }
