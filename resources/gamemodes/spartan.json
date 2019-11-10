@@ -35,7 +35,7 @@
 	},
 	
     {
-		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "berolina_pawn_nopassant"
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "berolina_pawn_spartan"
 	},
     {
 		"x": 0,"y": 7,"side": "black","piece": "lieutenant"

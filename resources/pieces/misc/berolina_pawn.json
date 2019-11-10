@@ -1,0 +1,33 @@
+{
+  "name": "Berolina Pawn",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"ymax": 0,
+		"moves": [
+			{
+				"type": "Ferz",
+				"direction": "FORWARD",
+				"mode": "MOVE"
+			},
+			{
+				"type": "Wazir",
+				"direction": "FORWARD",
+				"mode": "CAPTURE"
+			}
+		]
+	},
+	{
+		"type": "CondVirgin",
+		"true": [
+			{
+				"type": "Bishop",
+				"max": 2,
+				"direction": "FORWARD",
+				"mode": "MOVE"
+			}
+		]
+	}
+  ]
+}
