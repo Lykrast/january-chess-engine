@@ -7,7 +7,7 @@ import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
 
 public enum Wrap {
-	NONE, HORIZONTAL, VERTICAL, BOTH;
+	HORIZONTAL, VERTICAL, BOTH;
 
 	/**
 	 * Wrap the given Position on the given Board following this cylindrical wraping
@@ -18,8 +18,6 @@ public enum Wrap {
 	 * @return a new Position with adjusted coordinates
 	 */
 	public Position wrap(Board b, Position pos) {
-		if (this == NONE) return pos;
-		
 		int x = pos.getX(), y = pos.getY();
 		if (this == HORIZONTAL || this == BOTH) {
 			int w = b.getWidth();
@@ -49,12 +47,11 @@ public enum Wrap {
 		JsonElement tmp = json.get("wrap");
 		if (tmp != null) {
 			String sSym = tmp.getAsString();
-			if (sSym.equalsIgnoreCase("NONE")) return NONE;
-			else if (sSym.equalsIgnoreCase("HORIZONTAL")) return HORIZONTAL;
+			if (sSym.equalsIgnoreCase("HORIZONTAL")) return HORIZONTAL;
 			else if (sSym.equalsIgnoreCase("VERTICAL")) return VERTICAL;
 			else if (sSym.equalsIgnoreCase("BOTH")) return BOTH;
 			else throw new JsonParseException(
-					"Invalid wrapping value : " + sSym + " - must be NONE, HORIZONTAL, VERTICAL or BOTH");
+					"Invalid wrapping value : " + sSym + " - must be HORIZONTAL, VERTICAL or BOTH");
 		}
 		else return HORIZONTAL;
 	}
