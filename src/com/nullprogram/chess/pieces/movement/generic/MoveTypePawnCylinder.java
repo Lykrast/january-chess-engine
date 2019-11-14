@@ -72,7 +72,7 @@ public class MoveTypePawnCylinder extends MoveType {
 	
 	private boolean wasAdjacent(int x1, int x2, int w) {
 		if (Math.abs(x1 - x2) == 1) return true;
-		if (wrap == Wrap.NONE || wrap == Wrap.VERTICAL) return false;
+		if (wrap == Wrap.VERTICAL) return false;
 		return (x1 + 1) % w == x2 || (x1 + w - 1) % w == x2;
 	}
 
