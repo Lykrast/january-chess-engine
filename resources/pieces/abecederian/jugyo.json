@@ -1,0 +1,14 @@
+{
+  "name": "Jugyo",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "Rook",
+		"direction": [ "FORWARD", "BACK" ]
+	},
+    {
+		"type": "Wazir",
+		"direction": "HORIZONTAL"
+	}
+  ]
+}

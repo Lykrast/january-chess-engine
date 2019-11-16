@@ -1,0 +1,16 @@
+{
+  "name": "Lion",
+  "value": 3.5,
+  "moves": [
+    {
+		"type": "Alfil"
+	},
+    {
+		"type": "Dabbaba"
+	},
+    {
+		"type": "King",
+		"mode": "CAPTURE"
+	}
+  ]
+}

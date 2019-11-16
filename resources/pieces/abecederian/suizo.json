@@ -1,0 +1,13 @@
+{
+  "name": "Suizo",
+  "value": 2.5,
+  "moves": [
+    {
+		"type": "Ferz"
+	},
+    {
+		"type": "Wazir",
+		"direction": [ "FORWARD", "HORIZONTAL" ]
+	}
+  ]
+}

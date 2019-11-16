@@ -1,0 +1,51 @@
+{
+  "name": "Yeoman",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"ymax": 4,
+		"moves": [
+			{
+				"type": "Wazir",
+				"direction": "FORWARD"
+			},
+			{
+				"type": "CondRestriction",
+				"ymin": 6,
+				"true": [
+					{
+						"type": "Wazir",
+						"direction": "HORIZONTAL"
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "Wazir",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "CondRestriction",
+		"ymin": 6,
+		"true": [
+			{
+				"type": "Wazir",
+				"direction": "HORIZONTAL"
+			}
+		]
+	},
+	{
+		"type": "CondVirgin",
+		"true": [
+			{
+				"type": "Rook",
+				"max": 2,
+				"direction": "FORWARD",
+				"mode": "MOVE"
+			}
+		]
+	}
+  ]
+}

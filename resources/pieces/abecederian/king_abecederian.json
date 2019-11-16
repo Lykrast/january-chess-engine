@@ -1,0 +1,28 @@
+{
+  "name": "King",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "ModRestriction",
+		"xmin": 4,
+		"xmax": 6,
+		"ymax": 2,
+		"moves": [
+			{
+				"type": "King"
+			}
+		]
+	},
+    {
+		"type": "ModCaptureRoyal",
+		"moves": [
+			{
+				"type": "Rook",
+				"direction": "FORWARD",
+				"mode": "capture"
+			}
+		]
+	}
+  ]
+}

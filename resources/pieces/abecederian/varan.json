@@ -1,0 +1,14 @@
+{
+  "name": "Varan",
+  "value": 10.5,
+  "moves": [
+    {
+		"type": "Rider",
+		"near": 1,
+		"far": 2
+	},
+	{
+		"type": "Rook"
+	}
+  ]
+}
