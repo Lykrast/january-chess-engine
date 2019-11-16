@@ -55,7 +55,6 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
         Arrays.sort(modeArray);
         modes = new JList<>(modeArray);
         modes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        modes.setSelectedIndex(0);
         modes.addListSelectionListener(this);
         
         JScrollPane scroll = new JScrollPane(modes);
@@ -65,6 +64,8 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
 
         insidePanel.setBorder(BorderFactory.createEmptyBorder(H_PADDING, V_PADDING,
                   H_PADDING, V_PADDING));
+        
+        modes.setSelectedIndex(0);
     }
 
     /**
