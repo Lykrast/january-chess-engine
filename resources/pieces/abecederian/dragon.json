@@ -1,0 +1,19 @@
+{
+  "name": "Dragon",
+  "value": 3.5,
+  "moves": [
+    {
+		"type": "Knight"
+	},
+	{
+		"type": "Wazir",
+		"direction": "FORWARD",
+		"mode": "MOVE"
+	},
+	{
+		"type": "Ferz",
+		"direction": "FORWARD",
+		"mode": "CAPTURE"
+	}
+  ]
+}

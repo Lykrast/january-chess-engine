@@ -91,6 +91,42 @@
 						"x": 10,"y": 0,"side": "white","piece": "nightrider"
 					}
 				]
+			},
+			{
+				"name": "Gryphon Queen",
+				"promotionswhite": ["camel", "dragon", "bishop", "queen", "nightrider", "gryphon", "rook"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "camel"
+					},
+					{
+						"x": 1,"y": 0,"side": "white","piece": "dragon"
+					},
+					{
+						"x": 2,"y": 0,"side": "white","piece": "bishop"
+					},
+					{
+						"x": 3,"y": 0,"side": "white","piece": "bishop"
+					},
+					{
+						"x": 4,"y": 0,"side": "white","piece": "queen"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "dragon"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "nightrider"
+					},
+					{
+						"x": 8,"y": 0,"side": "white","piece": "gryphon"
+					},
+					{
+						"x": 9,"y": 0,"side": "white","piece": "camel"
+					},
+					{
+						"x": 10,"y": 0,"side": "white","piece": "rook"
+					}
+				]
 			}
 		]
 	},
@@ -166,6 +202,42 @@
 					},
 					{
 						"x": 10,"y": 10,"side": "black","piece": "nightrider"
+					}
+				]
+			},
+			{
+				"name": "Gryphon Queen",
+				"promotionsblack": ["camel", "dragon", "bishop", "queen", "nightrider", "gryphon", "rook"],
+				"pieces": [
+					{
+						"x": 0,"y": 10,"side": "black","piece": "camel"
+					},
+					{
+						"x": 1,"y": 10,"side": "black","piece": "dragon"
+					},
+					{
+						"x": 2,"y": 10,"side": "black","piece": "bishop"
+					},
+					{
+						"x": 3,"y": 10,"side": "black","piece": "bishop"
+					},
+					{
+						"x": 4,"y": 10,"side": "black","piece": "queen"
+					},
+					{
+						"x": 6,"y": 10,"side": "black","piece": "dragon"
+					},
+					{
+						"x": 7,"y": 10,"side": "black","piece": "nightrider"
+					},
+					{
+						"x": 8,"y": 10,"side": "black","piece": "gryphon"
+					},
+					{
+						"x": 9,"y": 10,"side": "black","piece": "camel"
+					},
+					{
+						"x": 10,"y": 10,"side": "black","piece": "rook"
 					}
 				]
 			}
