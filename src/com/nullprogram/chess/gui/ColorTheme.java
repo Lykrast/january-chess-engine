@@ -35,6 +35,7 @@ public class ColorTheme {
 		themes.add(new ColorTheme("Metro", 0x527362, 0xF1F2CB));
 		themes.add(new ColorTheme("Ancient", 0x8F976D, 0xF2F2B8));
 		themes.add(new ColorTheme("Lava", 0x605E5F, 0xA0676E));
+		themes.add(new ColorTheme("Lichess", 0xB58863, 0xF0D9B5));
 	}
 	
 	public static List<ColorTheme> getThemes() {
