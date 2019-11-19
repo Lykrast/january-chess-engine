@@ -75,7 +75,8 @@ public final class Position implements Comparable<Position>, Serializable {
      *
      * @return string form of position
      */
-    public String toString() {
+    @Override
+	public String toString() {
         return "" + ((char) ('a' + (char) x)) + (y + 1);
     }
 
@@ -95,7 +96,8 @@ public final class Position implements Comparable<Position>, Serializable {
      * @param o position to be compared
      * @return  true if the positions are equal
      */
-    public boolean equals(final Object o) {
+    @Override
+	public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -139,7 +141,8 @@ public final class Position implements Comparable<Position>, Serializable {
      *
      * @return hash code of this object.
      */
-    public int hashCode() {
+    @Override
+	public int hashCode() {
         return x ^ y;
     }
 
@@ -149,7 +152,8 @@ public final class Position implements Comparable<Position>, Serializable {
      * @param pos position to be compared
      * @return    positive if more, negative if less, zero if equal
      */
-    public int compareTo(final Position pos) {
+    @Override
+	public int compareTo(final Position pos) {
         if (pos.y == y) {
             return x - pos.x;
         } else {

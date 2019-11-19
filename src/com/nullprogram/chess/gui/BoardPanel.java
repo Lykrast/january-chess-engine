@@ -3,6 +3,7 @@ package com.nullprogram.chess.gui;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -48,6 +49,8 @@ public class BoardPanel extends JComponent
 
     /** Size of a tile in working coordinates. */
     private static final double TILE_SIZE = 200.0;
+    
+    private static final int NOTATION_SIZE = 30;
 
     /** Shape provided for drawing background tiles. */
     private static final Shape TILE =
@@ -102,6 +105,8 @@ public class BoardPanel extends JComponent
 
     /** The color for the light tiles on the board. */
     private Color colorLight = new Color(0xFF, 0xCE, 0x9E);
+    
+    private Font font = new Font(Font.DIALOG, Font.PLAIN, NOTATION_SIZE);
 
     /** Border color for a selected tile. */
     static final Color SELECTED = new Color(0x00, 0xFF, 0xFF);
@@ -236,20 +241,33 @@ public class BoardPanel extends JComponent
                            RenderingHints.VALUE_STROKE_PURE);
         g.setRenderingHint(RenderingHints.KEY_RENDERING,
                            RenderingHints.VALUE_RENDER_QUALITY);
+        g.setFont(font);
 
         /* Temp AffineTransform for the method */
         AffineTransform at = new AffineTransform();
 
         /* Draw the background */
+        int notLineX = w*(int)TILE_SIZE - 25;
+        int notLineXBigY = notLineX - 15;
+        int notColY = h*(int)TILE_SIZE - 10;
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
-                if ((x + y) % 2 == 0) {
-                    g.setColor(colorLight);
-                } else {
-                    g.setColor(colorDark);
-                }
+				if ((x + y) % 2 == 0) g.setColor(colorLight);
+				else g.setColor(colorDark);
                 at.setToTranslation(x * TILE_SIZE, y * TILE_SIZE);
                 g.fill(at.createTransformedShape(TILE));
+                
+                //Notation
+                if (x == w-1) {
+    				if ((x + y) % 2 == 0) g.setColor(colorDark);
+    				else g.setColor(colorLight);
+    				g.drawString(Integer.toString(y+1), y > 8 ? notLineXBigY : notLineX, y*(int)TILE_SIZE + 35);
+                }
+                if (y == h-1) {
+    				if ((x + y) % 2 == 0) g.setColor(colorDark);
+    				else g.setColor(colorLight);
+    				g.drawString(Character.toString('a'+x), x*(int)TILE_SIZE + 10, notColY);
+                }
             }
         }
 
