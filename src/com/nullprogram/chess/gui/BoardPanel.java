@@ -266,7 +266,7 @@ public class BoardPanel extends JComponent
                 if (y == h-1) {
     				if ((x + y) % 2 == 0) g.setColor(colorDark);
     				else g.setColor(colorLight);
-    				g.drawString(Character.toString('a'+x), x*(int)TILE_SIZE + 10, notColY);
+    				g.drawString(Character.toString((char)('a'+x)), x*(int)TILE_SIZE + 10, notColY);
                 }
             }
         }
