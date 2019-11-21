@@ -127,6 +127,42 @@
 						"x": 10,"y": 0,"side": "white","piece": "rook"
 					}
 				]
+			},
+			{
+				"name": "Varan Unicorn",
+				"promotionswhite": ["varan", "knight", "eagle", "dragon", "jugyo", "cardinal"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "varan"
+					},
+					{
+						"x": 1,"y": 0,"side": "white","piece": "knight"
+					},
+					{
+						"x": 2,"y": 0,"side": "white","piece": "eagle"
+					},
+					{
+						"x": 3,"y": 0,"side": "white","piece": "dragon"
+					},
+					{
+						"x": 4,"y": 0,"side": "white","piece": "dragon"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "jugyo"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "jugyo"
+					},
+					{
+						"x": 8,"y": 0,"side": "white","piece": "eagle"
+					},
+					{
+						"x": 9,"y": 0,"side": "white","piece": "knight"
+					},
+					{
+						"x": 10,"y": 0,"side": "white","piece": "cardinal"
+					}
+				]
 			}
 		]
 	},
@@ -238,6 +274,42 @@
 					},
 					{
 						"x": 10,"y": 10,"side": "black","piece": "rook"
+					}
+				]
+			},
+			{
+				"name": "Varan Unicorn",
+				"promotionsblack": ["varan", "knight", "eagle", "dragon", "jugyo", "cardinal"],
+				"pieces": [
+					{
+						"x": 0,"y": 10,"side": "black","piece": "varan"
+					},
+					{
+						"x": 1,"y": 10,"side": "black","piece": "knight"
+					},
+					{
+						"x": 2,"y": 10,"side": "black","piece": "eagle"
+					},
+					{
+						"x": 3,"y": 10,"side": "black","piece": "dragon"
+					},
+					{
+						"x": 4,"y": 10,"side": "black","piece": "dragon"
+					},
+					{
+						"x": 6,"y": 10,"side": "black","piece": "jugyo"
+					},
+					{
+						"x": 7,"y": 10,"side": "black","piece": "jugyo"
+					},
+					{
+						"x": 8,"y": 10,"side": "black","piece": "eagle"
+					},
+					{
+						"x": 9,"y": 10,"side": "black","piece": "knight"
+					},
+					{
+						"x": 10,"y": 10,"side": "black","piece": "cardinal"
 					}
 				]
 			}

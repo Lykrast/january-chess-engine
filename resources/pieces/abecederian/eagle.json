@@ -1,0 +1,23 @@
+{
+  "name": "Eagle",
+  "value": 5.0,
+  "moves": [
+    {
+		"type": "Bishop",
+		"direction": "FORWARD"
+	},
+    {
+		"type": "Bishop",
+		"max": 2,
+		"direction": "BACK"
+	},
+	{
+		"type": "Rook",
+		"direction": "BACK"
+	},
+    {
+		"type": "Wazir",
+		"direction": [ "FORWARD", "HORIZONTAL" ]
+	}
+  ]
+}
