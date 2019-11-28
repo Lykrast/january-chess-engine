@@ -144,6 +144,36 @@
 				]
 			},
 			{
+				"name": "The All-Around Allstars",
+				"promotions": ["rook_charging", "waffle", "bishop", "chancellor"],
+				"pieces": [
+					{
+						"x": 0,"y": 0,"side": "white","piece": "rook_charging"
+					},
+					{
+						"x": 7,"y": 0,"side": "white","piece": "rook_charging"
+					},
+					
+					{
+						"x": 1,"y": 0,"side": "white","piece": "waffle"
+					},
+					{
+						"x": 6,"y": 0,"side": "white","piece": "waffle"
+					},
+					
+					{
+						"x": 2,"y": 0,"side": "white","piece": "bishop"
+					},
+					{
+						"x": 5,"y": 0,"side": "white","piece": "bishop"
+					},
+					
+					{
+						"x": 3,"y": 0,"side": "white","piece": "chancellor"
+					}
+				]
+			},
+			{
 				"name": "The Amazon Army",
 				"promotions": ["rook_short", "knight", "bishop", "amazon"],
 				"pieces": [
@@ -384,6 +414,36 @@
 					},
 					{
 						"x": 5,"y": 7,"side": "black","piece": "half_duck"
+					},
+					
+					{
+						"x": 3,"y": 7,"side": "black","piece": "chancellor"
+					}
+				]
+			},
+			{
+				"name": "The All-Around Allstars",
+				"promotions": ["rook_charging", "waffle", "bishop", "chancellor"],
+				"pieces": [
+					{
+						"x": 0,"y": 7,"side": "black","piece": "rook_charging"
+					},
+					{
+						"x": 7,"y": 7,"side": "black","piece": "rook_charging"
+					},
+					
+					{
+						"x": 1,"y": 7,"side": "black","piece": "waffle"
+					},
+					{
+						"x": 6,"y": 7,"side": "black","piece": "waffle"
+					},
+					
+					{
+						"x": 2,"y": 7,"side": "black","piece": "bishop"
+					},
+					{
+						"x": 5,"y": 7,"side": "black","piece": "bishop"
 					},
 					
 					{
