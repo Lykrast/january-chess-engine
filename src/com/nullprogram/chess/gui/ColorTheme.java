@@ -37,6 +37,8 @@ public class ColorTheme {
 		themes.add(new ColorTheme("Lava", 0x605E5F, 0xA0676E));
 		themes.add(new ColorTheme("Lichess", 0xB58863, 0xF0D9B5));
 		themes.add(new ColorTheme("Cream", 0xEBAC00, 0xEBEBEB));
+		themes.add(new ColorTheme("Olive", 0x808000, 0xF0F0F0));
+		themes.add(new ColorTheme("Blue", 0x4B4BA4, 0xF0F0F0));
 	}
 	
 	public static List<ColorTheme> getThemes() {
