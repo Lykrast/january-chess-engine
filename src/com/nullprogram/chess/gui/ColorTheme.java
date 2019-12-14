@@ -39,6 +39,9 @@ public class ColorTheme {
 		themes.add(new ColorTheme("Cream", 0xEBAC00, 0xEBEBEB));
 		themes.add(new ColorTheme("Olive", 0x808000, 0xF0F0F0));
 		themes.add(new ColorTheme("Blue", 0x4B4BA4, 0xF0F0F0));
+		themes.add(new ColorTheme("Black & White", 0x3E3E3E, 0xE7E7E7));
+		//themes.add(new ColorTheme("Hexa Blue", 0x3E3E3E, 0x05A4EB));
+		//themes.add(new ColorTheme("Hexa Orange", 0x3E3E3E, 0xFFAF29));
 	}
 	
 	public static List<ColorTheme> getThemes() {
