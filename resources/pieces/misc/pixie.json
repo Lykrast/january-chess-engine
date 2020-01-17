@@ -1,0 +1,35 @@
+{
+  "name": "Pixie",
+  "value": 2.0,
+  "moves": [
+	{
+		"type": "Wazir",
+		"direction": "FORWARD",
+		"mode": "MOVE"
+	},
+    {
+		"type": "ModCaptureRoyal",
+		"moves": [
+			{
+				"type": "Ferz",
+				"direction": "FORWARD",
+				"mode": "CAPTURE"
+			}
+		]
+	},
+    {
+		"type": "ModCaptureNonRoyal",
+		"moves": [
+			{
+				"type": "ModSwap",
+				"moves": [
+					{
+						"type": "Teleport",
+						"mode": "CAPTURE_BOTH"
+					}
+				]
+			}
+		]
+	}
+  ]
+}

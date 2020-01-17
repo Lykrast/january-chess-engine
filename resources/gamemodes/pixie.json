@@ -1,0 +1,144 @@
+{
+  "name": "Pixie Chess",
+  "author": "hmyoung1",
+  "width": 8,
+  "height": 8,
+  "promotions": ["rook", "knight", "bishop", "queen"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+  ],
+  "options": [
+	{
+		"name": "White Pixie position",
+		"values": [
+			{
+				"name": "A2",
+				"pieces": [ { "x": 0,"y": 1,"side": "white","piece": "pixie" } ]
+			},
+			{
+				"name": "B2",
+				"pieces": [ { "x": 1,"y": 1,"side": "white","piece": "pixie" } ]
+			},
+			{
+				"name": "C2",
+				"pieces": [ { "x": 2,"y": 1,"side": "white","piece": "pixie" } ]
+			},
+			{
+				"name": "D2",
+				"pieces": [ { "x": 3,"y": 1,"side": "white","piece": "pixie" } ]
+			},
+			{
+				"name": "E2",
+				"pieces": [ { "x": 4,"y": 1,"side": "white","piece": "pixie" } ]
+			},
+			{
+				"name": "F2",
+				"pieces": [ { "x": 5,"y": 1,"side": "white","piece": "pixie" } ]
+			},
+			{
+				"name": "G2",
+				"pieces": [ { "x": 6,"y": 1,"side": "white","piece": "pixie" } ]
+			},
+			{
+				"name": "H2",
+				"pieces": [ { "x": 7,"y": 1,"side": "white","piece": "pixie" } ]
+			}
+		]
+	},
+	{
+		"name": "Black Pixie position",
+		"values": [
+			{
+				"name": "A7",
+				"pieces": [ { "x": 0,"y": 6,"side": "black","piece": "pixie" } ]
+			},
+			{
+				"name": "B7",
+				"pieces": [ { "x": 1,"y": 6,"side": "black","piece": "pixie" } ]
+			},
+			{
+				"name": "C7",
+				"pieces": [ { "x": 2,"y": 6,"side": "black","piece": "pixie" } ]
+			},
+			{
+				"name": "D7",
+				"pieces": [ { "x": 3,"y": 6,"side": "black","piece": "pixie" } ]
+			},
+			{
+				"name": "E7",
+				"pieces": [ { "x": 4,"y": 6,"side": "black","piece": "pixie" } ]
+			},
+			{
+				"name": "F7",
+				"pieces": [ { "x": 5,"y": 6,"side": "black","piece": "pixie" } ]
+			},
+			{
+				"name": "G7",
+				"pieces": [ { "x": 6,"y": 6,"side": "black","piece": "pixie" } ]
+			},
+			{
+				"name": "H7",
+				"pieces": [ { "x": 7,"y": 6,"side": "black","piece": "pixie" } ]
+			}
+		]
+	}
+  ]
+}
