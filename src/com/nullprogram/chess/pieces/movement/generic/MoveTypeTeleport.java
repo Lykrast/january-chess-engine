@@ -22,7 +22,7 @@ public class MoveTypeTeleport extends MoveType {
 
 		for (int x = 0; x < p.getBoard().getWidth(); x++) {
 			for (int y = 0; y < p.getBoard().getHeight(); y++) {
-				if (x != px && y != py) list.add(new Move(pos, new Position(x, y)), getMoveMode());
+				if (!(x == px && y == py)) list.add(new Move(pos, new Position(x, y)), getMoveMode());
 			}
 		}
 
