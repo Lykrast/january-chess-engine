@@ -17,15 +17,15 @@ import com.nullprogram.chess.resources.JSONUtils;
  * @author Lykrast
  */
 public abstract class MoveModifier implements IMoveTypeDeserializer, IMoveType {
-    private IMoveType[] moves;
+	private IMoveType[] moves;
 
 	public MoveModifier(IMoveType[] moves) {
 		this.moves = moves;
 	}
-	
+
 	/**
 	 * Creates a MoveListWrapper around the given IMoveList with the given Piece to modify or restrict added Moves.
-	 * @param p Piece that moves
+	 * @param p    Piece that moves
 	 * @param list IMoveList to wrap
 	 * @return a MoveListWrapper around the given IMoveList
 	 */
@@ -34,7 +34,7 @@ public abstract class MoveModifier implements IMoveTypeDeserializer, IMoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
 		IMoveList wrapper = createWrapper(p, list);
-        for (IMoveType m : moves) wrapper = m.getMoves(p, wrapper);
+		for (IMoveType m : moves) wrapper = m.getMoves(p, wrapper);
 		return list;
 	}
 
@@ -42,13 +42,13 @@ public abstract class MoveModifier implements IMoveTypeDeserializer, IMoveType {
 	public final IMoveType create(JsonObject json, JsonDeserializationContext context) throws JsonParseException {
 		JsonArray movesJson = JSONUtils.getMandatory(json, "moves").getAsJsonArray();
 		List<IMoveType> movesList = new ArrayList<>();
-		for (JsonElement elem : movesJson)
-		{
+		for (JsonElement elem : movesJson) {
+			if (elem.isJsonNull()) throw new JsonParseException("MoveModifier contains a null element in its moves");
 			movesList.add(context.deserialize(elem, IMoveType.class));
 		}
 		return create(json, movesList.toArray(new IMoveType[movesList.size()]), context);
 	}
-	
+
 	/**
 	 * Creates a MoveType according to the given JsonElement following the (already deserialized) moves.
 	 */
