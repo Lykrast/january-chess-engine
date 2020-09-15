@@ -1,5 +1,6 @@
 {
   "name": "Cylinder Queen",
+  "icon": "cylinder_queen",
   "value": 11.0,
   "moves": [
     {

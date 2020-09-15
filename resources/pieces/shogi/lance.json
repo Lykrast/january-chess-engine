@@ -1,5 +1,6 @@
 {
   "name": "Lance",
+  "icon": "lance",
   "value": 1.25,
   "moves": [
     {

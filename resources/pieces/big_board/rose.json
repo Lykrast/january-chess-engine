@@ -1,5 +1,6 @@
 {
   "name": "Rose",
+  "icon": "rose",
   "value": 5.0,
   "moves": [
     {

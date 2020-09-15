@@ -1,5 +1,6 @@
 {
   "name": "Buffalo",
+  "icon": "buffalo",
   "value": 8.0,
   "moves": [
 	{

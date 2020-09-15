@@ -18,9 +18,9 @@ import com.nullprogram.chess.pieces.Piece;
  */
 public final class ImageServer {
 	private static final String PATH = "./resources/images/";
-	public static final String WHITE = "-WHITE", BLACK = "-BLACK";
+	public static final String WHITE = "_w", BLACK = "_b";
 	
-	private static final String U_WHITE = "Unknown-WHITE", U_BLACK = "Unknown-BLACK";
+	private static final String U_WHITE = "unknown_w", U_BLACK = "unknown_b";
 
     /** This class's Logger. */
     private static final Logger LOG =

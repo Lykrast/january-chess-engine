@@ -1,5 +1,6 @@
 {
   "name": "Berolina Pawn",
+  "icon": "berolina_pawn",
   "value": 1.0,
   "moves": [
     {

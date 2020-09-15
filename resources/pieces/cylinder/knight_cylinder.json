@@ -1,5 +1,6 @@
 {
   "name": "Cylinder Knight",
+  "icon": "cylinder_knight",
   "value": 3.25,
   "moves": [
     {

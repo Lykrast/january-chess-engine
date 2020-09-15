@@ -1,5 +1,6 @@
 {
   "name": "Eques Rex",
+  "icon": "eques_rex",
   "value": 1000.0,
   "royal": true,
   "moves": [

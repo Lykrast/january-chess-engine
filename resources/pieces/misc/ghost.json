@@ -1,5 +1,6 @@
 {
   "name": "Ghost",
+  "icon": "ghost",
   "value": 0.2,
   "moves": [
     {

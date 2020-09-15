@@ -1,5 +1,6 @@
 {
   "name": "Gold General",
+  "icon": "gold_general",
   "value": 2.25,
   "moves": [
     {

@@ -1,5 +1,6 @@
 {
   "name": "Checkers King",
+  "icon": "checkers_king",
   "value": 3.0,
   "moves": [
     {

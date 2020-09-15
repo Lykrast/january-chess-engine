@@ -1,5 +1,6 @@
 {
   "name": "Coordinator",
+  "icon": "coordinator",
   "value": 6.0,
   "moves": [
     {

@@ -1,5 +1,6 @@
 {
   "name": "Charging Rook",
+  "icon": "charging_rook",
   "value": 5.0,
   "moves": [
     {

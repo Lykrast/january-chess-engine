@@ -1,5 +1,6 @@
 {
   "name": "Advisor",
+  "icon": "advisor",
   "value": 1.0,
   "moves": [
     {

@@ -1,5 +1,6 @@
 {
-  "name": "Knight",
+  "name": "Anti-gravity Knight",
+  "icon": "knight",
   "value": 3.0,
   "moves": [
     {

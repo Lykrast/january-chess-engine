@@ -1,5 +1,6 @@
 {
   "name": "Spearman",
+  "icon": "spearman",
   "value": 1.0,
   "moves": [
     {

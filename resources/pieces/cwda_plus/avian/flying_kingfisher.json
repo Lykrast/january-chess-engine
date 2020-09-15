@@ -1,5 +1,6 @@
 {
   "name": "Flying Kingfisher",
+  "icon": "flying_kingfisher",
   "value": 9.0,
   "moves": [
     {

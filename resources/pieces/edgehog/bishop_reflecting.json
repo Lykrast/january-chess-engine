@@ -1,5 +1,6 @@
 {
   "name": "Reflecting Bishop",
+  "icon": "reflecting_bishop",
   "value": 5.0,
   "moves": [
     {

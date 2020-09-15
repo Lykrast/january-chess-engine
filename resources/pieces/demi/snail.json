@@ -1,5 +1,6 @@
 {
   "name": "Snail",
+  "icon": "snail",
   "value": 2.0,
   "moves": [
     {

@@ -12,20 +12,17 @@ import com.nullprogram.chess.resources.ImageServer;
 public class Model {
     /** Name of this piece. */
     private String name;
+    private String icon;
     
     private boolean royal;
     
     private double value;
     private IMoveType[] moves;
     
-    public Model(String name, double value, IMoveType... moves)
-    {
-    	this(name, value, false, moves);
-    }
-    
-    public Model(String name, double value, boolean royal, IMoveType... moves)
+    public Model(String name, String icon, double value, boolean royal, IMoveType... moves)
     {
     	this.name = name;
+    	this.icon = icon;
     	this.value = value;
     	this.moves = moves;
     	this.royal = royal;
@@ -82,7 +79,7 @@ public class Model {
      * @return     image for this piece
      */
     public final Image getImage(Side s) {
-        return ImageServer.getPieceTile(name, s);
+        return ImageServer.getPieceTile(icon, s);
     }
     
     @Override

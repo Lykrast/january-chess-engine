@@ -1,5 +1,6 @@
 {
-  "name": "Lion",
+  "name": "Murray Lion",
+  "icon": "lion",
   "value": 3.5,
   "moves": [
     {

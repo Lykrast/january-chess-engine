@@ -1,5 +1,6 @@
 {
   "name": "Crab",
+  "icon": "crab",
   "value": 1.5,
   "moves": [
     {

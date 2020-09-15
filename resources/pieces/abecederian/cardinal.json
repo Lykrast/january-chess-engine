@@ -1,5 +1,6 @@
 {
   "name": "Cardinal",
+  "icon": "cardinal",
   "value": 8.0,
   "moves": [
     {

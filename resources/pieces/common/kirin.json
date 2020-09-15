@@ -1,5 +1,6 @@
 {
   "name": "Kirin",
+  "icon": "kirin",
   "value": 3.0,
   "moves": [
     {

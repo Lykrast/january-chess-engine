@@ -1,5 +1,6 @@
 {
-  "name": "Queen",
+  "name": "Magnetic Queen",
+  "icon": "queen",
   "value": 9.0,
   "moves": [
     {

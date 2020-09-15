@@ -1,5 +1,6 @@
 {
   "name": "Cylinder Rook",
+  "icon": "cylinder_rook",
   "value": 5.0,
   "moves": [
     {

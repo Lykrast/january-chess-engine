@@ -1,5 +1,6 @@
 {
   "name": "Short Rook",
+  "icon": "short_rook",
   "value": 3.0,
   "moves": [
     {

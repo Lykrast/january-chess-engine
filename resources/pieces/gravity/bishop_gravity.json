@@ -1,5 +1,6 @@
 {
-  "name": "Bishop",
+  "name": "Gravity Bishop",
+  "icon": "bishop",
   "value": 3.0,
   "moves": [
     {

@@ -1,5 +1,6 @@
 {
   "name": "Crowned Rook",
+  "icon": "crowned_rook",
   "value": 6.5,
   "moves": [
     {

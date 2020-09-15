@@ -1,5 +1,6 @@
 {
   "name": "Cylinder King",
+  "icon": "cylinder_king",
   "value": 1000.0,
   "royal": true,
   "moves": [

@@ -1,5 +1,6 @@
 {
   "name": "Cylinder Chancellor",
+  "icon": "cylinder_chancellor",
   "value": 8.75,
   "moves": [
     {

@@ -1,5 +1,6 @@
 {
   "name": "Long Leaper",
+  "icon": "long_leaper",
   "value": 10.0,
   "moves": [
     {

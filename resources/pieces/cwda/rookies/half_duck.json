@@ -1,5 +1,6 @@
 {
   "name": "Half-Duck",
+  "icon": "half_duck",
   "value": 5.0,
   "moves": [
     {

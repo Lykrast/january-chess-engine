@@ -1,5 +1,6 @@
 {
   "name": "Pawn",
+  "icon": "pawn",
   "value": 1.0,
   "moves": [
     {

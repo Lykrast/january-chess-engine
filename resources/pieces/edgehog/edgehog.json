@@ -1,5 +1,6 @@
 {
   "name": "Edgehog",
+  "icon": "edgehog",
   "value": 6.0,
   "moves": [
     {

@@ -104,24 +104,6 @@ public class Piece implements Serializable {
     public Model getModel() {
     	return model;
     }
-
-    /**
-     * Create a new piece on the given side.
-     *
-     * @param owner the side of the piece
-     * @param pieceName name of this piece
-     */
-    protected Piece(final Side owner, final String pieceName) {
-        side = owner;
-        //name = pieceName;
-        model = new Model(pieceName, 1.0)
-        		{
-			@Override
-			public MoveList getMoves(Piece p, boolean checkCheck) {
-				return null;
-			}
-        		};
-    }
     
     public Piece(final Side owner, final Model model)
     {

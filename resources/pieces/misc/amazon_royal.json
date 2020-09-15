@@ -1,5 +1,6 @@
 {
   "name": "Amazon",
+  "icon": "amazon",
   "value": 1000.0,
   "royal": true,
   "moves": [

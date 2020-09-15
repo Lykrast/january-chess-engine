@@ -1,5 +1,6 @@
 {
   "name": "Cylinder Waffle",
+  "icon": "cylinder_waffle",
   "value": 3.0,
   "moves": [
     {

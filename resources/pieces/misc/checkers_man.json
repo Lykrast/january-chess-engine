@@ -1,5 +1,6 @@
 {
   "name": "Checkers Man",
+  "icon": "checkers_man",
   "value": 1.5,
   "moves": [
     {

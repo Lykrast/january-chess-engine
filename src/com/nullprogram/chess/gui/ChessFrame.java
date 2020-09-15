@@ -51,7 +51,7 @@ public class ChessFrame extends JFrame
         setResizable(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setIconImage(ImageServer.getTile("King-WHITE"));
+        setIconImage(ImageServer.getTile("king_w"));
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         display = new BoardPanel(new EmptyBoard());
