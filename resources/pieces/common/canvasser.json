@@ -1,0 +1,15 @@
+{
+  "name": "Canvasser",
+  "icon": "camel_rook",
+  "value": 8.5,
+  "moves": [
+	{
+		"type": "Rook"
+	},
+    {
+		"type": "Leaper",
+		"near": 1,
+		"far": 3
+	}
+  ]
+}

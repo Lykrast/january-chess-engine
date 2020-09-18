@@ -1,0 +1,122 @@
+{
+  "name": "Ecumenical Chess (Simple)",
+  "width": 8,
+  "height": 10,
+  "promotions": ["rook", "knight", "bishop", "queen", "camel", "gnu", "chancellor", "archbishop", "canvasser", "caliph"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 2,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 7,"side": "black","piece": "pawn"
+	},
+	
+    {
+		"x": 0,"y": 1,"side": "white","piece": "rook"
+	},
+    {
+		"x": 7,"y": 1,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 8,"side": "black","piece": "rook"
+	},
+    {
+		"x": 7,"y": 8,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 1,"side": "white","piece": "knight"
+	},
+	{
+		"x": 6,"y": 1,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 8,"side": "black","piece": "knight"
+	},
+	{
+		"x": 6,"y": 8,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 1,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 1,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 2,"y": 8,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 8,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 3,"y": 9,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 9,"side": "black","piece": "king"
+	},
+	
+	{
+		"x": 5,"y": 0,"side": "white","piece": "gnu"
+	},
+	{
+		"x": 5,"y": 9,"side": "black","piece": "gnu"
+	},
+	
+	{
+		"x": 0,"y": 0,"side": "white","piece": "camel"
+	},
+	{
+		"x": 7,"y": 0,"side": "white","piece": "camel"
+	},
+	{
+		"x": 0,"y": 9,"side": "black","piece": "camel"
+	},
+	{
+		"x": 7,"y": 9,"side": "black","piece": "camel"
+	},
+	
+	{
+		"x": 3,"y": 1,"side": "white","piece": "archbishop"
+	},
+	{
+		"x": 3,"y": 8,"side": "black","piece": "archbishop"
+	},
+	
+	{
+		"x": 4,"y": 1,"side": "white","piece": "chancellor"
+	},
+	{
+		"x": 4,"y": 8,"side": "black","piece": "chancellor"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "caliph"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "caliph"
+	},
+	{
+		"x": 1,"y": 9,"side": "black","piece": "caliph"
+	},
+	{
+		"x": 6,"y": 9,"side": "black","piece": "caliph"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "canvasser"
+	},
+	{
+		"x": 2,"y": 9,"side": "black","piece": "canvasser"
+	}
+	
+  ]
+}
