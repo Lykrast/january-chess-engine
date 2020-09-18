@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
+import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
@@ -72,18 +73,45 @@ public class BoardPanel extends JComponent
                                     HIGHLIGHT_PADDING * 4,
                                     HIGHLIGHT_PADDING * 4);
     
-    private static final Shape HIGHLIGHT_WHITE =
-            new RoundRectangle2D.Double(ATTACK_PADDING, ATTACK_PADDING,
-                                        TILE_SIZE - ATTACK_PADDING * 2,
-                                        TILE_SIZE - ATTACK_PADDING * 2,
-                                        HIGHLIGHT_PADDING * 4,
-                                        HIGHLIGHT_PADDING * 4);
-    private static final Shape HIGHLIGHT_BLACK =
-            new RoundRectangle2D.Double(ATTACK_PADDING + HIGHLIGHT_PADDING, ATTACK_PADDING + HIGHLIGHT_PADDING,
-                                        TILE_SIZE - (ATTACK_PADDING + HIGHLIGHT_PADDING) * 2,
-                                        TILE_SIZE - (ATTACK_PADDING + HIGHLIGHT_PADDING) * 2,
-                                        HIGHLIGHT_PADDING * 4,
-                                        HIGHLIGHT_PADDING * 4);
+//    private static final Shape HIGHLIGHT_WHITE =
+//            new RoundRectangle2D.Double(ATTACK_PADDING, ATTACK_PADDING,
+//                                        TILE_SIZE - ATTACK_PADDING * 2,
+//                                        TILE_SIZE - ATTACK_PADDING * 2,
+//                                        HIGHLIGHT_PADDING * 4,
+//                                        HIGHLIGHT_PADDING * 4);
+//    private static final Shape HIGHLIGHT_BLACK =
+//            new RoundRectangle2D.Double(ATTACK_PADDING + HIGHLIGHT_PADDING, ATTACK_PADDING + HIGHLIGHT_PADDING,
+//                                        TILE_SIZE - (ATTACK_PADDING + HIGHLIGHT_PADDING) * 2,
+//                                        TILE_SIZE - (ATTACK_PADDING + HIGHLIGHT_PADDING) * 2,
+//                                        HIGHLIGHT_PADDING * 4,
+//                                        HIGHLIGHT_PADDING * 4);
+    
+    private static final Shape HIGHLIGHT_WHITE_1, HIGHLIGHT_WHITE_2;
+    private static final Shape HIGHLIGHT_BLACK_1, HIGHLIGHT_BLACK_2;
+    
+    //Make the attacked shape brackets
+    static {
+    	double len = (TILE_SIZE - 2 * ATTACK_PADDING) / 3;
+    	double no = ATTACK_PADDING;
+    	double op = TILE_SIZE - ATTACK_PADDING;
+    	HIGHLIGHT_WHITE_1 = new QuadCurve2D.Double(
+				no, no + len, 
+				no, no, 
+				no + len, no);
+    	HIGHLIGHT_WHITE_2 = new QuadCurve2D.Double(
+				op, op - len, 
+				op, op, 
+				op - len, op);
+    	HIGHLIGHT_BLACK_1 = new QuadCurve2D.Double(
+				op, no + len, 
+				op, no, 
+				op - len, no);
+    	HIGHLIGHT_BLACK_2 = new QuadCurve2D.Double(
+				no, op - len, 
+				no, op, 
+				no + len, op);
+    	
+    }
 
     /** Version for object serialization. */
     private static final long serialVersionUID = 1L;
@@ -293,21 +321,21 @@ public class BoardPanel extends JComponent
                 for (int x = 0; x < w; x++) {
                     Piece p = board.getPiece(new Position(x, y));
                     if (p != null) {
-                    	Shape shape;
-                    	if (p.getSide() == Piece.Side.WHITE)
-                    	{
-                    		g.setColor(ATTACKED_WHITE);
-                    		shape = HIGHLIGHT_WHITE;
-                    	}
-                    	else
-                    	{
-                    		g.setColor(ATTACKED_BLACK);
-                    		shape = HIGHLIGHT_BLACK;
-                    	}
-                    	MoveListCapture tmpMoves = p.getCapturingMoves();
-                    	for (Move move : tmpMoves) {
-                    		highlightAttack(g, move.getDest(), shape);
-                    	}
+						Shape shape1, shape2;
+						if (p.getSide() == Piece.Side.WHITE) {
+							g.setColor(ATTACKED_WHITE);
+							shape1 = HIGHLIGHT_WHITE_1;
+							shape2 = HIGHLIGHT_WHITE_2;
+						}
+						else {
+							g.setColor(ATTACKED_BLACK);
+							shape1 = HIGHLIGHT_BLACK_1;
+							shape2 = HIGHLIGHT_BLACK_2;
+						}
+						MoveListCapture tmpMoves = p.getCapturingMoves();
+						for (Move move : tmpMoves) {
+							highlightAttack(g, move.getDest(), shape1, shape2);
+						}
                     }
                 }
             }
@@ -370,7 +398,7 @@ public class BoardPanel extends JComponent
         g.draw(at.createTransformedShape(HIGHLIGHT));
     }
     
-    private void highlightAttack(final Graphics2D g, final Position pos, final Shape shape) {
+    private void highlightAttack(final Graphics2D g, final Position pos, final Shape shape1, final Shape shape2) {
         int x = pos.getX();
         int y = pos.getY();
         if (flipped) {
@@ -379,7 +407,8 @@ public class BoardPanel extends JComponent
         g.setStroke(HIGHLIGHT_STROKE_ATTACK);
         AffineTransform at = new AffineTransform();
         at.translate(x * TILE_SIZE, y * TILE_SIZE);
-        g.draw(at.createTransformedShape(shape));
+        g.draw(at.createTransformedShape(shape1));
+        g.draw(at.createTransformedShape(shape2));
     }
 
     @Override
