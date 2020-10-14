@@ -91,7 +91,7 @@ public class MoveTypeCastle extends MoveType {
         for (int i = start.getX() + dir; i != max; i += dir) {
             Position pos = new Position(i, start.getY());
             if (p.getBoard().getPiece(pos) != null ||
-                enemyMoves(p).containsDest(pos)) {
+                enemyMoves(p).capturesPos(pos)) {
 
                 return false;
             }
