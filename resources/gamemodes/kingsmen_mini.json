@@ -1,0 +1,67 @@
+{
+	"#comment": "https://old.reddit.com/r/chessvariants/comments/nyvepl/kingsmen_fun_chess_variant_with_perfect_symmetry/?ref=share&ref_source=link",
+	"name": "Kingsmen Mini",
+	"width": 3,
+	"height": 9,
+	"pieces": [	
+	{
+		"x": 0,"y": 0,"side": "white","piece": "rook_shogi"
+	},
+	{
+		"x": 2,"y": 0,"side": "white","piece": "rook_shogi"
+	},
+	{
+		"x": 0,"y": 8,"side": "black","piece": "rook_shogi"
+	},
+	{
+		"x": 2,"y": 8,"side": "black","piece": "rook_shogi"
+	},
+	
+	{
+		"x": 1,"y": 1,"side": "white","piece": "knight_kingsmen"
+	},
+	{
+		"x": 1,"y": 2,"side": "white","piece": "knight_kingsmen"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight_kingsmen"
+	},
+	{
+		"x": 1,"y": 6,"side": "black","piece": "knight_kingsmen"
+	},
+	
+	{
+		"x": 0,"y": 1,"side": "white","piece": "bishop_shogi"
+	},
+	{
+		"x": 2,"y": 1,"side": "white","piece": "bishop_shogi"
+	},
+	{
+		"x": 0,"y": 7,"side": "black","piece": "bishop_shogi"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop_shogi"
+	},
+	
+	{
+		"x": 0,"y": 2,"side": "white","piece": "bishop_shogi"
+	},
+	{
+		"x": 2,"y": 2,"side": "white","piece": "bishop_shogi"
+	},
+	{
+		"x": 0,"y": 6,"side": "black","piece": "bishop_shogi"
+	},
+	{
+		"x": 2,"y": 6,"side": "black","piece": "bishop_shogi"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "king_nocastle"
+	},
+	{
+		"x": 1,"y": 8,"side": "black","piece": "king_nocastle"
+	}
+	
+  ]
+}

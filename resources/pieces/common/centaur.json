@@ -1,0 +1,13 @@
+{
+  "name": "Centaur",
+  "icon": "centaur",
+  "value": 6.0,
+  "moves": [
+    {
+		"type": "King"
+	},
+    {
+		"type": "Knight"
+	}
+  ]
+}
