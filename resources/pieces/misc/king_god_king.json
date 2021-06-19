@@ -1,0 +1,21 @@
+{
+  "name": "King",
+  "icon": "king",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "god_king",
+		"xmin": 2,
+		"xmax": 2,
+		"ymin": 2,
+		"ymax": 2,
+		"moves": [
+			{
+				"type": "King"
+			}
+		]
+	}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "God King",
+  "icon": "king",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "King"
+	},
+    {
+		"type": "Dabbaba"
+	},
+    {
+		"type": "Alfil"
+	},
+	{
+		"type": "Knight"
+	}
+  ]
+}

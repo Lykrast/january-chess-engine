@@ -1,0 +1,17 @@
+{
+  "name": "Wazir",
+  "icon": "wazir",
+  "value": 1.5,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "mann",
+		"ymax": 0,
+		"moves": [
+			{
+				"type": "Wazir"
+			}
+		]
+	}
+  ]
+}

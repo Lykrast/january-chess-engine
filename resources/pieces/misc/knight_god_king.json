@@ -1,0 +1,17 @@
+{
+  "name": "Knight",
+  "icon": "knight",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "ModPromotionSingle",
+		"promoted": "squirrel",
+		"ymax": 0,
+		"moves": [
+			{
+				"type": "Knight"
+			}
+		]
+	}
+  ]
+}
