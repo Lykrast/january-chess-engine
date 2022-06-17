@@ -1,5 +1,6 @@
 {
   "name": "Anti-magnetic (castle unaffected)",
+  "description": "Variant by Claude Chaunier and Joao Neto. When a piece moves, it repels enemy pieces and attracts friendly pieces on orthogonal lines. This does not apply to kings. No en passant. Castle should apply on the Rook but it isn't implemented here.\nhttps://www.chessvariants.org/other.dir/physics.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook_antimagnetic", "knight_antimagnetic", "bishop_antimagnetic", "queen_antimagnetic"],

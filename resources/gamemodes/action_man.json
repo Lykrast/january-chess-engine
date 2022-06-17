@@ -1,5 +1,6 @@
 {
   "name": "Action Man's Chess",
+  "description": "A variant by Francois Tremblay with a much simpler board and pieces.\nhttps://www.chessvariants.com/small.dir/actionmanschess.html",
   "width": 5,
   "height": 6,
   "pieces": [

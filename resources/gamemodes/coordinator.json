@@ -1,5 +1,6 @@
 {
   "name": "Coordinator Chess",
+  "description": "Part of the Chess with Ultima, Rococo and Supremo Pieces series.\n10x8 board where each side has a Coordinator from Ultima. After moving, it captures pieces that share a row with it and a column with the friendly King, or vice versa.\nhttps://www.chessvariants.com/large.dir/chess-with-ultima.html",
   "width": 10,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "coordinator"],

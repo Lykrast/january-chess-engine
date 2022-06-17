@@ -1,5 +1,6 @@
 {
   "name": "Anti-gravity Chess (castle unaffected)",
+  "description": "Variant by Claude Chaunier and Joao Neto. When a piece moves, it repels pieces on orthogonal lines. This does not apply to kings. No en passant. Castle should apply on the Rook but it isn't implemented here.\nhttps://www.chessvariants.org/other.dir/physics.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook_antigravity", "knight_antigravity", "bishop_antigravity", "queen_antigravity"],

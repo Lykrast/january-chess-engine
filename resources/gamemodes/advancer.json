@@ -1,5 +1,6 @@
 {
   "name": "Advancer Chess",
+  "description": "Part of the Chess with Ultima, Rococo and Supremo Pieces series.\n10x8 board where each side has an Advancer from Rococo. It captures on the next square in the direction of its movement.\nhttps://www.chessvariants.com/large.dir/chess-with-ultima.html",
   "width": 10,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "advancer"],
