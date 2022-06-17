@@ -5,16 +5,16 @@
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="."/>
-    <property name="dir.jarfile" value="${dir.workspace}"/>
+    <property name="dir.jarfile" value="${dir.buildfile}"/>
     <target name="create_run_jar">
-        <jar destfile="${dir.workspace}/january-chess-engine.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="${dir.jarfile}/january-chess-engine.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="com.nullprogram.chess.Chess"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <fileset dir="${dir.buildfile}/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/gson-2.8.2-javadoc.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/gson-2.8.2.jar"/>
+            <fileset dir="${dir.jarfile}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/gson-2.8.2-javadoc.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/gson-2.8.2.jar"/>
         </jar>
     </target>
 </project>
