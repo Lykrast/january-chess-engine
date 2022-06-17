@@ -208,6 +208,7 @@ public class Minimax implements Player {
                 }
             } catch (ExecutionException e) {
                 LOG.warning("move went unevaluated: " + e.getMessage());
+                e.printStackTrace();
             } catch (InterruptedException e) {
                 LOG.warning("move went unevaluated: " + e.getMessage());
             }
