@@ -101,28 +101,6 @@ public abstract class Board implements Serializable {
     public final Boolean stalemate() {
         return stalemate(Piece.Side.WHITE) || stalemate(Piece.Side.BLACK);
     }
-
-    /**
-     * Find the king belonging to the given side.
-     *
-     * @param side whose king
-     * @return     the king's board position
-     */
-    @Deprecated
-    public final Position findKing(final Piece.Side side) {
-        for (int y = 0; y < getHeight(); y++) {
-            for (int x = 0; x < getWidth(); x++) {
-                Position pos = new Position(x, y);
-                Piece p = getPiece(pos);
-                if (p != null && p.getModel().isRoyal() && p.getSide() == side)
-                {
-
-                    return pos;
-                }
-            }
-        }
-        return null;
-    }
     
     /**
      * Find all royal pieces belonging to the given side.

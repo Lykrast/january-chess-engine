@@ -1,5 +1,6 @@
 {
   "name": "Chess on a Really Big Board",
+  "description": "A variant by Ralph Betza. 16x16 board with several new pieces.\nhttps://www.chessvariants.com/d.betza/chessvar/16x16.html",
   "width": 16,
   "height": 16,
   "promotions": ["rook", "knight", "kirin", "great_alfil", "bishop", "rose", "archbishop", "queen", "chancellor", "buffalo"],

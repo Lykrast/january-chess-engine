@@ -1,5 +1,6 @@
 {
   "name": "The Black Ghost",
+  "description": "A variant by Ralph Betza. Black gets a Ghost that can move anywhere on the board, but can't capture.\nhttps://www.chessvariants.com/d.betza/chessvar/16x16.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],

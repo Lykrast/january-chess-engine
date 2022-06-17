@@ -1,5 +1,6 @@
 {
   "name": "Chess with More Different Armies",
+  "description": "Chess with Different Armies with extra armies by Ralph Betza. These are said to not be as well playtested and mostly come from footnotes on piece analysis.\nhttps://en.wikipedia.org/wiki/Chess_with_different_armies",
   "width": 8,
   "height": 8,
   "pieces": [

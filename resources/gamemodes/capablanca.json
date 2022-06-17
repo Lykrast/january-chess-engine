@@ -1,5 +1,6 @@
 {
   "name": "Capablanca Chess",
+  "description": "A variant by Jose Raul Capablanca. 10x8 board with added Rook + Knight and Bishop + Knight pieces.\nhttps://en.wikipedia.org/wiki/Capablanca_chess",
   "width": 10,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "archbishop", "chancellor"],

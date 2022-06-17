@@ -1,5 +1,6 @@
 {
   "name": "Berolina Chess (no passant)",
+  "description": "An old variant by Edmund Nebermann. Pawns move diagonally and capture orthogonally. En passant isn't implemented.\nhttps://en.wikipedia.org/wiki/Berolina_chess",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],

@@ -1,5 +1,6 @@
 {
   "name": "Archchess",
+  "description": "An old variant by Dr. Francesco Piacenza. 10x10 board with two added pieces, one that moves one step diagonally, the other jumps two squares orthogonally, diagonally, or as a Knight.\nhttps://www.chessvariants.com/historic.dir/arch.html",
   "width": 10,
   "height": 10,
   "promotions": ["queen"],
