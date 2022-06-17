@@ -58,6 +58,7 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 		if (tmp == null)
 		{
 			return new GameMode(JSONUtils.getMandatory(obj, "name").getAsString(),
+					JSONUtils.getDefaultString(obj, "description", "No description."),
 					JSONUtils.getMandatory(obj, "width").getAsInt(), 
 					JSONUtils.getMandatory(obj, "height").getAsInt(), 
 					piecesList.toArray(new PiecePlacement[piecesList.size()]),
@@ -74,6 +75,7 @@ public class GameModeDeserializer implements JsonDeserializer<GameMode> {
 			}
 
 			return new GameModeOption(JSONUtils.getMandatory(obj, "name").getAsString(),
+					JSONUtils.getDefaultString(obj, "description", "No description."),
 					JSONUtils.getMandatory(obj, "width").getAsInt(), 
 					JSONUtils.getMandatory(obj, "height").getAsInt(), 
 					piecesList.toArray(new PiecePlacement[piecesList.size()]),
