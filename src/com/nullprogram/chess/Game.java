@@ -15,261 +15,263 @@ import com.nullprogram.chess.pieces.Piece;
  */
 public class Game implements Runnable {
 
-    /** This class's Logger. */
-    private static final Logger LOG =
-        Logger.getLogger("com.nullprogram.chess.Game");
+	/** This class's Logger. */
+	private static final Logger LOG = Logger.getLogger("com.nullprogram.chess.Game");
 
-    /** Conversion from milliseconds to seconds. */
-    private static final double MSEC_TO_SEC = 1000.0;
+	/** Conversion from milliseconds to seconds. */
+	private static final double MSEC_TO_SEC = 1000.0;
 
-    /** The board being used for this game. */
-    private Board board;
+	/** The board being used for this game. */
+	private Board board;
 
-    /** The player playing white. */
-    private Player white;
+	/** The player playing white. */
+	private Player white;
 
-    /** The player playing black. */
-    private Player black;
+	/** The player playing black. */
+	private Player black;
 
-    /** Whose turn it is right now. */
-    private Piece.Side turn;
+	/** Whose turn it is right now. */
+	private Piece.Side turn;
 
-    /** Current status message. */
-    private String status = "";
+	/** Current status message. */
+	private String status = "";
 
-    /** Current progress (AI). */
-    private float progress;
+	/** Current progress (AI). */
+	private float progress;
 
-    /** Time when progress bar was restarted. */
-    private long progressStart;
+	/** Time when progress bar was restarted. */
+	private long progressStart;
 
-    /** Time of last progress bar update. */
-    private long progressUpdate;
+	/** Time of last progress bar update. */
+	private long progressUpdate;
 
-    /** Normalized ETA value. */
-    private double etaUnit;
+	/** Normalized ETA value. */
+	private double etaUnit;
 
-    /** Weighting of old value in timing estimates. */
-    private static final double ALPHA = 0.4;
+	/** Weighting of old value in timing estimates. */
+	private static final double ALPHA = 0.4;
 
-    /** Set to true when the board is in a completed state. */
-    private volatile Boolean done = false;
+	/** Set to true when the board is in a completed state. */
+	private volatile Boolean done = false;
 
-    /** When the game is done, this is the winner. */
-    private Piece.Side winner;
+	/** When the game is done, this is the winner. */
+	private Piece.Side winner;
 
-    /** List of event listeners. */
-    private final Collection<GameListener> listeners =
-        new CopyOnWriteArraySet<GameListener>();
+	/** List of event listeners. */
+	private final Collection<GameListener> listeners = new CopyOnWriteArraySet<GameListener>();
 
-    /**
-     * Hidden constructor.
-     */
-    protected Game() {
-    }
+	/**
+	 * Hidden constructor.
+	 */
+	protected Game() {
+	}
 
-    /**
-     * Create a new game with the given board and players.
-     *
-     * @param gameBoard   the game board
-     */
-    public Game(final Board gameBoard) {
-        board = gameBoard;
-    }
+	/**
+	 * Create a new game with the given board and players.
+	 *
+	 * @param gameBoard the game board
+	 */
+	public Game(final Board gameBoard) {
+		board = gameBoard;
+	}
 
-    /**
-     * Seat the given players at this game.
-     *
-     * @param whitePlayer the player playing white
-     * @param blackPlayer the player playing black
-     */
-    public final void seat(final Player whitePlayer,
-                           final Player blackPlayer) {
-        white = whitePlayer;
-        black = blackPlayer;
-    }
+	/**
+	 * Seat the given players at this game.
+	 *
+	 * @param whitePlayer the player playing white
+	 * @param blackPlayer the player playing black
+	 */
+	public final void seat(final Player whitePlayer, final Player blackPlayer) {
+		white = whitePlayer;
+		black = blackPlayer;
+	}
 
-    /**
-     * End the running game.
-     */
-    public final void end() {
-        listeners.clear();
-        winner = null;
-        done = true;
-    }
+	/**
+	 * End the running game.
+	 */
+	public final void end() {
+		listeners.clear();
+		winner = null;
+		done = true;
+	}
 
-    /**
-     * Begin the game.
-     */
-    public final void begin() {
-        done = false;
-        turn = Piece.Side.BLACK;
-        callGameListeners(GameEvent.TURN);
-        new Thread(this).start();
-    }
-    
-    private Player getPlayer(Piece.Side side) {
-    	if (side == Piece.Side.BLACK) return black;
-    	else return white;
-    }
+	/**
+	 * Begin the game.
+	 */
+	public final void begin() {
+		done = false;
+		turn = Piece.Side.BLACK;
+		callGameListeners(GameEvent.TURN);
+		new Thread(this).start();
+	}
 
-    @Override
-    public final void run() {
-        while (!done) {
-            /* Determine who's turn it is. */
-            turn = turn.opposite();
-            setStatus(turn + "'s turn.");
-            Player player = getPlayer(turn);
+	private Player getPlayer(Piece.Side side) {
+		if (side == Piece.Side.BLACK) return black;
+		else return white;
+	}
 
-            /* Fetch the move from the player. */
-            Move move = player.takeTurn(getBoard(), turn);
-            board.move(move);
-            setProgress(0);
-            if (done) {
-                /* Game may have ended abruptly during the player's
-                 * potentially lengthy turn. */
-                return;
-            }
+	@Override
+	public final void run() {
+		while (!done) {
+			/* Determine who's turn it is. */
+			turn = turn.opposite();
+			setStatus(turn + "'s turn.");
+			Player player = getPlayer(turn);
 
-            /* Check for the end of the game. */
-            Piece.Side opp = turn.opposite();
-            if (board.checkmate(opp)) {
-                done = true;
-                setStatus(turn + " wins!");
-                winner = turn;
-                callGameListeners(GameEvent.GAME_END);
-                return;
-            } else if (board.stalemate(opp)) {
-                done = true;
-                setStatus(opp + " has been stalemated!");
-                winner = null;
-                callGameListeners(GameEvent.GAME_END);
-                return;
-            }
-            callGameListeners(GameEvent.TURN);
-        }
-    }
+			/* Fetch the move from the player. */
+			Move move = player.takeTurn(getBoard(), turn);
+			board.move(move);
+			setProgress(0);
+			if (done) {
+				/*
+				 * Game may have ended abruptly during the player's
+				 * potentially lengthy turn.
+				 */
+				return;
+			}
 
-    /**
-     * Get the board that belongs to this game.
-     *
-     * @return the game's board
-     */
-    public final Board getBoard() {
-        return board.copy();
-    }
+			/* Check for the end of the game. */
+			Piece.Side opp = turn.opposite();
+			if (board.checkmate(opp)) {
+				done = true;
+				setStatus(turn + " wins!");
+				winner = turn;
+				callGameListeners(GameEvent.GAME_END);
+				return;
+			}
+			else if (board.stalemate(opp)) {
+				done = true;
+				setStatus(opp + " has been stalemated!");
+				winner = null;
+				callGameListeners(GameEvent.GAME_END);
+				return;
+			}
+			callGameListeners(GameEvent.TURN);
+		}
+	}
 
-    /**
-     * Add a new event listener.
-     *
-     * @param listener the new event listener
-     */
-    public final void addGameListener(final GameListener listener) {
-        listeners.add(listener);
-    }
+	/**
+	 * Get the board that belongs to this game.
+	 *
+	 * @return the game's board
+	 */
+	public final Board getBoard() {
+		return board.copy();
+	}
 
-    /**
-     * Call all of the game event listeners.
-     *
-     * @param type the type of event that occured
-     */
-    private void callGameListeners(final int type) {
-        for (GameListener listener : listeners) {
-            listener.gameEvent(new GameEvent(this, type));
-        }
-    }
+	/**
+	 * Add a new event listener.
+	 *
+	 * @param listener the new event listener
+	 */
+	public final void addGameListener(final GameListener listener) {
+		listeners.add(listener);
+	}
 
-    /**
-     * Ask if the game is complete.
-     *
-     * @return true if the game is complete
-     */
-    public final boolean isDone() {
-        return done;
-    }
+	/**
+	 * Call all of the game event listeners.
+	 *
+	 * @param type the type of event that occured
+	 */
+	private void callGameListeners(final int type) {
+		for (GameListener listener : listeners) {
+			listener.gameEvent(new GameEvent(this, type));
+		}
+	}
 
-    /**
-     * Return the winner of this game.
-     *
-     * @return the winner for this game
-     */
-    public final Piece.Side getWinner() {
-        return winner;
-    }
+	/**
+	 * Ask if the game is complete.
+	 *
+	 * @return true if the game is complete
+	 */
+	public final boolean isDone() {
+		return done;
+	}
 
-    /**
-     * Set the Game's current status message.
-     *
-     * @param message  new status message
-     */
-    public final void setStatus(final String message) {
-        //LOG.info("status: " + message);
-        if (message == null) {
-            throw new IllegalArgumentException();
-        }
-        status = message;
-        callGameListeners(GameEvent.STATUS);
-    }
+	/**
+	 * Return the winner of this game.
+	 *
+	 * @return the winner for this game
+	 */
+	public final Piece.Side getWinner() {
+		return winner;
+	}
 
-    /**
-     * Get the Game's current status message.
-     *
-     * @return the current status message
-     */
-    public final String getStatus() {
-        return status;
-    }
+	/**
+	 * Set the Game's current status message.
+	 *
+	 * @param message new status message
+	 */
+	public final void setStatus(final String message) {
+		// LOG.info("status: " + message);
+		if (message == null) { throw new IllegalArgumentException(); }
+		status = message;
+		callGameListeners(GameEvent.STATUS);
+	}
 
-    /**
-     * Set the Game's current progress status.
-     *
-     * @param value  current progress (0.0-1.0)
-     */
-    public final void setProgress(final float value) {
-        LOG.finest("Game progress: " + value);
-        progress = value;
-        if (value == 0) {
-            progressStart = System.currentTimeMillis();
-            etaUnit = 0;
-        } else {
-            long diff = System.currentTimeMillis() - progressStart;
-            double unit = diff / value / MSEC_TO_SEC;
-            if (etaUnit == 0) {
-                etaUnit = unit;
-            } else {
-                etaUnit = ALPHA * etaUnit + (1 - ALPHA) * unit;
-            }
-        }
-        progressUpdate = System.currentTimeMillis();
-        callGameListeners(GameEvent.STATUS);
-    }
+	/**
+	 * Get the Game's current status message.
+	 *
+	 * @return the current status message
+	 */
+	public final String getStatus() {
+		return status;
+	}
 
-    /**
-     * Estimated time remaining on the progress bar.
-     *
-     * @return the estimated seconds remaining
-     */
-    public final double getETA() {
-        long now = System.currentTimeMillis();
-        if (progress > 0) {
-            double diff = (now - progressUpdate) / MSEC_TO_SEC;
-            double t = (etaUnit * (1.0 - progress)) - diff;
-            if (t < 0) {
-                return 0;
-            } else {
-                return t;
-            }
-        } else {
-            return Double.POSITIVE_INFINITY;
-        }
-    }
+	/**
+	 * Set the Game's current progress status.
+	 *
+	 * @param value current progress (0.0-1.0)
+	 */
+	public final void setProgress(final float value) {
+		LOG.finest("Game progress: " + value);
+		progress = value;
+		if (value == 0) {
+			progressStart = System.currentTimeMillis();
+			etaUnit = 0;
+		}
+		else {
+			long diff = System.currentTimeMillis() - progressStart;
+			double unit = diff / value / MSEC_TO_SEC;
+			if (etaUnit == 0) {
+				etaUnit = unit;
+			}
+			else {
+				etaUnit = ALPHA * etaUnit + (1 - ALPHA) * unit;
+			}
+		}
+		progressUpdate = System.currentTimeMillis();
+		callGameListeners(GameEvent.STATUS);
+	}
 
-    /**
-     * Return the Game's current progress.
-     *
-     * @return the current progress (0.0-1.0)
-     */
-    public final float getProgress() {
-        return progress;
-    }
+	/**
+	 * Estimated time remaining on the progress bar.
+	 *
+	 * @return the estimated seconds remaining
+	 */
+	public final double getETA() {
+		long now = System.currentTimeMillis();
+		if (progress > 0) {
+			double diff = (now - progressUpdate) / MSEC_TO_SEC;
+			double t = (etaUnit * (1.0 - progress)) - diff;
+			if (t < 0) {
+				return 0;
+			}
+			else {
+				return t;
+			}
+		}
+		else {
+			return Double.POSITIVE_INFINITY;
+		}
+	}
+
+	/**
+	 * Return the Game's current progress.
+	 *
+	 * @return the current progress (0.0-1.0)
+	 */
+	public final float getProgress() {
+		return progress;
+	}
 }
