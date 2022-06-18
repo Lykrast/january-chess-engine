@@ -1,6 +1,6 @@
 {
   "name": "Withdrawer Chess",
-  "description": "Part of the Chess with Ultima, Rococo and Supremo Pieces series.\n10x8 board where each side has a Withdrawer from Ultima. It captures by moving away from an adjacent piece.\nhttps://www.chessvariants.com/large.dir/chess-with-ultima.html",
+  "description": "Part of the Chess with Ultima, Rococo and Supremo Pieces series.\n10x8 board where each side has two Withdrawers from Ultima. It captures by moving away from an adjacent piece.\nhttps://www.chessvariants.com/large.dir/chess-with-ultima.html",
   "width": 10,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "withdrawer"],

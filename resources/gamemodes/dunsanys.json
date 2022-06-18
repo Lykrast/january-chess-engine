@@ -1,5 +1,6 @@
 {
   "name": "Dunsany's Chess",
+  "description": "A variant by Lord Dunsany. White has a normal chess army and black has 32 Pawns.\nhttps://en.wikipedia.org/wiki/Dunsany%27s_chess",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],

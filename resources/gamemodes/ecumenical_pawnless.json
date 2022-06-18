@@ -1,5 +1,6 @@
 {
   "name": "Ecumenical Chess (Pawnless)",
+  "description": "A variant by Charles Gilman. No pawns, and adds missing Knight compounds as well as Camels and their compounds.\nhttps://www.chessvariants.com/large.dir/ecumenical-chess.html",
   "width": 8,
   "height": 8,
   "pieces": [

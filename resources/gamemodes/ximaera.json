@@ -1,5 +1,6 @@
 {
   "name": "Ximaera Chess",
+  "description": "10x8 board where each side has two Ximaeras from Royal Fury. It moves as a Queen, but swaps positions instead of capturing.\nhttps://www.chessvariants.com/link/zRoyalFury",
   "width": 10,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "ximaera"],

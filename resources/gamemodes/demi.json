@@ -1,5 +1,6 @@
 {
   "name": "DemiChess",
+  "description": "A variant by Ralph Betza. Pieces are much weaker with limited movement.\nhttps://www.chessvariants.com/d.betza/chessvar/demichess2.html",
   "width": 8,
   "height": 8,
   "promotions": ["snail", "crab", "lobster", "oyster"],

@@ -1,5 +1,6 @@
 {
   "name": "Horde Chess",
+  "description": "A variant by Lord Dunsany. White has a normal chess army and black has 32 Pawns. The starting position is different from Dunsany's Chess.\nhttps://en.wikipedia.org/wiki/Dunsany%27s_chess",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],

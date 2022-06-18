@@ -1,5 +1,6 @@
 {
   "name": "Capricorn Chess (Royal Fury)",
+  "description": "10x8 board where each side has two Capricorns from Royal Fury. It captures all adjacent pieces after moving.\nhttps://www.chessvariants.com/link/zRoyalFury",
   "width": 10,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "capricorn"],

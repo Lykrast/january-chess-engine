@@ -1,5 +1,6 @@
 {
   "name": "Courier Chess",
+  "description": "An old historic variant. 12x8 with various weaker pieces.\nhttps://www.chessvariants.com/historic.dir/courier.html",
   "width": 12,
   "height": 8,
   "pieces": [

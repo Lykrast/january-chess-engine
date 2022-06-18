@@ -1,5 +1,6 @@
 {
   "name": "Cylinder Chess",
+  "description": "An old variant. Movement wraps around the left and right sides, as if the board was a cylinder.\nhttps://en.wikipedia.org/wiki/Cylinder_chess",
   "width": 8,
   "height": 8,
   "promotions": ["rook_cylinder", "knight_cylinder", "bishop_cylinder", "queen_cylinder"],

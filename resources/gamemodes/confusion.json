@@ -1,5 +1,6 @@
 {
   "name": "Confusion Chess 1b",
+  "description": "A variant by Ralph Betza. Pieces have weird and unusual movements.\nhttps://www.chessvariants.com/d.betza/chessvar/confu01.html",
   "width": 8,
   "height": 8,
   "promotions": ["rhinorider", "gryphon", "bishop_crooked", "rhinorider_double"],

@@ -1,5 +1,6 @@
 {
   "name": "Cavalier Chess",
+  "description": "A variant by Fergus Duniho. Pieces are various variations of Knights.\nhttps://www.chessvariants.com/dpieces.dir/cavalier/index.html",
   "width": 8,
   "height": 8,
   "promotions": ["chancellor", "nightrider", "archbishop", "queen"],
