@@ -114,10 +114,10 @@ public class Minimax implements Player {
         {
         	Model m = PieceRegistry.get(id);
         	double value = m.getValue();
-        	try {
-        		value = Double.parseDouble(config.getProperty(id));
-        	}
-        	catch (Exception e) {}
+//        	try {
+//        		value = Double.parseDouble(config.getProperty(id));
+//        	}
+//        	catch (Exception e) {}
         	values.put(m, value);
         }
 
@@ -172,7 +172,7 @@ public class Minimax implements Player {
             game.setProgress(0);
             game.setStatus("Thinking ...");
         }
-        long startTime = System.currentTimeMillis();
+        //long startTime = System.currentTimeMillis();
 
         /* Spin off threads to evaluate each move's tree. */
         CompletionService<Move> service =
@@ -217,9 +217,8 @@ public class Minimax implements Player {
             }
         }
 
-        long time = (System.currentTimeMillis() - startTime);
-        LOG.info("AI took " + (time / MILLI) + " seconds (" +
-                 NTHREADS + " threads, " + maxDepth + " plies)");
+        //long time = (System.currentTimeMillis() - startTime);
+        //LOG.info("AI took " + (time / MILLI) + " seconds (" + NTHREADS + " threads, " + maxDepth + " plies)");
         return bestMove;
     }
 

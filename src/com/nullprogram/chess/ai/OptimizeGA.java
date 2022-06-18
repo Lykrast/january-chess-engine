@@ -1,18 +1,18 @@
 package com.nullprogram.chess.ai;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
+import java.util.logging.Logger;
+
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.GameEvent;
 import com.nullprogram.chess.GameListener;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.boards.Board;
+import com.nullprogram.chess.boards.GameModeRegistry;
 import com.nullprogram.chess.boards.StandardBoard;
 import com.nullprogram.chess.pieces.Piece;
-import com.nullprogram.chess.pieces.PieceRegistry;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
-import java.util.logging.Logger;
 
 /**
  * Alternate main class for optimizing AI parameters via genetic algorithm.
@@ -139,7 +139,7 @@ public class OptimizeGA implements GameListener {
     private void launch(final Config whiteConf, final Config blackConf) {
         LOG.info(whiteConf.toString());
         LOG.info(blackConf.toString());
-        Board board = new StandardBoard();
+        Board board = new StandardBoard(GameModeRegistry.get("fide"));
         Game game = new Game(board);
         Player white = new Minimax(game, whiteConf.getProperties());
         Player black = new Minimax(game, blackConf.getProperties());
@@ -199,17 +199,18 @@ public class OptimizeGA implements GameListener {
 //        String[] pieces = {"Pawn", "Knight", "Bishop", "Rook", "Queen",
 //                           "King", "Chancellor", "Archbishop"
 //                          };
-        for (String piece : PieceRegistry.getModelID()) {
-            Double v = rng.nextDouble() * PIECE_RANGE;
-            if ("King".equals(piece)) {
-                /* The king has a much larger value range. */
-                v *= PIECE_RANGE * PIECE_RANGE;
-            }
-            conf.put(piece, v);
-        }
+//        for (String piece : PieceRegistry.getModelID()) {
+//            Double v = rng.nextDouble() * PIECE_RANGE;
+//            if ("King".equals(piece)) {
+//                /* The king has a much larger value range. */
+//                v *= PIECE_RANGE * PIECE_RANGE;
+//            }
+//            conf.put(piece, v);
+//        }
         conf.put("material", rng.nextDouble());
         conf.put("safety", rng.nextDouble());
         conf.put("mobility", rng.nextDouble());
+        conf.put("random", 0D);
         return conf;
     }
 
@@ -229,9 +230,9 @@ public class OptimizeGA implements GameListener {
             } else if (rng.nextDouble() < MUTATION_RATE) {
                 ave += (rng.nextDouble() * 1.0 / 2.0) * MUTATION_VAR;
                 double max = PIECE_RANGE;
-                if ("King".equals(prop)) {
-                    max = PIECE_RANGE * PIECE_RANGE * PIECE_RANGE;
-                }
+//                if ("King".equals(prop)) {
+//                    max = PIECE_RANGE * PIECE_RANGE * PIECE_RANGE;
+//                }
                 if (ave > max) {
                     ave = max;
                 } else if (ave < -max) {

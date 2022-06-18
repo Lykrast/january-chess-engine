@@ -203,7 +203,7 @@ public class Game implements Runnable {
      * @param message  new status message
      */
     public final void setStatus(final String message) {
-        LOG.info("status: " + message);
+        //LOG.info("status: " + message);
         if (message == null) {
             throw new IllegalArgumentException();
         }
