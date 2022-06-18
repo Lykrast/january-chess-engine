@@ -52,7 +52,8 @@ public class MoveModifierCoordinator extends MoveModifier {
 			Move innermost = move.getLast();
 
 			// Coordinate
-			for (Position p : royal) innermost = coordinate(innermost, p);
+			// Assume the end is where our piece ends up, not always true but for what I do it'll work
+			for (Position p : royal) innermost = coordinate(innermost, innermost.getDest(), p);
 
 			return move;
 		}
@@ -61,9 +62,9 @@ public class MoveModifierCoordinator extends MoveModifier {
 		 * Append the coordination captures of a given king if possible. Returns either
 		 * the move or the added move that is now the deepest in the sequence.
 		 */
-		private Move coordinate(Move move, Position king) {
-			move = coordinate(move, move.getDest().getX(), king.getY());
-			move = coordinate(move, king.getX(), move.getDest().getY());
+		private Move coordinate(Move move, Position dest, Position king) {
+			move = coordinate(move, dest.getX(), king.getY());
+			move = coordinate(move, king.getX(), dest.getY());
 
 			return move;
 		}
