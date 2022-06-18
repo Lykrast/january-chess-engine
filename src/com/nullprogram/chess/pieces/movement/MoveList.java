@@ -180,6 +180,8 @@ public class MoveList implements Iterable<Move>, Serializable, IMoveList {
         Piece p = board.getPiece(move.getOrigin());
         boolean ret = false;
         
+        //I shouldn't have to do that but I'm lazy
+        boolean prevRepeat = board.isRepeatedDraw();
         board.move(move);
         
         //Check if we captured our king
@@ -198,6 +200,7 @@ public class MoveList implements Iterable<Move>, Serializable, IMoveList {
         if (!ret) ret = board.check(p.getSide());
         
         board.undo();
+        board.forceRepeatedDraw(prevRepeat);
         return ret;
     }
 

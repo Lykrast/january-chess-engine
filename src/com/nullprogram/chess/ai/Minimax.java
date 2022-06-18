@@ -78,6 +78,9 @@ public class Minimax implements Player {
 
     /** Random score weight (configured). */
     private double wRandom;
+    
+    //Tempo score
+    private double wTempo;
 
     /**
      * Create the default Minimax.
@@ -126,6 +129,7 @@ public class Minimax implements Player {
         wSafety = Double.parseDouble(config.getProperty("safety"));
         wMobility = Double.parseDouble(config.getProperty("mobility"));
         wRandom = Double.parseDouble(config.getProperty("random"));
+        wTempo = Double.parseDouble(config.getProperty("tempo"));
     }
 
     /**
@@ -232,8 +236,7 @@ public class Minimax implements Player {
      * @param beta  upper bound to check
      * @return      best valuation found at lowest depth
      */
-    private double search(final Board b, final int depth, final Piece.Side s,
-                          final double alpha, final double beta) {
+    private double search(final Board b, final int depth, final Piece.Side s, final double alpha, final double beta) {
     	if (b.isRepeatedDraw()) {
     		return 0;
     	}
@@ -245,9 +248,12 @@ public class Minimax implements Player {
         double best = alpha;
         MoveList list = b.allMoves(s, true);
         for (Move move : list) {
+            //I shouldn't have to do that but I'm lazy
+            boolean prevRepeat = b.isRepeatedDraw();
             b.move(move);
             best = Math.max(best, -search(b, depth - 1, opps, -beta, -best));
             b.undo();
+            b.forceRepeatedDraw(prevRepeat);
             /* alpha-beta prune */
             if (beta <= best) {
                 return best;
@@ -270,7 +276,8 @@ public class Minimax implements Player {
         return material * wMaterial +
                kingSafety * wSafety +
                mobility * wMobility +
-               random * wRandom;
+               random * wRandom +
+               wTempo;
     }
 
     /**

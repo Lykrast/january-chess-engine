@@ -31,9 +31,8 @@ public abstract class Board implements Serializable {
     /** Moves taken in this game so far. */
     private final MoveList moves = new MoveList(this);
     
-    //TODO 3fold repetition, not 100% sure on it for now
-    //private static final int FOLD_REPETITION = 4;
-    //private final RepetitionChecker repetition = new RepetitionChecker();
+    private static final int FOLD_REPETITION = 4;
+    private final RepetitionChecker repetition = new RepetitionChecker();
     private boolean repeated = false;
     
     private GameMode gameMode;
@@ -58,6 +57,11 @@ public abstract class Board implements Serializable {
 
     public boolean isRepeatedDraw() {
     	return repeated;
+    }
+    
+    //That's part of a duct tape
+    public void forceRepeatedDraw(boolean force) {
+    	repeated = force;
     }
     
     /**
@@ -232,7 +236,7 @@ public abstract class Board implements Serializable {
     private void execMove(final Move move) {
         if (move == null) {
         	//End of a chain, check for repetition
-        	//if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
+        	if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
             return;
         }
         Position a = move.getOrigin();
@@ -275,7 +279,9 @@ public abstract class Board implements Serializable {
     private void execUndo(final Move move) {
         if (move == null) {
         	//End of a chain, undo repetition
-        	//repetition.pop();
+        	repetition.pop();
+        	//So ok undo moves are for AI simulation and check checking, but I don't know how to make it not screw up once it goes back to normal
+        	//So I'm letting the simulators rewind that value on their own
         	//repeated = false;
             return;
         }
