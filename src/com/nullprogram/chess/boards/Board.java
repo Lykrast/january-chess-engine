@@ -31,6 +31,11 @@ public abstract class Board implements Serializable {
     /** Moves taken in this game so far. */
     private final MoveList moves = new MoveList(this);
     
+    //TODO 3fold repetition, not 100% sure on it for now
+    //private static final int FOLD_REPETITION = 4;
+    //private final RepetitionChecker repetition = new RepetitionChecker();
+    private boolean repeated = false;
+    
     private GameMode gameMode;
     
     protected Board(GameMode mode)
@@ -51,6 +56,10 @@ public abstract class Board implements Serializable {
         board = new Piece[boardWidth][boardHeight];
     }
 
+    public boolean isRepeatedDraw() {
+    	return repeated;
+    }
+    
     /**
      * Determine if board is in a state of checkmate.
      *
@@ -222,6 +231,8 @@ public abstract class Board implements Serializable {
      */
     private void execMove(final Move move) {
         if (move == null) {
+        	//End of a chain, check for repetition
+        	//if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
             return;
         }
         Position a = move.getOrigin();
@@ -263,6 +274,9 @@ public abstract class Board implements Serializable {
      */
     private void execUndo(final Move move) {
         if (move == null) {
+        	//End of a chain, undo repetition
+        	//repetition.pop();
+        	//repeated = false;
             return;
         }
         execUndo(move.getNext()); // undo in reverse

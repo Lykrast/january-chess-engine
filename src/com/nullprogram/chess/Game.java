@@ -139,6 +139,13 @@ public class Game implements Runnable {
 				callGameListeners(GameEvent.GAME_END);
 				return;
 			}
+			else if (board.isRepeatedDraw()) {
+				done = true;
+				setStatus("Fold repetition, draw!");
+				winner = null;
+				callGameListeners(GameEvent.GAME_END);
+				return;
+			}
 			else if (board.stalemate(opp)) {
 				done = true;
 				setStatus(opp + " has been stalemated!");

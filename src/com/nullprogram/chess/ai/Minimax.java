@@ -234,6 +234,9 @@ public class Minimax implements Player {
      */
     private double search(final Board b, final int depth, final Piece.Side s,
                           final double alpha, final double beta) {
+    	if (b.isRepeatedDraw()) {
+    		return 0;
+    	}
         if (depth == 0) {
             double v = valuate(b);
             return (s != side) ? -v : v;
