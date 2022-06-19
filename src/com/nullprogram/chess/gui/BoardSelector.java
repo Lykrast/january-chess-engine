@@ -30,6 +30,7 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
 	/** Version for object serialization. */
 	private static final long serialVersionUID = 1L;
 
+	private GameMode[] modeArray;
 	private JList<GameMode> modes = new JList<>();
 	private GameOptionSelector optionSelector;
 	private JTextArea description;
@@ -54,7 +55,7 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
 		insidePanel.add(label, BorderLayout.CENTER);
 
 		Collection<GameMode> modeList = GameModeRegistry.getGameModes();
-		GameMode[] modeArray = modeList.toArray(new GameMode[modeList.size()]);
+		modeArray = modeList.toArray(new GameMode[modeList.size()]);
 		Arrays.sort(modeArray);
 		modes = new JList<>(modeArray);
 		modes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -75,8 +76,16 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
 		add(scrollDesc);
 
 		insidePanel.setBorder(BorderFactory.createEmptyBorder(H_PADDING, V_PADDING, H_PADDING, V_PADDING));
-
+		
 		modes.setSelectedIndex(0);
+	}
+	
+	public void selectMode(GameMode target) {
+		if (target == null) return;
+		int index = Arrays.binarySearch(modeArray, target);
+		if (index < 0) return;
+		modes.setSelectedIndex(index);
+		modes.ensureIndexIsVisible(index);
 	}
 
 	/**

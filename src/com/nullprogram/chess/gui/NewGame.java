@@ -84,6 +84,10 @@ public class NewGame extends JDialog implements ActionListener {
         pack();
     }
 
+	public void selectMode(GameMode target) {
+    	boardPanel.selectMode(target);
+    }
+
     @Override
     public final void actionPerformed(final ActionEvent e) {
         if ("OK".equals(e.getActionCommand())) {

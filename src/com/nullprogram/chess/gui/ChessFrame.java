@@ -23,6 +23,8 @@ import com.nullprogram.chess.GameListener;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.boards.EmptyBoard;
+import com.nullprogram.chess.boards.GameMode;
+import com.nullprogram.chess.boards.GameModeRegistry;
 import com.nullprogram.chess.resources.ImageServer;
 
 /**
@@ -42,6 +44,8 @@ public class ChessFrame extends JFrame
 
     /** The current game. */
     private Game game;
+    
+    private GameMode lastMode;
 
     /**
      * Create a new ChessFrame for the given board.
@@ -62,6 +66,8 @@ public class ChessFrame extends JFrame
         MenuHandler handler = new MenuHandler(this);
         handler.setUpMenu();
         pack();
+        
+        lastMode = GameModeRegistry.get("fide");
 
         addComponentListener(this);
         setLocationRelativeTo(null);
@@ -73,6 +79,7 @@ public class ChessFrame extends JFrame
      */
     public final void newGame() {
         NewGame ngFrame = new NewGame(this);
+        ngFrame.selectMode(lastMode);
         ngFrame.setVisible(true);
         Game newGame = ngFrame.getGame();
         if (newGame == null) {
@@ -83,6 +90,7 @@ public class ChessFrame extends JFrame
         }
         game = newGame;
         Board board = game.getBoard();
+        lastMode = board.getGameMode();
         display.resetSelection();
         display.setBoard(board);
         display.invalidate();
