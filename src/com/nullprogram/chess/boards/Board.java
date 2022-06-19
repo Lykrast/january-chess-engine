@@ -17,10 +17,10 @@ import com.nullprogram.chess.pieces.movement.MoveList;
  * through move transaction. This allows undo() and copy(), which many
  * other things depends on, to work properly.
  */
-public abstract class Board implements Serializable {
+public class Board implements Serializable {
 
 	/** Versioning for object serialization. */
-	private static final long serialVersionUID = 244162996302362607L;
+	private static final long serialVersionUID = -484123716L;
 
 	/** The internal board array. */
 	private Piece[][] board;
@@ -37,7 +37,11 @@ public abstract class Board implements Serializable {
 
 	private GameMode gameMode;
 
-	protected Board(GameMode mode) {
+	public Board() {
+		this(GameModeRegistry.get("empty"));
+	}
+
+	public Board(GameMode mode) {
 		gameMode = mode;
 		gameMode.initialize(this);
 	}
@@ -68,7 +72,13 @@ public abstract class Board implements Serializable {
 	 * @param side side to be checked
 	 * @return true if board is in a state of checkmate
 	 */
-	public abstract Boolean checkmate(Piece.Side side);
+	public final Boolean checkmate(final Piece.Side side) {
+		// Can't checkmate if you didn't start with a king
+		if (!getGameMode().hasRoyal(side)) return false;
+
+		// Loosing all your kings in some way is a checkmate
+		return findRoyal(side).isEmpty() || ((moveCount(side) == 0) && check(side));
+	}
 
 	/**
 	 * Determine if board is in a state of stalemate.
@@ -76,7 +86,24 @@ public abstract class Board implements Serializable {
 	 * @param side side to be checked
 	 * @return true if board is in a state of stalemate
 	 */
-	public abstract Boolean stalemate(Piece.Side side);
+	public final Boolean stalemate(final Piece.Side side) {
+		if (!getGameMode().hasRoyal(side)) return moveCount(side) == 0;
+
+		return (moveCount(side) == 0) && (!check(side));
+	}
+
+	public final int moveCount(final Piece.Side side) {
+		int count = 0;
+		for (int y = 0; y < getHeight(); y++) {
+			for (int x = 0; x < getWidth(); x++) {
+				Piece p = getPiece(new Position(x, y));
+				if ((p != null) && (p.getSide() == side)) {
+					count += p.getMoves(true).size();
+				}
+			}
+		}
+		return count;
+	}
 
 	/**
 	 * Determine if board is in a state of check.
@@ -84,7 +111,45 @@ public abstract class Board implements Serializable {
 	 * @param side side to check for check
 	 * @return true if board is in a state of check
 	 */
-	public abstract Boolean check(Piece.Side side);
+	public final Boolean check(final Piece.Side side) {
+		Piece.Side attacker;
+		if (side == Piece.Side.WHITE) {
+			attacker = Piece.Side.BLACK;
+		}
+		else {
+			attacker = Piece.Side.WHITE;
+		}
+		List<Position> kings = findRoyal(side);
+		if (kings.isEmpty()) {
+			/* no king on board, but can happen in AI evaluation */
+			return false;
+		}
+		boolean checkMultiple = getGameMode().checkMultiple();
+		for (int y = 0; y < getHeight(); y++) {
+			for (int x = 0; x < getWidth(); x++) {
+				Piece p = getPiece(new Position(x, y));
+				if ((p != null) && (p.getSide() == attacker)) {
+					MoveList moves = p.getMoves(false);
+
+					// All kings must be checkmated
+					if (checkMultiple) {
+						boolean check = true;
+						for (Position k : kings) if (!moves.capturesPos(k)) {
+							check = false;
+							break;
+						}
+						// See if we went through the entire loop without breaking
+						if (check) return true;
+					}
+					// Only one king must be checkmated
+					else {
+						for (Position k : kings) if (moves.capturesPos(k)) return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Determine if board is in a state of check.
@@ -390,7 +455,7 @@ public abstract class Board implements Serializable {
 	 */
 	public final Board copy() {
 		// Board fresh = BoardFactory.create(this.getClass());
-		Board fresh = new StandardBoard(this.getGameMode());
+		Board fresh = new Board(this.getGameMode());
 		for (Move move : moves) {
 			fresh.move(move.copy());
 		}

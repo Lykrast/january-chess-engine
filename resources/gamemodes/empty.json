@@ -1,6 +1,6 @@
 {
   "name": "Empty Board",
-  "description": "An empty board.",
+  "description": "An empty board. Don't delete at it is required by the program.",
   "width": 8,
   "height": 8,
   "pieces": []

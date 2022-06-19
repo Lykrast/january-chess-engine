@@ -11,7 +11,6 @@ import com.nullprogram.chess.GameListener;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.boards.GameModeRegistry;
-import com.nullprogram.chess.boards.StandardBoard;
 import com.nullprogram.chess.pieces.Piece;
 
 /**
@@ -139,7 +138,7 @@ public class OptimizeGA implements GameListener {
     private void launch(final Config whiteConf, final Config blackConf) {
         LOG.info(whiteConf.toString());
         LOG.info(blackConf.toString());
-        Board board = new StandardBoard(GameModeRegistry.get("fide"));
+        Board board = new Board(GameModeRegistry.get("fide"));
         Game game = new Game(board);
         Player white = new Minimax(game, whiteConf.getProperties());
         Player black = new Minimax(game, blackConf.getProperties());

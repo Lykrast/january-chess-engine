@@ -16,7 +16,6 @@ import com.nullprogram.chess.Player;
 import com.nullprogram.chess.ai.Minimax;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.boards.GameMode;
-import com.nullprogram.chess.boards.StandardBoard;
 
 /**
  * Presents the "New Game" dialog to let the user set up a game.
@@ -116,7 +115,7 @@ public class NewGame extends JDialog implements ActionListener {
      * @return board of named type
      */    
     private Board createBoard(final GameMode mode) {
-    	return new StandardBoard(mode);
+    	return new Board(mode);
     }
 
     /**

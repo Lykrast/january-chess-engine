@@ -3,7 +3,7 @@ package com.nullprogram.chess.boards;
 /**
  * An empty Chess board.
  */
-public class EmptyBoard extends StandardBoard {
+public class EmptyBoard extends Board {
 
     /** Serialization identifier. */
     private static final long serialVersionUID = -163784695L;
