@@ -72,12 +72,19 @@ public class Board implements Serializable {
 	 * @param side side to be checked
 	 * @return true if board is in a state of checkmate
 	 */
-	public final Boolean checkmate(final Piece.Side side) {
+	public final boolean checkmate(final Piece.Side side) {
 		// Can't checkmate if you didn't start with a king
 		if (!getGameMode().hasRoyal(side)) return false;
 
 		// Loosing all your kings in some way is a checkmate
-		return findRoyal(side).isEmpty() || ((moveCount(side) == 0) && check(side));
+		return findRoyal(side).isEmpty() || (!hasMoves(side) && check(side));
+	}
+	
+	//A very limited checkmate check for AI evaluation
+	//Can actually catch stalemates but that's good enough for me
+	public boolean aiCheckmate(Piece.Side side) {
+		if (!hasMoves(side)) return true;
+		return getGameMode().hasRoyal(side) && findRoyal(side).isEmpty();
 	}
 
 	/**
@@ -86,13 +93,13 @@ public class Board implements Serializable {
 	 * @param side side to be checked
 	 * @return true if board is in a state of stalemate
 	 */
-	public final Boolean stalemate(final Piece.Side side) {
+	public final boolean stalemate(final Piece.Side side) {
 		if (!getGameMode().hasRoyal(side)) return moveCount(side) == 0;
 
-		return (moveCount(side) == 0) && (!check(side));
+		return !hasMoves(side) && !check(side);
 	}
 
-	public final int moveCount(final Piece.Side side) {
+	public int moveCount(final Piece.Side side) {
 		int count = 0;
 		for (int y = 0; y < getHeight(); y++) {
 			for (int x = 0; x < getWidth(); x++) {
@@ -103,6 +110,18 @@ public class Board implements Serializable {
 			}
 		}
 		return count;
+	}
+	
+	public boolean hasMoves(Piece.Side side) {
+		for (int y = 0; y < getHeight(); y++) {
+			for (int x = 0; x < getWidth(); x++) {
+				Piece p = getPiece(new Position(x, y));
+				if (p != null && p.getSide() == side && !p.getMoves(true).isEmpty()) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**

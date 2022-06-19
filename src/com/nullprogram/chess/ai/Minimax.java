@@ -81,6 +81,10 @@ public class Minimax implements Player {
     
     //Tempo score
     private double wTempo;
+    
+    //Score given to a winning position
+    private static final double END_VALUE = 1000000;
+    private static final double END_DEPTH = END_VALUE / 10;
 
     /**
      * Create the default Minimax.
@@ -240,6 +244,10 @@ public class Minimax implements Player {
     	if (b.isRepeatedDraw()) {
     		return 0;
     	}
+    	else if (b.aiCheckmate(s)) {
+            double v = END_VALUE + END_DEPTH * depth;
+            return (s != side) ? -v : v;
+    	}
         if (depth == 0) {
             double v = valuate(b);
             return (s != side) ? -v : v;
@@ -327,7 +335,7 @@ public class Minimax implements Player {
     	List<Position> list = b.findRoyal(s);
         if (list.isEmpty()) {
             /* Weird, but may happen during evaluation. */
-            return Double.POSITIVE_INFINITY;
+            return END_VALUE;
         }
         double value = 0.0;
         for (Position p : list) value += kingInsafetyValue(b, p);
