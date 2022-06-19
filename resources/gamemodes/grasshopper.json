@@ -1,14 +1,15 @@
 {
   "name": "Grasshopper Chess",
+  "description": "A variant by Ralph Betza. Each side gets 8 Grasshoppers, who need to move by hopping over a piece.\nhttps://www.chessvariants.com/dpieces.dir/grashopper.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "grasshopper"],
   "pieces": [
 	{
-		"x": 0,"xlen": 8,"y": 2,"side": "white","piece": "pawn"	
+		"x": 0,"xlen": 8,"y": 2,"side": "white","piece": "pawn_nodoublemove"	
 	},
     {
-		"x": 0,"xlen": 8,"y": 5,"side": "black","piece": "pawn"
+		"x": 0,"xlen": 8,"y": 5,"side": "black","piece": "pawn_nodoublemove"
 	},
 	
 	{

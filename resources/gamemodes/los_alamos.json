@@ -1,5 +1,6 @@
 {
   "name": "Los Alamos chess",
+  "description": "A variant from the Los Alamos National Laboratory meant for computers. 6x6 board without bishops.\nhttps://www.chessvariants.com/small.dir/losalamos.html",
   "width": 6,
   "height": 6,
   "promotions": ["rook", "knight", "queen"],

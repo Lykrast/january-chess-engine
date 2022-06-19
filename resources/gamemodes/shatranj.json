@@ -1,5 +1,6 @@
 {
   "name": "Shatranj",
+  "description": "An historic persian game, ancestor of modern Chess. Pieces are much weaker.\nhttps://en.wikipedia.org/wiki/Shatranj",
   "width": 8,
   "height": 8,
   "pieces": [

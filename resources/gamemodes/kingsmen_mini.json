@@ -1,6 +1,6 @@
 {
-	"#comment": "https://old.reddit.com/r/chessvariants/comments/nyvepl/kingsmen_fun_chess_variant_with_perfect_symmetry/?ref=share&ref_source=link",
 	"name": "Kingsmen Mini",
+	"description": "A variant by /u/albertl33. 3x9 board where any piece that reaches the last 3 ranks gains King movement in addition to its own.\nhttps://old.reddit.com/r/chessvariants/comments/nyvepl/kingsmen_fun_chess_variant_with_perfect_symmetry/",
 	"width": 3,
 	"height": 9,
 	"pieces": [	

@@ -1,5 +1,6 @@
 {
   "name": "Quick Chess",
+  "description": "A variant by Joe Miccio. 5x6 board with a much simplified piece lineup.\nhttps://www.chessvariants.com/small.dir/quick.html",
   "width": 5,
   "height": 6,
   "promotions": ["rook", "knight", "bishop", "queen"],

@@ -1,5 +1,6 @@
 {
   "name": "Perfect Chess",
+  "description": "A variant by Koksal Karakus. All 7 combinations of Rook, Bishop, and Knight are available.\nhttps://www.chessvariants.com/diffmove.dir/perfectchess.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen", "chancellor", "archbishop", "amazon"],

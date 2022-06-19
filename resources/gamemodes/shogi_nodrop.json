@@ -1,5 +1,6 @@
 {
   "name": "Shogi (no drops)",
+  "description": "Shogi, but the piece drops are not implemented sadly...",
   "width": 9,
   "height": 9,
   "pieces": [

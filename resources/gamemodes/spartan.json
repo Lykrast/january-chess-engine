@@ -1,5 +1,6 @@
 {
   "name": "Spartan Chess",
+  "description": "A variant by Steven Streetman. Black's army has 2 kings that must both be defeated, and different pieces with jumping moves.\nhttps://www.chessvariants.com/rules/spartan-chess",
   "width": 8,
   "height": 8,
   "checkpolicy": "ALL",

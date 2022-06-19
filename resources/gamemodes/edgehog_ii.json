@@ -1,5 +1,6 @@
 {
   "name": "Edgehog Chess II",
+  "description": "A variant by John Driver. Pieces are replaced by various unusual pieces, Locust, Edgehog, Reflecting Bishop, and Nightrider.\nhttps://www.chessvariants.com/dpieces.dir/edgehog-chess.html",
   "width": 8,
   "height": 8,
   "promotions": ["edgehog", "nightrider", "bishop_reflecting", "locust"],

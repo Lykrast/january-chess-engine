@@ -1,6 +1,6 @@
 {
   "name": "Pixie Chess",
-  "author": "hmyoung1",
+  "description": "A variant by /u/hmyoung1. Each side gets a Pixie that can swap position with any non-King piece on the board.\nhttps://old.reddit.com/r/chessvariants/comments/epw9nn/pixie_chess_i_tried_out_guided_meditation_for_the/",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],

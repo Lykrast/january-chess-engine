@@ -1,5 +1,6 @@
 {
   "name": "Wildebeest Chess",
+  "description": "A variant by R. Wayne Schmittberger. 11x10 board with the Camel and the Gnu, who moves as Camel or Knight.\nhttps://en.wikipedia.org/wiki/Wildebeest_chess",
   "width": 11,
   "height": 10,
   "promotions": ["queen", "gnu"],

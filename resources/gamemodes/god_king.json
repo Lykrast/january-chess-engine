@@ -1,6 +1,6 @@
 {
-	"#comment": "https://old.reddit.com/r/chessvariants/comments/o3gbbk/palace_royal_showdown/",
 	"name": "God King",
+	"description": "A variant by /u/albertl33. 5x5 board that can also be won by having the King reach the center square.\nhttps://old.reddit.com/r/chessvariants/comments/o3gbbk/palace_royal_showdown/",
 	"width": 5,
 	"height": 5,
 	"pieces": [	

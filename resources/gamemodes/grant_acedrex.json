@@ -1,5 +1,6 @@
 {
   "name": "Grant Acedrex",
+  "description": "An old historic variant. 12x12 board with a variety of different pieces.\nhttps://www.chessvariants.com/historic.dir/acedrex.html",
   "width": 12,
   "height": 12,
   "promotions": ["rook", "lion", "unicorn", "zebra", "bishop", "gryphon"],

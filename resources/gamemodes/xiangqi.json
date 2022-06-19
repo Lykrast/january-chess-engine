@@ -1,5 +1,6 @@
 {
   "name": "Xiangqi",
+  "description": "A popular board game in China, sometimes nicknamed chinese chess.",
   "width": 9,
   "height": 10,
   "pieces": [

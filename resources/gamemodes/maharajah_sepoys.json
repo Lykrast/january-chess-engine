@@ -1,5 +1,6 @@
 {
   "name": "Maharajah and the Sepoys",
+  "description": "Black has a normal Chess army, while White has a single Knight + Queen piece.\nhttps://www.chessvariants.com/unequal.dir/maharaja.html",
   "width": 8,
   "height": 8,
   "pieces": [

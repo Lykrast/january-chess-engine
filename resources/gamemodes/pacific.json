@@ -1,5 +1,6 @@
 {
   "name": "Pacific Chess",
+  "description": "A variant played in Hawaii described by John Mantle Green. 10x10 board with various extra pieces.\nhttps://www.chessvariants.com/large.dir/pacific.html",
   "width": 10,
   "height": 10,
   "promotions": ["rook", "knight", "bishop", "queen", "amazon", "squirrel", "kirin", "mann"],

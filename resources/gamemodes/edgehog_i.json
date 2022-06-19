@@ -1,5 +1,6 @@
 {
   "name": "Edgehog Chess I",
+  "description": "A variant by John Driver. The Queen is replaced by a Edgehog, who must start or end its moves on an edge square.\nhttps://www.chessvariants.com/dpieces.dir/edgehog-chess.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "edgehog"],
