@@ -1,6 +1,5 @@
 package com.nullprogram.chess.pieces.movement;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,10 +14,7 @@ import com.nullprogram.chess.pieces.Piece;
  *
  * Before a move is added it can be checked for some basic validity.
  */
-public class MoveListCapture implements Iterable<Move>, Serializable, IMoveList {
-
-	/** Versioning for object serialization. */
-	private static final long serialVersionUID = 4094244408264595675L;
+public class MoveListCapture implements Iterable<Move>, IMoveList {
 
 	/** The board used to verify positions before adding them. */
 	private Board board;

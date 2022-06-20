@@ -1,6 +1,5 @@
 package com.nullprogram.chess.boards;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +16,7 @@ import com.nullprogram.chess.pieces.movement.MoveList;
  * through move transaction. This allows undo() and copy(), which many
  * other things depends on, to work properly.
  */
-public class Board implements Serializable {
-
-	/** Versioning for object serialization. */
-	private static final long serialVersionUID = -484123716L;
+public class Board {
 
 	/** The internal board array. */
 	private Piece[][] board;

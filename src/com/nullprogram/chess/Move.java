@@ -1,7 +1,5 @@
 package com.nullprogram.chess;
 
-import java.io.Serializable;
-
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.PieceRegistry;
 
@@ -14,10 +12,7 @@ import com.nullprogram.chess.pieces.PieceRegistry;
  * If destination position is null, it means to remove the piece in
  * the origin position.
  */
-public final class Move implements Serializable {
-
-    /** Versioning for object serialization. */
-    private static final long serialVersionUID = 276216209410699761L;
+public final class Move {
 
     /** Originating position. */
     private final Position origin;

@@ -1,17 +1,12 @@
 package com.nullprogram.chess;
 
-import java.io.Serializable;
-
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.MoveType.DirectionMode;
 
 /**
  * Represents a position on a Chess board.
  */
-public final class Position implements Comparable<Position>, Serializable {
-
-	/** Versioning for object serialization. */
-	private static final long serialVersionUID = 353870294332738196L;
+public final class Position implements Comparable<Position> {
 
 	/**
 	 * The board coordinates of this position, starting at the white

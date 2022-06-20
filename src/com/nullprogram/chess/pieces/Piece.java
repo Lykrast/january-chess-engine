@@ -1,7 +1,6 @@
 package com.nullprogram.chess.pieces;
 
 import java.awt.Image;
-import java.io.Serializable;
 
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
@@ -20,11 +19,8 @@ import com.nullprogram.chess.pieces.movement.MoveListCapture;
  * (default.properies) and a parse entry in the Minimax constructor,
  * right after all the other pieces.
  */
-public class Piece implements Serializable {
+public class Piece {
 	private Model model;
-
-	/** Versioning for object serialization. */
-	private static final long serialVersionUID = -214124732216708977L;
 
 	/** The side this piece belongs to. */
 	private Side side;
