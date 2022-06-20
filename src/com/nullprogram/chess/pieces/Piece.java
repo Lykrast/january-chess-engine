@@ -20,210 +20,208 @@ import com.nullprogram.chess.pieces.movement.MoveListCapture;
  * (default.properies) and a parse entry in the Minimax constructor,
  * right after all the other pieces.
  */
-public class Piece implements Serializable {	
+public class Piece implements Serializable {
 	private Model model;
 
-    /** Versioning for object serialization. */
-    private static final long serialVersionUID = -214124732216708977L;
+	/** Versioning for object serialization. */
+	private static final long serialVersionUID = -214124732216708977L;
 
-    /** The side this piece belongs to. */
-    private Side side;
+	/** The side this piece belongs to. */
+	private Side side;
 
-    /** The position of this piece. */
-    private Position pos;
+	/** The position of this piece. */
+	private Position pos;
 
-    /** The board this piece is on. */
-    private Board board;
+	/** The board this piece is on. */
+	private Board board;
 
-    /** Movement counter. */
-    private int moved = 0;
+	/** Movement counter. */
+	private int moved = 0;
 
-    /**
-     * The side of the piece: white or black.
-     */
-    public enum Side {
-        /**
-         * The lighter colored side of the board.
-         */
-        WHITE (1, "White"),
-        /**
-         * The darker colored side of the board.
-         */
-        BLACK (-1, "Black");
+	/**
+	 * The side of the piece: white or black.
+	 */
+	public enum Side {
+		/**
+		 * The lighter colored side of the board.
+		 */
+		WHITE(1, "White"),
+		/**
+		 * The darker colored side of the board.
+		 */
+		BLACK(-1, "Black");
 
-        /**
-         * Multiplier value of this side.
-         */
-        private int value;
-        private String name;
+		/**
+		 * Multiplier value of this side.
+		 */
+		private int value;
+		private String name;
 
-        /**
-         * Create a new side with given value.
-         *
-         * @param val value of this side
-         */
-        private Side(final int val, final String name) {
-            value = val;
-            this.name = name;
-        }
+		/**
+		 * Create a new side with given value.
+		 *
+		 * @param val value of this side
+		 */
+		private Side(final int val, final String name) {
+			value = val;
+			this.name = name;
+		}
 
-        /**
-         * Get the value of the side.
-         *
-         * @return value of the side
-         */
-        public int value() {
-            return value;
-        }
-        
-        @Override
-        public String toString() {
-        	return name;
-        }
-        
-        /**
-         * Return the opposing side.
-         *
-         * @return  the opposing side
-         */
-        public Side opposite() {
-            if (this == BLACK) {
-                return WHITE;
-            } else {
-                return BLACK;
-            }
-        }
-    }
+		/**
+		 * Get the value of the side.
+		 *
+		 * @return value of the side
+		 */
+		public int value() {
+			return value;
+		}
 
-    /**
-     * When creating a piece, you must always choose a side.
-     */
-    protected Piece() {
-    }
-    
-    public Model getModel() {
-    	return model;
-    }
-    
-    public Piece(final Side owner, final Model model)
-    {
-    	side = owner;
-    	this.model = model;
-    }
+		@Override
+		public String toString() {
+			return name;
+		}
 
-    /**
-     * Get the moves for this piece.
-     *
-     * @param checkCheck check for check
-     * @return           list of moves
-     */
-    public MoveList getMoves(boolean checkCheck)
-    {
-    	return model.getMoves(this, checkCheck);
-    }
+		/**
+		 * Return the opposing side.
+		 *
+		 * @return the opposing side
+		 */
+		public Side opposite() {
+			if (this == BLACK) {
+				return WHITE;
+			}
+			else {
+				return BLACK;
+			}
+		}
+	}
 
-    /**
-     * Get all moves for this piece that could capture something.
-     *
-     * @return list of moves
-     */
-    public MoveListCapture getCapturingMoves()
-    {
-    	return model.getCapturingMoves(this);
-    }
+	/**
+	 * When creating a piece, you must always choose a side.
+	 */
+	protected Piece() {
+	}
 
-    /**
-     * Update the piece's current position on the board.
-     *
-     * @param position new position
-     */
-    public final void setPosition(final Position position) {
-        pos = position;
-    }
+	public Model getModel() {
+		return model;
+	}
 
-    /**
-     * Get the position of this piece on the board.
-     *
-     * @return the piece position
-     */
-    public final Position getPosition() {
-        return pos;
-    }
+	public Piece(final Side owner, final Model model) {
+		side = owner;
+		this.model = model;
+	}
 
-    /**
-     * Set the board for the current piece.
-     *
-     * This is used in determining moves.
-     *
-     * @param surface the current board
-     */
-    public final void setBoard(final Board surface) {
-        board = surface;
-    }
+	/**
+	 * Get the moves for this piece.
+	 *
+	 * @param checkCheck check for check
+	 * @return list of moves
+	 */
+	public MoveList getMoves(boolean checkCheck) {
+		return model.getMoves(this, checkCheck);
+	}
 
-    /**
-     * Get the board set for the current piece.
-     *
-     * @return the piece's board
-     */
-    public final Board getBoard() {
-        return board;
-    }
+	/**
+	 * Get all moves for this piece that could capture something.
+	 *
+	 * @return list of moves
+	 */
+	public MoveListCapture getCapturingMoves() {
+		return model.getCapturingMoves(this);
+	}
 
-    /**
-     * Set the side for this piece.
-     *
-     * @param owner side the new side
-     */
-    public final void setSide(final Side owner) {
-        side = owner;
-    }
+	/**
+	 * Update the piece's current position on the board.
+	 *
+	 * @param position new position
+	 */
+	public final void setPosition(final Position position) {
+		pos = position;
+	}
 
-    /**
-     * Get the side for this piece.
-     *
-     * @return the piece's side
-     */
-    public final Side getSide() {
-        return side;
-    }
+	/**
+	 * Get the position of this piece on the board.
+	 *
+	 * @return the piece position
+	 */
+	public final Position getPosition() {
+		return pos;
+	}
 
-    /**
-     * Get the image that represents this piece.
-     *
-     * This method currently uses reflection.
-     *
-     * @return     image for this piece
-     */
-    public final Image getImage() {
-        return model.getImage(side);
-    }
+	/**
+	 * Set the board for the current piece.
+	 *
+	 * This is used in determining moves.
+	 *
+	 * @param surface the current board
+	 */
+	public final void setBoard(final Board surface) {
+		board = surface;
+	}
 
-    /**
-     * Return true if piece has moved.
-     *
-     * @return true if piece has moved
-     */
-    public final Boolean moved() {
-        return moved != 0;
-    }
+	/**
+	 * Get the board set for the current piece.
+	 *
+	 * @return the piece's board
+	 */
+	public final Board getBoard() {
+		return board;
+	}
 
-    /**
-     * Increase piece movement counter.
-     */
-    public final void incMoved() {
-        moved++;
-    }
+	/**
+	 * Set the side for this piece.
+	 *
+	 * @param owner side the new side
+	 */
+	public final void setSide(final Side owner) {
+		side = owner;
+	}
 
-    /**
-     * Decrease piece movement counter.
-     */
-    public final void decMoved() {
-        moved--;
-    }
-    
-    @Override
-    public String toString() {
-    	return side + " " + model + " (" + pos + ")";
-    }
+	/**
+	 * Get the side for this piece.
+	 *
+	 * @return the piece's side
+	 */
+	public final Side getSide() {
+		return side;
+	}
+
+	/**
+	 * Get the image that represents this piece.
+	 *
+	 * This method currently uses reflection.
+	 *
+	 * @return image for this piece
+	 */
+	public final Image getImage() {
+		return model.getImage(side);
+	}
+
+	/**
+	 * Return true if piece has moved.
+	 *
+	 * @return true if piece has moved
+	 */
+	public final Boolean moved() {
+		return moved != 0;
+	}
+
+	/**
+	 * Increase piece movement counter.
+	 */
+	public final void incMoved() {
+		moved++;
+	}
+
+	/**
+	 * Decrease piece movement counter.
+	 */
+	public final void decMoved() {
+		moved--;
+	}
+
+	@Override
+	public String toString() {
+		return side + " " + model + " (" + pos + ")";
+	}
 }
