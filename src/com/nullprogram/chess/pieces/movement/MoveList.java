@@ -64,9 +64,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	 * @return true
 	 */
 	public final boolean addAll(final Iterable<Move> list) {
-		for (Move move : list) {
-			moves.add(move);
-		}
+		for (Move move : list) moves.add(move);
 		return true;
 	}
 
@@ -105,10 +103,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	@Override
 	public final boolean addMove(final Move move) {
 		if (board.isFree(move.getDest())) {
-			if (!causesCheck(move)) {
-				add(move);
-				return true;
-			}
+			if (!causesCheck(move)) add(move);
 			return true; // false only for a "blocking" move
 		}
 		return false;
@@ -118,10 +113,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	public final boolean addCapture(final Move move) {
 		Piece p = board.getPiece(move.getOrigin());
 		if (board.isFree(move.getDest(), p.getSide())) {
-			if (!causesCheck(move)) {
-				add(move);
-				return true;
-			}
+			if (!causesCheck(move)) add(move);
 			return true; // false only for a "blocking" move
 		}
 		return false;
@@ -145,7 +137,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	 * @return true if move causes check
 	 */
 	private boolean causesCheck(final Move move) {
-		if (!check) { return false; }
+		if (!check) return false;
 		Piece p = board.getPiece(move.getOrigin());
 		boolean ret = false;
 

@@ -163,7 +163,9 @@ public class Game implements Runnable {
 	 * @return the game's board
 	 */
 	public final Board getBoard() {
-		return board.copy();
+		//Hey let's try being trustier to my own code, like there's no online here so let's see if it goes faster
+		//return board.copy();
+		return board;
 	}
 
 	/**
