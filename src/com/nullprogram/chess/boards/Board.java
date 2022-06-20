@@ -103,7 +103,7 @@ public class Board implements Serializable {
 		int count = 0;
 		for (int y = 0; y < getHeight(); y++) {
 			for (int x = 0; x < getWidth(); x++) {
-				Piece p = getPiece(new Position(x, y));
+				Piece p = getPiece(x, y);
 				if ((p != null) && (p.getSide() == side)) {
 					count += p.getMoves(true).size();
 				}
@@ -115,7 +115,7 @@ public class Board implements Serializable {
 	public boolean hasMoves(Piece.Side side) {
 		for (int y = 0; y < getHeight(); y++) {
 			for (int x = 0; x < getWidth(); x++) {
-				Piece p = getPiece(new Position(x, y));
+				Piece p = getPiece(x, y);
 				if (p != null && p.getSide() == side && !p.getMoves(true).isEmpty()) {
 					return true;
 				}
@@ -131,22 +131,16 @@ public class Board implements Serializable {
 	 * @return true if board is in a state of check
 	 */
 	public final Boolean check(final Piece.Side side) {
-		Piece.Side attacker;
-		if (side == Piece.Side.WHITE) {
-			attacker = Piece.Side.BLACK;
-		}
-		else {
-			attacker = Piece.Side.WHITE;
-		}
+		Piece.Side attacker = side.opposite();
 		List<Position> kings = findRoyal(side);
 		if (kings.isEmpty()) {
 			/* no king on board, but can happen in AI evaluation */
 			return false;
 		}
 		boolean checkMultiple = getGameMode().checkMultiple();
-		for (int y = 0; y < getHeight(); y++) {
-			for (int x = 0; x < getWidth(); x++) {
-				Piece p = getPiece(new Position(x, y));
+		for (int x = 0; x < getWidth(); x++) {
+			for (int y = 0; y < getHeight(); y++) {
+				Piece p = getPiece(x,y);
 				if ((p != null) && (p.getSide() == attacker)) {
 					MoveList moves = p.getMoves(false);
 
@@ -284,6 +278,9 @@ public class Board implements Serializable {
 	 */
 	public final Piece getPiece(final Position pos) {
 		return board[pos.getX()][pos.getY()];
+	}
+	public final Piece getPiece(int x, int y) {
+		return board[x][y];
 	}
 
 	/**
