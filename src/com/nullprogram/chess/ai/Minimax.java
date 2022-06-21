@@ -21,6 +21,7 @@ import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Model;
 import com.nullprogram.chess.pieces.Piece;
+import com.nullprogram.chess.pieces.Piece.Side;
 import com.nullprogram.chess.pieces.PieceRegistry;
 import com.nullprogram.chess.pieces.movement.MoveList;
 import com.nullprogram.chess.pieces.movement.MoveType;
@@ -46,9 +47,6 @@ public class Minimax implements Player {
 
 	/** Local friendly game controller. */
 	private final Game game;
-
-	/** Side this AI plays. */
-	private Piece.Side side = null;
 
 	/** Best move, the selected move. */
 	private volatile Move bestMove;
@@ -168,9 +166,7 @@ public class Minimax implements Player {
 	}
 
 	@Override
-	public final Move takeTurn(final Board board, final Piece.Side currentSide) {
-		side = currentSide;
-
+	public final Move takeTurn(final Board board, final Side side) {
 		/* Gather up every move. */
 		MoveList moves = board.allMoves(side, true);
 		moves.shuffle();
@@ -227,7 +223,7 @@ public class Minimax implements Player {
 		// long time = (System.currentTimeMillis() - startTime);
 		// LOG.info("AI took " + (time / MILLI) + " seconds (" + NTHREADS + " threads, "
 		// + maxDepth + " plies)");
-		System.out.println(bestMove + " - " + bestMove.getScore());
+		//System.out.println(bestMove + " - " + bestMove.getScore());
 		return bestMove;
 	}
 
@@ -241,19 +237,18 @@ public class Minimax implements Player {
 	 * @param beta  upper bound to check
 	 * @return best valuation found at lowest depth
 	 */
-	private double search(final Board b, final int depth, final Piece.Side s, final double alpha, final double beta) {
+	private double search(final Board b, final int depth, final Side s, final double alpha, final double beta) {
 		if (b.isRepeatedDraw()) {
 			return 0;
 		}
 		else if (b.aiCheckmate(s)) {
-			double v = END_VALUE + END_DEPTH * depth;
-			return (s != side) ? -v : v;
+			//If we have no move left, then this is very bad for us.
+			return -(END_VALUE + END_DEPTH * depth);
 		}
 		if (depth == 0) {
-			double v = valuate(b);
-			return (s != side) ? -v : v;
+			return valuate(b, s);
 		}
-		Piece.Side opps = s.opposite(); // opposite side
+		Side opps = s.opposite(); // opposite side
 		double best = alpha;
 		MoveList list = b.allMoves(s, true);
 		for (Move move : list) {
@@ -270,48 +265,50 @@ public class Minimax implements Player {
 	}
 
 	/**
-	 * Determine value of this board.
+	 * Determine value of this board for the given side
 	 *
 	 * @param b board to be valuated
 	 * @return valuation of this board
 	 */
-	private double valuate(final Board b) {
-		double material = materialValue(b);
-		double kingSafety = kingInsafetyValue(b);
-		double mobility = mobilityValue(b);
+	private double valuate(final Board b, Side side) {
+		double material = materialValue(b, side);
+		double kingSafety = kingInsafetyValue(b, side);
+		double mobility = mobilityValue(b, side);
 		double random = randomValue();
 		return material * wMaterial + kingSafety * wSafety + mobility * wMobility + random * wRandom + wTempo;
 	}
 
 	/**
-	 * Add up the material value of the board only.
+	 * Add up the material value of the board for the given side.
 	 *
 	 * @param b board to be evaluated
 	 * @return material value of the board
 	 */
-	private double materialValue(final Board b) {
+	private double materialValue(final Board b, Side side) {
 		double value = 0;
 		for (int y = 0; y < b.getHeight(); y++) {
 			for (int x = 0; x < b.getWidth(); x++) {
 				Position pos = new Position(x, y);
 				Piece p = b.getPiece(pos);
 				if (p != null) {
+					//White is +1, Black, -1, so this is the total for white
 					value += values.get(p.getModel()) * p.getSide().value();
 				}
 			}
 		}
+		//Invert if we are black
 		return value * side.value();
 	}
 
 	/**
-	 * Determine the safety of each king. Higher is worse.
+	 * Determine how vulnerable are the kings.
 	 *
 	 * @param b board to be evaluated
 	 * @return king insafety score
 	 */
-	private double kingInsafetyValue(final Board b) {
-		double insafetySelf = b.getGameMode().hasRoyal(side) ? kingInsafetyValue(b, side) : 0;
-		double insafetyOpponent = b.getGameMode().hasRoyal(side.opposite()) ? kingInsafetyValue(b, side.opposite()) : 0;
+	private double kingInsafetyValue(final Board b, Side side) {
+		double insafetySelf = b.getGameMode().hasRoyal(side) ? kingInsafetyValueFor(b, side) : 0;
+		double insafetyOpponent = b.getGameMode().hasRoyal(side.opposite()) ? kingInsafetyValueFor(b, side.opposite()) : 0;
 		return insafetyOpponent - insafetySelf;
 	}
 
@@ -325,7 +322,7 @@ public class Minimax implements Player {
 	 * @param s side of king to be checked
 	 * @return king insafety score
 	 */
-	private double kingInsafetyValue(final Board b, final Piece.Side s) {
+	private double kingInsafetyValueFor(final Board b, final Side s) {
 
 		List<Position> list = b.findRoyal(s);
 		if (list.isEmpty()) {
@@ -353,12 +350,12 @@ public class Minimax implements Player {
 	}
 
 	/**
-	 * Mobility score for this board.
+	 * Mobility score for this board for given side.
 	 *
 	 * @param b board to be evaluated
 	 * @return score for this board
 	 */
-	private double mobilityValue(final Board b) {
+	private double mobilityValue(final Board b, Side side) {
 		return b.allMoves(side, false).size() - b.allMoves(side.opposite(), false).size();
 	}
 
