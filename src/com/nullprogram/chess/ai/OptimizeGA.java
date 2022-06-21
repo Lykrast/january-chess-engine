@@ -1,9 +1,6 @@
 package com.nullprogram.chess.ai;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
-import java.util.logging.Logger;
 
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.GameEvent;
@@ -17,10 +14,6 @@ import com.nullprogram.chess.pieces.Piece;
  * Alternate main class for optimizing AI parameters via genetic algorithm.
  */
 public class OptimizeGA implements GameListener {
-
-    /** This class's Logger. */
-    private static final Logger LOG =
-        Logger.getLogger(OptimizeGA.class.getName());
 
     /** Random number generator.  */
     private static Random rng;
@@ -89,6 +82,7 @@ public class OptimizeGA implements GameListener {
      */
     private void launchNext() {
         gene++;
+        System.out.println(gene + " / " + POOL_SIZE);
         if (gene >= POOL_SIZE) {
             /* Complete */
             nextPool();
@@ -115,14 +109,16 @@ public class OptimizeGA implements GameListener {
         }
         if (poolSize == 0) {
             /* No clear winners. */
+        	System.out.println("No clear winners, resetting");
             newPool();
         } else {
+        	System.out.println("Current winners:");
+        	for (int i = 0; i < poolSize; i++) System.out.println(pool[i]);
             for (int i = poolSize; i < POOL_SIZE; i++) {
                 int a = rng.nextInt(poolSize);
                 int b = rng.nextInt(poolSize);
-                genes[i] = breed(genes[a], genes[b]);
+                pool[i] = breed(pool[a], pool[b]);
             }
-            Collections.shuffle(Arrays.asList(pool));
         }
         geneScores = new int[POOL_SIZE];
         gene = 0;
@@ -136,9 +132,10 @@ public class OptimizeGA implements GameListener {
      * @param blackConf config for the black player
      */
     private void launch(final Config whiteConf, final Config blackConf) {
-        LOG.info(whiteConf.toString());
-        LOG.info(blackConf.toString());
+        System.out.println(whiteConf);
+        System.out.println(blackConf);
         Board board = new Board(GameModeRegistry.get("fide"));
+        //Board board = new Board(GameModeRegistry.get("god_king"));
         Game game = new Game(board);
         Player white = new Minimax(game, whiteConf.getProperties());
         Player black = new Minimax(game, blackConf.getProperties());
@@ -155,21 +152,21 @@ public class OptimizeGA implements GameListener {
         Game game = e.getGame();
         if (game.isDone()) {
             if (game.getWinner() == Piece.Side.WHITE) {
-                LOG.info("White wins.");
+                System.out.println("White wins.");
                 adir = 1;
                 bdir = -1;
             } else if (game.getWinner() == Piece.Side.BLACK) {
-                LOG.info("Black wins.");
+                System.out.println("Black wins.");
                 adir = -1;
                 bdir = 1;
             } else {
-                LOG.info("Stalemate.");
+                System.out.println("Stalemate.");
                 adir = 0;
                 bdir = 0;
             }
             doScore = true;
         } else if (game.getBoard().moveCount() > MAX_MOVES) {
-            LOG.info("Game timeout!");
+            System.out.println("Game timeout!");
             game.end();
             doScore = true;
             adir = -1;
@@ -209,6 +206,7 @@ public class OptimizeGA implements GameListener {
         conf.put("material", rng.nextDouble());
         conf.put("safety", rng.nextDouble());
         conf.put("mobility", rng.nextDouble());
+        conf.put("tempo", rng.nextDouble());
         conf.put("random", 0D);
         return conf;
     }

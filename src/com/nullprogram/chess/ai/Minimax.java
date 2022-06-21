@@ -110,7 +110,6 @@ public class Minimax implements Player {
 	public Minimax(final Game active, final Properties props) {
 		game = active;
 		values = new HashMap<Model, Double>();
-		Properties config = props;
 
 		/* Piece values */
 		for (String id : PieceRegistry.getModelID()) {
@@ -122,13 +121,13 @@ public class Minimax implements Player {
 //        	catch (Exception e) {}
 			values.put(m, value);
 		}
-
-		maxDepth = (int) Double.parseDouble(config.getProperty("depth"));
-		wMaterial = Double.parseDouble(config.getProperty("material"));
-		wSafety = Double.parseDouble(config.getProperty("safety"));
-		wMobility = Double.parseDouble(config.getProperty("mobility"));
-		wRandom = Double.parseDouble(config.getProperty("random"));
-		wTempo = Double.parseDouble(config.getProperty("tempo"));
+		
+		maxDepth = (int) Double.parseDouble(props.getProperty("depth"));
+		wMaterial = Double.parseDouble(props.getProperty("material"));
+		wSafety = Double.parseDouble(props.getProperty("safety"));
+		wMobility = Double.parseDouble(props.getProperty("mobility"));
+		wTempo = Double.parseDouble(props.getProperty("tempo"));
+		wRandom = Double.parseDouble(props.getProperty("random"));
 	}
 
 	/**
@@ -223,7 +222,7 @@ public class Minimax implements Player {
 		// long time = (System.currentTimeMillis() - startTime);
 		// LOG.info("AI took " + (time / MILLI) + " seconds (" + NTHREADS + " threads, "
 		// + maxDepth + " plies)");
-		//System.out.println(bestMove + " - " + bestMove.getScore());
+		//System.out.println(side + ": " + bestMove + " = " + bestMove.getScore());
 		return bestMove;
 	}
 

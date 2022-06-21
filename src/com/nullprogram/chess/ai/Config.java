@@ -11,16 +11,17 @@ import com.nullprogram.chess.pieces.PieceRegistry;
  */
 public class Config extends HashMap<String, Double> {
 
-	static final String[] PLIST = new String[PieceRegistry.getModelID().size()+5];
+	static final String[] PLIST = new String[PieceRegistry.getModelID().size()+6];
 	static
 	{
 		PLIST[0] = "depth";
 		PLIST[1] = "material";
 		PLIST[2] = "safety";
 		PLIST[3] = "mobility";
-		PLIST[4] = "random";
+		PLIST[4] = "tempo";
+		PLIST[5] = "random";
 		Set<String> models = PieceRegistry.getModelID();
-		int i = 5;
+		int i = 6;
 		for (String s : models)
 		{
 			PLIST[i] = s;
