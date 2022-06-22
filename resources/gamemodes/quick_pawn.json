@@ -1,15 +1,15 @@
 {
-  "name": "Berolina Chess (no passant)",
-  "description": "An old variant by Edmund Nebermann. Pawns move diagonally and capture orthogonally forward. En passant isn't implemented.\nhttps://en.wikipedia.org/wiki/Berolina_chess",
+  "name": "Quick Pawn Chess",
+  "description": "A simple variant using a piece from Kevin Begley's Mammoth Chess. Pawns may always perform a double forward move, and there is no en passant.\nhttps://www.chessvariants.com/large.dir/contest/mammoth.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],
   "pieces": [
 	{
-		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "berolina_pawn"	
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "quick_pawn"	
 	},
     {
-		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "berolina_pawn"
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "quick_pawn"
 	},
 	
     {

@@ -1,15 +1,15 @@
 {
-  "name": "Berolina Chess (no passant)",
-  "description": "An old variant by Edmund Nebermann. Pawns move diagonally and capture orthogonally forward. En passant isn't implemented.\nhttps://en.wikipedia.org/wiki/Berolina_chess",
+  "name": "Berolina Plus Chess (no passant)",
+  "description": "A variant of Berolina Chess. Pawns move diagonally and capture orthogonally forward or sideways. En passant isn't implemented.\nhttp://www.chessvariants.org/piececlopedia.dir/berolina-plus.html",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],
   "pieces": [
 	{
-		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "berolina_pawn"	
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "berolina_plus_pawn"	
 	},
     {
-		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "berolina_pawn"
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "berolina_plus_pawn"
 	},
 	
     {

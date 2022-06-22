@@ -1,0 +1,34 @@
+{
+  "name": "Berolina Plus Pawn",
+  "icon": "berolina_plus_pawn",
+  "value": 1.25,
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"ymax": 0,
+		"moves": [
+			{
+				"type": "Ferz",
+				"direction": "FORWARD",
+				"mode": "MOVE"
+			},
+			{
+				"type": "Wazir",
+				"direction": [ "FORWARD", "HORIZONTAL" ],
+				"mode": "CAPTURE"
+			}
+		]
+	},
+	{
+		"type": "CondVirgin",
+		"true": [
+			{
+				"type": "Bishop",
+				"max": 2,
+				"direction": "FORWARD",
+				"mode": "MOVE"
+			}
+		]
+	}
+  ]
+}
