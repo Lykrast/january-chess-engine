@@ -1,0 +1,11 @@
+{
+  "name": "Knight",
+  "icon": "knight",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+	{
+		"type": "Knight"
+	}
+  ]
+}
