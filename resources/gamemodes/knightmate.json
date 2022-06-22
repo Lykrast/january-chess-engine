@@ -1,6 +1,6 @@
 {
 	"name": "Knightmate",
-	"description": "A variant by Bruce Zimov. Kings are replaced by royal manns, while manns are replaced by non-royal Kings.\nhttps://www.chessvariants.org/diffobjective.dir/mannmate.html",
+	"description": "A variant by Bruce Zimov. Kings are replaced by royal manns, while manns are replaced by non-royal Kings.\nhttps://www.chessvariants.com/diffobjective.dir/knightmate.html",
 	"width": 8,
 	"height": 8,
 	"promotions": ["rook", "mann", "bishop", "queen"],
