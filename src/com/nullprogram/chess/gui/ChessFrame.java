@@ -30,205 +30,204 @@ import com.nullprogram.chess.resources.ImageServer;
 /**
  * The JFrame that contains all GUI elements.
  */
-public class ChessFrame extends JFrame
-    implements ComponentListener, GameListener {
+public class ChessFrame extends JFrame implements ComponentListener, GameListener {
 
-    /** Version for object serialization. */
-    private static final long serialVersionUID = 1L;
+	/** Version for object serialization. */
+	private static final long serialVersionUID = 1L;
 
-    /** The board display. */
-    private final BoardPanel display;
+	/** The board display. */
+	private final BoardPanel display;
 
-    /** The progress bar on the display. */
-    private final StatusBar progress;
+	/** The progress bar on the display. */
+	private final StatusBar progress;
 
-    /** The current game. */
-    private Game game;
-    
-    private GameMode lastMode;
+	/** The current game. */
+	private Game game;
 
-    /**
-     * Create a new ChessFrame for the given board.
-     */
-    public ChessFrame() {
-        super(Chess.getTitle());
-        setResizable(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setIconImage(ImageServer.getTile("king_w"));
-        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+	private GameMode lastMode;
 
-        display = new BoardPanel(new EmptyBoard());
-        progress = new StatusBar(null);
-        add(display);
-        add(progress);
+	/**
+	 * Create a new ChessFrame for the given board.
+	 */
+	public ChessFrame() {
+		super(Chess.getTitle());
+		setResizable(true);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(ImageServer.getTile("king_w"));
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        MenuHandler handler = new MenuHandler(this);
-        handler.setUpMenu();
-        pack();
-        
-        lastMode = GameModeRegistry.get("fide");
+		display = new BoardPanel(new EmptyBoard());
+		progress = new StatusBar(null);
+		add(display);
+		add(progress);
 
-        addComponentListener(this);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
+		MenuHandler handler = new MenuHandler(this);
+		handler.setUpMenu();
+		pack();
 
-    /**
-     * Set up a new game.
-     */
-    public final void newGame() {
-        NewGame ngFrame = new NewGame(this);
-        ngFrame.selectMode(lastMode);
-        ngFrame.setVisible(true);
-        Game newGame = ngFrame.getGame();
-        if (newGame == null) {
-            return;
-        }
-        if (game != null) {
-            game.end();
-        }
-        game = newGame;
-        Board board = game.getBoard();
-        lastMode = board.getGameMode();
-        display.resetSelection();
-        display.setBoard(board);
-        display.invalidate();
-        setSize(getPreferredSize());
+		lastMode = GameModeRegistry.get("fide");
 
-        progress.setGame(game);
-        game.addGameListener(this);
-        game.addGameListener(display);
-        game.begin();
-    }
+		addComponentListener(this);
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
 
-    /**
-     * Return the GUI (human) play handler.
-     *
-     * @return the player
-     */
-    public final Player getPlayer() {
-        return display;
-    }
-    
-    private void setShowAttacks(boolean value) {
-    	display.showAttacks = value;
-    	display.invalidate();
-    	display.repaint();
-    }
+	/**
+	 * Set up a new game.
+	 */
+	public final void newGame() {
+		NewGame ngFrame = new NewGame(this);
+		ngFrame.selectMode(lastMode);
+		ngFrame.setVisible(true);
+		Game newGame = ngFrame.getGame();
+		if (newGame == null) { return; }
+		if (game != null) {
+			game.end();
+		}
+		game = newGame;
+		Board board = game.getBoard();
+		lastMode = board.getGameMode();
+		display.resetSelection();
+		display.setBoard(board);
+		display.invalidate();
+		setSize(getPreferredSize());
 
-    /**
-     * Used for manaing menu events.
-     */
-    private class MenuHandler implements ActionListener {
-        /** The parent chess frame, for callbacks. */
-        private final ChessFrame frame;
+		progress.setGame(game);
+		game.addGameListener(this);
+		game.addGameListener(display);
+		game.begin();
+	}
 
-        /**
-         * Create the menu handler.
-         *
-         * @param parent parent frame
-         */
-        public MenuHandler(final ChessFrame parent) {
-            frame = parent;
-        }
+	/**
+	 * Return the GUI (human) play handler.
+	 *
+	 * @return the player
+	 */
+	public final Player getPlayer() {
+		return display;
+	}
 
-        @Override
-        public final void actionPerformed(final ActionEvent e) {
-            if ("New Game".equals(e.getActionCommand())) {
-                frame.newGame();
-            } else if ("Show attacked squares".equals(e.getActionCommand())) {
-                frame.setShowAttacks(((JCheckBoxMenuItem)e.getSource()).getState());
-            } else if ("Exit".equals(e.getActionCommand())) {
-                System.exit(0);
-            }
-        }
+	private void setShowAttacks(boolean value) {
+		display.showAttacks = value;
+		display.invalidate();
+		display.repaint();
+	}
 
-        /**
-         * Set up the menu bar.
-         */
-        public final void setUpMenu() {
-            JMenuBar menuBar = new JMenuBar();
+	/**
+	 * Used for manaing menu events.
+	 */
+	private class MenuHandler implements ActionListener {
+		/** The parent chess frame, for callbacks. */
+		private final ChessFrame frame;
 
-            JMenu game = new JMenu("Game");
-            game.setMnemonic('G');
-            JMenuItem newGame = new JMenuItem("New Game");
-            newGame.addActionListener(this);
-            newGame.setMnemonic('N');
-            game.add(newGame);
-            game.add(new JSeparator());
-            JCheckBoxMenuItem toggleHint = new JCheckBoxMenuItem("Show attacked squares");
-            toggleHint.addActionListener(this);
-            toggleHint.setMnemonic('S');
-            game.add(toggleHint);
-            game.add(new JSeparator());
-            JMenuItem exitGame = new JMenuItem("Exit");
-            exitGame.addActionListener(this);
-            exitGame.setMnemonic('x');
-            game.add(exitGame);
-            menuBar.add(game);
-            
-            //Themes
-            JMenu themes = new JMenu("Theme");
-            ButtonGroup group = new ButtonGroup();
-            ActionListener themeListener = e -> display.applyTheme(((ColorThemeRadioMenuItem)e.getSource()).getTheme());
-            boolean applied = false;
-            for (ColorTheme ct : ColorTheme.getThemes()) {
-            	ColorThemeRadioMenuItem button = new ColorThemeRadioMenuItem(ct);
-            	button.addActionListener(themeListener);
-            	group.add(button);
-            	themes.add(button);
-            	if (!applied) {
-            		applied = true;
-            		button.doClick();
-            	}
-            }
-            menuBar.add(themes);
-            
-            setJMenuBar(menuBar);
-        }
-    }
+		/**
+		 * Create the menu handler.
+		 *
+		 * @param parent parent frame
+		 */
+		public MenuHandler(final ChessFrame parent) {
+			frame = parent;
+		}
 
-    @Override
-    public final void componentResized(final ComponentEvent e) {
-        if ((getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0) {
-            /* If the frame is maxmized, the battle has been lost. */
-            return;
-        }
-        double ratio = display.getRatio();
-        double barh = progress.getPreferredSize().getHeight();
-        Container p = getContentPane();
-        Dimension d = null;
-        if (p.getWidth() * ratio < (p.getHeight() - barh)) {
-            d = new Dimension((int) ((p.getHeight() - barh) * ratio),
-                              p.getHeight());
-        } else if (p.getWidth() * ratio > (p.getHeight() - barh)) {
-            d = new Dimension(p.getWidth(),
-                              (int) (p.getWidth() / ratio + barh));
-        }
-        if (d != null) {
-            p.setPreferredSize(d);
-            pack();
-        }
-    }
+		@Override
+		public final void actionPerformed(final ActionEvent e) {
+			if ("New Game".equals(e.getActionCommand())) {
+				frame.newGame();
+			}
+			else if ("Show attacked squares".equals(e.getActionCommand())) {
+				frame.setShowAttacks(((JCheckBoxMenuItem) e.getSource()).getState());
+			}
+			else if ("Exit".equals(e.getActionCommand())) {
+				System.exit(0);
+			}
+		}
 
-    @Override
-    public final void gameEvent(final GameEvent e) {
-        progress.repaint();
-    }
+		/**
+		 * Set up the menu bar.
+		 */
+		public final void setUpMenu() {
+			JMenuBar menuBar = new JMenuBar();
 
-    @Override
-    public void componentHidden(final ComponentEvent e) {
-        /* Do nothing. */
-    }
+			JMenu game = new JMenu("Game");
+			game.setMnemonic('G');
+			JMenuItem newGame = new JMenuItem("New Game");
+			newGame.addActionListener(this);
+			newGame.setMnemonic('N');
+			game.add(newGame);
+			game.add(new JSeparator());
+			JCheckBoxMenuItem toggleHint = new JCheckBoxMenuItem("Show attacked squares");
+			toggleHint.addActionListener(this);
+			toggleHint.setMnemonic('S');
+			game.add(toggleHint);
+			game.add(new JSeparator());
+			JMenuItem exitGame = new JMenuItem("Exit");
+			exitGame.addActionListener(this);
+			exitGame.setMnemonic('x');
+			game.add(exitGame);
+			menuBar.add(game);
 
-    @Override
-    public void componentMoved(final ComponentEvent e) {
-        /* Do nothing. */
-    }
+			// Themes
+			JMenu themes = new JMenu("Theme");
+			ButtonGroup group = new ButtonGroup();
+			ActionListener themeListener = e -> display
+					.applyTheme(((ColorThemeRadioMenuItem) e.getSource()).getTheme());
+			boolean applied = false;
+			for (ColorTheme ct : ColorTheme.getThemes()) {
+				ColorThemeRadioMenuItem button = new ColorThemeRadioMenuItem(ct);
+				button.addActionListener(themeListener);
+				group.add(button);
+				themes.add(button);
+				if (!applied) {
+					applied = true;
+					button.doClick();
+				}
+			}
+			menuBar.add(themes);
 
-    @Override
-    public void componentShown(final ComponentEvent e) {
-        /* Do nothing. */
-    }
+			setJMenuBar(menuBar);
+		}
+	}
+
+	@Override
+	public final void componentResized(final ComponentEvent e) {
+		if ((getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0) {
+			/* If the frame is maxmized, the battle has been lost. */
+			return;
+		}
+		double ratio = display.getRatio();
+		double barh = progress.getPreferredSize().getHeight();
+		Container p = getContentPane();
+		Dimension d = null;
+		if (p.getWidth() * ratio < (p.getHeight() - barh)) {
+			d = new Dimension((int) ((p.getHeight() - barh) * ratio), p.getHeight());
+		}
+		else if (p.getWidth() * ratio > (p.getHeight() - barh)) {
+			d = new Dimension(p.getWidth(), (int) (p.getWidth() / ratio + barh));
+		}
+		if (d != null) {
+			p.setPreferredSize(d);
+			pack();
+		}
+	}
+
+	@Override
+	public final void gameEvent(final GameEvent e) {
+		progress.repaint();
+	}
+
+	@Override
+	public void componentHidden(final ComponentEvent e) {
+		/* Do nothing. */
+	}
+
+	@Override
+	public void componentMoved(final ComponentEvent e) {
+		/* Do nothing. */
+	}
+
+	@Override
+	public void componentShown(final ComponentEvent e) {
+		/* Do nothing. */
+	}
 }

@@ -19,29 +19,26 @@ public class GameOptionSelector extends JPanel {
 	public GameOptionSelector(GameModeOption mode) {
 		super();
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
+
 		options = new ArrayList<>();
-		
-		for (GameOptionGroup group : mode.getOptionGroups())
-		{
+
+		for (GameOptionGroup group : mode.getOptionGroups()) {
 			add(new JLabel(group.toString()));
-			
+
 			JComboBox<GameOption> box = new JComboBox<>(group.getOptions());
 			box.setMaximumSize(box.getPreferredSize());
 			options.add(box);
 			add(box);
 		}
 	}
-	
-	public List<GameOption> getSelectedOptions()
-	{
+
+	public List<GameOption> getSelectedOptions() {
 		List<GameOption> list = new ArrayList<>();
-		
-		for (JComboBox<GameOption> box : options)
-		{
+
+		for (JComboBox<GameOption> box : options) {
 			list.add(box.getItemAt(box.getSelectedIndex()));
 		}
-		
+
 		return list;
 	}
 

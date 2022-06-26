@@ -62,7 +62,7 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
 		modes.addListSelectionListener(this);
 
 		insidePanel.add(new JScrollPane(modes));
-		
+
 		description = new JTextArea(5, 24);
 		description.setFont(UIManager.getFont("Label.font"));
 		description.setEditable(false);
@@ -70,16 +70,16 @@ public class BoardSelector extends JPanel implements ListSelectionListener {
 		description.setWrapStyleWord(true);
 
 		add(insidePanel, BorderLayout.WEST);
-		
+
 		JScrollPane scrollDesc = new JScrollPane(description);
 		scrollDesc.setBorder(BorderFactory.createEmptyBorder(H_PADDING, V_PADDING, H_PADDING, V_PADDING));
 		add(scrollDesc);
 
 		insidePanel.setBorder(BorderFactory.createEmptyBorder(H_PADDING, V_PADDING, H_PADDING, V_PADDING));
-		
+
 		modes.setSelectedIndex(0);
 	}
-	
+
 	public void selectMode(GameMode target) {
 		if (target == null) return;
 		int index = Arrays.binarySearch(modeArray, target);
