@@ -31,7 +31,11 @@ public class ColorTheme {
 		themes = new ArrayList<>();
 		themes.add(new ColorTheme("Wood", 0xD18B47, 0xFFCE9E));
 		themes.add(new ColorTheme("Lichess", 0xB58863, 0xF0D9B5));
+		themes.add(new ColorTheme("Lichess Blue", 0x8CA2AD, 0xDEE3E6));
 		themes.add(new ColorTheme("Chess.com", 0x769656, 0xEEEED2));
+		themes.add(new ColorTheme("Chess Evolved Online", 0xC3C3C3, 0xFEFEFE));
+		themes.add(new ColorTheme("Favor Chess", 0x6A5E4E, 0xD3C5AB));
+		themes.add(new ColorTheme("Green Chess", 0xAAAAAA, 0xFFFFFF));
 		themes.add(new ColorTheme("Metal", 0xC4C4C4, 0xE7E7E7));
 		themes.add(new ColorTheme("Garden", 0x339933, 0xCCCC11));
 		themes.add(new ColorTheme("Metro", 0x527362, 0xF1F2CB));

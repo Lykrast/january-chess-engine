@@ -7,7 +7,7 @@ public class ColorThemeRadioMenuItem extends JRadioButtonMenuItem {
 	private ColorTheme theme;
 
 	public ColorThemeRadioMenuItem(ColorTheme theme) {
-		super(theme.getName());
+		super(theme.getName(), new ColorThemeIcon(theme));
 		this.theme = theme;
 	}
 
