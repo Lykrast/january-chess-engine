@@ -3,6 +3,7 @@
   "description": "A variant by Fergus Duniho. 10x10 board with a mix of pieces from Chess and from Xiangqi.\nhttps://www.chessvariants.com/large.dir/eurasian.html",
   "width": 10,
   "height": 10,
+  "lines": [[0,5,10,5]],
   "promotions": ["rook", "knight", "bishop", "queen", "cannon", "vao"],
   "pieces": [
 	{

@@ -3,6 +3,7 @@
 	"description": "A variant by /u/albertl33. 3x9 board where any piece that reaches the last 3 ranks gains King movement in addition to its own.\nhttps://old.reddit.com/r/chessvariants/comments/nyvepl/kingsmen_fun_chess_variant_with_perfect_symmetry/",
 	"width": 3,
 	"height": 9,
+	"lines": [[0,3,3,3], [0,6,3,6]],
 	"pieces": [	
 	{
 		"x": 0,"y": 0,"side": "white","piece": "rook_shogi"

@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
+import com.nullprogram.chess.boards.BoardLine;
 import com.nullprogram.chess.boards.GameMode;
 import com.nullprogram.chess.boards.GameModeRegistry;
 import com.nullprogram.chess.boards.GameOption;
@@ -90,6 +91,7 @@ public class JSONLoader {
 				.registerTypeAdapter(PiecePlacement.class, PiecePlacementDeserializer.INSTANCE)
 				.registerTypeAdapter(GameOption.class, GameOptionDeserializer.INSTANCE)
 				.registerTypeAdapter(GameOptionGroup.class, GameOptionGroupDeserializer.INSTANCE)
+				.registerTypeAdapter(BoardLine.class, BoardLineDeserializer.INSTANCE)
 				.create();
 		
 		File folder = new File(PATH_GAMEMODES);

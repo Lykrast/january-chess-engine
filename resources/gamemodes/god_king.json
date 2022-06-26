@@ -3,6 +3,7 @@
 	"description": "A variant by /u/albertl33. 5x5 board that can also be won by having the King reach the center square.\nhttps://old.reddit.com/r/chessvariants/comments/o3gbbk/palace_royal_showdown/",
 	"width": 5,
 	"height": 5,
+	"lines": [[2,2,3,2], [3,2,3,3], [3,3,2,3], [2,3,2,2]],
 	"pieces": [	
 	{
 		"x": 0,"y": 0,"side": "white","piece": "wazir_god_king"

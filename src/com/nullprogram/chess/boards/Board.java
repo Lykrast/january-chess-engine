@@ -45,6 +45,11 @@ public class Board {
 	public GameMode getGameMode() {
 		return gameMode;
 	}
+	
+	/** Get cosmetic lines to draw. */
+	public BoardLine[] getLines() {
+		return gameMode.getLines();
+	}
 
 	/**
 	 * Create a new Piece array, effectively clearing the board.

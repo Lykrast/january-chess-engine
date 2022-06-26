@@ -3,6 +3,7 @@
   "description": "A variant of Xiangqi from the Qing dynasty, also known as Yitong or Yitong chess. Red (here white) has their Chariots, Horses, and Cannons replaced by one Banner with their combined moves.\nhttps://en.wikipedia.org/wiki/Manchu_chess",
   "width": 9,
   "height": 10,
+  "lines": [[0,5,9,5], [3,0,3,3], [6,0,6,3], [3,3,6,3], [3,10,3,7], [6,10,6,7], [3,7,6,7]],
   "pieces": [
 	{
 		"x": 0,"y": 3,"side": "white","piece": "pawn_xiangqi"	

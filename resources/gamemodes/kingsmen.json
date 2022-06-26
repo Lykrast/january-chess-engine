@@ -3,6 +3,7 @@
 	"description": "A variant by /u/albertl33. 9x9 board where any piece that reaches the last 3 ranks gains King movement in addition to its own.\nhttps://old.reddit.com/r/chessvariants/comments/nyvepl/kingsmen_fun_chess_variant_with_perfect_symmetry/",
 	"width": 9,
 	"height": 9,
+	"lines": [[0,3,9,3], [0,6,9,6]],
 	"pieces": [
 	{
 		"x": 0,"xlen": 9,"y": 2,"side": "white","piece": "pawn_kingsmen"	

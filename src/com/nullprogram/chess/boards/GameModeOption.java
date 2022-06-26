@@ -13,8 +13,8 @@ public class GameModeOption extends GameMode {
 	private List<GameOption> selectedOptions;
 	private String[] promotionsSelectedW, promotionsSelectedB;
 
-	public GameModeOption(String name, String description, int width, int height, PiecePlacement[] placements, String[] promotionsW, String[] promotionsB, boolean checkMultiple, GameOptionGroup[] options) {
-		super(name, description, width, height, placements, promotionsW, promotionsB, checkMultiple);
+	public GameModeOption(String name, String description, int width, int height, PiecePlacement[] placements, String[] promotionsW, String[] promotionsB, boolean checkMultiple, BoardLine[] lines, GameOptionGroup[] options) {
+		super(name, description, width, height, placements, promotionsW, promotionsB, checkMultiple, lines);
 		this.options = options;
 		setSelected(new ArrayList<GameOption>());
 	}

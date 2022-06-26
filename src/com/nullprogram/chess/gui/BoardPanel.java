@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
+import java.awt.geom.Line2D;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
@@ -31,6 +32,7 @@ import com.nullprogram.chess.Move;
 import com.nullprogram.chess.Player;
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
+import com.nullprogram.chess.boards.BoardLine;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.MoveList;
 import com.nullprogram.chess.pieces.movement.MoveListCapture;
@@ -61,6 +63,8 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 	/** Thickness of highlighting. */
 	static final Stroke HIGHLIGHT_STROKE = new BasicStroke(12);
 	static final Stroke HIGHLIGHT_STROKE_ATTACK = new BasicStroke(6);
+	static final Stroke STROKE_LINES_S = new BasicStroke(4);
+	static final Stroke STROKE_LINES_L = new BasicStroke(16);
 
 	/** Shape for drawing the highlights. */
 	private static final Shape HIGHLIGHT = new RoundRectangle2D.Double(HIGHLIGHT_PADDING, HIGHLIGHT_PADDING,
@@ -100,6 +104,9 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 
 	/** The board being displayed. */
 	private Board board;
+	
+	/** Compiled cosmetic lines to draw */
+	private Shape[] lines;
 
 	/** Indicate flipped status. */
 	private boolean flipped = true;
@@ -175,6 +182,7 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 	 */
 	public BoardPanel(final Board displayBoard) {
 		board = displayBoard;
+		compileLines();
 		updateSize();
 		addMouseListener(this);
 	}
@@ -199,8 +207,18 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 	 */
 	public final void setBoard(final Board b) {
 		board = b;
+		compileLines();
 		updateSize();
 		repaint();
+	}
+	
+	private void compileLines() {
+		BoardLine[] raw = board.getLines();
+		lines = new Shape[raw.length];
+		for (int i = 0; i < raw.length; i++) {
+			BoardLine l = raw[i];
+			lines[i] = new Line2D.Double(l.sx * TILE_SIZE, l.sy * TILE_SIZE, l.ex * TILE_SIZE, l.ey * TILE_SIZE);
+		}
 	}
 
 	/**
@@ -264,8 +282,7 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 				if (x == w - 1) {
 					if ((x + y) % 2 == 0) g.setColor(colorDark);
 					else g.setColor(colorLight);
-					g.drawString(Integer.toString(h - y), (h - y) >= 10 ? notLineXBigY : notLineX,
-							y * (int) TILE_SIZE + 35);
+					g.drawString(Integer.toString(h - y), (h - y) >= 10 ? notLineXBigY : notLineX, y * (int) TILE_SIZE + 35);
 				}
 				if (y == h - 1) {
 					if ((x + y) % 2 == 0) g.setColor(colorDark);
@@ -273,6 +290,19 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 					g.drawString(Character.toString((char) ('a' + x)), x * (int) TILE_SIZE + 10, notColY);
 				}
 			}
+		}
+		
+		//Draw cosmetic lines
+		at.setToTranslation(0, 0);
+		for (Shape line : lines) {
+			g.setStroke(STROKE_LINES_L);
+			g.setColor(colorDark);
+			g.draw(line);
+		}
+		for (Shape line : lines) {
+			g.setStroke(STROKE_LINES_S);
+			g.setColor(colorLight);
+			g.draw(line);
 		}
 
 		/* Place the pieces */

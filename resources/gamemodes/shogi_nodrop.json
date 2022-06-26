@@ -3,6 +3,7 @@
   "description": "Shogi, but the piece drops are not implemented sadly...",
   "width": 9,
   "height": 9,
+  "lines": [[0,3,9,3], [0,6,9,6]],
   "pieces": [
 	{
 		"x": 0,"xlen": 9,"y": 2,"side": "white","piece": "pawn_shogi"	

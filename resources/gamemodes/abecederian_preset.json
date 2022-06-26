@@ -3,6 +3,7 @@
   "description": "A variant by Glenn Overby where you can build your own army. Only the preset armies are available here.\nhttps://www.chessvariants.com/unequal.dir/abchess/abeced-home.html",
   "width": 11,
   "height": 11,
+  "lines": [[0,5,11,5], [0,6,11,6]],
   "pieces": [
 	{
 		"x": 0,"xlen": 11,"y": 2,"side": "white","piece": "yeoman"	

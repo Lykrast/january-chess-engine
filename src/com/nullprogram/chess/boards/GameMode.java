@@ -22,8 +22,12 @@ public class GameMode implements Comparable<GameMode> {
 	 * If false, any royal piece can be checkmated to win, if true then all of them must be (so some can be captured)
 	 */
 	private boolean checkMultiple;
+	
+	
+	/** Cosmetics lines to draw on the board */
+	private BoardLine[] lines;
 
-	public GameMode(String name, String description, int width, int height, PiecePlacement[] placements, String[] promotionsW, String[] promotionsB, boolean checkMultiple) {
+	public GameMode(String name, String description, int width, int height, PiecePlacement[] placements, String[] promotionsW, String[] promotionsB, boolean checkMultiple, BoardLine[] lines) {
 		this.name = name;
 		this.description = description;
 		this.width = width;
@@ -32,6 +36,7 @@ public class GameMode implements Comparable<GameMode> {
 		this.promotionsW = promotionsW;
 		this.promotionsB = promotionsB;
 		this.checkMultiple = checkMultiple;
+		this.lines = lines;
 
 		hasRoyalWhite = false;
 		hasRoyalBlack = false;
@@ -78,6 +83,10 @@ public class GameMode implements Comparable<GameMode> {
 
 	public String[] getPromotions(Piece.Side side) {
 		return side == Piece.Side.WHITE ? promotionsW : promotionsB;
+	}
+	
+	public BoardLine[] getLines() {
+		return lines;
 	}
 
 	/**
