@@ -41,7 +41,7 @@ public class ColorTheme {
 		themes.add(new ColorTheme("Metro", 0x527362, 0xF1F2CB));
 		themes.add(new ColorTheme("Ancient", 0x8F976D, 0xF2F2B8));
 		themes.add(new ColorTheme("Lava", 0x605E5F, 0xA0676E));
-		themes.add(new ColorTheme("Cream", 0xEBAC00, 0xEBEBEB));
+		themes.add(new ColorTheme("Cream", 0xFFCC00, 0xFFFFCC));
 		themes.add(new ColorTheme("Olive", 0x808000, 0xF0F0F0));
 		themes.add(new ColorTheme("Blue", 0x4B4BA4, 0xF0F0F0));
 		themes.add(new ColorTheme("Black & White", 0x3E3E3E, 0xE7E7E7));
