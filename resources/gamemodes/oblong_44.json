@@ -1,0 +1,68 @@
+{
+  "name": "Oblong Chess 44",
+  "description": "A variant of Oblong Chess by Erez Schatz for the 2004 44 squares contest. 4x11 board with weaker historical pieces like the Dabbaba or the Alfil.\nhttps://www.chessvariants.com/44.dir/oblong44.html",
+  "width": 4,
+  "height": 11,
+  "pieces": [
+	{
+		"x": 0,"xlen": 4,"y": 3,"side": "white","piece": "pawn_shatranj"	
+	},
+    {
+		"x": 0,"xlen": 4,"y": 7,"side": "black","piece": "pawn_shatranj"
+	},
+	
+    {
+		"x": 0,"y": 2,"side": "white","piece": "dabbaba"	
+	},
+    {
+		"x": 3,"y": 2,"side": "white","piece": "dabbaba"
+	},
+    {
+		"x": 0,"y": 8,"side": "black","piece": "dabbaba"
+	},
+    {
+		"x": 3,"y": 8,"side": "black","piece": "dabbaba"
+	},
+	
+	{
+		"x": 1,"y": 1,"side": "white","piece": "knight"
+	},
+	{
+		"x": 2,"y": 1,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 9,"side": "black","piece": "knight"
+	},
+	{
+		"x": 2,"y": 9,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 0,"y": 0,"side": "white","piece": "alfil"
+	},
+	{
+		"x": 3,"y": 0,"side": "white","piece": "alfil"
+	},
+	{
+		"x": 0,"y": 10,"side": "black","piece": "alfil"
+	},
+	{
+		"x": 3,"y": 10,"side": "black","piece": "alfil"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "ferz"
+	},
+	{
+		"x": 2,"y": 10,"side": "black","piece": "ferz"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "king_nocastle"
+	},
+	{
+		"x": 1,"y": 10,"side": "black","piece": "king_nocastle"
+	}
+	
+  ]
+}
