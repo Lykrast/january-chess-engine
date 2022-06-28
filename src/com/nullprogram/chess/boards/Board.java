@@ -292,6 +292,8 @@ public class Board {
 	public final void move(final Move move) {
 		moves.add(move);
 		execMove(move);
+		// Check for repetition
+		if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
 	}
 
 	/**
@@ -316,8 +318,6 @@ public class Board {
 	 */
 	private void execMove(final Move move) {
 		if (move == null) {
-			// End of a chain, check for repetition
-			if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
 			return;
 		}
 		Position a = move.getOrigin();
@@ -349,6 +349,12 @@ public class Board {
 	 */
 	public final void undo() {
 		execUndo(moves.pop());
+		// Undo repetition
+		repetition.pop();
+		// So ok undo moves are for AI simulation and check checking, but I don't know
+		// how to make it not screw up once it goes back to normal
+		// So I'm letting the simulators rewind that value on their own
+		// repeated = false;
 	}
 
 	/**
@@ -358,12 +364,6 @@ public class Board {
 	 */
 	private void execUndo(final Move move) {
 		if (move == null) {
-			// End of a chain, undo repetition
-			repetition.pop();
-			// So ok undo moves are for AI simulation and check checking, but I don't know
-			// how to make it not screw up once it goes back to normal
-			// So I'm letting the simulators rewind that value on their own
-			// repeated = false;
 			return;
 		}
 		execUndo(move.getNext()); // undo in reverse
