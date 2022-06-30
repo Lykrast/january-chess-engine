@@ -91,7 +91,8 @@ public class ChessFrame extends JFrame implements ComponentListener, GameListene
 		display.resetSelection();
 		display.setBoard(board);
 		display.invalidate();
-		setSize(getPreferredSize());
+		//setSize(getPreferredSize());
+		resizeWindow();
 
 		progress.setGame(game);
 		game.addGameListener(this);
@@ -169,6 +170,7 @@ public class ChessFrame extends JFrame implements ComponentListener, GameListene
 
 			// Themes
 			JMenu themes = new JMenu("Theme");
+			themes.setMnemonic('t');
 			ButtonGroup group = new ButtonGroup();
 			ActionListener themeListener = e -> display
 					.applyTheme(((ColorThemeRadioMenuItem) e.getSource()).getTheme());
@@ -191,6 +193,10 @@ public class ChessFrame extends JFrame implements ComponentListener, GameListene
 
 	@Override
 	public final void componentResized(final ComponentEvent e) {
+		resizeWindow();
+	}
+	
+	private void resizeWindow() {
 		if ((getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0) {
 			/* If the frame is maxmized, the battle has been lost. */
 			return;
@@ -207,7 +213,9 @@ public class ChessFrame extends JFrame implements ComponentListener, GameListene
 		}
 		if (d != null) {
 			p.setPreferredSize(d);
+			p.setSize(d);
 			pack();
+			p.repaint();
 		}
 	}
 
