@@ -1,0 +1,16 @@
+{
+  "name": "Xebec",
+  "icon": "ship",
+  "value": 3.25,
+  "moves": [
+    {
+		"type": "Rook",
+		"direction": "HORIZONTAL"
+	},
+    {
+		"type": "LeaperWide",
+		"near": 1,
+		"far": 2
+	}
+  ]
+}
