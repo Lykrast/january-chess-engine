@@ -36,6 +36,7 @@ import com.nullprogram.chess.boards.BoardLine;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.MoveList;
 import com.nullprogram.chess.pieces.movement.MoveListCapture;
+import com.nullprogram.chess.resources.ImageServer;
 
 /**
  * Displays a board and exposes local players.
@@ -317,6 +318,9 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 					}
 					at.setToTranslation(x * TILE_SIZE, yy * TILE_SIZE);
 					g.drawImage(tile, at, null);
+					if (board.isImmobilized(x, y, p.getSide())) {
+						g.drawImage(ImageServer.getTile(ImageServer.IMMOBILIZED), at, null);
+					}
 				}
 			}
 		}

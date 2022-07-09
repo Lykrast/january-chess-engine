@@ -1,11 +1,13 @@
 package com.nullprogram.chess.boards;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.pieces.Piece;
+import com.nullprogram.chess.pieces.Piece.Side;
 import com.nullprogram.chess.pieces.PieceFactory;
 import com.nullprogram.chess.pieces.movement.MoveList;
 
@@ -20,6 +22,10 @@ public class Board {
 
 	/** The internal board array. */
 	private Piece[][] board;
+	
+	//Locations that are immobilized
+	//0 = none, 1 = white immobilized, 2 = black, 3 = both
+	private int[][] immobilized;
 
 	/** The size of this game board. */
 	private int boardWidth, boardHeight;
@@ -56,6 +62,17 @@ public class Board {
 	 */
 	public final void clear() {
 		board = new Piece[boardWidth][boardHeight];
+		immobilized = new int[boardWidth][boardHeight];
+	}
+	
+	public boolean isImmobilized(Position pos, Side s) {
+		return isImmobilized(pos.getX(), pos.getY(), s);
+	}
+	
+	public boolean isImmobilized(int x, int y, Side s) {
+		//0 = none, 1 = white immobilized, 2 = black, 3 = both
+		if (s == Side.WHITE) return (immobilized[x][y] & 1) > 0;
+		else return (immobilized[x][y] & 2) > 0;
 	}
 
 	public boolean isRepeatedDraw() {
@@ -73,7 +90,7 @@ public class Board {
 	 * @param side side to be checked
 	 * @return true if board is in a state of checkmate
 	 */
-	public final boolean checkmate(final Piece.Side side) {
+	public final boolean checkmate(final Side side) {
 		// Can't checkmate if you didn't start with a king
 		if (!getGameMode().hasRoyal(side)) return false;
 
@@ -83,7 +100,7 @@ public class Board {
 	
 	//A very limited checkmate check for AI evaluation
 	//Can actually catch stalemates but that's good enough for me
-	public boolean aiCheckmate(Piece.Side side) {
+	public boolean aiCheckmate(Side side) {
 		if (!hasMoves(side)) return true;
 		return getGameMode().hasRoyal(side) && findRoyal(side).isEmpty();
 	}
@@ -94,13 +111,13 @@ public class Board {
 	 * @param side side to be checked
 	 * @return true if board is in a state of stalemate
 	 */
-	public final boolean stalemate(final Piece.Side side) {
+	public final boolean stalemate(final Side side) {
 		if (!getGameMode().hasRoyal(side)) return moveCount(side) == 0;
 
 		return !hasMoves(side) && !check(side);
 	}
 
-	public int moveCount(final Piece.Side side) {
+	public int moveCount(final Side side) {
 		int count = 0;
 		for (int y = 0; y < getHeight(); y++) {
 			for (int x = 0; x < getWidth(); x++) {
@@ -113,7 +130,7 @@ public class Board {
 		return count;
 	}
 	
-	public boolean hasMoves(Piece.Side side) {
+	public boolean hasMoves(Side side) {
 		for (int y = 0; y < getHeight(); y++) {
 			for (int x = 0; x < getWidth(); x++) {
 				Piece p = getPiece(x, y);
@@ -131,8 +148,8 @@ public class Board {
 	 * @param side side to check for check
 	 * @return true if board is in a state of check
 	 */
-	public final Boolean check(final Piece.Side side) {
-		Piece.Side attacker = side.opposite();
+	public final Boolean check(final Side side) {
+		Side attacker = side.opposite();
 		List<Position> kings = findRoyal(side);
 		if (kings.isEmpty()) {
 			/* no king on board, but can happen in AI evaluation */
@@ -171,7 +188,7 @@ public class Board {
 	 * @return true if board is in a state of check
 	 */
 	public final Boolean check() {
-		return check(Piece.Side.WHITE) || check(Piece.Side.BLACK);
+		return check(Side.WHITE) || check(Side.BLACK);
 	}
 
 	/**
@@ -180,7 +197,7 @@ public class Board {
 	 * @return true if board is in checkmate
 	 */
 	public final Boolean checkmate() {
-		return checkmate(Piece.Side.WHITE) || checkmate(Piece.Side.BLACK);
+		return checkmate(Side.WHITE) || checkmate(Side.BLACK);
 	}
 
 	/**
@@ -189,7 +206,7 @@ public class Board {
 	 * @return true if board is in stalemate
 	 */
 	public final Boolean stalemate() {
-		return stalemate(Piece.Side.WHITE) || stalemate(Piece.Side.BLACK);
+		return stalemate(Side.WHITE) || stalemate(Side.BLACK);
 	}
 
 	/**
@@ -198,7 +215,7 @@ public class Board {
 	 * @param side whose side to check
 	 * @return a list of all positions that contain a royal piece for the given side
 	 */
-	public final List<Position> findRoyal(final Piece.Side side) {
+	public final List<Position> findRoyal(final Side side) {
 		List<Position> list = new ArrayList<>();
 		for (int y = 0; y < getHeight(); y++) {
 			for (int x = 0; x < getWidth(); x++) {
@@ -283,6 +300,23 @@ public class Board {
 	public final Piece getPiece(int x, int y) {
 		return board[x][y];
 	}
+	
+	private void updateImmobilizers() {
+		//TODO: more general support for Immobilizers
+		for (int[] row : immobilized) Arrays.fill(row, 0);
+		for (int x = 0; x < boardWidth; x++) {
+			for (int y = 0; y < boardHeight; y++) {
+				Piece p = board[x][y];
+				if (p != null && p.getModel().isImmobilizer()) {
+					//0 = none, 1 = white immobilized, 2 = black, 3 = both
+					int mask = p.getSide() == Side.WHITE ? 2 : 1;
+					for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++) {
+						if (inRange(x+dx,y+dy)) immobilized[x+dx][y+dy] |= mask;
+					}
+				}
+			}
+		}
+	}
 
 	/**
 	 * Perform the given move action.
@@ -294,6 +328,7 @@ public class Board {
 		execMove(move);
 		// Check for repetition
 		if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
+		updateImmobilizers();
 	}
 
 	/**
@@ -355,6 +390,7 @@ public class Board {
 		// how to make it not screw up once it goes back to normal
 		// So I'm letting the simulators rewind that value on their own
 		// repeated = false;
+		updateImmobilizers();
 	}
 
 	/**
@@ -414,7 +450,7 @@ public class Board {
 	 * @param side side of the piece wanting to move
 	 * @return emptiness of position
 	 */
-	public final Boolean isEmpty(final Position pos, final Piece.Side side) {
+	public final Boolean isEmpty(final Position pos, final Side side) {
 		Piece p = getPiece(pos);
 		if (p == null) { return true; }
 		return p.getSide() != side;
@@ -426,8 +462,12 @@ public class Board {
 	 * @param pos position to be tested
 	 * @return validity of position
 	 */
-	public final Boolean inRange(final Position pos) {
-		return (pos.getX() >= 0) && (pos.getY() >= 0) && (pos.getX() < boardWidth) && (pos.getY() < boardHeight);
+	public Boolean inRange(final Position pos) {
+		return inRange(pos.getX(), pos.getY());
+	}
+	
+	public Boolean inRange(int x, int y) {
+		return (x >= 0) && (y >= 0) && (x < boardWidth) && (y < boardHeight);
 	}
 
 	/**
@@ -447,7 +487,7 @@ public class Board {
 	 * @param side side of the piece wanting to move
 	 * @return validity of position
 	 */
-	public final Boolean isFree(final Position pos, final Piece.Side side) {
+	public final Boolean isFree(final Position pos, final Side side) {
 		return inRange(pos) && isEmpty(pos, side);
 	}
 
@@ -458,7 +498,7 @@ public class Board {
 	 * @param side side of the piece wanting to move
 	 * @return validity of position
 	 */
-	public final Boolean isEnemy(final Position pos, final Piece.Side side) {
+	public final Boolean isEnemy(final Position pos, final Side side) {
 		if (!inRange(pos)) return false;
 		Piece p = getPiece(pos);
 		if (p == null) return false;
@@ -486,7 +526,7 @@ public class Board {
 	 * @param check check for check
 	 * @return list of all moves
 	 */
-	public final MoveList allMoves(final Piece.Side side, final boolean check) {
+	public final MoveList allMoves(final Side side, final boolean check) {
 		MoveList list = new MoveList(this, false);
 		for (int y = 0; y < boardHeight; y++) {
 			for (int x = 0; x < boardWidth; x++) {

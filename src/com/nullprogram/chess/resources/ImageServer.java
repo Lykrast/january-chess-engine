@@ -19,6 +19,7 @@ import com.nullprogram.chess.pieces.Piece;
 public final class ImageServer {
 	private static final String PATH = "./resources/images/";
 	public static final String WHITE = "_w", BLACK = "_b";
+	public static final String IMMOBILIZED = "immobilized";
 	
 	private static final String U_WHITE = "unknown_w", U_BLACK = "unknown_b";
 

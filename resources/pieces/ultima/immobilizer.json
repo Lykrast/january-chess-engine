@@ -1,0 +1,16 @@
+{
+	"name": "Immobilizer",
+	"icon": "immobilizer",
+	"value": 9.0,
+	"immobilizer": true,
+	"moves": [
+		{
+			"type": "Bishop",
+			"mode": "move"
+		},
+		{
+			"type": "Rook",
+			"mode": "move"
+		}
+	]
+}

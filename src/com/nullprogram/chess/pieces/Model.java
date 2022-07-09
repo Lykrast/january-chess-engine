@@ -15,16 +15,18 @@ public class Model {
 	private String icon;
 
 	private boolean royal;
+	private boolean immobilizer;
 
 	private double value;
 	private IMoveType[] moves;
 
-	public Model(String name, String icon, double value, boolean royal, IMoveType... moves) {
+	public Model(String name, String icon, double value, boolean royal, boolean immobilizer, IMoveType... moves) {
 		this.name = name;
 		this.icon = icon;
 		this.value = value;
 		this.moves = moves;
 		this.royal = royal;
+		this.immobilizer = immobilizer;
 	}
 
 	public double getValue() {
@@ -41,6 +43,11 @@ public class Model {
 	public boolean isRoyal() {
 		return royal;
 	}
+	
+	//TODO: more general Immobilizer support
+	public boolean isImmobilizer() {
+		return immobilizer;
+	}
 
 	/**
 	 * Get the moves for this piece.
@@ -50,7 +57,9 @@ public class Model {
 	 */
 	public MoveList getMoves(final Piece p, boolean checkCheck) {
 		IMoveList list = new MoveList(p.getBoard(), checkCheck);
-		for (IMoveType m : moves) list = m.getMoves(p, list);
+		if (!p.getBoard().isImmobilized(p.getPosition(), p.getSide())) {
+			for (IMoveType m : moves) list = m.getMoves(p, list);
+		}
 		return (MoveList) list;
 	}
 
@@ -61,7 +70,9 @@ public class Model {
 	 */
 	public MoveListCapture getCapturingMoves(final Piece p) {
 		IMoveList list = new MoveListCapture(p.getBoard());
-		for (IMoveType m : moves) list = m.getMoves(p, list);
+		if (!p.getBoard().isImmobilized(p.getPosition(), p.getSide())) {
+			for (IMoveType m : moves) list = m.getMoves(p, list);
+		}
 		return (MoveListCapture) list;
 	}
 

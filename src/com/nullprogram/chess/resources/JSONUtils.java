@@ -41,6 +41,18 @@ public class JSONUtils {
 	}
 	
 	/**
+	 * Attempts to get a double from a Json Object, returning a default value if it isn't found.
+	 * @param json JsonObject to get the int from
+	 * @param name name of the int to get
+	 * @param defaultValue value to return if the field isn't found
+	 * @return the value of the named field if it's found, the provided default value otherwise
+	 */
+	public static double getDefaultDouble(JsonObject json, String name, double defaultValue) {
+		JsonElement elem = json.get(name);
+		return elem == null ? defaultValue : elem.getAsDouble();
+	}
+	
+	/**
 	 * Attempts to get a boolean from a Json Object, returning a default value if it isn't found.
 	 * @param json JsonObject to get the boolean from
 	 * @param name name of the boolean to get

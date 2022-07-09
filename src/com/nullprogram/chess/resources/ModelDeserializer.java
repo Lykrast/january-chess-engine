@@ -30,17 +30,14 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 			movesList.add(context.deserialize(elem, IMoveType.class));
 		}
 
-		JsonElement tmp = obj.get("royal");
-		boolean royal = false;
-		if (tmp != null) royal = tmp.getAsBoolean();
-
-		tmp = obj.get("value");
-		double value = 1.0;
-		if (tmp != null) value = tmp.getAsDouble();
+		boolean royal = JSONUtils.getDefaultBoolean(obj, "royal", false);
+		//TODO: more general Immobilizer support
+		boolean immobilizer = JSONUtils.getDefaultBoolean(obj, "immobilizer", false);
+		double value = JSONUtils.getDefaultDouble(obj, "value", 1.0);
 		
 		String name = JSONUtils.getMandatory(obj, "name").getAsString();
 		
-		tmp = obj.get("icon");
+		JsonElement tmp = obj.get("icon");
 		String icon = null;
 		if (tmp != null) icon = tmp.getAsString();
 		else {
@@ -48,7 +45,7 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 			LOG.warning("Piece " + name + " has no icon defined, default to " + icon);
 		}
 
-		return new Model(name, icon, value, royal, movesList.toArray(new IMoveType[movesList.size()]));
+		return new Model(name, icon, value, royal, immobilizer, movesList.toArray(new IMoveType[movesList.size()]));
 	}
 
 }
