@@ -1,0 +1,21 @@
+{
+  "name": "Cannon Pawn",
+  "icon": "cannon_pawn",
+  "value": 1.0,
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"ymax": 0,
+		"moves": [
+			{
+				"type": "King",
+				"mode": "MOVE"
+			},
+			{
+				"type": "Grasshopper",
+				"max": "1"
+			}
+		]
+	}
+  ]
+}

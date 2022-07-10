@@ -120,7 +120,7 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
 		MoveTypeDeserializer.registerDeserializer(new MoveTypeCastle(-1, -1));
 		MoveTypeDeserializer.registerDeserializer(new MoveTypeCannon(DirectionMode.ALL));
 		MoveTypeDeserializer.registerDeserializer(new MoveTypeVao(DirectionMode.ALL));
-		MoveTypeDeserializer.registerDeserializer(new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
+		MoveTypeDeserializer.registerDeserializer(new MoveTypeGrasshopper(MoveMode.MOVE_CAPTURE, DirectionMode.ALL, 0));
 		MoveTypeDeserializer.registerDeserializer(new MoveTypeLocust(DirectionMode.ALL));
 		MoveTypeDeserializer.registerDeserializer(new MoveTypeEdgehog(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));
 		MoveTypeDeserializer.registerDeserializer(new MoveTypeBishopReflecting(MoveMode.MOVE_CAPTURE, DirectionMode.ALL));

@@ -1,0 +1,29 @@
+{
+  "name": "Swapper",
+  "icon": "swapper",
+  "value": 3.0,
+  "moves": [
+    {
+		"type": "ModSwap",
+		"moves": [
+			{
+				"type": "Rook",
+				"mode": "MOVE_CAPTURE_BOTH"
+			},
+			{
+				"type": "Bishop",
+				"mode": "MOVE_CAPTURE_BOTH"
+			}
+		]
+	},
+    {
+		"type": "ModSuicide",
+		"moves": [
+			{
+				"type": "King",
+				"mode": "CAPTURE"
+			}
+		]
+	}
+  ]
+}

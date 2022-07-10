@@ -1,0 +1,34 @@
+{
+	"name": "Imperfect Rococo",
+	"description": "An imperfect variant of Peter Aronson's and David Howe's Rococo. Pieces all have similar movements but very different ways of capturing. Variant is imperfect as the promotion rule is changed, it lacks the outer ring, and the Chameleon is replaced with Ultima's Coordinator (as none of those are programmed yet).\nhttps://www.chessvariants.com/other.dir/rococo.html",
+	"width": 8,
+	"height": 8,
+	"promotions": ["immobilizer", "withdrawer", "long_leaper", "coordinator", "advancer", "swapper"],
+	"pieces": [
+	{ "x": 0,"xlen": 8,"y": 1,"side": "white","piece": "cannon_pawn" },
+	{ "x": 0,"xlen": 8,"y": 6,"side": "black","piece": "cannon_pawn" },
+	
+	{ "x": 0,"y": 0,"side": "white","piece": "immobilizer" },
+	{ "x": 0,"y": 7,"side": "black","piece": "immobilizer" },
+	
+	{ "x": 1,"y": 0,"side": "white","piece": "withdrawer" },
+	{ "x": 1,"y": 7,"side": "black","piece": "withdrawer" },
+	
+	{ "x": 2,"y": 0,"side": "white","piece": "long_leaper" },
+	{ "x": 5,"y": 0,"side": "white","piece": "long_leaper" },
+	{ "x": 2,"y": 7,"side": "black","piece": "long_leaper" },
+	{ "x": 5,"y": 7,"side": "black","piece": "long_leaper" },
+	
+	{ "x": 3,"y": 0,"side": "white","piece": "king_nocastle" },
+	{ "x": 3,"y": 7,"side": "black","piece": "king_nocastle" },
+	
+	{ "x": 4,"y": 0,"side": "white","piece": "coordinator" },
+	{ "x": 4,"y": 7,"side": "black","piece": "coordinator" },
+	
+	{ "x": 6,"y": 0,"side": "white","piece": "advancer" },
+	{ "x": 6,"y": 7,"side": "black","piece": "advancer" },
+	
+	{ "x": 7,"y": 7,"side": "black","piece": "swapper" },
+	{ "x": 7,"y": 0,"side": "white","piece": "swapper" }
+	]
+}

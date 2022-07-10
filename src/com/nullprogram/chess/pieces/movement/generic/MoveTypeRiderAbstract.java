@@ -1,7 +1,6 @@
 package com.nullprogram.chess.pieces.movement.generic;
 
 import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.nullprogram.chess.Move;
@@ -9,6 +8,7 @@ import com.nullprogram.chess.Position;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.movement.IMoveList;
 import com.nullprogram.chess.pieces.movement.MoveType;
+import com.nullprogram.chess.resources.JSONUtils;
 
 public abstract class MoveTypeRiderAbstract extends MoveType {
 	protected int max;
@@ -45,13 +45,7 @@ public abstract class MoveTypeRiderAbstract extends MoveType {
 
 	@Override
 	public MoveType create(JsonObject json, MoveMode moveMode, DirectionMode directionMode, JsonDeserializationContext context) throws JsonParseException {
-		JsonElement tmp = json.get("max");
-		int max = -1;
-		if (tmp != null) {
-			max = tmp.getAsInt();
-		}
-
-		return create(json, moveMode, directionMode, max, context);
+		return create(json, moveMode, directionMode, JSONUtils.getDefaultInt(json, "max", -1), context);
 	}
 
 	/**
@@ -59,6 +53,7 @@ public abstract class MoveTypeRiderAbstract extends MoveType {
 	 * following the (already deserialized)
 	 * MoveMode, DirectionMode and max distance.
 	 */
-	protected abstract MoveType create(JsonObject json, MoveMode moveMode, DirectionMode directionMode, int max, JsonDeserializationContext context) throws JsonParseException;
+	protected abstract MoveType create(JsonObject json, MoveMode moveMode, DirectionMode directionMode, int max,
+			JsonDeserializationContext context) throws JsonParseException;
 
 }
