@@ -2,6 +2,7 @@
   "name": "Amazon",
   "icon": "amazon",
   "value": 12.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "Bishop"

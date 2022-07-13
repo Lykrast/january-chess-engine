@@ -2,6 +2,7 @@
   "name": "Gnu",
   "icon": "gnu",
   "value": 6.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Leaper",

@@ -2,6 +2,7 @@
   "name": "Kirin",
   "icon": "kirin",
   "value": 3.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Ferz"

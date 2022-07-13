@@ -2,6 +2,7 @@
   "name": "Magnetic Queen",
   "icon": "queen",
   "value": 9.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "ModMagnetic",

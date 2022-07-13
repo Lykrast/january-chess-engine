@@ -2,6 +2,7 @@
   "name": "Pawn",
   "icon": "pawn",
   "value": 1.0,
+  "aihints": ["PUSH_PROMOTION", "PUSH_CENTER"],
   "moves": [
     {
 		"type": "ModPromotion",

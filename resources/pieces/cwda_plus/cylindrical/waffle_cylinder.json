@@ -2,6 +2,7 @@
   "name": "Cylinder Waffle",
   "icon": "cylinder_waffle",
   "value": 3.0,
+  "aihints": "OCCUPY_CENTER_RANKS",
   "moves": [
     {
 		"type": "LeaperOrthogonalCylinder",

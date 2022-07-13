@@ -2,6 +2,7 @@
   "name": "Cardinal",
   "icon": "cardinal",
   "value": 8.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "Rider",

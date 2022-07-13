@@ -2,6 +2,7 @@
   "name": "Buffalo",
   "icon": "buffalo",
   "value": 8.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
 	{
 		"type": "Knight"

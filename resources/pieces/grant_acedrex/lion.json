@@ -2,6 +2,7 @@
   "name": "Lion",
   "icon": "lion",
   "value": 3.5,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "LeaperOrthogonal",

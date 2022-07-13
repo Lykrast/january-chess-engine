@@ -2,6 +2,7 @@
   "name": "Capricorn",
   "icon": "capricorn",
   "value": 12.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "ModCapricorn",

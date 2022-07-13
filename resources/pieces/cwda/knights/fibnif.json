@@ -2,6 +2,7 @@
   "name": "Fibnif",
   "icon": "fibnif",
   "value": 3.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "LeaperNarrow",

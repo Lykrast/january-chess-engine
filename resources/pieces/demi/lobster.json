@@ -2,6 +2,7 @@
   "name": "Lobster",
   "icon": "lobster",
   "value": 1.5,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Alfil",

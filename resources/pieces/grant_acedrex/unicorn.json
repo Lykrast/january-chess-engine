@@ -2,6 +2,7 @@
   "name": "Unicorn",
   "icon": "unicorn",
   "value": 6.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "RiderBent",

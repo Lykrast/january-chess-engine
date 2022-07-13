@@ -2,6 +2,7 @@
   "name": "Archbishop",
   "icon": "archbishop",
   "value": 6.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "Bishop"

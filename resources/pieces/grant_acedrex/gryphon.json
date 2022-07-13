@@ -2,6 +2,7 @@
   "name": "Gryphon",
   "icon": "gryphon",
   "value": 7.25,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "RiderBent",

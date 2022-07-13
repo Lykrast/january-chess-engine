@@ -2,6 +2,7 @@
   "name": "Fad",
   "icon": "fad",
   "value": 3.25,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Ferz"

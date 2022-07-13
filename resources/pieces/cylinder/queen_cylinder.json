@@ -2,6 +2,7 @@
   "name": "Cylinder Queen",
   "icon": "cylinder_queen",
   "value": 11.0,
+  "aihints": "AVOID_BORDERS_RANKS",
   "moves": [
     {
 		"type": "BishopCylinder"

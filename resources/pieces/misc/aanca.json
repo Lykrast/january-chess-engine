@@ -2,6 +2,7 @@
   "name": "Aanca",
   "icon": "aanca",
   "value": 5.7,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "RiderBent",

@@ -2,6 +2,7 @@
   "name": "Eagle",
   "icon": "eagle",
   "value": 5.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "Bishop",

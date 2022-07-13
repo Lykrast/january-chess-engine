@@ -2,6 +2,7 @@
   "name": "Vao",
   "icon": "vao",
   "value": 2.5,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "Vao"

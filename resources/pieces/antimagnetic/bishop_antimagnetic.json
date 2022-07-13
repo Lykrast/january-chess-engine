@@ -2,6 +2,7 @@
   "name": "Anti-magnetic Bishop",
   "icon": "bishop",
   "value": 3.0,
+  "aihints": ["OCCUPY_CENTER_SOFT", "AVOID_BORDERS"],
   "moves": [
     {
 		"type": "ModMagnetic",

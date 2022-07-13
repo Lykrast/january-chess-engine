@@ -2,6 +2,7 @@
   "name": "Double Rhinorider",
   "icon": "double_rhinorider",
   "value": 7.5,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "RiderBent",

@@ -2,6 +2,7 @@
   "name": "Rose",
   "icon": "rose",
   "value": 5.0,
+  "aihints": ["OCCUPY_CENTER_SOFT", "AVOID_BORDERS"],
   "moves": [
     {
 		"type": "RiderCircular",

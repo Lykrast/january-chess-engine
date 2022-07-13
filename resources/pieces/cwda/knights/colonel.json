@@ -2,6 +2,7 @@
   "name": "Colonel",
   "icon": "colonel",
   "value": 9.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "Knight",

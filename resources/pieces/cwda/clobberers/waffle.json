@@ -2,6 +2,7 @@
   "name": "Waffle",
   "icon": "waffle",
   "value": 2.75,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Wazir"

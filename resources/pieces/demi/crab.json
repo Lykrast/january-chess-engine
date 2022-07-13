@@ -2,6 +2,7 @@
   "name": "Crab",
   "icon": "crab",
   "value": 1.5,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "LeaperNarrow",

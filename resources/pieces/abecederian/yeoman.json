@@ -2,6 +2,7 @@
   "name": "Yeoman",
   "icon": "asian_pawn",
   "value": 1.0,
+  "aihints": "PUSH_PROMOTION",
   "moves": [
     {
 		"type": "ModPromotion",

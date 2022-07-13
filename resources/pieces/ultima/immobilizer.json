@@ -2,6 +2,7 @@
 	"name": "Immobilizer",
 	"icon": "immobilizer",
 	"value": 9.0,
+	"aihints": "AVOID_BORDERS",
 	"immobilizer": true,
 	"moves": [
 		{

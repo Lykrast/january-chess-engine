@@ -13,25 +13,18 @@ public class AIHints {
 	//knight = occupyCenter
 	//bishop = occupyCenterSoft + avoidBorders
 	//queen = avoidBorders
-	private boolean occupyCenter, occupyCenterSoft, avoidBorders, pushPromotion, pushCenter;
+	private boolean occupyCenter, occupyCenterSoft, avoidBorders, occupyCenterRanks, occupyCenterRanksSoft, avoidBordersRanks, pushPromotion, pushCenter;
 	
-	public AIHints() {
-		this(false, false, false, false, false);
-	}
-
-	public AIHints(boolean occupyCenter, boolean occupyCenterSoft, boolean avoidBorders, boolean pushPromotion, boolean pushCenter) {
-		this.occupyCenter = occupyCenter;
-		this.occupyCenterSoft = occupyCenterSoft;
-		this.avoidBorders = avoidBorders;
-		this.pushPromotion = pushPromotion;
-		this.pushCenter = pushCenter;
-	}
+	public AIHints() {}
 	
 	public double evaluate(Board b, Position pos, Side s) {
 		double tot = 0;
 		if (occupyCenter) tot += occupyCenter(b, pos);
 		if (occupyCenterSoft) tot += occupyCenterSoft(b, pos);
 		if (avoidBorders) tot += avoidBorders(b, pos);
+		if (occupyCenterRanks) tot += occupyCenterRanks(b, pos);
+		if (occupyCenterRanksSoft) tot += occupyCenterRanksSoft(b, pos);
+		if (avoidBordersRanks) tot += avoidBordersRanks(b, pos);
 		if (pushPromotion) tot += pushPromotion(b, pos, s);
 		if (pushCenter) tot += pushCenter(b, pos, s);
 		return tot;
@@ -71,6 +64,20 @@ public class AIHints {
 		return -0.1*borderStatus(b, pos);
 	}
 	
+	private double occupyCenterRanks(Board b, Position pos) {
+		return 0.2 - 0.2*(distYToCenter(b, pos)/(double)b.getHeight());
+	}
+	
+	private double occupyCenterRanksSoft(Board b, Position pos) {
+		int distY = distYToCenter(b, pos);
+		if (distY <= Math.max(b.getHeight() / 4 - 1, 1)) return 0.1 - 0.2*(distY/(double)b.getHeight());
+		else return 0;
+	}
+	
+	private double avoidBordersRanks(Board b, Position pos) {
+		return -0.1*borderYStatus(b, pos);
+	}
+	
 //	private int distToCenter(Board b, Position pos) {
 //		int midX = b.getWidth() / 2;
 //		int midY = b.getHeight() / 2;
@@ -108,13 +115,22 @@ public class AIHints {
 		return (x == 0 || x == b.getWidth()-1 ? 1 : 0) + (y == 0 || y == b.getHeight()-1 ? 1 : 0);
 	}
 	
+	private int borderYStatus(Board b, Position pos) {
+		int y = pos.getY();
+		return y == 0 || y == b.getHeight()-1 ? 1 : 0;
+	}
+	
 	private void activate(String target) throws JsonParseException {
 		if (target.equals("OCCUPY_CENTER")) occupyCenter = true;
 		else if (target.equals("OCCUPY_CENTER_SOFT")) occupyCenterSoft = true;
 		else if (target.equals("AVOID_BORDERS")) avoidBorders = true;
+		else if (target.equals("OCCUPY_CENTER_RANKS")) occupyCenter = true;
+		else if (target.equals("OCCUPY_CENTER_RANKS_SOFT")) occupyCenterSoft = true;
+		else if (target.equals("AVOID_BORDERS_RANKS")) avoidBorders = true;
 		else if (target.equals("PUSH_PROMOTION")) pushPromotion = true;
 		else if (target.equals("PUSH_CENTER")) pushCenter = true;
-		else throw new JsonParseException("Invalid ai hint : " + target + " - must be OCCUPY_CENTER, OCCUPY_CENTER_SOFT, AVOID_BORDERS, PUSH_PROMOTION, or PUSH_CENTER"); 
+		else throw new JsonParseException("Invalid ai hint : " + target
+				+ " - must be OCCUPY_CENTER, OCCUPY_CENTER_SOFT, AVOID_BORDERS, OCCUPY_CENTER_RANKS, OCCUPY_CENTER_RANKS_SOFT, AVOID_BORDERS_RANKS, PUSH_PROMOTION, or PUSH_CENTER"); 
 	}
 	
 	public static AIHints fromJson(JsonObject json) throws JsonParseException {

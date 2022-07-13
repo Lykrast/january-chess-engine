@@ -2,6 +2,7 @@
   "name": "Xebec",
   "icon": "ship",
   "value": 3.25,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Rook",

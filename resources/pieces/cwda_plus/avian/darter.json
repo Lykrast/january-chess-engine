@@ -2,6 +2,7 @@
   "name": "Darter",
   "icon": "darter",
   "value": 3.25,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Wazir"

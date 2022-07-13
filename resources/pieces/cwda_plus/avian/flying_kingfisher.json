@@ -2,6 +2,7 @@
   "name": "Flying Kingfisher",
   "icon": "flying_kingfisher",
   "value": 9.0,
+  "aihints": "AVOID_BORDERS",
   "moves": [
     {
 		"type": "King"

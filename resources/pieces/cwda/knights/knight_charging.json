@@ -2,6 +2,7 @@
   "name": "Charging Knight",
   "icon": "charging_knight",
   "value": 3.375,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Knight",

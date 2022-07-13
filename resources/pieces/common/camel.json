@@ -2,6 +2,7 @@
   "name": "Camel",
   "icon": "camel",
   "value": 2.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Leaper",

@@ -2,6 +2,7 @@
   "name": "Squirrel",
   "icon": "squirrel",
   "value": 6.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Dabbaba"

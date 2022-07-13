@@ -2,6 +2,7 @@
   "name": "Short Rook",
   "icon": "short_rook",
   "value": 3.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "Rook",

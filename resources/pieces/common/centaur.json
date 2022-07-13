@@ -2,6 +2,7 @@
   "name": "Centaur",
   "icon": "centaur",
   "value": 6.0,
+  "aihints": "OCCUPY_CENTER",
   "moves": [
     {
 		"type": "King"

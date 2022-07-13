@@ -2,6 +2,7 @@
   "name": "Berolina Plus Pawn",
   "icon": "berolina_plus_pawn",
   "value": 1.25,
+  "aihints": ["PUSH_PROMOTION", "PUSH_CENTER"],
   "moves": [
     {
 		"type": "ModPromotion",
