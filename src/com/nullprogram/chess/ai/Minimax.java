@@ -290,12 +290,12 @@ public class Minimax implements Player {
 				Position pos = new Position(x, y);
 				Piece p = b.getPiece(pos);
 				if (p != null) {
-					//White is +1, Black, -1, so this is the total for white
-					value += values.get(p.getModel()) * p.getSide().value();
+					// White is +1, Black, -1, so this is the total for white
+					value += (values.get(p.getModel()) + p.getModel().getHints().evaluate(b, pos, p.getSide())) * p.getSide().value();
 				}
 			}
 		}
-		//Invert if we are black
+		// Invert if we are black
 		return value * side.value();
 	}
 

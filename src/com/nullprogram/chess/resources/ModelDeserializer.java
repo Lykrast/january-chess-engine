@@ -11,6 +11,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.nullprogram.chess.pieces.AIHints;
 import com.nullprogram.chess.pieces.Model;
 import com.nullprogram.chess.pieces.movement.IMoveType;
 
@@ -45,7 +46,7 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 			LOG.warning("Piece " + name + " has no icon defined, default to " + icon);
 		}
 
-		return new Model(name, icon, value, royal, immobilizer, movesList.toArray(new IMoveType[movesList.size()]));
+		return new Model(name, icon, value, royal, immobilizer, AIHints.fromJson(obj), movesList.toArray(new IMoveType[movesList.size()]));
 	}
 
 }

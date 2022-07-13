@@ -16,21 +16,28 @@ public class Model {
 
 	private boolean royal;
 	private boolean immobilizer;
+	
+	private AIHints hints;
 
 	private double value;
 	private IMoveType[] moves;
 
-	public Model(String name, String icon, double value, boolean royal, boolean immobilizer, IMoveType... moves) {
+	public Model(String name, String icon, double value, boolean royal, boolean immobilizer, AIHints hints, IMoveType... moves) {
 		this.name = name;
 		this.icon = icon;
 		this.value = value;
 		this.moves = moves;
 		this.royal = royal;
 		this.immobilizer = immobilizer;
+		this.hints = hints;
 	}
 
 	public double getValue() {
 		return value;
+	}
+	
+	public AIHints getHints() {
+		return hints;
 	}
 
 	public String getName() {

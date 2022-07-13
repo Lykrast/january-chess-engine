@@ -49,7 +49,7 @@ public enum Symmetry {
 			else if (sSym.equalsIgnoreCase("HORIZONTAL")) return HORIZONTAL;
 			else if (sSym.equalsIgnoreCase("VERTICAL")) return VERTICAL;
 			else if (sSym.equalsIgnoreCase("CENTRAL")) return CENTRAL;
-			else throw new JsonParseException("Invalid symmetry value : " + sSym + " - must be NONE, HORIZONTAL, VERTICAL or CENTRAL");
+			else throw new JsonParseException("Invalid symmetry value : " + sSym + " - must be NONE, HORIZONTAL, VERTICAL, or CENTRAL");
 		}
 		else return VERTICAL;
 	}
