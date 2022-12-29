@@ -220,4 +220,34 @@ public class Piece {
 	public String toString() {
 		return side + " " + model + " (" + pos + ")";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + moved;
+		result = prime * result + ((pos == null) ? 0 : pos.hashCode());
+		result = prime * result + ((side == null) ? 0 : side.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Piece other = (Piece) obj;
+		if (model == null) {
+			if (other.model != null) return false;
+		}
+		else if (!model.equals(other.model)) return false;
+		if (moved != other.moved) return false;
+		if (pos == null) {
+			if (other.pos != null) return false;
+		}
+		else if (!pos.equals(other.pos)) return false;
+		if (side != other.side) return false;
+		return true;
+	}
 }

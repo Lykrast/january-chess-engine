@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 
 import com.nullprogram.chess.Game;
 import com.nullprogram.chess.Player;
+import com.nullprogram.chess.ai.MCTS;
 import com.nullprogram.chess.ai.Minimax;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.boards.GameMode;
+import com.nullprogram.chess.pieces.Piece.Side;
 
 /**
  * Presents the "New Game" dialog to let the user set up a game.
@@ -101,9 +103,12 @@ public class NewGame extends JDialog implements ActionListener {
 	 * @param name name of type of player
 	 * @return player of named type
 	 */
-	private Player createPlayer(final Game game, final String name) {
+	private Player createPlayer(final Game game, final String name, Side side) {
 		if ("human".equals(name)) {
 			return parent.getPlayer();
+		}
+		else if ("mcts".equals(name)) {
+			return new MCTS(game);
 		}
 		else {
 			return new Minimax(game, name);
@@ -128,8 +133,8 @@ public class NewGame extends JDialog implements ActionListener {
 	public final Game getGame() {
 		if (cancelled) { return null; }
 		Game game = new Game(createBoard(boardPanel.getBoard()));
-		Player white = createPlayer(game, whitePanel.getPlayer());
-		Player black = createPlayer(game, blackPanel.getPlayer());
+		Player white = createPlayer(game, whitePanel.getPlayer(), Side.WHITE);
+		Player black = createPlayer(game, blackPanel.getPlayer(), Side.BLACK);
 		game.seat(white, black);
 		return game;
 	}

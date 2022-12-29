@@ -323,12 +323,13 @@ public class Board {
 	 *
 	 * @param move the move
 	 */
-	public final void move(final Move move) {
+	public final Board move(final Move move) {
 		moves.add(move);
 		execMove(move);
 		// Check for repetition
 		if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
 		updateImmobilizers();
+		return this;
 	}
 
 	/**

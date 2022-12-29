@@ -28,11 +28,12 @@ public class PlayerSelector extends JPanel {
 			"Medium (5 plies)",
 			"Hard (6 plies)",
 			"Harder (7 plies)",
-			"Challenging (8 plies)"
+			"Challenging (8 plies)",
+			"MCTS (experimental)"
 			};
 
 	/** Configuration names corresponding to LABELS_AI. */
-	private static final String[] NAMES_AI = { "depth2", "depth3", "depth4", "depth5", "depth6", "depth7", "depth8", };
+	private static final String[] NAMES_AI = { "depth2", "depth3", "depth4", "depth5", "depth6", "depth7", "depth8", "mcts" };
 
 	/** The default AI selection in the JList. */
 	private static final int DEFAULT_AI = 2;
