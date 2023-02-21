@@ -1,0 +1,68 @@
+{
+  "name": "Torpedo Chess",
+  "description": "A simple variant, Pawns may always perform a double forward move. There is currently no en passant.\nOne of the variants tested with AlphaZero.\nhttps://arxiv.org/abs/2009.04374",
+  "width": 8,
+  "height": 8,
+  "promotions": ["rook", "knight", "bishop", "queen"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn_torpedo"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn_torpedo"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king"
+	}
+  ]
+}

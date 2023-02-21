@@ -1,0 +1,23 @@
+{
+  "name": "Sideways Pawn",
+  "icon": "pawn",
+  "value": 1.6,
+  "aihints": ["PUSH_PROMOTION", "PUSH_CENTER"],
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"ymax": 0,
+		"moves": [
+			{
+				"type": "Pawn",
+				"initialstep": 1
+			},
+			{
+				"type": "Wazir",
+				"direction": "HORIZONTAL",
+				"mode": "MOVE"
+			}
+		]
+	}
+  ]
+}

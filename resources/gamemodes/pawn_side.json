@@ -1,15 +1,15 @@
 {
-  "name": "Quick Pawn Chess",
-  "description": "A simple variant using a piece from Kevin Begley's Mammoth Chess. Pawns may always perform a double forward move, and there is no en passant.\nhttps://www.chessvariants.com/large.dir/contest/mammoth.html",
+  "name": "Pawn-sideways",
+  "description": "A simple variant, Pawns can also move one step sideways.\nOne of the variants tested with AlphaZero.\nhttps://arxiv.org/abs/2009.04374",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],
   "pieces": [
 	{
-		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "quick_pawn"	
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn_side"	
 	},
     {
-		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "quick_pawn"
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn_side"
 	},
 	
     {

@@ -1,0 +1,23 @@
+{
+  "name": "Back Pawn",
+  "icon": "pawn",
+  "value": 1.15,
+  "aihints": ["PUSH_PROMOTION", "PUSH_CENTER"],
+  "moves": [
+    {
+		"type": "ModPromotion",
+		"ymax": 0,
+		"moves": [
+			{
+				"type": "Pawn",
+				"initialstep": 1
+			},
+			{
+				"type": "Wazir",
+				"direction": "BACK",
+				"mode": "MOVE"
+			}
+		]
+	}
+  ]
+}
