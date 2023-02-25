@@ -14,7 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 
 import com.nullprogram.chess.Chess;
 import com.nullprogram.chess.Game;
@@ -136,6 +139,17 @@ public class ChessFrame extends JFrame implements ComponentListener, GameListene
 			if ("New Game".equals(e.getActionCommand())) {
 				frame.newGame();
 			}
+			else if ("Move history".equals(e.getActionCommand())) {
+				if (game == null) JOptionPane.showMessageDialog(null, "There is no game in progress.", "Move history", JOptionPane.ERROR_MESSAGE);
+				else {
+					JTextArea text = new JTextArea(game.getBoard().getPseudoPGN());
+					text.setLineWrap(true);
+					text.setWrapStyleWord(true);
+					JScrollPane scroll = new JScrollPane(text);
+					scroll.setPreferredSize(new Dimension(400,100));
+					JOptionPane.showMessageDialog(null, scroll, "Move history", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
 			else if ("Show attacked squares".equals(e.getActionCommand())) {
 				frame.setShowAttacks(((JCheckBoxMenuItem) e.getSource()).getState());
 			}
@@ -157,16 +171,25 @@ public class ChessFrame extends JFrame implements ComponentListener, GameListene
 			newGame.setMnemonic('N');
 			game.add(newGame);
 			game.add(new JSeparator());
-			JCheckBoxMenuItem toggleHint = new JCheckBoxMenuItem("Show attacked squares");
-			toggleHint.addActionListener(this);
-			toggleHint.setMnemonic('S');
-			game.add(toggleHint);
+			JMenuItem history = new JMenuItem("Move history");
+			history.addActionListener(this);
+			history.setMnemonic('h');
+			game.add(history);
 			game.add(new JSeparator());
 			JMenuItem exitGame = new JMenuItem("Exit");
 			exitGame.addActionListener(this);
 			exitGame.setMnemonic('x');
 			game.add(exitGame);
 			menuBar.add(game);
+			
+			// Options
+			JMenu options = new JMenu("Options");
+			options.setMnemonic('O');
+			JCheckBoxMenuItem toggleHint = new JCheckBoxMenuItem("Show attacked squares");
+			toggleHint.addActionListener(this);
+			toggleHint.setMnemonic('S');
+			options.add(toggleHint);
+			menuBar.add(options);
 
 			// Themes
 			JMenu themes = new JMenu("Theme");

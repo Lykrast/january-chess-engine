@@ -548,4 +548,8 @@ public class Board {
 	public final int moveCount() {
 		return moves.size();
 	}
+	
+	public String getPseudoPGN() {
+		return moves.getPseudoPGN();
+	}
 }

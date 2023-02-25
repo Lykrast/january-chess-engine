@@ -270,4 +270,22 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	public final Iterator<Move> iterator() {
 		return moves.iterator();
 	}
+	
+	public String getPseudoPGN() {
+		if (moves.isEmpty()) return "";
+		//Assume that first move is white and we just have 2 players
+		//Not real PGN but should be close enough to get the games in chess.com/lichess.org analyzer manually
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < moves.size(); i++) {
+			if (i % 2 == 0) {
+				sb.append((i/2)+1);
+				sb.append(". ");
+			}
+			sb.append(moves.get(i));
+			sb.append(' ');
+		}
+		//Remove trailing space
+		sb.delete(sb.length()-1, sb.length());
+		return sb.toString();
+	}
 }
