@@ -49,15 +49,15 @@ public class MoveTypePawnCylinder extends MoveType {
 				Position lDest = last.getDest();
 
 				// Same shit as MoveTypePawn
-				if (lOrigin.getX() == lDest.getX()
-						&& wasAdjacent(lDest.getX(), pos.getX(), board.getWidth())
+				if (lOrigin.x == lDest.x
+						&& wasAdjacent(lDest.x, pos.x, board.getWidth())
 						&& passedThrough(dir, pos, lDest)
-						&& (lOrigin.getY() - pos.getY()) != dir
+						&& (lOrigin.y - pos.y) != dir
 						&& inInitialRange(dir, lOrigin, lDest)
 						&& board.getPiece(lDest).getModel().getName().equals("Cylinder Pawn")) {
 					Position target;
 					// To the left
-					if (lDest.getX() < pos.getX()) target = wrap.wrap(board, pos.offset(-1, dir));
+					if (lDest.x < pos.x) target = wrap.wrap(board, pos.offset(-1, dir));
 					// To the right
 					else target =  wrap.wrap(board, pos.offset(1, dir));
 
@@ -95,8 +95,8 @@ public class MoveTypePawnCylinder extends MoveType {
 	 *         going forward
 	 */
 	private boolean passedThrough(int dir, Position self, Position enemy) {
-		if (dir > 0) return self.getY() >= enemy.getY();
-		else return self.getY() <= enemy.getY();
+		if (dir > 0) return self.y >= enemy.y;
+		else return self.y <= enemy.y;
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class MoveTypePawnCylinder extends MoveType {
 	 * @return true if the move's y movement matches an initial step
 	 */
 	private boolean inInitialRange(int dir, Position start, Position end) {
-		int yS = start.getY(), yE = end.getY();
+		int yS = start.y, yE = end.y;
 		if (dir > 0) return yS >= yE + dir * 2 && yS <= yE + dir * (initialStep + 1);
 		else return yS <= yE + dir * 2 && yS >= yE + dir * (initialStep + 1);
 	}

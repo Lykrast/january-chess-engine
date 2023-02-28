@@ -63,8 +63,8 @@ public class MoveModifierCoordinator extends MoveModifier {
 		 * the move or the added move that is now the deepest in the sequence.
 		 */
 		private Move coordinate(Move move, Position dest, Position king) {
-			move = coordinate(move, dest.getX(), king.getY());
-			move = coordinate(move, king.getX(), dest.getY());
+			move = coordinate(move, dest.x, king.y);
+			move = coordinate(move, king.x, dest.y);
 
 			return move;
 		}

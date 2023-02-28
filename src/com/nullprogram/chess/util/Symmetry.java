@@ -23,9 +23,9 @@ public enum Symmetry {
 		if (this == NONE) return pos;
 		
 		int xlast = b.getWidth() - 1, ylast = b.getHeight() - 1;
-		if (this == HORIZONTAL) return new Position(xlast - pos.getX(), pos.getY());
-		else if (this == VERTICAL) return new Position(pos.getX(), ylast - pos.getY());
-		else if (this == CENTRAL) return new Position(xlast - pos.getX(), ylast - pos.getY());
+		if (this == HORIZONTAL) return new Position(xlast - pos.x, pos.y);
+		else if (this == VERTICAL) return new Position(pos.x, ylast - pos.y);
+		else if (this == CENTRAL) return new Position(xlast - pos.x, ylast - pos.y);
 		
 		//Shouldn't ever reach this point
 		return null;

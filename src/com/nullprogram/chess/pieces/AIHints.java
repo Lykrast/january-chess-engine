@@ -92,31 +92,31 @@ public class AIHints {
 		int midX = b.getWidth() / 2;
 		//Even board: middle is multiple squares so might need to -1 to get our corresponding one
 		//Odd board: we should get the correct mid square
-		if (b.getWidth() % 2 == 0 && pos.getX() < midX) midX--;
-		return Math.abs(pos.getX() - midX);
+		if (b.getWidth() % 2 == 0 && pos.x < midX) midX--;
+		return Math.abs(pos.x - midX);
 	}
 	
 	private int distYToCenter(Board b, Position pos) {
 		int midY = b.getHeight() / 2;
 		//Even board: middle is multiple squares so might need to -1 to get our corresponding one
 		//Odd board: we should get the correct mid square
-		if (b.getHeight() % 2 == 0 && pos.getY() < midY) midY--;
-		return Math.abs(pos.getY() - midY);
+		if (b.getHeight() % 2 == 0 && pos.y < midY) midY--;
+		return Math.abs(pos.y - midY);
 	}
 	
 	private int distToPromotion(Board b, Position pos, Side s) {
 		int ty = s == Side.WHITE ? b.getHeight()-1 : 0;
-		return Math.abs(pos.getY() - ty);
+		return Math.abs(pos.y - ty);
 	}
 	
 	private int borderStatus(Board b, Position pos) {
-		int x = pos.getX();
-		int y = pos.getY();
+		int x = pos.x;
+		int y = pos.y;
 		return (x == 0 || x == b.getWidth()-1 ? 1 : 0) + (y == 0 || y == b.getHeight()-1 ? 1 : 0);
 	}
 	
 	private int borderYStatus(Board b, Position pos) {
-		int y = pos.getY();
+		int y = pos.y;
 		return y == 0 || y == b.getHeight()-1 ? 1 : 0;
 	}
 	

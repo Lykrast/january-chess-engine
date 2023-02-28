@@ -18,7 +18,7 @@ public enum Wrap {
 	 * @return a new Position with adjusted coordinates
 	 */
 	public Position wrap(Board b, Position pos) {
-		int x = pos.getX(), y = pos.getY();
+		int x = pos.x, y = pos.y;
 		if (this == HORIZONTAL || this == BOTH) {
 			int w = b.getWidth();
 			if (x < 0) x = (x + w) % w;

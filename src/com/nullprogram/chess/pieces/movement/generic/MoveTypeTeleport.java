@@ -18,7 +18,7 @@ public class MoveTypeTeleport extends MoveType {
 	@Override
 	public IMoveList getMoves(Piece p, IMoveList list) {
 		Position pos = p.getPosition();
-		int px = pos.getX(), py = pos.getY();
+		int px = pos.x, py = pos.y;
 
 		for (int x = 0; x < p.getBoard().getWidth(); x++) {
 			for (int y = 0; y < p.getBoard().getHeight(); y++) {

@@ -74,7 +74,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 		if (!board.inRange(dest)) return false;
 
 		if (board.isEmpty(dest)) {
-			if (type.move() && !causesCheck(move)) add(move);
+			if (type.move && !causesCheck(move)) add(move);
 			// Allows sliding moves to behave "normally" even when they're only supposed to
 			// capture
 			return true;
@@ -83,7 +83,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 			Piece p = board.getPiece(move.getOrigin());
 			// Enemy
 			if (board.getPiece(dest).getSide() != p.getSide()) {
-				if (type.captureEnemy()) {
+				if (type.captureEnemy) {
 					if (!causesCheck(move)) add(move);
 					return true;
 				}
@@ -91,7 +91,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 			}
 			// Friendly
 			else {
-				if (type.captureFriendly()) {
+				if (type.captureFriendly) {
 					if (!causesCheck(move)) add(move);
 					return true;
 				}

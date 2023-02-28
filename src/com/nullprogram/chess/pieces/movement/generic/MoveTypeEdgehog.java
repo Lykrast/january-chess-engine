@@ -65,7 +65,7 @@ public class MoveTypeEdgehog extends MoveType {
 	
 	private boolean onEdge(Position p, Board b)
 	{
-		return p.getX() == 0 || p.getY() == 0 || p.getX() == b.getWidth() - 1 || p.getY() == b.getHeight() - 1;
+		return p.x == 0 || p.y == 0 || p.x == b.getWidth() - 1 || p.y == b.getHeight() - 1;
 	}
 	
 	@Override

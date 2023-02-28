@@ -48,19 +48,19 @@ public class MoveListCapture implements Iterable<Move>, IMoveList {
 		if (!board.inRange(dest)) return false;
 
 		// Add the move to the list if it could capture something
-		if (type.captureEnemy()) add(move);
+		if (type.captureEnemy) add(move);
 		// Simulate the return from a normal MoveList
 		if (board.isEmpty(dest)) return true;
 		else {
 			Piece p = board.getPiece(move.getOrigin());
 			// Enemy
 			if (board.getPiece(dest).getSide() != p.getSide()) {
-				if (type.captureEnemy()) return true;
+				if (type.captureEnemy) return true;
 				else return false;
 			}
 			// Friendly
 			else {
-				if (type.captureFriendly()) return true;
+				if (type.captureFriendly) return true;
 				else return false;
 			}
 		}

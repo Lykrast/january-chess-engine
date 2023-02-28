@@ -66,7 +66,7 @@ public class Board {
 	}
 	
 	public boolean isImmobilized(Position pos, Side s) {
-		return isImmobilized(pos.getX(), pos.getY(), s);
+		return isImmobilized(pos.x, pos.y, s);
 	}
 	
 	public boolean isImmobilized(int x, int y, Side s) {
@@ -281,7 +281,7 @@ public class Board {
 	 * @param p   the piece object to be placed
 	 */
 	public final void setPiece(final Position pos, final Piece p) {
-		board[pos.getX()][pos.getY()] = p;
+		board[pos.x][pos.y] = p;
 		if (p != null) {
 			p.setPosition(pos);
 			p.setBoard(this);
@@ -295,7 +295,7 @@ public class Board {
 	 * @return the Piece at the position
 	 */
 	public final Piece getPiece(final Position pos) {
-		return board[pos.getX()][pos.getY()];
+		return board[pos.x][pos.y];
 	}
 	public final Piece getPiece(int x, int y) {
 		return board[x][y];
@@ -464,7 +464,7 @@ public class Board {
 	 * @return validity of position
 	 */
 	public boolean inRange(final Position pos) {
-		return inRange(pos.getX(), pos.getY());
+		return inRange(pos.x, pos.y);
 	}
 	
 	public boolean inRange(int x, int y) {

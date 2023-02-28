@@ -12,7 +12,7 @@ public final class Position implements Comparable<Position> {
 	 * The board coordinates of this position, starting at the white
 	 * queenside rook.
 	 */
-	private final int x, y;
+	public final int x, y;
 
 	/**
 	 * Create a new position with given coordinates.
@@ -45,24 +45,6 @@ public final class Position implements Comparable<Position> {
 	 */
 	public Position offset(final int deltax, final int deltay) {
 		return new Position(x + deltax, y + deltay);
-	}
-
-	/**
-	 * Get the x coordinate of the position.
-	 *
-	 * @return the x coordinate
-	 */
-	public int getX() {
-		return x;
-	}
-
-	/**
-	 * Get the y coordinate of the position.
-	 *
-	 * @return the y coordinate
-	 */
-	public int getY() {
-		return y;
 	}
 
 	/**

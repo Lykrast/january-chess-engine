@@ -25,13 +25,13 @@ public class MoveTypeBishopReflecting extends MoveType {
         {
         	if (!dir.match(getDirectionMode(), p)) continue;
         	//Using ints instead of positions because of the bounces
-        	int x = dir.getX(), y = dir.getY();
+        	int x = dir.x, y = dir.y;
         	Position pos = start.offset(x, y);
         	while (!pos.equals(start) && list.add(new Move(start, pos), getMoveMode()) && p.getBoard().isFree(pos))
         	{
         		//Bounce
-        		boolean bounceX = (pos.getX() + x < 0 || pos.getX() + x > maxX),
-        				bounceY = (pos.getY() + y < 0 || pos.getY() + y > maxY);
+        		boolean bounceX = (pos.x + x < 0 || pos.x + x > maxX),
+        				bounceY = (pos.y + y < 0 || pos.y + y > maxY);
         		if (bounceX && bounceY) break; //Bouncing on corner does not cover more ground
         		else if (bounceX) x = -x; //Bouncing on x
         		else if (bounceY) y = -y; //Bouncing on y

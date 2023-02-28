@@ -57,7 +57,7 @@ public class MoveTypeCastle extends MoveType {
 			max = p.getBoard().getWidth() - 1;
 		}
 
-		Position rookPos = new Position(max, pos.getY());
+		Position rookPos = new Position(max, pos.y);
 		Piece rook = p.getBoard().getPiece(rookPos);
 		if (rook == null || rook.moved()) { return null; }
 
@@ -82,8 +82,8 @@ public class MoveTypeCastle extends MoveType {
 	 * @return true if row is safe
 	 */
 	private boolean emptyRow(final Position start, final int dir, final int max, Piece p, final MoveList enemyMoves) {
-		for (int i = start.getX() + dir; i != max; i += dir) {
-			Position pos = new Position(i, start.getY());
+		for (int i = start.x + dir; i != max; i += dir) {
+			Position pos = new Position(i, start.y);
 			if (p.getBoard().getPiece(pos) != null || enemyMoves.capturesPos(pos)) {
 				return false;
 			}

@@ -36,10 +36,10 @@ public class Area {
 	 * @return true if the Position is in this Area, false otherwise
 	 */
 	public boolean inside(Position pos) {
-		return ((xmin == -1 || pos.getX() >= xmin)
-				&& (xmax == -1 || pos.getX() <= xmax)
-				&& (ymin == -1 || pos.getY() >= ymin)
-				&& (ymax == -1 || pos.getY() <= ymax)) != invert;
+		return ((xmin == -1 || pos.x >= xmin)
+				&& (xmax == -1 || pos.x <= xmax)
+				&& (ymin == -1 || pos.y >= ymin)
+				&& (ymax == -1 || pos.y <= ymax)) != invert;
 	}
 
 	/**

@@ -55,16 +55,16 @@ public class MoveTypePawn extends MoveType {
                 // Must be within the range of the initial step specified here
                 // Must have been made by a Pawn
                 //TODO: not hardcode that name
-                if (lOrigin.getX() == lDest.getX()
-                		&& Math.abs(lDest.getX() - pos.getX()) == 1
+                if (lOrigin.x == lDest.x
+                		&& Math.abs(lDest.x - pos.x) == 1
                 		&& passedThrough(dir, pos, lDest)
-                		&& (lOrigin.getY() - pos.getY()) != dir
+                		&& (lOrigin.y - pos.y) != dir
                 		&& inInitialRange(dir, lOrigin, lDest)
                 		&& board.getPiece(lDest).getModel().getName().equals("Pawn"))
                 {
                 	Position target;
                 	//To the left
-                	if (lDest.getX() < pos.getX()) target = pos.offset(-1, dir);
+                	if (lDest.x < pos.x) target = pos.offset(-1, dir);
                 	//To the right
                 	else target = pos.offset(1, dir);
                 	
@@ -95,8 +95,8 @@ public class MoveTypePawn extends MoveType {
      * @return true if the enemy passed through capture and cannot be reached by going forward
      */
     private boolean passedThrough(int dir, Position self, Position enemy) {
-    	if (dir > 0) return self.getY() >= enemy.getY();
-    	else return self.getY() <= enemy.getY();
+    	if (dir > 0) return self.y >= enemy.y;
+    	else return self.y <= enemy.y;
     }
     
     /**
@@ -108,7 +108,7 @@ public class MoveTypePawn extends MoveType {
      * @return true if the move's y movement matches an initial step
      */
     private boolean inInitialRange(int dir, Position start, Position end) {
-		int yS = start.getY(), yE = end.getY();
+		int yS = start.y, yE = end.y;
     	if (dir > 0) return yS >= yE + dir * 2 && yS <= yE + dir * (initialStep + 1);
     	else return yS <= yE + dir * 2 && yS >= yE + dir * (initialStep + 1);
     }

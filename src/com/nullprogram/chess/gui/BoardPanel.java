@@ -393,8 +393,8 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 	 * @param pos position to highlight
 	 */
 	private void highlight(final Graphics2D g, final Position pos) {
-		int x = pos.getX();
-		int y = pos.getY();
+		int x = pos.x;
+		int y = pos.y;
 		if (flipped) {
 			y = board.getHeight() - 1 - y;
 		}
@@ -405,8 +405,8 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 	}
 
 	private void highlightAttack(final Graphics2D g, final Position pos, final Shape shape1, final Shape shape2) {
-		int x = pos.getX();
-		int y = pos.getY();
+		int x = pos.x;
+		int y = pos.y;
 		if (flipped) {
 			y = board.getHeight() - 1 - y;
 		}

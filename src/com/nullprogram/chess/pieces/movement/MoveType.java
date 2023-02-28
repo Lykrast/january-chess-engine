@@ -147,7 +147,18 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
 				+ ", " + CAPTURE.name + ", " + MOVE_CAPTURE_FRIENDLY.name + ", " + MOVE_CAPTURE_BOTH.name + ", "
 				+ CAPTURE_FRIENDLY.name + " or " + CAPTURE_BOTH.name;
 
-		private boolean move, captureEnemy, captureFriendly;
+		/**
+		 * Does this MoveMode allows moving without capturing.
+		 */
+		public final boolean move;
+		/**
+		 * Does this MoveMode allows capturing an enemy piece by replacement.
+		 */
+		public final boolean captureEnemy;
+		/**
+		 * Does this MoveMode allows capturing a friendly piece by replacement.
+		 */
+		public final boolean captureFriendly;
 		private String name;
 
 		private MoveMode(String name, boolean move, boolean captureEnemy, boolean captureFriendly) {
@@ -155,27 +166,6 @@ public abstract class MoveType implements IMoveTypeDeserializer, IMoveType {
 			this.captureEnemy = captureEnemy;
 			this.captureFriendly = captureFriendly;
 			this.name = name;
-		}
-
-		/**
-		 * Does this MoveMode allows moving without capturing.
-		 */
-		public boolean move() {
-			return move;
-		}
-
-		/**
-		 * Does this MoveMode allows capturing an enemy piece by replacement.
-		 */
-		public boolean captureEnemy() {
-			return captureEnemy;
-		}
-
-		/**
-		 * Does this MoveMode allows capturing a friendly piece by replacement.
-		 */
-		public boolean captureFriendly() {
-			return captureFriendly;
 		}
 
 		public static MoveMode fromJson(JsonElement json) throws JsonParseException {
