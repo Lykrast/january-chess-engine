@@ -45,7 +45,7 @@ public class MoveModifierRestriction extends MoveModifier {
 
 		@Override
 		protected Move modify(Move move) {
-			Position dest = move.getDest();
+			Position dest = move.destination;
 			if (area.inside(dest, piece.getBoard(), piece.getSide())) return move;
 			else return null;
 		}

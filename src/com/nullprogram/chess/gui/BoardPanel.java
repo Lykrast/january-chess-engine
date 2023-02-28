@@ -343,7 +343,7 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 						}
 						MoveListCapture tmpMoves = p.getCapturingMoves();
 						for (Move move : tmpMoves) {
-							highlightAttack(g, move.getDest(), shape1, shape2);
+							highlightAttack(g, move.destination, shape1, shape2);
 						}
 					}
 				}
@@ -355,8 +355,8 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 		if (last != null) {
 			if (last.isSpecial()) g.setColor(LAST_SPECIAL);
 			else g.setColor(LAST);
-			highlight(g, last.getOrigin());
-			highlight(g, last.getDest());
+			highlight(g, last.origin);
+			highlight(g, last.destination);
 
 			// Highlight unusual captures
 			g.setColor(LAST_CAPTURE);
@@ -364,8 +364,8 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 			while (current.getNext() != null) {
 				current = current.getNext();
 				Position p = current.getCaptureDest();
-				if (current.getCaptured() != null && p != null && !last.getOrigin().equals(p)
-						&& !last.getDest().equals(p))
+				if (current.getCaptured() != null && p != null && !last.origin.equals(p)
+						&& !last.destination.equals(p))
 					highlight(g, current.getCaptureDest());
 			}
 		}
@@ -380,7 +380,7 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 				for (Move move : moves) {
 					if (move.isSpecial()) g.setColor(MOVEMENT_SPECIAL);
 					else g.setColor(MOVEMENT);
-					highlight(g, move.getDest());
+					highlight(g, move.destination);
 				}
 			}
 		}

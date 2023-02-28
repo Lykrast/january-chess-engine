@@ -44,7 +44,7 @@ public class MoveListCapture implements Iterable<Move>, IMoveList {
 
 	@Override
 	public final boolean add(final Move move, MoveType.MoveMode type) {
-		Position dest = move.getDest();
+		Position dest = move.destination;
 		if (!board.inRange(dest)) return false;
 
 		// Add the move to the list if it could capture something
@@ -52,7 +52,7 @@ public class MoveListCapture implements Iterable<Move>, IMoveList {
 		// Simulate the return from a normal MoveList
 		if (board.isEmpty(dest)) return true;
 		else {
-			Piece p = board.getPiece(move.getOrigin());
+			Piece p = board.getPiece(move.origin);
 			// Enemy
 			if (board.getPiece(dest).getSide() != p.getSide()) {
 				if (type.captureEnemy) return true;
@@ -68,21 +68,21 @@ public class MoveListCapture implements Iterable<Move>, IMoveList {
 
 	@Override
 	public final boolean addMove(final Move move) {
-		return board.isFree(move.getDest());
+		return board.isFree(move.destination);
 	}
 
 	@Override
 	public final boolean addCapture(final Move move) {
-		Piece p = board.getPiece(move.getOrigin());
+		Piece p = board.getPiece(move.origin);
 		add(move);
-		return board.isFree(move.getDest(), p.getSide());
+		return board.isFree(move.destination, p.getSide());
 	}
 
 	@Override
 	public final boolean addCaptureOnly(final Move move) {
-		Piece p = board.getPiece(move.getOrigin());
+		Piece p = board.getPiece(move.origin);
 		add(move);
-		return board.isEnemy(move.getDest(), p.getSide());
+		return board.isEnemy(move.destination, p.getSide());
 	}
 
 	/**

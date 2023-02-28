@@ -39,7 +39,7 @@ public class MoveModifierSwap extends MoveModifier {
 
 		@Override
 		protected Move modify(Move move) {
-			Position dest = move.getDest();
+			Position dest = move.destination;
 			if (piece.getBoard().inRange(dest) && !piece.getBoard().isEmpty(dest)) move.setSwap(true);
 
 			return move;

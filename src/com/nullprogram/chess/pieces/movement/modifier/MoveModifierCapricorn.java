@@ -43,7 +43,7 @@ public class MoveModifierCapricorn extends MoveModifier {
 			Move innermost = move.getLast();
 
 			// Coordinate
-			Position dest = move.getDest();
+			Position dest = move.destination;
 			for (int x = -1; x <= 1; x++) {
 				for (int y = -1; y <= 1; y++) {
 					if (x == 0 && y == 0) continue;

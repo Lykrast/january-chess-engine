@@ -45,8 +45,8 @@ public class MoveTypePawnCylinder extends MoveType {
 			/* check for en passant */
 			Move last = board.last();
 			if (last != null) {
-				Position lOrigin = last.getOrigin();
-				Position lDest = last.getDest();
+				Position lOrigin = last.origin;
+				Position lDest = last.destination;
 
 				// Same shit as MoveTypePawn
 				if (lOrigin.x == lDest.x

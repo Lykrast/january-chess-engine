@@ -53,7 +53,7 @@ public class MoveModifierCoordinator extends MoveModifier {
 
 			// Coordinate
 			// Assume the end is where our piece ends up, not always true but for what I do it'll work
-			for (Position p : royal) innermost = coordinate(innermost, innermost.getDest(), p);
+			for (Position p : royal) innermost = coordinate(innermost, innermost.destination, p);
 
 			return move;
 		}

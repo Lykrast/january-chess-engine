@@ -73,7 +73,7 @@ public class MoveModifierPromotion extends MoveModifier {
 		private boolean eligible(Move move) {
 			// If we can't promote, don't bother to check
 			if (promoted == null) return false;
-			return area.inside(move.getDest(), piece.getBoard(), piece.getSide());
+			return area.inside(move.destination, piece.getBoard(), piece.getSide());
 		}
 
 		private Move promote(Move move, String target) {
@@ -81,8 +81,8 @@ public class MoveModifierPromotion extends MoveModifier {
 			// Add at the end of the current move
 			Move innermost = copy.getLast();
 
-			innermost.setNext(new Move(copy.getDest(), null)); // remove the piece
-			Move upgrade = new Move(null, copy.getDest());
+			innermost.setNext(new Move(copy.destination, null)); // remove the piece
+			Move upgrade = new Move(null, copy.destination);
 			upgrade.setReplacement(target); // put the replacement
 			upgrade.setReplacementSide(piece.getSide());
 			innermost.getNext().setNext(upgrade);

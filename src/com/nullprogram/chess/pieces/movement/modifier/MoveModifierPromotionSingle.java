@@ -49,13 +49,13 @@ public class MoveModifierPromotionSingle extends MoveModifier {
 
 		@Override
 		protected Move modify(Move move) {
-			if (!area.inside(move.getDest(), piece.getBoard(), piece.getSide())) return move;
+			if (!area.inside(move.destination, piece.getBoard(), piece.getSide())) return move;
 
 			// Add at the end of the current move
 			Move innermost = move.getLast();
 
-			innermost.setNext(new Move(move.getDest(), null)); // remove the piece
-			Move upgrade = new Move(null, move.getDest());
+			innermost.setNext(new Move(move.destination, null)); // remove the piece
+			Move upgrade = new Move(null, move.destination);
 			upgrade.setReplacement(promoted); // put the replacement
 			upgrade.setReplacementSide(piece.getSide());
 			innermost.getNext().setNext(upgrade);

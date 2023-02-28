@@ -15,10 +15,10 @@ import com.nullprogram.chess.pieces.PieceRegistry;
 public final class Move {
 
     /** Originating position. */
-    private final Position origin;
+    public final Position origin;
 
     /** Destination position. */
-    private final Position destination;
+    public final Position destination;
 
     /** Linked list entry for next part of this move. */
     private Move next;
@@ -32,8 +32,8 @@ public final class Move {
     /** Side of the new piece to make. */
     private Piece.Side replacementSide;
 
-    /** Score for this move. */
-    private double score;
+    /** Score for this move. IA use only. */
+    public double score;
     
     /** Marks this move as "special", currently this only changes the color it is displayed for clarity */
     private boolean special = false;
@@ -60,7 +60,7 @@ public final class Move {
      */
     @Deprecated
     public Move(final Move move) {
-        this(move.getOrigin(), move.getDest());
+        this(move.origin, move.destination);
         captured = move.getCaptured();
         replacement = move.getReplacement();
         replacementSide = move.getReplacementSide();
@@ -136,24 +136,6 @@ public final class Move {
     public Move getLast() {
     	if (next == null) return this;
     	else return next.getLast();
-    }
-
-    /**
-     * Get the origin position.
-     *
-     * @return origin position
-     */
-    public Position getOrigin() {
-        return origin;
-    }
-
-    /**
-     * Get the destination position.
-     *
-     * @return destination position
-     */
-    public Position getDest() {
-        return destination;
     }
     
     /**
@@ -305,23 +287,5 @@ public final class Move {
      */
     public boolean isSwap() {
     	return swap;
-    }
-
-    /**
-     * Return this move's set score (AI purposes).
-     *
-     * @return this move's score
-     */
-    public double getScore() {
-        return score;
-    }
-
-    /**
-     * Set this move's score (AI purposes).
-     *
-     * @param newscore  this move's score
-     */
-    public void setScore(final double newscore) {
-        this.score = newscore;
     }
 }

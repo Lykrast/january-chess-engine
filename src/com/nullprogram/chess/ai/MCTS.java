@@ -10,6 +10,7 @@ import com.nullprogram.chess.pieces.Piece.Side;
 
 public class MCTS implements Player {
 	//Thanks for https://blog.theofekfoundation.org/artificial-intelligence/2016/06/27/what-is-the-monte-carlo-tree-search/
+	@SuppressWarnings("unused")
 	private static final Logger LOG = Logger.getLogger("com.nullprogram.chess.ai.Minimax");
 	
 	private MCTSNode root;

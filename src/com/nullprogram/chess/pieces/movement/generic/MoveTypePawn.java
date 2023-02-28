@@ -44,8 +44,8 @@ public class MoveTypePawn extends MoveType {
             /* check for en passant */
             Move last = board.last();
             if (last != null) {
-                Position lOrigin = last.getOrigin();
-                Position lDest = last.getDest();
+                Position lOrigin = last.origin;
+                Position lDest = last.destination;
                 
                 //Conditions on last move:
                 // Must be made in the same file as it started

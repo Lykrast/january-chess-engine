@@ -356,8 +356,8 @@ public class Board {
 		if (move == null) {
 			return;
 		}
-		Position a = move.getOrigin();
-		Position b = move.getDest();
+		Position a = move.origin;
+		Position b = move.destination;
 		if (a != null && b != null) {
 			if (move.isSwap()) {
 				swap(a, b);
@@ -404,8 +404,8 @@ public class Board {
 			return;
 		}
 		execUndo(move.getNext()); // undo in reverse
-		Position a = move.getOrigin();
-		Position b = move.getDest();
+		Position a = move.origin;
+		Position b = move.destination;
 		if (a != null && b != null) {
 			if (move.isSwap()) {
 				swap(a, b);

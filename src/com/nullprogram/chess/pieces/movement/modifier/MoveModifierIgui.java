@@ -40,8 +40,8 @@ public class MoveModifierIgui extends MoveModifier {
 		protected Move modify(Move move) {
 			//If the first move was a capture, move the piece back to the starting location
 			//Assume the piece is where the initial move ended
-			Position dest = move.getDest();
-			if (piece.getBoard().inRange(dest) && !piece.getBoard().isEmpty(dest)) move.getLast().setNext(new Move(dest, move.getOrigin()));
+			Position dest = move.destination;
+			if (piece.getBoard().inRange(dest) && !piece.getBoard().isEmpty(dest)) move.getLast().setNext(new Move(dest, move.origin));
 
 			return move;
 		}

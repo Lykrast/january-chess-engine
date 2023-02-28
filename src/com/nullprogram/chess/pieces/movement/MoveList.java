@@ -70,7 +70,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 
 	@Override
 	public final boolean add(final Move move, MoveType.MoveMode type) {
-		Position dest = move.getDest();
+		Position dest = move.destination;
 		if (!board.inRange(dest)) return false;
 
 		if (board.isEmpty(dest)) {
@@ -80,7 +80,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 			return true;
 		}
 		else {
-			Piece p = board.getPiece(move.getOrigin());
+			Piece p = board.getPiece(move.origin);
 			// Enemy
 			if (board.getPiece(dest).getSide() != p.getSide()) {
 				if (type.captureEnemy) {
@@ -102,7 +102,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 
 	@Override
 	public final boolean addMove(final Move move) {
-		if (board.isFree(move.getDest())) {
+		if (board.isFree(move.destination)) {
 			if (!causesCheck(move)) add(move);
 			return true; // false only for a "blocking" move
 		}
@@ -111,8 +111,8 @@ public class MoveList implements Iterable<Move>, IMoveList {
 
 	@Override
 	public final boolean addCapture(final Move move) {
-		Piece p = board.getPiece(move.getOrigin());
-		if (board.isFree(move.getDest(), p.getSide())) {
+		Piece p = board.getPiece(move.origin);
+		if (board.isFree(move.destination, p.getSide())) {
 			if (!causesCheck(move)) add(move);
 			return true; // false only for a "blocking" move
 		}
@@ -121,8 +121,8 @@ public class MoveList implements Iterable<Move>, IMoveList {
 
 	@Override
 	public final boolean addCaptureOnly(final Move move) {
-		Piece p = board.getPiece(move.getOrigin());
-		if (board.isEnemy(move.getDest(), p.getSide()) && !causesCheck(move)) {
+		Piece p = board.getPiece(move.origin);
+		if (board.isEnemy(move.destination, p.getSide()) && !causesCheck(move)) {
 
 			add(move);
 			return true;
@@ -138,7 +138,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	 */
 	private boolean causesCheck(final Move move) {
 		if (!check) return false;
-		Piece p = board.getPiece(move.getOrigin());
+		Piece p = board.getPiece(move.origin);
 		boolean ret = false;
 
 		// I shouldn't have to do that but I'm lazy
@@ -171,7 +171,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	 */
 	public final boolean containsDest(final Position pos) {
 		for (Move move : this) {
-			if (pos.equals(move.getDest())) { return true; }
+			if (pos.equals(move.destination)) { return true; }
 		}
 		return false;
 	}
@@ -198,7 +198,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	 */
 	public final Move getMoveByDest(final Position dest) {
 		for (Move move : this) {
-			if (dest.equals(move.getDest())) { return move; }
+			if (dest.equals(move.destination)) { return move; }
 		}
 		return null;
 	}
@@ -212,7 +212,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	public final List<Move> getAllMovesByDest(final Position dest) {
 		List<Move> list = new ArrayList<>();
 		for (Move move : this) {
-			if (dest.equals(move.getDest())) {
+			if (dest.equals(move.destination)) {
 				list.add(move);
 			}
 		}

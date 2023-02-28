@@ -40,7 +40,7 @@ public class MoveModifierSuicide extends MoveModifier {
 		protected Move modify(Move move) {
 			//Remove the piece if it moved to a non empty location (capture)
 			//Assume the piece is where the initial move ended
-			Position dest = move.getDest();
+			Position dest = move.destination;
 			if (piece.getBoard().inRange(dest) && !piece.getBoard().isEmpty(dest)) move.getLast().setNext(new Move(dest, null));
 
 			return move;

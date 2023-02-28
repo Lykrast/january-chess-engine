@@ -61,7 +61,7 @@ public class MoveModifierMagnetic extends MoveModifier {
 			Board board = piece.getBoard();
 
 			// Effect
-			Position dest = move.getDest();
+			Position dest = move.destination;
 			for (Direction dir : Direction.ORTHOGONAL) {
 				// Find the first piece in the direction
 				Position dirpos = dir.getPosition();

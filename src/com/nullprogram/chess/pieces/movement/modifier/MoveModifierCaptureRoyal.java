@@ -39,7 +39,7 @@ public class MoveModifierCaptureRoyal extends MoveModifier {
 		@Override
 		protected Move modify(Move move) {
 			// Cannot capture a non royal piece
-			Position dest = move.getDest();
+			Position dest = move.destination;
 			if (piece.getBoard().inRange(dest)) {
 				Piece target = piece.getBoard().getPiece(dest);
 				if (target != null && !target.getModel().isRoyal()) return null;
