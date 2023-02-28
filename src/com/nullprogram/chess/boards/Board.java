@@ -148,7 +148,7 @@ public class Board {
 	 * @param side side to check for check
 	 * @return true if board is in a state of check
 	 */
-	public final Boolean check(final Side side) {
+	public final boolean check(final Side side) {
 		Side attacker = side.opposite();
 		List<Position> kings = findRoyal(side);
 		if (kings.isEmpty()) {
@@ -187,7 +187,7 @@ public class Board {
 	 *
 	 * @return true if board is in a state of check
 	 */
-	public final Boolean check() {
+	public final boolean check() {
 		return check(Side.WHITE) || check(Side.BLACK);
 	}
 
@@ -196,7 +196,7 @@ public class Board {
 	 *
 	 * @return true if board is in checkmate
 	 */
-	public final Boolean checkmate() {
+	public final boolean checkmate() {
 		return checkmate(Side.WHITE) || checkmate(Side.BLACK);
 	}
 
@@ -205,7 +205,7 @@ public class Board {
 	 *
 	 * @return true if board is in stalemate
 	 */
-	public final Boolean stalemate() {
+	public final boolean stalemate() {
 		return stalemate(Side.WHITE) || stalemate(Side.BLACK);
 	}
 
@@ -440,7 +440,7 @@ public class Board {
 	 * @param pos position to be tested
 	 * @return emptiness of position
 	 */
-	public final Boolean isEmpty(final Position pos) {
+	public final boolean isEmpty(final Position pos) {
 		return getPiece(pos) == null;
 	}
 
@@ -451,7 +451,7 @@ public class Board {
 	 * @param side side of the piece wanting to move
 	 * @return emptiness of position
 	 */
-	public final Boolean isEmpty(final Position pos, final Side side) {
+	public final boolean isEmpty(final Position pos, final Side side) {
 		Piece p = getPiece(pos);
 		if (p == null) { return true; }
 		return p.getSide() != side;
@@ -463,11 +463,11 @@ public class Board {
 	 * @param pos position to be tested
 	 * @return validity of position
 	 */
-	public Boolean inRange(final Position pos) {
+	public boolean inRange(final Position pos) {
 		return inRange(pos.getX(), pos.getY());
 	}
 	
-	public Boolean inRange(int x, int y) {
+	public boolean inRange(int x, int y) {
 		return (x >= 0) && (y >= 0) && (x < boardWidth) && (y < boardHeight);
 	}
 
@@ -477,7 +477,7 @@ public class Board {
 	 * @param pos position to be tested
 	 * @return validity of position
 	 */
-	public final Boolean isFree(final Position pos) {
+	public final boolean isFree(final Position pos) {
 		return inRange(pos) && isEmpty(pos);
 	}
 
@@ -488,7 +488,7 @@ public class Board {
 	 * @param side side of the piece wanting to move
 	 * @return validity of position
 	 */
-	public final Boolean isFree(final Position pos, final Side side) {
+	public final boolean isFree(final Position pos, final Side side) {
 		return inRange(pos) && isEmpty(pos, side);
 	}
 
@@ -499,7 +499,7 @@ public class Board {
 	 * @param side side of the piece wanting to move
 	 * @return validity of position
 	 */
-	public final Boolean isEnemy(final Position pos, final Side side) {
+	public final boolean isEnemy(final Position pos, final Side side) {
 		if (!inRange(pos)) return false;
 		Piece p = getPiece(pos);
 		if (p == null) return false;
