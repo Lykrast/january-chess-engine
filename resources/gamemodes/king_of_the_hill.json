@@ -1,0 +1,69 @@
+{
+  "name": "King of the Hill",
+  "description": "A variant available on Lichess. When a player's King reaches the central four squares (without being in check), that player wins.\nhttps://lichess.org/variant/kingOfTheHill",
+  "width": 8,
+  "height": 8,
+  "lines": [[3,3,5,3], [5,3,5,5], [5,5,3,5], [3,5,3,3]],
+  "promotions": ["rook", "knight", "bishop", "queen"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king_of_the_hill"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king_of_the_hill"
+	}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "King",
+  "icon": "king",
+  "value": 1000.0,
+  "royal": true,
+  "moves": [
+    {
+		"type": "Teleport"
+	}
+  ]
+}
