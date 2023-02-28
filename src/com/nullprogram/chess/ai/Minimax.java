@@ -189,10 +189,10 @@ public class Minimax implements Player {
 					callboard.move(move);
 					double beta = Double.POSITIVE_INFINITY;
 					if (bestMove != null) {
-						beta = -bestMove.getScore();
+						beta = -bestMove.score;
 					}
 					double v = search(callboard, maxDepth - 1, side.opposite(), Double.NEGATIVE_INFINITY, beta);
-					move.setScore(-v);
+					move.score = -v;
 					return move;
 				}
 			});
@@ -203,7 +203,7 @@ public class Minimax implements Player {
 		for (int i = 0; i < submitted; i++) {
 			try {
 				Move m = service.take().get();
-				if (bestMove == null || m.getScore() > bestMove.getScore()) {
+				if (bestMove == null || m.score > bestMove.score) {
 					bestMove = m;
 				}
 			}
