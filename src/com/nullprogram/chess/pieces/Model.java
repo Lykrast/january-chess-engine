@@ -8,6 +8,7 @@ import com.nullprogram.chess.pieces.movement.IMoveType;
 import com.nullprogram.chess.pieces.movement.MoveList;
 import com.nullprogram.chess.pieces.movement.MoveListCapture;
 import com.nullprogram.chess.resources.ImageServer;
+import com.nullprogram.chess.util.Capturability;
 
 public class Model {
 	/** Name of this piece. */
@@ -15,6 +16,7 @@ public class Model {
 	private String icon;
 
 	private boolean royal;
+	private Capturability capturability;
 	private boolean immobilizer;
 	
 	private AIHints hints;
@@ -22,12 +24,13 @@ public class Model {
 	private double value;
 	private IMoveType[] moves;
 
-	public Model(String name, String icon, double value, boolean royal, boolean immobilizer, AIHints hints, IMoveType... moves) {
+	public Model(String name, String icon, double value, boolean royal, Capturability capturability, boolean immobilizer, AIHints hints, IMoveType... moves) {
 		this.name = name;
 		this.icon = icon;
 		this.value = value;
 		this.moves = moves;
 		this.royal = royal;
+		this.capturability = capturability;
 		this.immobilizer = immobilizer;
 		this.hints = hints;
 	}
@@ -49,6 +52,13 @@ public class Model {
 	 */
 	public boolean isRoyal() {
 		return royal;
+	}
+	
+	/**
+	 * Can this model be captured by a given attacking piece.
+	 */
+	public boolean canBeCapturedBy(Piece capturer) {
+		return capturability.canBeCapturedBy(capturer);
 	}
 	
 	//TODO: more general Immobilizer support

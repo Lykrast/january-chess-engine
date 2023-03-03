@@ -60,7 +60,7 @@ public class MoveModifierCapricorn extends MoveModifier {
 		 */
 		private Move capture(Move move, Position start, int x, int y) {
 			Position target = start.offset(x, y);
-			if (piece.getBoard().isEnemy(target, piece.getSide())) {
+			if (piece.getBoard().canCaptureEnemyAt(target, piece)) {
 				Move capture = new Move(target, null);
 				move.setNext(capture);
 				return capture;

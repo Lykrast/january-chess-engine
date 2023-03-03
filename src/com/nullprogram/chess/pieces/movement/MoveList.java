@@ -82,9 +82,10 @@ public class MoveList implements Iterable<Move>, IMoveList {
 		}
 		else {
 			Piece p = board.getPiece(move.origin);
+			Piece d = board.getPiece(dest);
 			// Enemy
-			if (board.getPiece(dest).getSide() != p.getSide()) {
-				if (type.captureEnemy) {
+			if (d.getSide() != p.getSide()) {
+				if (type.captureEnemy && d.canBeCapturedBy(p)) {
 					if (!causesCheck(move)) add(move);
 					return true;
 				}
@@ -92,7 +93,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 			}
 			// Friendly
 			else {
-				if (type.captureFriendly) {
+				if (type.captureFriendly && d.canBeCapturedBy(p)) {
 					if (!causesCheck(move)) add(move);
 					return true;
 				}

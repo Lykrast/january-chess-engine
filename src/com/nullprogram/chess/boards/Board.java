@@ -505,6 +505,13 @@ public class Board {
 		if (p == null) return false;
 		return p.getSide() != side;
 	}
+	
+	public final boolean canCaptureEnemyAt(final Position pos, final Piece capturer) {
+		if (!inRange(pos)) return false;
+		Piece p = getPiece(pos);
+		if (p == null) return false;
+		return p.getSide() != capturer.getSide() && p.canBeCapturedBy(capturer);
+	}
 
 	/**
 	 * Copy this board.

@@ -75,7 +75,7 @@ public class MoveModifierCoordinator extends MoveModifier {
 		 */
 		private Move coordinate(Move move, int x, int y) {
 			Position target = new Position(x, y);
-			if (piece.getBoard().isEnemy(target, piece.getSide())) {
+			if (piece.getBoard().canCaptureEnemyAt(target, piece)) {
 				Move coordination = new Move(target, null);
 				move.setNext(coordination);
 				return coordination;

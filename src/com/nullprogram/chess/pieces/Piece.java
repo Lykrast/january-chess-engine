@@ -125,6 +125,14 @@ public class Piece {
 	public MoveListCapture getCapturingMoves() {
 		return model.getCapturingMoves(this);
 	}
+	
+	/**
+	 * Can this piece be captured by a given attacking piece.
+	 */
+	public boolean canBeCapturedBy(Piece capturer) {
+		//TODO Fugue Shield
+		return model.canBeCapturedBy(capturer);
+	}
 
 	/**
 	 * Update the piece's current position on the board.

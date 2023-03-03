@@ -10,9 +10,7 @@ import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
 
 /**
- * Safe list of moves.
- *
- * Before a move is added it can be checked for some basic validity.
+ * Custom list of moves to show what squares are being attacked.
  */
 public class MoveListCapture implements Iterable<Move>, IMoveList {
 
@@ -75,7 +73,7 @@ public class MoveListCapture implements Iterable<Move>, IMoveList {
 	public final boolean addCaptureOnly(final Move move) {
 		Piece p = board.getPiece(move.origin);
 		add(move);
-		return board.isEnemy(move.destination, p.getSide());
+		return board.canCaptureEnemyAt(move.destination, p);
 	}
 
 	/**
