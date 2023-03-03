@@ -18,13 +18,14 @@ public class Model {
 	private boolean royal;
 	private Capturability capturability;
 	private boolean immobilizer;
+	private boolean shielder;
 	
 	private AIHints hints;
 
 	private double value;
 	private IMoveType[] moves;
 
-	public Model(String name, String icon, double value, boolean royal, Capturability capturability, boolean immobilizer, AIHints hints, IMoveType... moves) {
+	public Model(String name, String icon, double value, boolean royal, Capturability capturability, boolean immobilizer, boolean shielder, AIHints hints, IMoveType... moves) {
 		this.name = name;
 		this.icon = icon;
 		this.value = value;
@@ -32,6 +33,7 @@ public class Model {
 		this.royal = royal;
 		this.capturability = capturability;
 		this.immobilizer = immobilizer;
+		this.shielder = shielder;
 		this.hints = hints;
 	}
 
@@ -62,8 +64,19 @@ public class Model {
 	}
 	
 	//TODO: more general Immobilizer support
+	/**
+	 * Does this immobilize nearby enemy pieces like Ultima's Immobilizer.
+	 */
 	public boolean isImmobilizer() {
 		return immobilizer;
+	}
+	
+	//TODO: more general Shielder support
+	/**
+	 * Does this protects nearby friendly pieces like Fugue's Shield.
+	 */
+	public boolean isShielder() {
+		return shielder;
 	}
 
 	/**

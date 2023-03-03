@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.nullprogram.chess.Move;
 import com.nullprogram.chess.Position;
+import com.nullprogram.chess.pieces.Model;
 import com.nullprogram.chess.pieces.Piece;
 import com.nullprogram.chess.pieces.Piece.Side;
 import com.nullprogram.chess.pieces.PieceFactory;
@@ -23,9 +24,11 @@ public class Board {
 	/** The internal board array. */
 	private Piece[][] board;
 	
-	//Locations that are immobilized
-	//0 = none, 1 = white immobilized, 2 = black, 3 = both
-	private int[][] immobilized;
+	//Local effects, it's bitflags
+	//0 = none
+	//1 = white immobilized, 2 = black, 3 = both
+	//4 = white protected, 8 = black protected
+	private int[][] groundStatus;
 
 	/** The size of this game board. */
 	private int boardWidth, boardHeight;
@@ -46,6 +49,7 @@ public class Board {
 	public Board(GameMode mode) {
 		gameMode = mode;
 		gameMode.initialize(this);
+		updateGroundStatus();
 	}
 
 	public GameMode getGameMode() {
@@ -62,7 +66,7 @@ public class Board {
 	 */
 	public final void clear() {
 		board = new Piece[boardWidth][boardHeight];
-		immobilized = new int[boardWidth][boardHeight];
+		groundStatus = new int[boardWidth][boardHeight];
 	}
 	
 	public boolean isImmobilized(Position pos, Side s) {
@@ -71,8 +75,18 @@ public class Board {
 	
 	public boolean isImmobilized(int x, int y, Side s) {
 		//0 = none, 1 = white immobilized, 2 = black, 3 = both
-		if (s == Side.WHITE) return (immobilized[x][y] & 1) > 0;
-		else return (immobilized[x][y] & 2) > 0;
+		if (s == Side.WHITE) return (groundStatus[x][y] & 1) > 0;
+		else return (groundStatus[x][y] & 2) > 0;
+	}
+	
+	public boolean isShielded(Position pos, Side s) {
+		return isShielded(pos.x, pos.y, s);
+	}
+	
+	public boolean isShielded(int x, int y, Side s) {
+		//0 = none, 4 = white shielded, 8 = black
+		if (s == Side.WHITE) return (groundStatus[x][y] & 4) > 0;
+		else return (groundStatus[x][y] & 8) > 0;
 	}
 
 	public boolean isRepeatedDraw() {
@@ -301,17 +315,28 @@ public class Board {
 		return board[x][y];
 	}
 	
-	private void updateImmobilizers() {
-		//TODO: more general support for Immobilizers
-		for (int[] row : immobilized) Arrays.fill(row, 0);
+	private void updateGroundStatus() {
+		//TODO: more general support for Immobilizers and Shielders
+		for (int[] row : groundStatus) Arrays.fill(row, 0);
 		for (int x = 0; x < boardWidth; x++) {
 			for (int y = 0; y < boardHeight; y++) {
 				Piece p = board[x][y];
-				if (p != null && p.getModel().isImmobilizer()) {
-					//0 = none, 1 = white immobilized, 2 = black, 3 = both
-					int mask = p.getSide() == Side.WHITE ? 2 : 1;
-					for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++) {
-						if (inRange(x+dx,y+dy)) immobilized[x+dx][y+dy] |= mask;
+				if (p != null) {
+					Model m = p.getModel();
+					if (m.isImmobilizer()) {
+						//0 = none, 1 = white immobilized, 2 = black, 3 = both
+						int mask = p.getSide() == Side.WHITE ? 2 : 1;
+						for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++) {
+							if (inRange(x+dx,y+dy)) groundStatus[x+dx][y+dy] |= mask;
+						}
+					}
+					if (m.isShielder()) {
+						//0 = none, 4 = white shielded, 8 = black
+						int mask = p.getSide() == Side.WHITE ? 4 : 8;
+						for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++) {
+							//Shielder doesn't shield itself
+							if ((dx != 0 || dy != 0) && inRange(x+dx,y+dy)) groundStatus[x+dx][y+dy] |= mask;
+						}
 					}
 				}
 			}
@@ -328,7 +353,7 @@ public class Board {
 		execMove(move);
 		// Check for repetition
 		if (repetition.push(board) >= FOLD_REPETITION) repeated = true;
-		updateImmobilizers();
+		updateGroundStatus();
 		return this;
 	}
 
@@ -391,7 +416,7 @@ public class Board {
 		// how to make it not screw up once it goes back to normal
 		// So I'm letting the simulators rewind that value on their own
 		// repeated = false;
-		updateImmobilizers();
+		updateGroundStatus();
 	}
 
 	/**

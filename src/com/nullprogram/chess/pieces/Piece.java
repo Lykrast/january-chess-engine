@@ -130,8 +130,7 @@ public class Piece {
 	 * Can this piece be captured by a given attacking piece.
 	 */
 	public boolean canBeCapturedBy(Piece capturer) {
-		//TODO Fugue Shield
-		return model.canBeCapturedBy(capturer);
+		return model.canBeCapturedBy(capturer) && !board.isShielded(pos, side);
 	}
 
 	/**

@@ -1,0 +1,17 @@
+{
+	"name": "Shield",
+	"icon": "shield",
+	"value": 9.0,
+	"aihints": "AVOID_BORDERS",
+	"shielder": true,
+	"moves": [
+		{
+			"type": "Bishop",
+			"mode": "move"
+		},
+		{
+			"type": "Rook",
+			"mode": "move"
+		}
+	]
+}

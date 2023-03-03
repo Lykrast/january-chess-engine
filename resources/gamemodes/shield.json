@@ -1,0 +1,82 @@
+{
+  "name": "Shield Chess",
+  "description": "Part of the Chess with Ultima, Rococo and Supremo Pieces series.\n10x8 board where each side has two Shields from Fugue. It moves as a Queen without capture, and adjacent friendly pieces can't be captured.\nhttps://www.chessvariants.com/large.dir/chess-with-ultima.html\nhttps://www.chessvariants.com/other.dir/fugue.html",
+  "width": 10,
+  "height": 8,
+  "promotions": ["rook", "knight", "bishop", "queen", "shield"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 10,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"xlen": 10,"y": 6,"side": "black","piece": "pawn"
+	},
+	
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 9,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "rook"
+	},
+    {
+		"x": 9,"y": 7,"side": "black","piece": "rook"
+	},
+	
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 8,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "knight"
+	},
+	{
+		"x": 8,"y": 7,"side": "black","piece": "knight"
+	},
+	
+	{
+		"x": 2,"y": 0,"side": "white","piece": "shield"
+	},
+	{
+		"x": 7,"y": 0,"side": "white","piece": "shield"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "shield"
+	},
+	{
+		"x": 7,"y": 7,"side": "black","piece": "shield"
+	},
+	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "bishop"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "bishop"
+	},
+	
+	{
+		"x": 4,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "queen"
+	},
+	
+	{
+		"x": 5,"y": 0,"side": "white","piece": "king"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "king"
+	}
+	
+  ]
+}

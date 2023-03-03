@@ -321,6 +321,9 @@ public class BoardPanel extends JComponent implements MouseListener, Player, Gam
 					if (board.isImmobilized(x, y, p.getSide())) {
 						g.drawImage(ImageServer.getTile(ImageServer.IMMOBILIZED), at, null);
 					}
+					if (board.isShielded(x, y, p.getSide())) {
+						g.drawImage(ImageServer.getTile(ImageServer.SHIELDED), at, null);
+					}
 				}
 			}
 		}

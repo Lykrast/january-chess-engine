@@ -35,6 +35,8 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 		boolean royal = JSONUtils.getDefaultBoolean(obj, "royal", false);
 		//TODO: more general Immobilizer support
 		boolean immobilizer = JSONUtils.getDefaultBoolean(obj, "immobilizer", false);
+		//TODO: more general Shielder support
+		boolean shielder = JSONUtils.getDefaultBoolean(obj, "shielder", false);
 		double value = JSONUtils.getDefaultDouble(obj, "value", 1.0);
 		
 		String name = JSONUtils.getMandatory(obj, "name").getAsString();
@@ -47,7 +49,7 @@ public class ModelDeserializer implements JsonDeserializer<Model> {
 			LOG.warning("Piece " + name + " has no icon defined, default to " + icon);
 		}
 
-		return new Model(name, icon, value, royal, Capturability.fromJson(obj), immobilizer, AIHints.fromJson(obj), movesList.toArray(new IMoveType[movesList.size()]));
+		return new Model(name, icon, value, royal, Capturability.fromJson(obj), immobilizer, shielder, AIHints.fromJson(obj), movesList.toArray(new IMoveType[movesList.size()]));
 	}
 
 }
