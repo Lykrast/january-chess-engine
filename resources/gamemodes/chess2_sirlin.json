@@ -1,0 +1,87 @@
+{
+	"name": "Sirlin's Chess 2 (incomplete)",
+	"description": "An incomplete adaptation of David Sirlin's Chess 2: The Sequel. Each player may choose from among 6 different armies (only 3 are implemented), each with their own pieces.\nAlso, crossing the middle of the board with your King (without getting in check) wins the game.\nDuels are not implemented.\nhttps://en.wikipedia.org/wiki/Chess_2:_The_Sequel",
+	"width": 8,
+	"height": 8,
+	"lines": [[0,4,8,4]],
+	"pieces": [
+		{ "x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn" },
+		{ "x": 0,"xlen": 8,"y": 6,"side": "black","piece": "pawn" },
+		{ "x": 0,"y": 0,"side": "white","piece": "rook" },
+		{ "x": 1,"y": 0,"side": "white","piece": "knight" },
+		{ "x": 2,"y": 0,"side": "white","piece": "bishop" },
+		{ "x": 3,"y": 0,"side": "white","piece": "queen" },
+		{ "x": 4,"y": 0,"side": "white","piece": "king_midline_no_castle" },
+		{ "x": 5,"y": 0,"side": "white","piece": "bishop" },
+		{ "x": 6,"y": 0,"side": "white","piece": "knight" },
+		{ "x": 7,"y": 0,"side": "white","piece": "rook" },
+		{ "x": 0,"y": 7,"side": "black","piece": "rook" },
+		{ "x": 1,"y": 7,"side": "black","piece": "knight" },
+		{ "x": 2,"y": 7,"side": "black","piece": "bishop" },
+		{ "x": 3,"y": 7,"side": "black","piece": "queen" },
+		{ "x": 4,"y": 7,"side": "black","piece": "king_midline_no_castle" },
+		{ "x": 5,"y": 7,"side": "black","piece": "bishop" },
+		{ "x": 6,"y": 7,"side": "black","piece": "knight" },
+		{ "x": 7,"y": 7,"side": "black","piece": "rook" }
+	],
+	"options": [
+	{
+		"name": "White Team",
+		"values": [
+			{
+				"name": "Classic",
+				"promotionswhite": ["rook", "knight", "bishop", "queen"],
+				"pieces": [
+					{ "x": 4,"y": 0,"side": "white","piece": "king_midline" }
+				]
+			},
+			{
+				"name": "Nemesis",
+				"promotionswhite": ["rook", "knight", "bishop", "nemesis"],
+				"pieces": [
+					{ "x": 0,"xlen": 8,"y": 1,"side": "white","piece": "nemesis_pawn" },
+					{ "x": 3,"y": 0,"side": "white","piece": "nemesis" }
+				]
+			},
+			{
+				"name": "Reaper",
+				"promotionswhite": ["iron_ghost", "knight", "bishop", "reaper"],
+				"pieces": [
+					{ "x": 0,"y": 0,"side": "white","piece": "iron_ghost" },
+					{ "x": 7,"y": 0,"side": "white","piece": "iron_ghost" },
+					{ "x": 3,"y": 0,"side": "white","piece": "reaper" }
+				]
+			}
+		]
+	},
+	{
+		"name": "Black Team",
+		"values": [
+			{
+				"name": "Classic",
+				"promotionsblack": ["rook", "knight", "bishop", "queen"],
+				"pieces": [
+					{ "x": 4,"y": 7,"side": "black","piece": "king_midline" }
+				]
+			},
+			{
+				"name": "Nemesis",
+				"promotionsblack": ["rook", "knight", "bishop", "nemesis"],
+				"pieces": [
+					{ "x": 0,"xlen": 8,"y": 6,"side": "black","piece": "nemesis_pawn" },
+					{ "x": 3,"y": 7,"side": "black","piece": "nemesis" }
+				]
+			},
+			{
+				"name": "Reaper",
+				"promotionsblack": ["iron_ghost", "knight", "bishop", "reaper"],
+				"pieces": [
+					{ "x": 0,"y": 7,"side": "black","piece": "iron_ghost" },
+					{ "x": 7,"y": 7,"side": "black","piece": "iron_ghost" },
+					{ "x": 3,"y": 7,"side": "black","piece": "reaper" }
+				]
+			}
+		]
+	}
+	]
+}

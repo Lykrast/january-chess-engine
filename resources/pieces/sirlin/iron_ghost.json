@@ -1,0 +1,12 @@
+{
+	"name": "Ghost",
+	"icon": "ghost",
+	"value": 3,
+	"capturable": "NEVER",
+	"moves": [
+		{
+			"type": "Teleport",
+			"mode": "MOVE"
+		}
+	]
+}

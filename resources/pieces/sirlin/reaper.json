@@ -1,0 +1,17 @@
+{
+	"name": "Reaper",
+	"icon": "reaper",
+	"value": 14,
+	"moves": [
+		{
+			"type": "ModRestriction",
+			"ymax": 6,
+			"moves": [
+				{
+					"type": "ModCaptureNonRoyal",
+					"moves": [{"type": "Teleport"}]
+				}
+			]
+		}
+	]
+}

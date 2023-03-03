@@ -1,0 +1,22 @@
+{
+	"name": "Nemesis Pawn",
+	"icon": "nemesis_pawn",
+	"value": 1.25,
+	"aihints": ["PUSH_PROMOTION", "PUSH_CENTER"],
+	"moves": [
+		{
+			"type": "ModPromotion",
+			"ymax": 0,
+			"moves": [
+				{
+					"type": "Pawn",
+					"initialstep": 0
+				},
+				{
+					"type": "ModNemesis",
+					"moves": [{ "type": "King", "mode": "MOVE" }]
+				}
+			]
+		}
+	]
+}
