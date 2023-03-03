@@ -1,0 +1,16 @@
+{
+  "name": "Horse Archer",
+  "icon": "fbishop_bknight",
+  "value": 4.0,
+  "aihints": ["OCCUPY_CENTER_SOFT", "AVOID_BORDERS"],
+  "moves": [
+    {
+		"type": "Bishop",
+		"mode": "CAPTURE"
+	},
+    {
+		"type": "Knight",
+		"mode": "MOVE"
+	}
+  ]
+}

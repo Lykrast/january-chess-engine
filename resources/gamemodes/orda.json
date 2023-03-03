@@ -1,0 +1,66 @@
+{
+  "name": "Orda Chess",
+  "description": "A variant by Couch Tomato. Black's army has pieces that move as knights but capture differently. You also win by getting your king to the opponent's starting rank (without being in check).\nhttps://www.chessvariants.com/rules/orda-chess",
+  "width": 8,
+  "height": 8,
+  "lines": [[0,1,8,1], [0,7,8,7]],
+  "promotions": ["queen", "centaur"],
+  "pieces": [
+	{
+		"x": 0,"xlen": 8,"y": 1,"side": "white","piece": "pawn"	
+	},
+    {
+		"x": 0,"y": 0,"side": "white","piece": "rook"
+	},
+    {
+		"x": 7,"y": 0,"side": "white","piece": "rook"
+	},
+	{
+		"x": 1,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 6,"y": 0,"side": "white","piece": "knight"
+	},
+	{
+		"x": 2,"y": 0,"side": "white","piece": "bishop"
+	},
+	{
+		"x": 5,"y": 0,"side": "white","piece": "bishop"
+	},	
+	{
+		"x": 3,"y": 0,"side": "white","piece": "queen"
+	},
+	{
+		"x": 4,"y": 0,"side": "white","piece": "king_orda"
+	},
+	
+    {
+		"x": 0,"xlen": 8,"y": 5,"side": "black","piece": "pawn_nodoublemove"
+	},
+    {
+		"x": 0,"y": 7,"side": "black","piece": "horse_lancer"
+	},
+	{
+		"x": 1,"y": 7,"side": "black","piece": "centaur"
+	},
+	{
+		"x": 2,"y": 7,"side": "black","piece": "horse_archer"
+	},
+	{
+		"x": 3,"y": 7,"side": "black","piece": "silver_general_no_promote"
+	},
+	{
+		"x": 4,"y": 7,"side": "black","piece": "king_orda_no_castle"
+	},
+	{
+		"x": 5,"y": 7,"side": "black","piece": "horse_archer"
+	},
+	{
+		"x": 6,"y": 7,"side": "black","piece": "centaur"
+	},
+    {
+		"x": 7,"y": 7,"side": "black","piece": "horse_lancer"
+	}
+	
+  ]
+}

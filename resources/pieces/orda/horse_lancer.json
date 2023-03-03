@@ -1,0 +1,15 @@
+{
+  "name": "Horse Lancer",
+  "icon": "frook_bknight",
+  "value": 4.0,
+  "moves": [
+    {
+		"type": "Rook",
+		"mode": "CAPTURE"
+	},
+    {
+		"type": "Knight",
+		"mode": "MOVE"
+	}
+  ]
+}
