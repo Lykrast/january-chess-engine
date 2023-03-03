@@ -1,7 +1,7 @@
 {
   "name": "Centaur",
   "icon": "centaur",
-  "value": 6.0,
+  "value": 7.0,
   "aihints": "OCCUPY_CENTER",
   "moves": [
     {
