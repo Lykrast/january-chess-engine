@@ -72,13 +72,6 @@ public class MoveListCapture implements Iterable<Move>, IMoveList {
 	}
 
 	@Override
-	public final boolean addCapture(final Move move) {
-		Piece p = board.getPiece(move.origin);
-		add(move);
-		return board.isFree(move.destination, p.getSide());
-	}
-
-	@Override
 	public final boolean addCaptureOnly(final Move move) {
 		Piece p = board.getPiece(move.origin);
 		add(move);

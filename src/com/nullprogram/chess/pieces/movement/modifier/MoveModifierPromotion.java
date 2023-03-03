@@ -127,18 +127,6 @@ public class MoveModifierPromotion extends MoveModifier {
 		}
 
 		@Override
-		public boolean addCapture(Move move) {
-			if (!eligible(move)) return list.addCapture(move);
-
-			boolean added = false;
-			for (String s : promoted) {
-				if (list.addCapture(promote(move, s))) added = true;
-			}
-			// true if at least one move made it through
-			return added;
-		}
-
-		@Override
 		public boolean addCaptureOnly(Move move) {
 			if (!eligible(move)) return list.addCaptureOnly(move);
 

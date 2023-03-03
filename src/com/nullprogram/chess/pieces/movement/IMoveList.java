@@ -30,14 +30,6 @@ public interface IMoveList {
 	boolean addMove(Move move);
 
 	/**
-	 * Add move to list if piece can move <i>or</i> capture at destination.
-	 *
-	 * @param move position to be added
-	 * @return     true if position was added
-	 */
-	boolean addCapture(Move move);
-
-	/**
 	 * Add move to list only if the piece will perform a capture.
 	 *
 	 * @param move position to be added

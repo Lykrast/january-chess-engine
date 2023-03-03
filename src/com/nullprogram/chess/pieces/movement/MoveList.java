@@ -9,6 +9,7 @@ import com.nullprogram.chess.Move;
 import com.nullprogram.chess.Position;
 import com.nullprogram.chess.boards.Board;
 import com.nullprogram.chess.pieces.Piece;
+import com.nullprogram.chess.pieces.movement.MoveType.MoveMode;
 
 /**
  * Safe list of moves.
@@ -69,7 +70,7 @@ public class MoveList implements Iterable<Move>, IMoveList {
 	}
 
 	@Override
-	public final boolean add(final Move move, MoveType.MoveMode type) {
+	public final boolean add(final Move move, MoveMode type) {
 		Position dest = move.destination;
 		if (!board.inRange(dest)) return false;
 
@@ -102,32 +103,12 @@ public class MoveList implements Iterable<Move>, IMoveList {
 
 	@Override
 	public final boolean addMove(final Move move) {
-		if (board.isFree(move.destination)) {
-			if (!causesCheck(move)) add(move);
-			return true; // false only for a "blocking" move
-		}
-		return false;
-	}
-
-	@Override
-	public final boolean addCapture(final Move move) {
-		Piece p = board.getPiece(move.origin);
-		if (board.isFree(move.destination, p.getSide())) {
-			if (!causesCheck(move)) add(move);
-			return true; // false only for a "blocking" move
-		}
-		return false;
+		return add(move, MoveMode.MOVE);
 	}
 
 	@Override
 	public final boolean addCaptureOnly(final Move move) {
-		Piece p = board.getPiece(move.origin);
-		if (board.isEnemy(move.destination, p.getSide()) && !causesCheck(move)) {
-
-			add(move);
-			return true;
-		}
-		return false;
+		return add(move, MoveMode.CAPTURE);
 	}
 
 	/**

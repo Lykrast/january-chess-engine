@@ -51,13 +51,6 @@ public abstract class MoveListWrapper implements IMoveList {
 	}
 
 	@Override
-	public boolean addCapture(Move move) {
-		Move modified = modify(move);
-		if (modified != null) return list.addCapture(modified);
-		else return false;
-	}
-
-	@Override
 	public boolean addCaptureOnly(Move move) {
 		Move modified = modify(move);
 		if (modified != null) return list.addCaptureOnly(modified);
