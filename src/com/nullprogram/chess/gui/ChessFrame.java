@@ -69,7 +69,7 @@ public class ChessFrame extends JFrame implements ComponentListener, GameListene
 		handler.setUpMenu();
 		pack();
 
-		lastMode = GameModeRegistry.get("fide");
+		lastMode = GameModeRegistry.get("chess");
 
 		addComponentListener(this);
 		setLocationRelativeTo(null);

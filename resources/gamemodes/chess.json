@@ -1,6 +1,6 @@
 {
-  "name": "FIDE Chess",
-  "description": "The baseline, standard chess.",
+  "name": "Chess",
+  "description": "The baseline, standard chess. Don't forget that trans rights are human rights.",
   "width": 8,
   "height": 8,
   "promotions": ["rook", "knight", "bishop", "queen"],
